@@ -101,7 +101,7 @@ State at which UC the scenario refers to
 \<a scenario is more formal description of a story>
 \<only relevant scenarios should be described>
 
-##Scenario 1
+## Scenario 1
 
 | Scenario ID: SC1        | Corresponds to UC:  |
 | ------------- |:-------------:| 
@@ -110,7 +110,7 @@ State at which UC the scenario refers to
 |  2     |  |
 |  ...     |  |
 
-##Scenario 2
+## Scenario 2
 
 ...
 
