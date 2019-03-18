@@ -7,13 +7,15 @@ Date:
 Version:
 
 # Contents
+
 - [Stakeholders](#stan)
 - [Context Diagram and interfaces](#cds)
 	+ [Context Diagram](#cd)
 	+ [Interfaces](#itf) 
-- [Stories and personas] (#st)
+	
+- [Stories and personas](#st)
 - [Functional and non functional requirements](#reqs)
-	+ [Functional Requirement] (#fr)
+	+ [Functional Requirement](#fr)
 	+ [Non functional requirements](#nf)
 - [Use case diagram and use cases](#ucs)
 	+ [Use case diagram](#ucd)
