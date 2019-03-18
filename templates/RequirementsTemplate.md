@@ -8,23 +8,21 @@ Version:
 
 # Contents
 
-- [Stakeholders](#stan)
-- [Context Diagram and interfaces](#cds)
-	+ [Context Diagram](#cd)
-	+ [Interfaces](#itf) 
+- [Stakeholders](#stakeholders)
+- [Context Diagram and interfaces](#context-diagram-and-interfaces)
+	+ [Context Diagram](#context-diagram)
+	+ [Interfaces](#interfaces) 
 	
-- [Stories and personas](#st)
-- [Functional and non functional requirements](#reqs)
-	+ [Functional Requirement](#fr)
-	+ [Non functional requirements](#nf)
-- [Use case diagram and use cases](#ucs)
-	+ [Use case diagram](#ucd)
-	+ [Use cases](#uc)
-	+ [Relevant scenarios](#sc)
-- [Glossary](#gl)
-- [System design](#sd)
-
-<div id="stan"></div>
+- [Stories and personas](#stories-and-personas)
+- [Functional and non functional requirements](#functional-and-non-functional-requirements)
+	+ [Functional Requirements](#functional-requirements)
+	+ [Non functional requirements](#non-functional-requirements)
+- [Use case diagram and use cases](#use-case-diagram-and-use-cases)
+	+ [Use case diagram](#use-case-diagram)
+	+ [Use cases](#use-cases)
+	+ [Relevant scenarios](#relevant-scenarios)
+- [Glossary](#glossary)
+- [System design](#system-design)
 
 # Stakeholders
 
@@ -34,25 +32,17 @@ Version:
 | ------------- |:-------------:|
 |       |  | 
 
-<div id="cds"></div>
-
 # Context Diagram and interfaces
-
-<div id="cd"></div>
 
 ## Context Diagram
 \<Define here Context diagram using UML use case diagram>
 
 \<actors are a subset of stakeholders>
 
-<div id="itf"></div>
-
 ## Interfaces
 | Actor | Logical Interface | Physical Interface  |
 | ------------- |:-------------:| -----:|
 |       |  |  |
-
-<div id="st"></div>
 
 # Stories and personas
 \<A Persona is a realistic impersonation of an actor. Define here a few personas and describe in plain text how a persona interacts with the system>
@@ -60,11 +50,7 @@ Version:
 \<Persona is-an-instance-of actor>  \<stories will be formalized later as use cases>
 
 
-<div id="reqs"></div>
-
 # Functional and non functional requirements
-
-<div id="fr"></div>
 
 ## Functional Requirements
 
@@ -75,8 +61,6 @@ Version:
 |  FR1     |  |  
 |  FR2     |  |
 |  ...     |  |
-
-<div id="nf"></div>
 
 ## Non Dunctional Requirements
 
@@ -89,17 +73,11 @@ Version:
 |  ...     |  |  | FR\<x>|
 
 
-<div id="ucs"></div>
-
 # Use case diagram and use cases
 
 
-<div id="ucd"></div>
-
 ## Use case diagram
 \<define here UML Use case diagram UCD summarizing all use cases, and their relationships>
-
-<div id="uc"></div>
 
 ## Use Cases
 \<describe here each use case in the UCD>
@@ -116,8 +94,6 @@ Version:
 
 ### Use case \<n>
 
-
-<div id="sc"></div>
 
 # Relevant scenarios
 State at which UC the scenario refers to
@@ -138,13 +114,9 @@ State at which UC the scenario refers to
 
 ...
 
-<div id="gl"></div>
-
 # Glossary
 
 \<use UML class diagram to define important concepts in the domain of the system, and their relationships>  <concepts are used consistently all over the document, ex in use cases, requirements etc>
-
-<div id="sd"></div>
 
 # System Design
 \<describe here system design> <must be consistent with Context diagram>
