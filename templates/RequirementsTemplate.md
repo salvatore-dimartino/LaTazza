@@ -27,8 +27,9 @@ Version:
 # Stakeholders
 
 
-| Actor | Logical Interface | 
-|       |                   | 
+| Stakeholder name  | Description | 
+| ----------------- |:-----------:|
+|                   |             | 
 
 # Context Diagram and interfaces
 
