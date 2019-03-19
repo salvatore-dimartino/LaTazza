@@ -26,11 +26,9 @@ Version:
 
 # Stakeholders
 
-\<Define>
 
 | Actor | Logical Interface | 
-| ------------- |:-------------:|
-|       |  | 
+|       |                   | 
 
 # Context Diagram and interfaces
 
@@ -62,7 +60,7 @@ Version:
 |  FR2     |  |
 |  ...     |  |
 
-## Non Dunctional Requirements
+## Non Functional Requirements
 
 \<Describe constraints on functional requirements>
 
