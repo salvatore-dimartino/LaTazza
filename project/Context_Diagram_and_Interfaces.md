@@ -13,6 +13,7 @@ actor Manager as m
 actor Employee as e
 actor SystemAdmin as sa
 actor Visitor as v
+actor PaymentSystem as ps
 
 rectangle system {
 	(LaTazza) as l
@@ -35,3 +36,4 @@ note "Manager is also an employee, but It can be considered as a lone actor beca
 |   Manager    | LaTazza application GUI | Electronical device like personal computer |
 |   Visitor    | X | They ask to the manager to get capsules and pay |
 |   SystemAdmin    | GUI of the OS used to manage and handle the system | Electronical device like personal computer |
+|   PaymentSystem    | Web service and APIs | Internet Connection |
