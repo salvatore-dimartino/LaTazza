@@ -53,10 +53,10 @@ e <-- (Sells capsules to clients)
 | ------------- |:-------------:| 
 |  Precondition     | Visitors pays for the purchase |  
 |  Post condition     | Visitors recives his order |
-|  Nominal Scenario     | Manager notifies the employee of the debt and proceed with order  |
+|  Nominal Scenario     | Manager proceed with the order |
 |  Variants     | The employee pay with cash |
 
-### Use case 5, UC4
+### Use case 5, UC5
 | Actors Involved        | Manager, Employee |
 | ------------- |:-------------:| 
 |  Precondition     | A certain type of capsules is not available |  
