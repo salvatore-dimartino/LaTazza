@@ -21,14 +21,13 @@
 
 | ID        | Type (efficiency, reliability, ..)           | Description  | Refers to |
 | ------------- |:-------------:| :-----:| -----:|
-|NFR1|Reliability|The web application must have at most one fault per year|FR\<x>|
-|NFR2|Usability|It should be easy to add a new product in the shopping cart of the web application|FR\<y>|
-|NFR3|Performance|The order process (up to the delivery) should last at most a week|FR\<x>|
-|NFR4|Availability|Each different drink product can be unavailable at most for 2 weeks|FR\<x>|
-|NFR5|Capacity|The system should be able to save 4Tb of Data|FR\<x>|
-|NFR6|Security|The transaction and the data of all actors should be encrypted|FR\<x>|
-|NFR7|Interobility|The system should be run on smartphone and pc|FR\<x>|
-|NFR8|Data integrity|The system adopts a two phase locking mechanism to guarantee coherence and consistance of data|FR\<x>|
-|NFR9|Recoverability|The system transaction steps are written on a safety log, in away in case of fault the transaction can be restore successfully|FR\<x>|
-|NFR10|Recoverability|The system transactions and the customer accounts are also stored on 3 different backup servers|FR\<x>|
-|NFR11|Usability|The system shall be easy to use|FR\<x>|
+|NFR1|Reliability|The web application must have at most one fault per year|FR6|
+|NFR2|Usability|The system shall be easy to use|FR1 FR3 FR7 FR8 FR9 FR10 FR11 FR12|
+|NFR3|Performance|The payment and registration procedure should last at most 30 seconds|FR1 FR8|
+|NFR4|Availability|Each different drink product can be unavailable at most for a week|FR3 FR4 FR5|
+|NFR5|Capacity|The system should be able to save 4Tb of Data|FR7 FR8|
+|NFR6|Security|The transaction and the data of all actors should be encrypted|FR1 FR7 FR8|
+|NFR7|Interobility|The system should be run on smartphone and pc|FR1 FR3 FR7 FR8 FR9 FR10 FR11 FR12|
+|NFR8|Data integrity|The system adopts a two phase locking mechanism to guarantee coherence and consistance of data|FR7 FR8|
+|NFR9|Recoverability|The system transaction steps are written on a safety log, in away in case of fault the transaction can be restore successfully|FR7 FR8|
+|NFR10|Recoverability|The system transactions and the customer accounts are also stored on 3 different backup servers|FR7 FR8|
