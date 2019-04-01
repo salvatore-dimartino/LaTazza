@@ -4,8 +4,8 @@
 
 | ID        | Description  |
 | ------------- |:-------------:| 
-|FR1|The Employee shall be able to order from the drinks from the Cofee Manager|  
-|FR2| The Visitor shall be able to order from the drinks from the Cofee Manager|
+|FR1|The Employee shall be able to order the drinks from the Cofee Manager|  
+|FR2| The Visitor shall be able to order the drinks from the Cofee Manager|
 |FR3|The Cofee Manager shall be able to contact the LaTazza driver and the Warehouse worker when no longer has stocks|
 |FR4|When the Coffe Manager orders the Warehouse worker shall be able to charge the drinks on the van|
 |FR5|When the LaTazza driver has the drinks he shall be able to transport it to the Coffee Manager|
