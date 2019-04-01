@@ -15,7 +15,7 @@
 
 | ID        | Type (efficiency, reliability, ..)           | Description  | Refers to |
 | ------------- |:-------------:| :-----:| -----:|
-|NFR1|  |The application has at most one fault per year| FR\<x>|
-|NFR2|  |Should be easy to add a new product in the application| FR\<y>|
-|NFR3|  |The reorder process can last a week| FR\<x>|
-|NFR4|  |Every drinks costs at most 5 dollars|FR\<y>|
+|NFR1|Security|The application has at most one fault per year| FR\<x>|
+|NFR2|Serviceability|Should be easy to add a new product in the application| FR\<y>|
+|NFR3|Performance|The reorder process can last a week| FR\<x>|
+|NFR4|Availability|Every drinks costs at most 5 dollars|FR\<y>|
