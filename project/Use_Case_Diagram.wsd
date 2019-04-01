@@ -1,3 +1,5 @@
+## Use case diagram
+
 @startuml
 
 left to right direction 
@@ -20,3 +22,4 @@ e --> (Chooses favourite method of payment)
 e --> (Check his own balance)
 
 @enduml
+```
