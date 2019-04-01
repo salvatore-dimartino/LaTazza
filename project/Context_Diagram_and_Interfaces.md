@@ -23,7 +23,7 @@ e -- l
 l -- sa
 l -- v 
 
-note "Manager is also an employee, but \n It can be considered as a lone actor because\n he interacts differently with the system with respect to the employees" as n
+note "Manager is also an employee, but It can be considered as a lone actor because\n he interacts differently with the system with respect to the employees" as n
 
 @enduml
 ```
