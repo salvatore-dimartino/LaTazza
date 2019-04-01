@@ -23,6 +23,7 @@ m -- l
 e -- l
 l -- sa
 l -- v 
+l -- ps
 
 note "Manager is also an employee, but It can be considered as a lone actor because\nhe interacts differently with the system with respect to the employees" as n
 
