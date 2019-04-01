@@ -18,9 +18,5 @@ c --> (Manages the purchase and payment of capsules)
 
 e <-- (Sells capsules to clients)
 
-e --> (Create account)
-e --> (Chooses favourite method of payment)
-e --> (Check his own balance)
-
 @enduml
 ```
