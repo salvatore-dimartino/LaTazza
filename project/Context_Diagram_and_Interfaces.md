@@ -34,4 +34,4 @@ note "Manager is also an employee, but It can be considered as a lone actor beca
 |   Employee    | LaTazza application GUI | They ask to the manager for ordering capsules |
 |   Manager    | LaTazza application GUI | Electronical device like personal computer |
 |   Visitor    | X | They ask to the manager to get capsules and pay |
-|   SystemAdmin    | GUI of the OS used to manage the DB of the order | Electronical device like personal computer |
+|   SystemAdmin    | GUI of the OS used to manage and handle the system | Electronical device like personal computer |
