@@ -12,7 +12,7 @@ skinparam packageStyle rectangle
 actor Manager as m
 actor Employee as e
 actor SystemAdmin as sa
-actor Visitors as v
+actor Visitor as v
 
 rectangle system {
 	(LaTazza) as l
