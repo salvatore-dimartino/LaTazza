@@ -464,4 +464,95 @@ CoffeeManager -- Account : has
 ```
 
 # System Design
-\<describe here system design> <must be consistent with Context diagram>
+
+```plantuml
+@startuml
+
+class Employee {
+
+	+ID
+	+firstName
+	+lastName
+	+telephoneNumber
+	
+}
+
+class Visitor {
+
+	+firstName
+	+lastName
+	+role
+}
+
+class CoffeeManager {
+	
+	+cashAccount
+}
+
+class BoxOfCapsules {
+
+	+type
+	+flavour
+}
+
+class Account {
+
+	+name
+	+password
+	+balance
+}
+
+class Order {
+
+	+ID
+	+numberOfPackages
+	+paymentMethod
+	+total
+}
+
+Employee "*" <|-- CoffeeManager
+Employee "*"-- CoffeeManager : order to
+BoxOfCapsules "*" -- CoffeeManager : is purchased
+Visitor "*" -- CoffeeManager : order to
+Order "*" -- CoffeeManager : is made by
+Order -- "*" BoxOfCapsules : contains
+Employee -- Account : has
+CoffeeManager -- Account : has
+@enduml
+```
+
+# System Design
+
+```plantuml
+@startuml
+
+class Server {
+  
+	+queryRequest()
+  	+register()
+  	+login()
+	+showBalance()
+  	+paymantRequest()
+	+updateBackup()
+}
+
+class BankingGateway {
+  +processPayment()
+}
+
+class Database {
+	+queryProcess()
+	+queryReply()
+}
+
+class BackupServer {
+	
+	+recovery()
+}
+
+Server -- BankingGateway
+Server -- Database
+Server <|-- "2" BackupServer : has
+
+@enduml
+```
