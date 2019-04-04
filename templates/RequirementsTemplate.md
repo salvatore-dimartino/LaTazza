@@ -60,7 +60,7 @@ m -- l
 e -- l
 l -- sa
 
-note "Manager is also an employee, but he can be considered as a lone actor because\nhe interacts differently with the system with respect to the employees. Visitor is not an actor as it doesn't interact directly with the LaTazza service\n but only uses the coffee manager as an intermediary." as n
+note "Manager is also an employee, but he can be considered as a lone actor because he interacts differently with the system with respect to the employees.\nVisitor is not an actor as it doesn't interact directly with the LaTazza service\n but only uses the coffee manager as an intermediary." as n
 
 @enduml
 ```
