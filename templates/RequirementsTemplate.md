@@ -1,10 +1,10 @@
 # Requirements Document Template
 
-Authors:
+Authors: Dibitonto Francesco, Di Martino Salvatore, Gorrino Federico Silvio
 
-Date:
+Date: 9/4/2019
 
-Version:
+Version: 1.0
 
 # Contents
 
@@ -33,13 +33,12 @@ Version:
 |	Coffee Manager		|	Employee taking charge of managing the purchase and payment of capsules. In particular, he does: sell capsules to clients, buy boxes of capsules (a box contains 50 capsules of the same kind), manage credit and debt of the employees, check the inventory (number of capsules per type), check the cash account.	|	
 |	Visitor		|	Customer from outside buying the capsules, cash only.	|
 |	Warehouse worker	|	La Tazza' s warehouse worker, retrieving the desired amount of capsule packages from the warehouse and putting it on the transport vehicles.	|
-|	La Tazza driver		|	La Tazza driver employee, driving the vehicle that brings the coffee packages to the buyers.	|
+|	LaTazza driver		|	La Tazza driver employee, driving the vehicle that brings the coffee packages to the buyers.	|
 |   System Admin    |   Administrator who manages and handles the system.    |
 
 # Context Diagram and interfaces
 
 ## Context Diagram
-\<Define here Context diagram using UML use case diagram>
 ```plantuml
 @startuml
 
@@ -50,7 +49,6 @@ skinparam packageStyle rectangle
 actor Manager as m
 actor Employee as e
 actor SystemAdmin as sa
-actor Visitor as v
 
 rectangle system {
 
@@ -61,20 +59,17 @@ rectangle system {
 m -- l
 e -- l
 l -- sa
-l -- v 
 
-note "Manager is also an employee, but It can be considered as a lone actor because\nhe interacts differently with the system with respect to the employees" as n
+note "Manager is also an employee, but he can be considered as a lone actor because he interacts differently with the system with respect to the employees.\nVisitor is not an actor as it doesn't interact directly with the LaTazza service but only uses the coffee manager as an intermediary." as n
 
 @enduml
 ```
-\<actors are a subset of stakeholders>
 
 ## Interfaces
 | Actor | Logical Interface | Physical Interface  |
 | ------------- |:-------------:| -----:|
-|   Employee    | X | They ask to the manager for ordering capsules |
-|   Manager    | LaTazza application GUI | Electronical device like personal computer |
-|   Visitor    | X | They ask to the manager to get capsules and pay |
+|   Employee    | LaTazza application GUI for employee  | Electronical device like personal computer |
+|   Coffee Manager    | LaTazza application GUI for coffe manager | Electronical device like personal computer |
 |   System Admin    | GUI of the OS used to manage and handle the system | Electronical device like personal computer |
 
 # Stories and personas
@@ -396,7 +391,7 @@ State at which UC the scenario refers to
 
 ## Scenario 5
 
-| Scenario ID: SC4        | Corresponds to UC: 4 |
+| Scenario ID: SC5        | Corresponds to UC: 5 |
 | ------------- |:-------------:| 
 | Step#        | Description  |
 |1|Employee send a request to the Coffee Manager for the box of capsules|  
