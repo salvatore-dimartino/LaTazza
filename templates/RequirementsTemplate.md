@@ -162,7 +162,7 @@ e <-- (Sells capsules to clients)
 |  Nominal Scenario     | Manager notifies the employee of the debt and proceed with order  |
 |  Variants     | The employee pay with cash |
 
-### Use case 5, UC4
+### Use case 5, UC5
 | Actors Involved        | Manager, Employee |
 | ------------- |:-------------:| 
 |  Precondition     | A certain type of capsules is not available |  
