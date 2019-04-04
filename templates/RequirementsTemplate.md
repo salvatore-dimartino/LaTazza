@@ -1,10 +1,10 @@
 # Requirements Document Template
 
-Authors:
+Authors: Dibitonto Francesco, Di Martino Salvatore, Gorrino Federico Silvio
 
-Date:
+Date: 9/4/2019
 
-Version:
+Version: 1.0
 
 # Contents
 
@@ -40,13 +40,42 @@ Version:
 
 ## Context Diagram
 \<Define here Context diagram using UML use case diagram>
+```plantuml
+@startuml
 
+left to right direction
+
+skinparam packageStyle rectangle
+
+actor Manager as m
+actor Employee as e
+actor SystemAdmin as sa
+actor Visitor as v
+
+rectangle system {
+
+	(LaTazza) as l
+
+}
+
+m -- l
+e -- l
+l -- sa
+l -- v 
+
+note "Manager is also an employee, but It can be considered as a lone actor because\nhe interacts differently with the system with respect to the employees" as n
+
+@enduml
+```
 \<actors are a subset of stakeholders>
 
 ## Interfaces
 | Actor | Logical Interface | Physical Interface  |
 | ------------- |:-------------:| -----:|
-|       |  |  |
+|   Employee    | X | They ask to the manager for ordering capsules |
+|   Manager    | LaTazza application GUI | Electronical device like personal computer |
+|   Visitor    | X | They ask to the manager to get capsules and pay |
+|   System Admin    | GUI of the OS used to manage and handle the system | Electronical device like personal computer |
 
 # Stories and personas
 
@@ -207,23 +236,37 @@ Version:
 
 ## Functional Requirements
 
-\<In the form DO SOMETHING, or VERB NOUN, describe high level capabilities of the system> <will match to high level use cases>
-
 | ID        | Description  |
 | ------------- |:-------------:| 
-|  FR1     |  |  
-|  FR2     |  |
-|  ...     |  |
+|FR1|The Employee shall be able to order the boxes of capsules from the Coffee Manager|  
+|FR2|The Visitor shall be able to order the boxes of capsules from the Coffee Manager|
+|FR3|The Coffee Manager shall be able to buy the boxes of capsules on the LaTazza web application|
+|FR4|When an order comes the LaTazza system should be able to comunicate to the Warehouse worker that he has to put the boxes of capsules on the transport vehicle|
+|FR5|When the LaTazza driver has the boxes of capsules he shall be able to transport it to the Coffee Manager's company|
+|FR6|When the web application has a fault the System Admin shall be able to repair it|
+|FR7|The system should be able to handle correctly the registation requests of the customers and store theirs profiles into its costumer profiles database|
+|FR8|The system should be able to handle correctly the payment procedure with the payment system, storing each transaction into the transactions database|
+|FR9|The Coffee Manager shall be able to sell the capsules to clients|
+|FR10|The Coffee Manager shall be able to manage credit and debt of the employees|
+|FR11|The Coffee Manager shall be able to check the number of capsules per type in the inventory|
+|FR12|The Coffee Manager shall be able to check the total checkout on his own cash account|
 
 ## Non Functional Requirements
 
-\<Describe constraints on functional requirements>
-
 | ID        | Type (efficiency, reliability, ..)           | Description  | Refers to |
 | ------------- |:-------------:| :-----:| -----:|
-|  NFR1     |  |  | FR\<x>|
-|  NFR2     |  |  | FR\<y>|
-|  ...     |  |  | FR\<x>|
+|NFR1|Reliability|The web application must have at most one fault per year|FR6|
+|NFR2|Usability|The system shall be easy to use|FR1 FR3 FR7 FR8 FR9 FR10 FR11 FR12|
+|NFR3|Performance|The payment and registration procedure should last at most 30 seconds|FR1 FR8|
+|NFR4|Availability|Each different drink product can be unavailable at most for a week|FR3 FR4 FR5|
+|NFR5|Capacity|The system should be able to save 4Tb of Data|FR7 FR8|
+|NFR6|Security|The transaction and the data of all actors should be encrypted|FR1 FR7 FR8|
+|NFR7|Interoperability|The system should be run on smartphone and pc|FR1 FR3 FR7 FR8 FR9 FR10 FR11 FR12|
+|NFR8|Data integrity|The system adopts a two phase locking mechanism to guarantee coherence and consistance of data|FR7 FR8|
+|NFR9|Recoverability|The system transaction steps are written on a safety log, in away in case of fault the transaction can be restore successfully|FR7 FR8|
+|NFR10|Recoverability|The system transactions and the customer accounts are also stored on 3 different backup servers|FR7 FR8|
+|NFR11|Domain|The currency is dollars|FR1 FR2 FR3 FR8
+|NFR12|Capacity|The minimum number of capsules per type in the Werehouse is 20|FR4|
 
 
 # Use case diagram and use cases
@@ -231,22 +274,62 @@ Version:
 
 ## Use case diagram
 \<define here UML Use case diagram UCD summarizing all use cases, and their relationships>
+```plantuml
+@startuml
 
-## Use Cases
-\<describe here each use case in the UCD>
+left to right direction 
+skinparam packageStyle rectangle
 
+actor CoffeeManager as c
+actor Employee as e
+
+c --> (Manages the purchase and payment of capsules)
+
+(Manages the purchase and payment of capsules) .> (Sells capsules to clients) : <<inlcude>>
+(Manages the purchase and payment of capsules) .> (Buys boxes of capsules) : <<inlcude>>
+(Manages the purchase and payment of capsules) .> (Manages credit and debt of the employees) : <<inlcude>>
+(Manages the purchase and payment of capsules) .> (Checks the inventory) : <<inlcude>>
+
+e <-- (Sells capsules to clients)
+
+@enduml
+```
 ### Use case 1, UC1
-| Actors Involved        |  |
+| Actors Involved        | Manager, Employee |
 | ------------- |:-------------:| 
-|  Precondition     | \<Boolean expression, must evaluate to true before the UC can start> |  
-|  Post condition     | \<Boolean expression, must evaluate to true after UC is finished> |
-|  Nominal Scenario     | \<Textual description of actions executed by the UC> |
-|  Variants     | \<other executions, ex in case of errors> |
+|  Precondition     | Employee has enough credit for the purchase on their account |  
+|  Post condition     | Employee recives his order |
+|  Nominal Scenario     | Manager proceeds with the order |
 
 ### Use case 2, UC2
+| Actors Involved        | Manager, Employee |
+| ------------- |:-------------:| 
+|  Precondition     | Employee has not enough credit for the purchase on their account |  
+|  Post condition     | Employee does not recives his order |
+|  Nominal Scenario     | Manager notifies the employee of the debt |
 
-### Use case \<n>
+### Use case 3, UC3
+| Actors Involved        | Manager, Employee |
+| ------------- |:-------------:| 
+|  Precondition     | Employee has not enough credit for the purchase on their account |  
+|  Post condition     | Employee recives his order |
+|  Nominal Scenario     | Manager notifies the employee of the debt and proceed with order  |
+|  Variants     | The employee pay with cash |
 
+### Use case 4, UC4
+| Actors Involved        | Manager, Visitors |
+| ------------- |:-------------:| 
+|  Precondition     | Visitors pays for the purchase |  
+|  Post condition     | Visitors recives his order |
+|  Nominal Scenario     | Manager notifies the visitors and proceed with order  |
+|  Variants     | X |
+
+### Use case 5, UC5
+| Actors Involved        | Manager, Employee |
+| ------------- |:-------------:| 
+|  Precondition     | A certain type of capsules is not available |  
+|  Post condition     | Employee does not recive his order |
+|  Nominal Scenario     | Manager notifies the employee |
 
 # Relevant scenarios
 State at which UC the scenario refers to
@@ -256,20 +339,129 @@ State at which UC the scenario refers to
 
 ## Scenario 1
 
-| Scenario ID: SC1        | Corresponds to UC:  |
+| Scenario ID: SC1        | Corresponds to UC: 1 |
 | ------------- |:-------------:| 
 | Step#        | Description  |
-|  1     |  |  
-|  2     |  |
-|  ...     |  |
+|1|Employee send a request to the Coffee Manager for the box of capsules|  
+|2|The Coffee Manager contacts the availability of the box of capsules|
+|3|The Coffee Manager performs and checks the employee payment|
+|4|The Coffee Manager sends a notification to the employee:"ok"|
+|5|The Coffee Manager sends a request to the Warehouse Worker|
+|6|The Warehouse Worker prepares the vehicle|
+|7|The LaTazza driver deliveries the box to the Coffee Manager|
+|8|The Coffee Manager gives the box of capsules to the employee|
+|9|Update the databases|
 
 ## Scenario 2
 
-...
+| Scenario ID: SC2        | Corresponds to UC: 2 |
+| ------------- |:-------------:| 
+| Step#        | Description  |
+|1|Employee send a request to the Coffee Manager for the box of capsules|  
+|2|The Coffee Manager checks the availability of the box of capsules|
+|3|The Coffee Manager sends ad advertisement to the employee:"credit not available"|
+|4|The employee doesn't update the credits and doesn't pay anyway with cash|
+
+## Scenario 3
+
+| Scenario ID: SC3        | Corresponds to UC: 3 |
+| ------------- |:-------------:| 
+| Step#        | Description  |
+|1|Employee send a request to the Coffee Manager for the box of capsules|  
+|2|The Coffee Manager checks the availability of the box of capsules|
+|3|The Coffee Manager sends ad advertisement to the employee:"credit not available"|
+|4|The employee update the credits or pay anyway with cash|
+|5|The Coffee Manager performs and checks the employee payment|
+|6|The Coffee Manager sends a notification to the employee:"ok"|
+|7|The Coffee Manager sends a request to the Warehouse Worker|
+|8|The Warehouse Worker prepares the vehicle|
+|9|The LaTazza driver deliveries the box to the Coffee Manager|
+|10|The Coffee Manager gives the box of capsules to the employee|
+|11|Update the databases|
+
+
+## Scenario 4
+
+| Scenario ID: SC4        | Corresponds to UC: 4 |
+| ------------- |:-------------:| 
+| Step#        | Description  |
+|1|The visitor talks to the Coffee Manager for the box of capsules|  
+|2|The Coffee Manager checks the availability of the box of capsules|
+|3|The Coffee Manager takes the cash from the visitors|
+|4|The Coffee Manager sends a request to the Warehouse Worker|
+|5|The Warehouse Worker prepares the vehicle|
+|6|The LaTazza driver deliveries the box to the Coffee Manager|
+|7|The Coffee Manager gives the box of capsules to the visitor|
+|8|Update the databases|
+
+## Scenario 5
+
+| Scenario ID: SC5        | Corresponds to UC: 5 |
+| ------------- |:-------------:| 
+| Step#        | Description  |
+|1|Employee send a request to the Coffee Manager for the box of capsules|  
+|2|The Coffee Manager checks the availability of the box of capsules|
+|3|The Coffee Manager sends ad advertisement to the employee:"box not available"|
 
 # Glossary
 
 \<use UML class diagram to define important concepts in the domain of the system, and their relationships>  <concepts are used consistently all over the document, ex in use cases, requirements etc>
+
+```plantuml
+@startuml
+
+class Employee {
+
+	+ID
+	+firstName
+	+lastName
+	+telephoneNumber
+	
+}
+
+class Visitor {
+
+	+firstName
+	+lastName
+	+role
+}
+
+class CoffeeManager {
+	
+	+cashAccount
+}
+
+class BoxOfCapsules {
+
+	+type
+	+flavour
+}
+
+class Account {
+
+	+name
+	+password
+	+balance
+}
+
+class Order {
+
+	+ID
+	+numberOfPackages
+	+paymentMethod
+	+total
+}
+
+Employee "*" <|-- CoffeeManager
+Employee "*"-- CoffeeManager : order to
+BoxOfCapsules "*" -- CoffeeManager : is purchased
+Visitor "*" -- CoffeeManager : order to
+Order "*" -- CoffeeManager : is made by
+Order -- "*" BoxOfCapsules : contains
+Employee -- Account : has
+CoffeeManager -- Account : has
+@enduml
+```
 
 # System Design
 \<describe here system design> <must be consistent with Context diagram>
