@@ -1,10 +1,10 @@
 # Requirements Document Template
 
-Authors:
+Authors: Dibitonto Francesco, Di Martino Salvatore, Gorrino Federico Silvio
 
-Date:
+Date: 9/4/2019
 
-Version:
+Version: 1.0
 
 # Contents
 
@@ -382,7 +382,7 @@ State at which UC the scenario refers to
 
 ## Scenario 4
 
-| Scenario ID: SC4        | Corresponds to UC: 4 |
+| Scenario ID: SC5        | Corresponds to UC: 5 |
 | ------------- |:-------------:| 
 | Step#        | Description  |
 |1|The visitor talks to the Coffee Manager for the box of capsules|  
