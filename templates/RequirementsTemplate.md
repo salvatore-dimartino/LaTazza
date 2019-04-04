@@ -80,7 +80,7 @@ note "Manager is also an employee, but It can be considered as a lone actor beca
 # Stories and personas
 \<A Persona is a realistic impersonation of an actor. Define here a few personas and describe in plain text how a persona interacts with the system>
 
-# Personas
+# Stories and personas
 
 ## Role: employee
 
