@@ -48,7 +48,7 @@ Version:
 | ------------- |:-------------:| -----:|
 |       |  |  |
 
-# Personas
+# Stories and personas
 
 ## Role: employee
 
