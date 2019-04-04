@@ -159,7 +159,7 @@ e <-- (Sells capsules to clients)
 |  Nominal Scenario     | Manager notifies the visitors and proceed with order  |
 |  Variants     | X |
 
-### Use case 5, UC4
+### Use case 5, UC5
 | Actors Involved        | Manager, Employee |
 | ------------- |:-------------:| 
 |  Precondition     | A certain type of capsules is not available |  
@@ -190,6 +190,62 @@ State at which UC the scenario refers to
 # Glossary
 
 \<use UML class diagram to define important concepts in the domain of the system, and their relationships>  <concepts are used consistently all over the document, ex in use cases, requirements etc>
+
+```plantuml
+@startuml
+
+class Employee {
+
+	+ID
+	+firstName
+	+lastName
+	+telephoneNumber
+	
+}
+
+class Visitor {
+
+	+firstName
+	+lastName
+	+role
+}
+
+class CoffeeManager {
+	
+	+cashAccount
+}
+
+class BoxOfCapsules {
+
+	+type
+	+flavour
+}
+
+class Account {
+
+	+name
+	+password
+	+balance
+}
+
+class Order {
+
+	+ID
+	+numberOfPackages
+	+paymentMethod
+	+total
+}
+
+Employee "*" <|-- CoffeeManager
+Employee "*"-- CoffeeManager : order to
+BoxOfCapsules "*" -- CoffeeManager : is purchased
+Visitor "*" -- CoffeeManager : order to
+Order "*" -- CoffeeManager : is made by
+Order -- "*" BoxOfCapsules : contains
+Employee -- Account : has
+CoffeeManager -- Account : has
+@enduml
+```
 
 # System Design
 \<describe here system design> <must be consistent with Context diagram>
