@@ -459,4 +459,37 @@ CoffeeManager -- Account : has
 ```
 
 # System Design
-\<describe here system design> <must be consistent with Context diagram>
+
+```plantuml
+@startuml
+
+class Server {
+  
+	+queryRequest()
+  	+register()
+  	+login()
+	+showBalance()
+  	+paymantRequest()
+	+updateBackup()
+}
+
+class BankingGateway {
+  +processPayment()
+}
+
+class Database {
+	+queryProcess()
+	+queryReply()
+}
+
+class BackupServer {
+	
+	+recovery()
+}
+
+Server -- BankingGateway
+Server -- Database
+Server <|-- "2" BackupServer : has
+
+@enduml
+```
