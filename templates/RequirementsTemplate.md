@@ -129,15 +129,12 @@ e <-- (Sells capsules to clients)
 
 @enduml
 ```
-## Use Cases
-\<describe here each use case in the UCD>
-
 ### Use case 1, UC1
 | Actors Involved        | Manager, Employee |
 | ------------- |:-------------:| 
 |  Precondition     | Employee has enough credit for the purchase on their account |  
 |  Post condition     | Employee recives his order |
-|  Nominal Scenario     | Manager proceed with the order |
+|  Nominal Scenario     | Manager proceeds with the order |
 
 ### Use case 2, UC2
 | Actors Involved        | Manager, Employee |
@@ -159,15 +156,15 @@ e <-- (Sells capsules to clients)
 | ------------- |:-------------:| 
 |  Precondition     | Visitors pays for the purchase |  
 |  Post condition     | Visitors recives his order |
-|  Nominal Scenario     | Manager notifies the employee of the debt and proceed with order  |
-|  Variants     | The employee pay with cash |
+|  Nominal Scenario     | Manager notifies the visitors and proceed with order  |
+|  Variants     | X |
 
-### Use case 5, UC5
+### Use case 5, UC4
 | Actors Involved        | Manager, Employee |
 | ------------- |:-------------:| 
 |  Precondition     | A certain type of capsules is not available |  
 |  Post condition     | Employee does not recive his order |
-|  Nominal Scenario     | Manager notify the employee |
+|  Nominal Scenario     | Manager notifies the employee |
 
 
 
