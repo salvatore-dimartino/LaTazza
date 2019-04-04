@@ -382,7 +382,7 @@ State at which UC the scenario refers to
 
 ## Scenario 4
 
-| Scenario ID: SC5        | Corresponds to UC: 5 |
+| Scenario ID: SC4        | Corresponds to UC: 4 |
 | ------------- |:-------------:| 
 | Step#        | Description  |
 |1|The visitor talks to the Coffee Manager for the box of capsules|  
@@ -396,7 +396,7 @@ State at which UC the scenario refers to
 
 ## Scenario 5
 
-| Scenario ID: SC4        | Corresponds to UC: 4 |
+| Scenario ID: SC5        | Corresponds to UC: 5 |
 | ------------- |:-------------:| 
 | Step#        | Description  |
 |1|Employee send a request to the Coffee Manager for the box of capsules|  
