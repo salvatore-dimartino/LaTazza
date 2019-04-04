@@ -29,7 +29,12 @@ Version:
 
 | Stakeholder name  | Description | 
 | ----------------- |:-----------:|
-|                   |             | 
+| 	Employee	|	Worker wanting to buy and share a coffee maker; they buy capsules from the manager.	| 
+|	Coffee Manager		|	Employee taking charge of managing the purchase and payment of capsules. In particular, he does: sell capsules to clients, buy boxes of capsules (a box contains 50 capsules of the same kind), manage credit and debt of the employees, check the inventory (number of capsules per type), check the cash account.	|	
+|	Visitor		|	Customer from outside buying the capsules, cash only.	|
+|	Warehouse worker	|	La Tazza' s warehouse worker, retrieving the desired amount of capsule packages from the warehouse and putting it on the transport vehicles.	|
+|	La Tazza driver		|	La Tazza driver employee, driving the vehicle that brings the coffee packages to the buyers.	|
+|   System Admin    |   Administrator who manages and handles the system.    |
 
 # Context Diagram and interfaces
 
@@ -67,41 +72,201 @@ note "Manager is also an employee, but It can be considered as a lone actor beca
 ## Interfaces
 | Actor | Logical Interface | Physical Interface  |
 | ------------- |:-------------:| -----:|
-|   Employee    | LaTazza application GUI | They ask to the manager for ordering capsules |
+|   Employee    | X | They ask to the manager for ordering capsules |
 |   Manager    | LaTazza application GUI | Electronical device like personal computer |
 |   Visitor    | X | They ask to the manager to get capsules and pay |
-|   System Admin    | GUI of the OS used to manage and handle the system | Electronical device like p
+|   System Admin    | GUI of the OS used to manage and handle the system | Electronical device like personal computer |
 
 # Stories and personas
-\<A Persona is a realistic impersonation of an actor. Define here a few personas and describe in plain text how a persona interacts with the system>
 
-# Stories and personas
-\<A Persona is a realistic impersonation of an actor. Define here a few personas and describe in plain text how a persona interacts with the system>
+## Role: employee
 
-\<Persona is-an-instance-of actor>  \<stories will be formalized later as use cases>
+## Name: Mario Rossi
+
+## Quote:
+
+> What doesn't kill you makes you stronger.
+
+## Background:
+**Age:** 59<br>
+**Location:** Torino<br>
+**Marital Status:** Engaged<br>
+**Kids:** No<br>
+**Occupation:** employee<br>
+**Education:** bachelor degree in economy
+
+## Characteristics
+* Lazy
+* Headstrong
+* Committed
+* Action Oriented
+* Nervous
+
+## Goals/Needs
+
+* Get maximum working results for minimum effort.
+* Get a promotion at work.
+* Explore the pyramids.
+
+## Frustrations
+
+* Get stuck without a solution to a working problem.
+* Be accused to don't work properly.
+* Spend too much time for taking a coffee at work.
+
+## BIO:
+
+> Mario was born in Cuneo in 1960. Since he was a little boy he was very smart. Nonetheless he was not very good at school, because he didn't study enough. Later on he decided to enroll in the University of Torino of Economy. After 5 years he got the bachelor degree and started to work in the Fiat Company in the Accounting Department. At the age of 38 he got married with an High School Teacher. He recently got a promotion, but he still wants a better working position. Mario finds very useful to take a coffee twice in the day, but wihout loosing too much time, otherwise he gets nervous and looses concentration with loss of productivity.
+
+
+## MOTIVATION
+
+### Incentive:
+████████████████████████████████████████░░░░░░░░░░░░░<br>
+
+### Fear:
+
+██████████████████████████████████████████████░░░░░░░<br>
+
+### Growth:
+██████████████████████████████████████████░░░░░░░░░░░<br>
+
+### Power:
+
+████████████████████████████████░░░░░░░░░░░░░░░░░░░░░<br>
+
+### Social:
+
+█████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░<br>
+
+## PERSONALITY
+
+### Introvert &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Extrovert
+░░░░░░░░░░░░░░░██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░<br>
+
+### Thinking &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Feeling
+
+░░░░░░░██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░<br>
+
+### Sensing &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Intuition
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██░░░░░░░░<br>
+
+### Judging &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Perceiving
+
+░░░░░░░░░░░░░░░░░░░░░░░██░░░░░░░░░░░░░░░░░░░░░░░░░░░░<br>
+
+## Role: manager
+
+## Name: Enrico Pucci
+
+## Quote:
+
+> Surround yourself with only people who are going to lift you higher.
+
+## Background:
+**Age:** 49<br>
+**Location:** Los Angeles<br>
+**Marital Status:** Engaged<br>
+**Kids:** 3<br>
+**Occupation:** supervisor<br>
+**Education:** master degree in psicology
+
+## Characteristics
+* Responsible
+* Open-minded
+* Dreamer
+* Chill
+* Reliable
+
+## Goals/Needs
+
+* Get along with who supervises at work, creating a friendly working environment.
+* Get another child.
+* Visit New Zealand.
+
+## Frustrations
+
+* Don't get any recognition for his efforts.
+* Upset too much someone at work.
+* Don't spend enough time with his family.
+
+## BIO:
+
+> Enrico was born in Genova in 1970. He was a very chill boy up to adolescence as well. He was very good at school because of its smartness and its studious attitude. At 20 he enrolled in the University of Trieste of Psicology. After 6 years he got the master degree and worked in the Human Resource Department in several medium sized companies. At the age of 33 he got married with a professional dancer. He married the folowing year and he moved to Los Angeles, to his wife's house. Now he works as supervisor at Walmart. Enrico would like to make a better working environment, making happy who supervises in order to appear less like a boss. Apart from supervising his employees, moderately severely, he would like to satisfy their needs. They always complain about the bad quality of the coffee automatic machines they have in the office, complaining as well about the slowness of such machines.
+
+
+## MOTIVATION
+
+### Incentive:
+██████████████████████████████████████████████░░░░░░░<br>
+
+### Fear:
+
+███████████████████████████████████████░░░░░░░░░░░░░░<br>
+
+### Growth:
+███████████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░<br>
+
+### Power:
+
+████████████████████████████████████████░░░░░░░░░░░░░<br>
+
+### Social:
+
+███████████████████████████████████████░░░░░░░░░░░░░░<br>
+
+## PERSONALITY
+
+### Introvert &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Extrovert
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██░░░░░<br>
+
+### Thinking &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Feeling
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██░░░░░░░░░░░░░░░░░░<br>
+
+### Sensing &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Intuition
+░░░░░░░░░░░░░░░░░░░░░░░░██░░░░░░░░░░░░░░░░░░░░░░░░░░░<br>
+
+### Judging &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Perceiving
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░██░░░░░░░░░░░░░░░░░░░░░░░<br>
 
 
 # Functional and non functional requirements
 
 ## Functional Requirements
 
-\<In the form DO SOMETHING, or VERB NOUN, describe high level capabilities of the system> <will match to high level use cases>
-
 | ID        | Description  |
 | ------------- |:-------------:| 
-|  FR1     |  |  
-|  FR2     |  |
-|  ...     |  |
+|FR1|The Employee shall be able to order the boxes of capsules from the Coffee Manager|  
+|FR2|The Visitor shall be able to order the boxes of capsules from the Coffee Manager|
+|FR3|The Coffee Manager shall be able to buy the boxes of capsules on the LaTazza web application|
+|FR4|When an order comes the LaTazza system should be able to comunicate to the Warehouse worker that he has to put the boxes of capsules on the transport vehicle|
+|FR5|When the LaTazza driver has the boxes of capsules he shall be able to transport it to the Coffee Manager's company|
+|FR6|When the web application has a fault the System Admin shall be able to repair it|
+|FR7|The system should be able to handle correctly the registation requests of the customers and store theirs profiles into its costumer profiles database|
+|FR8|The system should be able to handle correctly the payment procedure with the payment system, storing each transaction into the transactions database|
+|FR9|The Coffee Manager shall be able to sell the capsules to clients|
+|FR10|The Coffee Manager shall be able to manage credit and debt of the employees|
+|FR11|The Coffee Manager shall be able to check the number of capsules per type in the inventory|
+|FR12|The Coffee Manager shall be able to check the total checkout on his own cash account|
 
 ## Non Functional Requirements
 
-\<Describe constraints on functional requirements>
-
 | ID        | Type (efficiency, reliability, ..)           | Description  | Refers to |
 | ------------- |:-------------:| :-----:| -----:|
-|  NFR1     |  |  | FR\<x>|
-|  NFR2     |  |  | FR\<y>|
-|  ...     |  |  | FR\<x>|
+|NFR1|Reliability|The web application must have at most one fault per year|FR6|
+|NFR2|Usability|The system shall be easy to use|FR1 FR3 FR7 FR8 FR9 FR10 FR11 FR12|
+|NFR3|Performance|The payment and registration procedure should last at most 30 seconds|FR1 FR8|
+|NFR4|Availability|Each different drink product can be unavailable at most for a week|FR3 FR4 FR5|
+|NFR5|Capacity|The system should be able to save 4Tb of Data|FR7 FR8|
+|NFR6|Security|The transaction and the data of all actors should be encrypted|FR1 FR7 FR8|
+|NFR7|Interoperability|The system should be run on smartphone and pc|FR1 FR3 FR7 FR8 FR9 FR10 FR11 FR12|
+|NFR8|Data integrity|The system adopts a two phase locking mechanism to guarantee coherence and consistance of data|FR7 FR8|
+|NFR9|Recoverability|The system transaction steps are written on a safety log, in away in case of fault the transaction can be restore successfully|FR7 FR8|
+|NFR10|Recoverability|The system transactions and the customer accounts are also stored on 3 different backup servers|FR7 FR8|
+|NFR11|Domain|The currency is dollars|FR1 FR2 FR3 FR8
+|NFR12|Capacity|The minimum number of capsules per type in the Werehouse is 20|FR4|
 
 
 # Use case diagram and use cases
@@ -166,8 +331,6 @@ e <-- (Sells capsules to clients)
 |  Post condition     | Employee does not recive his order |
 |  Nominal Scenario     | Manager notifies the employee |
 
-
-
 # Relevant scenarios
 State at which UC the scenario refers to
 \<a scenario is a sequence of steps that corresponds to a particular execution of one use case>
@@ -176,16 +339,69 @@ State at which UC the scenario refers to
 
 ## Scenario 1
 
-| Scenario ID: SC1        | Corresponds to UC:  |
+| Scenario ID: SC1        | Corresponds to UC: 1 |
 | ------------- |:-------------:| 
 | Step#        | Description  |
-|  1     |  |  
-|  2     |  |
-|  ...     |  |
+|1|Employee send a request to the Coffee Manager for the box of capsules|  
+|2|The Coffee Manager contacts the availability of the box of capsules|
+|3|The Coffee Manager performs and checks the employee payment|
+|4|The Coffee Manager sends a notification to the employee:"ok"|
+|5|The Coffee Manager sends a request to the Warehouse Worker|
+|6|The Warehouse Worker prepares the vehicle|
+|7|The LaTazza driver deliveries the box to the Coffee Manager|
+|8|The Coffee Manager gives the box of capsules to the employee|
+|9|Update the databases|
 
 ## Scenario 2
 
-...
+| Scenario ID: SC2        | Corresponds to UC: 2 |
+| ------------- |:-------------:| 
+| Step#        | Description  |
+|1|Employee send a request to the Coffee Manager for the box of capsules|  
+|2|The Coffee Manager checks the availability of the box of capsules|
+|3|The Coffee Manager sends ad advertisement to the employee:"credit not available"|
+|4|The employee doesn't update the credits and doesn't pay anyway with cash|
+
+## Scenario 3
+
+| Scenario ID: SC3        | Corresponds to UC: 3 |
+| ------------- |:-------------:| 
+| Step#        | Description  |
+|1|Employee send a request to the Coffee Manager for the box of capsules|  
+|2|The Coffee Manager checks the availability of the box of capsules|
+|3|The Coffee Manager sends ad advertisement to the employee:"credit not available"|
+|4|The employee update the credits or pay anyway with cash|
+|5|The Coffee Manager performs and checks the employee payment|
+|6|The Coffee Manager sends a notification to the employee:"ok"|
+|7|The Coffee Manager sends a request to the Warehouse Worker|
+|8|The Warehouse Worker prepares the vehicle|
+|9|The LaTazza driver deliveries the box to the Coffee Manager|
+|10|The Coffee Manager gives the box of capsules to the employee|
+|11|Update the databases|
+
+
+## Scenario 4
+
+| Scenario ID: SC4        | Corresponds to UC: 4 |
+| ------------- |:-------------:| 
+| Step#        | Description  |
+|1|The visitor talks to the Coffee Manager for the box of capsules|  
+|2|The Coffee Manager checks the availability of the box of capsules|
+|3|The Coffee Manager takes the cash from the visitors|
+|4|The Coffee Manager sends a request to the Warehouse Worker|
+|5|The Warehouse Worker prepares the vehicle|
+|6|The LaTazza driver deliveries the box to the Coffee Manager|
+|7|The Coffee Manager gives the box of capsules to the visitor|
+|8|Update the databases|
+
+## Scenario 5
+
+| Scenario ID: SC4        | Corresponds to UC: 4 |
+| ------------- |:-------------:| 
+| Step#        | Description  |
+|1|Employee send a request to the Coffee Manager for the box of capsules|  
+|2|The Coffee Manager checks the availability of the box of capsules|
+|3|The Coffee Manager sends ad advertisement to the employee:"box not available"|
 
 # Glossary
 
