@@ -40,13 +40,45 @@ Version:
 
 ## Context Diagram
 \<Define here Context diagram using UML use case diagram>
+```plantuml
+@startuml
 
+left to right direction
+
+skinparam packageStyle rectangle
+
+actor Manager as m
+actor Employee as e
+actor SystemAdmin as sa
+actor Visitor as v
+
+rectangle system {
+
+	(LaTazza) as l
+
+}
+
+m -- l
+e -- l
+l -- sa
+l -- v 
+
+note "Manager is also an employee, but It can be considered as a lone actor because\nhe interacts differently with the system with respect to the employees" as n
+
+@enduml
+```
 \<actors are a subset of stakeholders>
 
 ## Interfaces
 | Actor | Logical Interface | Physical Interface  |
 | ------------- |:-------------:| -----:|
-|       |  |  |
+|   Employee    | LaTazza application GUI | They ask to the manager for ordering capsules |
+|   Manager    | LaTazza application GUI | Electronical device like personal computer |
+|   Visitor    | X | They ask to the manager to get capsules and pay |
+|   System Admin    | GUI of the OS used to manage and handle the system | Electronical device like p
+
+# Stories and personas
+\<A Persona is a realistic impersonation of an actor. Define here a few personas and describe in plain text how a persona interacts with the system>
 
 # Personas
 
@@ -169,21 +201,63 @@ Version:
 
 ## Use case diagram
 \<define here UML Use case diagram UCD summarizing all use cases, and their relationships>
+```plantuml
+@startuml
 
-## Use Cases
-\<describe here each use case in the UCD>
+left to right direction 
+skinparam packageStyle rectangle
 
+actor CoffeeManager as c
+actor Employee as e
+
+c --> (Manages the purchase and payment of capsules)
+
+(Manages the purchase and payment of capsules) .> (Sells capsules to clients) : <<inlcude>>
+(Manages the purchase and payment of capsules) .> (Buys boxes of capsules) : <<inlcude>>
+(Manages the purchase and payment of capsules) .> (Manages credit and debt of the employees) : <<inlcude>>
+(Manages the purchase and payment of capsules) .> (Checks the inventory) : <<inlcude>>
+
+e <-- (Sells capsules to clients)
+
+@enduml
+```
 ### Use case 1, UC1
-| Actors Involved        |  |
+| Actors Involved        | Manager, Employee |
 | ------------- |:-------------:| 
-|  Precondition     | \<Boolean expression, must evaluate to true before the UC can start> |  
-|  Post condition     | \<Boolean expression, must evaluate to true after UC is finished> |
-|  Nominal Scenario     | \<Textual description of actions executed by the UC> |
-|  Variants     | \<other executions, ex in case of errors> |
+|  Precondition     | Employee has enough credit for the purchase on their account |  
+|  Post condition     | Employee recives his order |
+|  Nominal Scenario     | Manager proceeds with the order |
 
 ### Use case 2, UC2
+| Actors Involved        | Manager, Employee |
+| ------------- |:-------------:| 
+|  Precondition     | Employee has not enough credit for the purchase on their account |  
+|  Post condition     | Employee does not recives his order |
+|  Nominal Scenario     | Manager notifies the employee of the debt |
 
-### Use case \<n>
+### Use case 3, UC3
+| Actors Involved        | Manager, Employee |
+| ------------- |:-------------:| 
+|  Precondition     | Employee has not enough credit for the purchase on their account |  
+|  Post condition     | Employee recives his order |
+|  Nominal Scenario     | Manager notifies the employee of the debt and proceed with order  |
+|  Variants     | The employee pay with cash |
+
+### Use case 4, UC4
+| Actors Involved        | Manager, Visitors |
+| ------------- |:-------------:| 
+|  Precondition     | Visitors pays for the purchase |  
+|  Post condition     | Visitors recives his order |
+|  Nominal Scenario     | Manager notifies the visitors and proceed with order  |
+|  Variants     | X |
+
+### Use case 5, UC4
+| Actors Involved        | Manager, Employee |
+| ------------- |:-------------:| 
+|  Precondition     | A certain type of capsules is not available |  
+|  Post condition     | Employee does not recive his order |
+|  Nominal Scenario     | Manager notifies the employee |
+
 
 
 # Relevant scenarios
