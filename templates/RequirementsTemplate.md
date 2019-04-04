@@ -72,7 +72,7 @@ note "Manager is also an employee, but It can be considered as a lone actor beca
 ## Interfaces
 | Actor | Logical Interface | Physical Interface  |
 | ------------- |:-------------:| -----:|
-|   Employee    | LaTazza application GUI | They ask to the manager for ordering capsules |
+|   Employee    | X | They ask to the manager for ordering capsules |
 |   Manager    | LaTazza application GUI | Electronical device like personal computer |
 |   Visitor    | X | They ask to the manager to get capsules and pay |
 |   System Admin    | GUI of the OS used to manage and handle the system | Electronical device like p
