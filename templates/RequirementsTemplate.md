@@ -407,5 +407,61 @@ State at which UC the scenario refers to
 
 \<use UML class diagram to define important concepts in the domain of the system, and their relationships>  <concepts are used consistently all over the document, ex in use cases, requirements etc>
 
+```plantuml
+@startuml
+
+class Employee {
+
+	+ID
+	+firstName
+	+lastName
+	+telephoneNumber
+	
+}
+
+class Visitor {
+
+	+firstName
+	+lastName
+	+role
+}
+
+class CoffeeManager {
+	
+	+cashAccount
+}
+
+class BoxOfCapsules {
+
+	+type
+	+flavour
+}
+
+class Account {
+
+	+name
+	+password
+	+balance
+}
+
+class Order {
+
+	+ID
+	+numberOfPackages
+	+paymentMethod
+	+total
+}
+
+Employee "*" <|-- CoffeeManager
+Employee "*"-- CoffeeManager : order to
+BoxOfCapsules "*" -- CoffeeManager : is purchased
+Visitor "*" -- CoffeeManager : order to
+Order "*" -- CoffeeManager : is made by
+Order -- "*" BoxOfCapsules : contains
+Employee -- Account : has
+CoffeeManager -- Account : has
+@enduml
+```
+
 # System Design
 \<describe here system design> <must be consistent with Context diagram>
