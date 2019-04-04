@@ -78,9 +78,6 @@ note "Manager is also an employee, but It can be considered as a lone actor beca
 |   System Admin    | GUI of the OS used to manage and handle the system | Electronical device like personal computer |
 
 # Stories and personas
-\<A Persona is a realistic impersonation of an actor. Define here a few personas and describe in plain text how a persona interacts with the system>
-
-# Stories and personas
 
 ## Role: employee
 
