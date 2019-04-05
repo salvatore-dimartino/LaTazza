@@ -32,8 +32,8 @@ Version: 1.0
 | 	Employee	|	Worker wanting to buy and share a coffee maker; they buy capsules from the manager.	| 
 |	Coffee Manager		|	Employee taking charge of managing the purchase and payment of capsules. In particular, he does: sell capsules to clients, buy boxes of capsules (a box contains 50 capsules of the same kind), manage credit and debt of the employees, check the inventory (number of capsules per type), check the cash account.	|	
 |	Visitor		|	Customer from outside buying the capsules, cash only.	|
-|	Warehouse worker	|	La Tazza' s warehouse worker, retrieving the desired amount of capsule packages from the warehouse and putting it on the transport vehicles.	|
-|	LaTazza driver		|	La Tazza driver employee, driving the vehicle that brings the coffee packages to the buyers.	|
+|	Warehouse worker	|	LaTazza' s warehouse worker, retrieving the desired amount of capsule packages from the warehouse and putting it on the transport vehicles.	|
+|	LaTazza driver		|	LaTazza driver employee, driving the vehicle that brings the coffee packages to the buyers.	|
 |   System Admin    |   Administrator who manages and handles the system.    |
 
 # Context Diagram and interfaces
@@ -49,6 +49,8 @@ skinparam packageStyle rectangle
 actor Manager as m
 actor Employee as e
 actor SystemAdmin as sa
+actor Warehouse Worker as ww
+actor LaTazza driver as ld
 
 rectangle system {
 
@@ -56,6 +58,8 @@ rectangle system {
 
 }
 
+ld -- l
+ww -- l
 m -- l
 e -- l
 l -- sa
@@ -111,7 +115,7 @@ note "Manager is also an employee, but he can be considered as a lone actor beca
 
 ## BIO:
 
-> Mario was born in Cuneo in 1960. Since he was a little boy he was very smart. Nonetheless he was not very good at school, because he didn't study enough. Later on he decided to enroll in the University of Torino of Economy. After 5 years he got the bachelor degree and started to work in the Fiat Company in the Accounting Department. At the age of 38 he got married with an High School Teacher. He recently got a promotion, but he still wants a better working position. Mario finds very useful to take a coffee twice in the day, but wihout loosing too much time, otherwise he gets nervous and looses concentration with loss of productivity.
+> Mario was born in Cuneo in 1960. Since he was a little boy he was very smart. Nonetheless he was not very good at school, because he didn't study enough. Later on he decided to enroll in the University of Torino of Economy. After 5 years he got the bachelor degree and started to work in the Fiat Company in the Accounting Department. At the age of 38 he got married with an High School Teacher. He recently got a promotion, but he still wants a better working position. Mario finds very useful to take a coffee twice in the day, but without loosing too much time, otherwise he gets nervous and looses concentration with loss of productivity.
 
 
 ## MOTIVATION
@@ -233,15 +237,15 @@ note "Manager is also an employee, but he can be considered as a lone actor beca
 
 | ID        | Description  |
 | ------------- |:-------------:| 
-|FR1|The Employee shall be able to order the boxes of capsules from the Coffee Manager|  
-|FR2|The Visitor shall be able to order the boxes of capsules from the Coffee Manager|
+|FR1|The Employee shall be able to send a request to the Coffee Manager to buy boxes of capsules|  
+|FR2|The Coffee Manager shall be able to handle the demand of boxes of capsules|
 |FR3|The Coffee Manager shall be able to buy the boxes of capsules on the LaTazza web application|
 |FR4|When an order comes the LaTazza system should be able to comunicate to the Warehouse worker that he has to put the boxes of capsules on the transport vehicle|
 |FR5|When the LaTazza driver has the boxes of capsules he shall be able to transport it to the Coffee Manager's company|
 |FR6|When the web application has a fault the System Admin shall be able to repair it|
-|FR7|The system should be able to handle correctly the registation requests of the customers and store theirs profiles into its costumer profiles database|
-|FR8|The system should be able to handle correctly the payment procedure with the payment system, storing each transaction into the transactions database|
-|FR9|The Coffee Manager shall be able to sell the capsules to clients|
+|FR7|The system should be able to handle correctly the registation requests of the customers and store theirs profiles into the database|
+|FR8|The system should be able to handle correctly the payment procedure with the payment system, storing each transaction into the database|
+|FR9|The system should be able to send an error notification to the employee, in case of fault|
 |FR10|The Coffee Manager shall be able to manage credit and debt of the employees|
 |FR11|The Coffee Manager shall be able to check the number of capsules per type in the inventory|
 |FR12|The Coffee Manager shall be able to check the total checkout on his own cash account|
@@ -250,8 +254,8 @@ note "Manager is also an employee, but he can be considered as a lone actor beca
 
 | ID        | Type (efficiency, reliability, ..)           | Description  | Refers to |
 | ------------- |:-------------:| :-----:| -----:|
-|NFR1|Reliability|The web application must have at most one fault per year|FR6|
-|NFR2|Usability|The system shall be easy to use|FR1 FR3 FR7 FR8 FR9 FR10 FR11 FR12|
+|NFR1|Reliability|The web application must have at most one fault per year|FR6 FR9|
+|NFR2|Usability|The system shall be easy to use|FR1 FR2 FR3 FR7 FR8 FR10 FR11 FR12|
 |NFR3|Performance|The payment and registration procedure should last at most 30 seconds|FR1 FR8|
 |NFR4|Availability|Each different drink product can be unavailable at most for a week|FR3 FR4 FR5|
 |NFR5|Capacity|The system should be able to save 4Tb of Data|FR7 FR8|
@@ -260,7 +264,7 @@ note "Manager is also an employee, but he can be considered as a lone actor beca
 |NFR8|Data integrity|The system adopts a two phase locking mechanism to guarantee coherence and consistance of data|FR7 FR8|
 |NFR9|Recoverability|The system transaction steps are written on a safety log, in away in case of fault the transaction can be restore successfully|FR7 FR8|
 |NFR10|Recoverability|The system transactions and the customer accounts are also stored on 3 different backup servers|FR7 FR8|
-|NFR11|Domain|The currency is dollars|FR1 FR2 FR3 FR8
+|NFR11|Domain|The currency is euros|FR1 FR2 FR3 FR8
 |NFR12|Capacity|The minimum number of capsules per type in the Werehouse is 20|FR4|
 
 
