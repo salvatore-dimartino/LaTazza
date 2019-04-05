@@ -1,10 +1,10 @@
 # Requirements Document Template
 
-Authors:
+Authors: Dibitonto Francesco, Di Martino Salvatore, Gorrino Federico Silvio
 
-Date:
+Date: 9/4/2019
 
-Version:
+Version: 1.0
 
 # Contents
 
@@ -33,13 +33,12 @@ Version:
 |	Coffee Manager		|	Employee taking charge of managing the purchase and payment of capsules. In particular, he does: sell capsules to clients, buy boxes of capsules (a box contains 50 capsules of the same kind), manage credit and debt of the employees, check the inventory (number of capsules per type), check the cash account.	|	
 |	Visitor		|	Customer from outside buying the capsules, cash only.	|
 |	Warehouse worker	|	La Tazza' s warehouse worker, retrieving the desired amount of capsule packages from the warehouse and putting it on the transport vehicles.	|
-|	La Tazza driver		|	La Tazza driver employee, driving the vehicle that brings the coffee packages to the buyers.	|
+|	LaTazza driver		|	La Tazza driver employee, driving the vehicle that brings the coffee packages to the buyers.	|
 |   System Admin    |   Administrator who manages and handles the system.    |
 
 # Context Diagram and interfaces
 
 ## Context Diagram
-\<Define here Context diagram using UML use case diagram>
 ```plantuml
 @startuml
 
@@ -50,7 +49,6 @@ skinparam packageStyle rectangle
 actor Manager as m
 actor Employee as e
 actor SystemAdmin as sa
-actor Visitor as v
 
 rectangle system {
 
@@ -61,24 +59,18 @@ rectangle system {
 m -- l
 e -- l
 l -- sa
-l -- v 
 
-note "Manager is also an employee, but It can be considered as a lone actor because\nhe interacts differently with the system with respect to the employees" as n
+note "Manager is also an employee, but he can be considered as a lone actor because he interacts differently with the system with respect to the employees.\nVisitor is not an actor as it doesn't interact directly with the LaTazza service but only uses the coffee manager as an intermediary." as n
 
 @enduml
 ```
-\<actors are a subset of stakeholders>
 
 ## Interfaces
 | Actor | Logical Interface | Physical Interface  |
 | ------------- |:-------------:| -----:|
-|   Employee    | LaTazza application GUI | They ask to the manager for ordering capsules |
-|   Manager    | LaTazza application GUI | Electronical device like personal computer |
-|   Visitor    | X | They ask to the manager to get capsules and pay |
-|   System Admin    | GUI of the OS used to manage and handle the system | Electronical device like p
-
-# Stories and personas
-\<A Persona is a realistic impersonation of an actor. Define here a few personas and describe in plain text how a persona interacts with the system>
+|   Employee    | LaTazza application GUI for employee  | Electronical device like personal computer |
+|   Coffee Manager    | LaTazza application GUI for coffe manager | Electronical device like personal computer |
+|   System Admin    | GUI of the OS used to manage and handle the system | Electronical device like personal computer |
 
 # Stories and personas
 
@@ -157,6 +149,82 @@ note "Manager is also an employee, but It can be considered as a lone actor beca
 ### Judging &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Perceiving
 
 ░░░░░░░░░░░░░░░░░░░░░░░██░░░░░░░░░░░░░░░░░░░░░░░░░░░░<br>
+
+## Role: manager
+
+## Name: Enrico Pucci
+
+## Quote:
+
+> Surround yourself with only people who are going to lift you higher.
+
+## Background:
+**Age:** 49<br>
+**Location:** Los Angeles<br>
+**Marital Status:** Engaged<br>
+**Kids:** 3<br>
+**Occupation:** supervisor<br>
+**Education:** master degree in psicology
+
+## Characteristics
+* Responsible
+* Open-minded
+* Dreamer
+* Chill
+* Reliable
+
+## Goals/Needs
+
+* Get along with who supervises at work, creating a friendly working environment.
+* Get another child.
+* Visit New Zealand.
+
+## Frustrations
+
+* Don't get any recognition for his efforts.
+* Upset too much someone at work.
+* Don't spend enough time with his family.
+
+## BIO:
+
+> Enrico was born in Genova in 1970. He was a very chill boy up to adolescence as well. He was very good at school because of its smartness and its studious attitude. At 20 he enrolled in the University of Trieste of Psicology. After 6 years he got the master degree and worked in the Human Resource Department in several medium sized companies. At the age of 33 he got married with a professional dancer. He married the folowing year and he moved to Los Angeles, to his wife's house. Now he works as supervisor at Walmart. Enrico would like to make a better working environment, making happy who supervises in order to appear less like a boss. Apart from supervising his employees, moderately severely, he would like to satisfy their needs. They always complain about the bad quality of the coffee automatic machines they have in the office, complaining as well about the slowness of such machines.
+
+
+## MOTIVATION
+
+### Incentive:
+██████████████████████████████████████████████░░░░░░░<br>
+
+### Fear:
+
+███████████████████████████████████████░░░░░░░░░░░░░░<br>
+
+### Growth:
+███████████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░<br>
+
+### Power:
+
+████████████████████████████████████████░░░░░░░░░░░░░<br>
+
+### Social:
+
+███████████████████████████████████████░░░░░░░░░░░░░░<br>
+
+## PERSONALITY
+
+### Introvert &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Extrovert
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██░░░░░<br>
+
+### Thinking &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Feeling
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██░░░░░░░░░░░░░░░░░░<br>
+
+### Sensing &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Intuition
+░░░░░░░░░░░░░░░░░░░░░░░░██░░░░░░░░░░░░░░░░░░░░░░░░░░░<br>
+
+### Judging &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Perceiving
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░██░░░░░░░░░░░░░░░░░░░░░░░<br>
 
 
 # Functional and non functional requirements
@@ -323,7 +391,7 @@ State at which UC the scenario refers to
 
 ## Scenario 5
 
-| Scenario ID: SC4        | Corresponds to UC: 4 |
+| Scenario ID: SC5        | Corresponds to UC: 5 |
 | ------------- |:-------------:| 
 | Step#        | Description  |
 |1|Employee send a request to the Coffee Manager for the box of capsules|  
@@ -334,5 +402,94 @@ State at which UC the scenario refers to
 
 \<use UML class diagram to define important concepts in the domain of the system, and their relationships>  <concepts are used consistently all over the document, ex in use cases, requirements etc>
 
+```plantuml
+@startuml
+
+class Employee {
+
+	+ID
+	+firstName
+	+lastName
+	+telephoneNumber
+	
+}
+
+class Visitor {
+
+	+firstName
+	+lastName
+	+role
+}
+
+class CoffeeManager {
+	
+	+cashAccount
+}
+
+class BoxOfCapsules {
+
+	+type
+	+flavour
+}
+
+class Account {
+
+	+name
+	+password
+	+balance
+}
+
+class Order {
+
+	+ID
+	+numberOfPackages
+	+paymentMethod
+	+total
+}
+
+Employee "*" <|-- CoffeeManager
+Employee "*"-- CoffeeManager : order to
+BoxOfCapsules "*" -- CoffeeManager : is purchased
+Visitor "*" -- CoffeeManager : order to
+Order "*" -- CoffeeManager : is made by
+Order -- "*" BoxOfCapsules : contains
+Employee -- Account : has
+CoffeeManager -- Account : has
+@enduml
+```
+
 # System Design
-\<describe here system design> <must be consistent with Context diagram>
+
+```plantuml
+@startuml
+
+class Server {
+  
+	+queryRequest()
+  	+register()
+  	+login()
+	+showBalance()
+  	+paymantRequest()
+	+updateBackup()
+}
+
+class BankingGateway {
+  +processPayment()
+}
+
+class Database {
+	+queryProcess()
+	+queryReply()
+}
+
+class BackupServer {
+	
+	+recovery()
+}
+
+Server -- BankingGateway
+Server -- Database
+Server <|-- "2" BackupServer : has
+
+@enduml
+```
