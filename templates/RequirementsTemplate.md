@@ -64,7 +64,7 @@ m -- l
 e -- l
 l -- sa
 
-note "Manager is also an employee, but he can be considered as a lone actor because he interacts differently with the system with respect to the employees.\nVisitor is not considered here, it doesn't interact directly with the LaTazza service but only uses the coffee manager as an intermediary." as n
+note "Manager is also an employee, but he can be considered as a lone actor because he interacts differently with the system with respect to the employees.\nVisitor is not considered here as it doesn't interact directly with the LaTazza service but only uses the coffee manager as an intermediary." as n
 
 @enduml
 ```
@@ -74,7 +74,9 @@ note "Manager is also an employee, but he can be considered as a lone actor beca
 | ------------- |:-------------:| -----:|
 |   Employee    | LaTazza application GUI for employee  | Electronical device like personal computer |
 |   Coffee Manager    | LaTazza application GUI for coffe manager | Electronical device like personal computer |
-|   System Admin    | GUI of the OS used to manage and handle the system | Electronical device like personal computer |
+|   System Admin    | LaTazza application GUI to manage and handle the system | Electronical device like personal computer |
+|   Warahouse Worker    | LaTazza application GUI for Warehouse Worker  | Palmtop |
+|   LaTazza driver    | LaTazza application GUI for the driver | Portable eletronical device |
 
 # Stories and personas
 
@@ -243,7 +245,7 @@ note "Manager is also an employee, but he can be considered as a lone actor beca
 |FR4|When an order comes the LaTazza system should be able to comunicate to the Warehouse worker that he has to put the boxes of capsules on the transport vehicle|
 |FR5|When the LaTazza driver has the boxes of capsules he shall be able to transport it to the Coffee Manager's company|
 |FR6|When the web application has a fault the System Admin shall be able to repair it|
-|FR7|The system should be able to handle correctly the registation requests of the customers and store theirs profiles into the database|
+|FR7|The system should be able to handle correctly the registation requests of the employees (both the normal employees and the Coffee Manager) and store theirs profiles into the database|
 |FR8|The system should be able to handle correctly the payment procedure with the payment system, storing each transaction into the database|
 |FR9|The system should be able to send an error notification to the employee, in case of fault|
 |FR10|The Coffee Manager shall be able to manage credit and debt of the employees|
@@ -256,23 +258,20 @@ note "Manager is also an employee, but he can be considered as a lone actor beca
 | ------------- |:-------------:| :-----:| -----:|
 |NFR1|Reliability|The web application must have at most one fault per year|FR6 FR9|
 |NFR2|Usability|The system shall be easy to use|FR1 FR2 FR3 FR7 FR8 FR10 FR11 FR12|
-|NFR3|Performance|The payment and registration procedure should last at most 30 seconds|FR1 FR8|
+|NFR3|Performance|The payment and registration procedure should last at most 30 seconds|FR1 FR3 FR7 FR8|
 |NFR4|Availability|Each different drink product can be unavailable at most for a week|FR3 FR4 FR5|
 |NFR5|Capacity|The system should be able to save 4Tb of Data|FR7 FR8|
-|NFR6|Security|The transaction and the data of all actors should be encrypted|FR1 FR7 FR8|
-|NFR7|Interoperability|The system should be run on smartphone and pc|FR1 FR3 FR7 FR8 FR9 FR10 FR11 FR12|
+|NFR6|Security|The transaction and the data of all actors should be encrypted|FR1 FR2 FR3 FR7 FR8|
+|NFR7|Interoperability|The system should be run on smartphone and pc|FR1 FR2 FR3 FR7 FR8 FR9 FR10 FR11 FR12|
 |NFR8|Data integrity|The system adopts a two phase locking mechanism to guarantee coherence and consistance of data|FR7 FR8|
-|NFR9|Recoverability|The system transaction steps are written on a safety log, in away in case of fault the transaction can be restore successfully|FR7 FR8|
-|NFR10|Recoverability|The system transactions and the customer accounts are also stored on 3 different backup servers|FR7 FR8|
-|NFR11|Domain|The currency is euros|FR1 FR2 FR3 FR8
-|NFR12|Capacity|The minimum number of capsules per type in the Werehouse is 20|FR4|
-
+|NFR9|Recoverability|The system transaction steps are written on a safety log, in away in case of fault the transaction can be restored successfully|FR7 FR8|
+|NFR10|Recoverability|The system transactions and the customer accounts are also stored on 3 different backup servers|FR6 FR7 FR8 FR9|
+|NFR11|Domain|The currency is euros|FR1 FR2 FR3 FR8 FR10 FR12|
+|NFR12|Capacity|For each type of capsule the Warehouse shall always store 20 box units|FR4 FR11|
 
 # Use case diagram and use cases
 
-
 ## Use case diagram
-\<define here UML Use case diagram UCD summarizing all use cases, and their relationships>
 ```plantuml
 @startuml
 
@@ -281,37 +280,41 @@ skinparam packageStyle rectangle
 
 actor CoffeeManager as c
 actor Employee as e
+actor WarehouseWorker as w
+actor LaTazzadriver as d
 
+e --> (Orders boxes of capsules)
+(Orders boxes of capsules) --> c
 c --> (Manages the purchase and payment of capsules)
 
-(Manages the purchase and payment of capsules) .> (Sells capsules to clients) : <<inlcude>>
-(Manages the purchase and payment of capsules) .> (Buys boxes of capsules) : <<inlcude>>
+(Manages the purchase and payment of capsules) .> (Gives capsules to costumers) : <<inlcude>>
+(Manages the purchase and payment of capsules) .> (Accepts and confirms the purchase of boxes of capsules) : <<inlcude>>
 (Manages the purchase and payment of capsules) .> (Manages credit and debt of the employees) : <<inlcude>>
 (Manages the purchase and payment of capsules) .> (Checks the inventory) : <<inlcude>>
 
-e <-- (Sells capsules to clients)
+e <-- (Gives capsules to costumers)
 
 @enduml
 ```
 ### Use case 1, UC1
 | Actors Involved        | Manager, Employee |
 | ------------- |:-------------:| 
-|  Precondition     | Employee has enough credit for the purchase on their account |  
-|  Post condition     | Employee recives his order |
+|  Precondition     | Employee has enough credit for the purchase on its account |  
+|  Post condition     | Employee receives his order |
 |  Nominal Scenario     | Manager proceeds with the order |
 
 ### Use case 2, UC2
 | Actors Involved        | Manager, Employee |
 | ------------- |:-------------:| 
-|  Precondition     | Employee has not enough credit for the purchase on their account |  
-|  Post condition     | Employee does not recives his order |
+|  Precondition     | Employee has not enough credit for the purchase on its account |  
+|  Post condition     | Employee does not receives his order |
 |  Nominal Scenario     | Manager notifies the employee of the debt |
 
 ### Use case 3, UC3
 | Actors Involved        | Manager, Employee |
 | ------------- |:-------------:| 
-|  Precondition     | Employee has not enough credit for the purchase on their account |  
-|  Post condition     | Employee recives his order |
+|  Precondition     | Employee has not enough credit for the purchase on its account |  
+|  Post condition     | Employee receives his order |
 |  Nominal Scenario     | Manager notifies the employee of the debt and proceed with order  |
 |  Variants     | The employee pay with cash |
 
@@ -320,45 +323,42 @@ e <-- (Sells capsules to clients)
 | ------------- |:-------------:| 
 |  Precondition     | Visitors pays for the purchase |  
 |  Post condition     | Visitors recives his order |
-|  Nominal Scenario     | Manager notifies the visitors and proceed with order  |
-|  Variants     | X |
+|  Nominal Scenario     | Manager notifies the visitors and proceed with order |
 
 ### Use case 5, UC5
 | Actors Involved        | Manager, Employee |
 | ------------- |:-------------:| 
-|  Precondition     | A certain type of capsules is not available |  
+|  Precondition     | A certain type of capsule is not available |  
 |  Post condition     | Employee does not recive his order |
 |  Nominal Scenario     | Manager notifies the employee |
 
 # Relevant scenarios
 State at which UC the scenario refers to
-\<a scenario is a sequence of steps that corresponds to a particular execution of one use case>
-\<a scenario is more formal description of a story>
-\<only relevant scenarios should be described>
 
 ## Scenario 1
 
 | Scenario ID: SC1        | Corresponds to UC: 1 |
 | ------------- |:-------------:| 
 | Step#        | Description  |
-|1|Employee send a request to the Coffee Manager for the box of capsules|  
-|2|The Coffee Manager contacts the availability of the box of capsules|
+|1|Employee sends a request to the Coffee Manager (by using the LaTazza web application) for the box of capsules|  
+|2|The Coffee Manager checks the availability of the box of capsules|
 |3|The Coffee Manager performs and checks the employee payment|
 |4|The Coffee Manager sends a notification to the employee:"ok"|
-|5|The Coffee Manager sends a request to the Warehouse Worker|
-|6|The Warehouse Worker prepares the vehicle|
+|5|The Coffee Managaer instantiates the order on the LaTazza web application|
+|5|The Warehouse Worker is notified of the order and retrieves the correspondent products|
+|6|The Warehouse Worker puts the products on the transport vehicle|
 |7|The LaTazza driver deliveries the box to the Coffee Manager|
 |8|The Coffee Manager gives the box of capsules to the employee|
-|9|Update the databases|
+|9|Update the database|
 
 ## Scenario 2
 
 | Scenario ID: SC2        | Corresponds to UC: 2 |
 | ------------- |:-------------:| 
 | Step#        | Description  |
-|1|Employee send a request to the Coffee Manager for the box of capsules|  
+|1|Employee sends a request to the Coffee Manager (by using the LaTazza web application) for the box of capsules|  
 |2|The Coffee Manager checks the availability of the box of capsules|
-|3|The Coffee Manager sends ad advertisement to the employee:"credit not available"|
+|3|The Coffee Manager sends a warning to the employee:"credit not available"|
 |4|The employee doesn't update the credits and doesn't pay anyway with cash|
 
 ## Scenario 3
@@ -366,17 +366,18 @@ State at which UC the scenario refers to
 | Scenario ID: SC3        | Corresponds to UC: 3 |
 | ------------- |:-------------:| 
 | Step#        | Description  |
-|1|Employee send a request to the Coffee Manager for the box of capsules|  
+|1|Employee sends a request to the Coffee Manager (by using the LaTazza web application) for the box of capsules|  
 |2|The Coffee Manager checks the availability of the box of capsules|
-|3|The Coffee Manager sends ad advertisement to the employee:"credit not available"|
-|4|The employee update the credits or pay anyway with cash|
+|3|The Coffee Manager sends a warning to the employee:"credit not available"|
+|4|The employee updates the online payment method or pays anyway with cash|
 |5|The Coffee Manager performs and checks the employee payment|
 |6|The Coffee Manager sends a notification to the employee:"ok"|
-|7|The Coffee Manager sends a request to the Warehouse Worker|
-|8|The Warehouse Worker prepares the vehicle|
-|9|The LaTazza driver deliveries the box to the Coffee Manager|
-|10|The Coffee Manager gives the box of capsules to the employee|
-|11|Update the databases|
+|7|The Coffee Managaer instantiates the order on the LaTazza web application|
+|8|The Warehouse Worker is notified of the order and retrieves the correspondent products|
+|9|The Warehouse Worker puts the products on the transport vehicle|
+|10|The LaTazza driver deliveries the box to the Coffee Manager|
+|11|The Coffee Manager gives the box of capsules to the employee|
+|12|Update the database|
 
 
 ## Scenario 4
@@ -384,27 +385,26 @@ State at which UC the scenario refers to
 | Scenario ID: SC4        | Corresponds to UC: 4 |
 | ------------- |:-------------:| 
 | Step#        | Description  |
-|1|The visitor talks to the Coffee Manager for the box of capsules|  
+|1|The visitor talks to the Coffee Manager for buying the box of capsules|  
 |2|The Coffee Manager checks the availability of the box of capsules|
-|3|The Coffee Manager takes the cash from the visitors|
-|4|The Coffee Manager sends a request to the Warehouse Worker|
-|5|The Warehouse Worker prepares the vehicle|
-|6|The LaTazza driver deliveries the box to the Coffee Manager|
-|7|The Coffee Manager gives the box of capsules to the visitor|
-|8|Update the databases|
+|3|The Coffee Manager takes the cash from the visitor|
+|4|The Coffee Managaer instantiates the order on the LaTazza web application|
+|5|The Warehouse Worker is notified of the order and retrieves the correspondent products|
+|6|The Warehouse Worker puts the products on the transport vehicle|
+|7|The LaTazza driver deliveries the box to the Coffee Manager|
+|8|The Coffee Manager gives the box of capsules to the employee|
+|9|Update the database|
 
 ## Scenario 5
 
 | Scenario ID: SC5        | Corresponds to UC: 5 |
 | ------------- |:-------------:| 
 | Step#        | Description  |
-|1|Employee send a request to the Coffee Manager for the box of capsules|  
+|1|Employee sends a request to the Coffee Manager (by using the LaTazza web application) for the box of capsules|  
 |2|The Coffee Manager checks the availability of the box of capsules|
-|3|The Coffee Manager sends ad advertisement to the employee:"box not available"|
+|3|The Coffee Manager sends a warning to the employee:"box not available"|
 
 # Glossary
-
-\<use UML class diagram to define important concepts in the domain of the system, and their relationships>  <concepts are used consistently all over the document, ex in use cases, requirements etc>
 
 ```plantuml
 @startuml
