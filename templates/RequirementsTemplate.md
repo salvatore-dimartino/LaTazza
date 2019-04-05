@@ -49,8 +49,8 @@ skinparam packageStyle rectangle
 actor Manager as m
 actor Employee as e
 actor SystemAdmin as sa
-actor Warehouse Worker as ww
-actor LaTazza driver as ld
+actor WarehouseWorker as ww
+actor LaTazzaDriver as ld
 
 rectangle system {
 
