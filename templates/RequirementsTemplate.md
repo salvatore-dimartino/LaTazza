@@ -241,10 +241,10 @@ note "Manager is also an employee, but he can be considered as a lone actor beca
 | ------------- |:-------------:| 
 |FR1|The Employee shall be able to send a request to the Coffee Manager to buy boxes of capsules|  
 |FR2|The Coffee Manager shall be able to handle the demand of boxes of capsules|
-|FR3|The Coffee Manager shall be able to buy the boxes of capsules on the LaTazza web application|
+|FR3|The Coffee Manager shall be able to buy the boxes of capsules on the LaTazza application|
 |FR4|When an order comes the LaTazza system should be able to comunicate to the Warehouse worker that he has to put the boxes of capsules on the transport vehicle|
 |FR5|When the LaTazza driver has the boxes of capsules he shall be able to transport it to the Coffee Manager's company|
-|FR6|When the web application has a fault the System Admin shall be able to repair it|
+|FR6|When the application has a fault the System Admin shall be able to repair it|
 |FR7|The system should be able to handle correctly the registation requests of the employees (both the normal employees and the Coffee Manager) and store theirs profiles into the database|
 |FR8|The system should be able to handle correctly the payment procedure with the payment system, storing each transaction into the database|
 |FR9|The system should be able to send an error notification to the employee, in case of fault|
@@ -256,7 +256,7 @@ note "Manager is also an employee, but he can be considered as a lone actor beca
 
 | ID        | Type (efficiency, reliability, ..)           | Description  | Refers to |
 | ------------- |:-------------:| :-----:| -----:|
-|NFR1|Reliability|The web application must have at most one fault per year|FR6 FR9|
+|NFR1|Reliability|The application must have at most one fault per year|FR6 FR9|
 |NFR2|Usability|The system shall be easy to use|FR1 FR2 FR3 FR7 FR8 FR10 FR11 FR12|
 |NFR3|Performance|The payment and registration procedure should last at most 30 seconds|FR1 FR3 FR7 FR8|
 |NFR4|Availability|Each different drink product can be unavailable at most for a week|FR3 FR4 FR5|
@@ -345,11 +345,11 @@ State at which UC the scenario refers to
 | Scenario ID: SC1        | Corresponds to UC: 1 |
 | ------------- |:-------------:| 
 | Step#        | Description  |
-|1|Employee sends a request to the Coffee Manager (by using the LaTazza web application) for the box of capsules|  
+|1|Employee sends a request to the Coffee Manager (by using the LaTazza application) for the box of capsules|  
 |2|The Coffee Manager checks the availability of the box of capsules|
 |3|The Coffee Manager performs and checks the employee payment|
 |4|The Coffee Manager sends a notification to the employee:"ok"|
-|5|The Coffee Managaer instantiates the order on the LaTazza web application|
+|5|The Coffee Managaer instantiates the order on the LaTazza application|
 |5|The Warehouse Worker is notified of the order and retrieves the correspondent products|
 |6|The Warehouse Worker puts the products on the transport vehicle|
 |7|The LaTazza driver deliveries the box to the Coffee Manager|
@@ -361,7 +361,7 @@ State at which UC the scenario refers to
 | Scenario ID: SC2        | Corresponds to UC: 2 |
 | ------------- |:-------------:| 
 | Step#        | Description  |
-|1|Employee sends a request to the Coffee Manager (by using the LaTazza web application) for the box of capsules|  
+|1|Employee sends a request to the Coffee Manager (by using the LaTazza application) for the box of capsules|  
 |2|The Coffee Manager checks the availability of the box of capsules|
 |3|The Coffee Manager sends a warning to the employee:"credit not available"|
 |4|The employee doesn't update the credits and doesn't pay anyway with cash|
@@ -371,13 +371,13 @@ State at which UC the scenario refers to
 | Scenario ID: SC3        | Corresponds to UC: 3 |
 | ------------- |:-------------:| 
 | Step#        | Description  |
-|1|Employee sends a request to the Coffee Manager (by using the LaTazza web application) for the box of capsules|  
+|1|Employee sends a request to the Coffee Manager (by using the LaTazza application) for the box of capsules|  
 |2|The Coffee Manager checks the availability of the box of capsules|
 |3|The Coffee Manager sends a warning to the employee:"credit not available"|
 |4|The employee updates the online payment method or pays anyway with cash|
 |5|The Coffee Manager performs and checks the employee payment|
 |6|The Coffee Manager sends a notification to the employee:"ok"|
-|7|The Coffee Managaer instantiates the order on the LaTazza web application|
+|7|The Coffee Managaer instantiates the order on the LaTazza application|
 |8|The Warehouse Worker is notified of the order and retrieves the correspondent products|
 |9|The Warehouse Worker puts the products on the transport vehicle|
 |10|The LaTazza driver deliveries the box to the Coffee Manager|
@@ -393,7 +393,7 @@ State at which UC the scenario refers to
 |1|The visitor talks to the Coffee Manager for buying the box of capsules|  
 |2|The Coffee Manager checks the availability of the box of capsules|
 |3|The Coffee Manager takes the cash from the visitor|
-|4|The Coffee Managaer instantiates the order on the LaTazza web application|
+|4|The Coffee Managaer instantiates the order on the LaTazza application|
 |5|The Warehouse Worker is notified of the order and retrieves the correspondent products|
 |6|The Warehouse Worker puts the products on the transport vehicle|
 |7|The LaTazza driver deliveries the box to the Coffee Manager|
@@ -405,7 +405,7 @@ State at which UC the scenario refers to
 | Scenario ID: SC5        | Corresponds to UC: 5 |
 | ------------- |:-------------:| 
 | Step#        | Description  |
-|1|Employee sends a request to the Coffee Manager (by using the LaTazza web application) for the box of capsules|  
+|1|Employee sends a request to the Coffee Manager (by using the LaTazza application) for the box of capsules|  
 |2|The Coffee Manager checks the availability of the box of capsules|
 |3|The Coffee Manager sends a warning to the employee:"box not available"|
 
