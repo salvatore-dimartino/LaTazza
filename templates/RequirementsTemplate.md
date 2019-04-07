@@ -542,7 +542,7 @@ class ManagerAccount {
 
 Customer <|-- Employee
 Customer <|-- Visitor
-Account "*" <|-- ManagerAccount
+Account "*" <|-- ManagerAccount :handle
 Employee "*" <|-- CoffeeManager
 Employee "*"-- CoffeeManager : order to
 BoxOfCapsules "*" -- CoffeeManager : is purchased
@@ -550,7 +550,7 @@ Visitor "*" -- CoffeeManager : order to
 Order "*" -- CoffeeManager : is made by
 Order -- "*" BoxOfCapsules : contains
 Employee -- Account : has
-CoffeeManager -- Account : has
+CoffeeManager -- ManagerAccount :has
 @enduml
 ```
 
