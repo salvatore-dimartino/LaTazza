@@ -506,7 +506,7 @@ class Employee {
     +department
 }
 
-class WarehouseWorker(){
+class WarehouseWorker{
     +WarehouseID
 }
 
