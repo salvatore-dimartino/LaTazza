@@ -506,6 +506,10 @@ class Employee {
     +department
 }
 
+class WarehouseWorker(){
+    +WarehouseID
+}
+
 class Visitor {
 
     +job
@@ -540,8 +544,16 @@ class ManagerAccount {
     +cashAccount
 }
 
+class Driver {
+    +DriverID
+}
+
+Order "*" -- WarehouseWorker :handle
+Order "*" -- Driver :deliver
 Customer <|-- Employee
 Customer <|-- Visitor
+Customer <|-- Driver
+Customer <|-- WarehouseWorker
 Account "*" <|-- ManagerAccount :handle
 Employee "*" <|-- CoffeeManager
 Employee "*"-- CoffeeManager : order to
