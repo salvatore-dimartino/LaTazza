@@ -502,6 +502,7 @@ class Customer {
 
 class Employee {
     
+    +PaymentMethod
     +department
 }
 
