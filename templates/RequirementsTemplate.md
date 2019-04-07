@@ -545,7 +545,7 @@ Customer <|-- Visitor
 Account "*" <|-- ManagerAccount :handle
 Employee "*" <|-- CoffeeManager
 Employee "*"-- CoffeeManager : order to
-BoxOfCapsules "*" -- CoffeeManager : is purchased
+Order "*" -- CoffeeManager : made a
 Visitor "*" -- CoffeeManager : order to
 Order -- "*" BoxOfCapsules : contains
 Employee -- Account : has
