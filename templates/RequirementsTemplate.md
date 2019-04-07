@@ -304,7 +304,7 @@ e <-- (Gives capsules to costumers)
 ### Use case 1, UC1
 | Actors Involved        | Manager, Employee |
 | ------------- |:-------------:| 
-|  Precondition     | Employee has enough credit for the purchase on its account\nA certain type of capsule is not available in local |  
+|  Precondition     | Employee has enough credit for the purchase on its account<br>A certain type of capsule is not available in local |  
 |  Post condition     | Employee receives his order |
 |  Nominal Scenario     | Manager proceeds with the order |
 
