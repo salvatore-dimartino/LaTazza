@@ -289,7 +289,7 @@ e --> (Orders boxes of capsules)
 c --> (Manages the purchase and payment of capsules)
 (Manages the purchase and payment of capsules) --> w
 w --> (Retrieves the boxes of capsules and puts them on the transport vehicle)
-(Retieves the boxes of capsules and puts them on the transport vehicle) --> d
+(Retrieves the boxes of capsules and puts them on the transport vehicle) --> d
 d --> (Deliveries the box)
 (Deliveries the box) --> (Manages the purchase and payment of capsules)
 
