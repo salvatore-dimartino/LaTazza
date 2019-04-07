@@ -547,7 +547,6 @@ Employee "*" <|-- CoffeeManager
 Employee "*"-- CoffeeManager : order to
 BoxOfCapsules "*" -- CoffeeManager : is purchased
 Visitor "*" -- CoffeeManager : order to
-Order "*" -- CoffeeManager : is made by
 Order -- "*" BoxOfCapsules : contains
 Employee -- Account : has
 CoffeeManager -- ManagerAccount :has
