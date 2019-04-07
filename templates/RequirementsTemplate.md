@@ -493,7 +493,7 @@ State at which UC the scenario refers to
 ```plantuml
 @startuml
 
-class Customer {
+class Person {
     +ID
 	+firstName
 	+lastName
@@ -503,7 +503,6 @@ class Customer {
 class Employee {
     
     +PaymentMethod
-    +department
 }
 
 class WarehouseWorker{
@@ -550,10 +549,10 @@ class Driver {
 
 Order "*" -- WarehouseWorker :handle
 Order "*" -- Driver :deliver
-Customer <|-- Employee
-Customer <|-- Visitor
-Customer <|-- Driver
-Customer <|-- WarehouseWorker
+Person <|-- Employee
+Person <|-- Visitor
+Person <|-- Driver
+Person <|-- WarehouseWorker
 Account "*" <|-- ManagerAccount :handle
 Employee "*" <|-- CoffeeManager
 Employee "*"-- CoffeeManager : order to
