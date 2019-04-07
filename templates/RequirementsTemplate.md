@@ -249,17 +249,18 @@ note "Manager is also an employee, but he can be considered as a lone actor beca
 |FR8|The system should be able to handle correctly the payment procedure with the payment system, storing each transaction into the database|
 |FR9|The system should be able to send an error notification to the employee, in case of fault|
 |FR10|The Coffee Manager shall be able to manage credit and debt of the employees|
-|FR11|The Coffee Manager shall be able to check the number of capsules per type in the inventory|
+|FR11|The Coffee Manager shall be able to check the number of capsules per type in the local inventory|
 |FR12|The Coffee Manager shall be able to check the total checkout on his own cash account|
+|FR13|The system should be able to warn the Coffe Manager in case the bought quantity of boxes of capsules isn't available in the remote inventory (warehouse)|
 
 ## Non Functional Requirements
 
 | ID        | Type (efficiency, reliability, ..)           | Description  | Refers to |
 | ------------- |:-------------:| :-----:| -----:|
 |NFR1|Reliability|The application must have at most one fault per year|FR6 FR9|
-|NFR2|Usability|The system shall be easy to use|FR1 FR2 FR3 FR7 FR8 FR10 FR11 FR12|
+|NFR2|Usability|The system shall be easy to use|FR1 FR2 FR3 FR7 FR8 FR10 FR11 FR12 FR13|
 |NFR3|Performance|The payment and registration procedure should last at most 30 seconds|FR1 FR3 FR7 FR8|
-|NFR4|Availability|Each different drink product can be unavailable at most for a week|FR3 FR4 FR5|
+|NFR4|Availability|Each different drink product can be unavailable at most for a week|FR2 FR3 FR4 FR5 FR13|
 |NFR5|Capacity|The system should be able to save 4Tb of Data|FR7 FR8|
 |NFR6|Security|The transaction and the data of all actors should be encrypted|FR1 FR2 FR3 FR7 FR8|
 |NFR7|Interoperability|The system should be run on smartphone and pc|FR1 FR2 FR3 FR7 FR8 FR9 FR10 FR11 FR12|
@@ -287,7 +288,7 @@ e --> (Orders boxes of capsules)
 (Orders boxes of capsules) --> c
 c --> (Manages the purchase and payment of capsules)
 (Manages the purchase and payment of capsules) --> w
-w --> (Retieves the boxes of capsules and\nputs them on the transport vehicle)
+w --> (Retrieves the boxes of capsules and\nputs them on the transport vehicle)
 (Retieves the boxes of capsules and\nputs them on the transport vehicle) --> d
 d --> (Deliveries the box)
 (Deliveries the box) --> (Manages the purchase and payment of capsules)
@@ -295,7 +296,7 @@ d --> (Deliveries the box)
 (Manages the purchase and payment of capsules) .> (Gives capsules to costumers) : <<inlcude>>
 (Manages the purchase and payment of capsules) .> (Accepts and instantiates the order of boxes of capsules) : <<inlcude>>
 (Manages the purchase and payment of capsules) .> (Manages credit and debt of the employees) : <<inlcude>>
-(Manages the purchase and payment of capsules) .> (Checks the inventory) : <<inlcude>>
+(Manages the purchase and payment of capsules) .> (Checks the local inventory) : <<inlcude>>
 
 e <-- (Gives capsules to costumers)
 
