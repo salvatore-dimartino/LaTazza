@@ -286,12 +286,12 @@ actor LaTazzadriver as d
 
 e --> (Orders boxes of capsules)
 (Orders boxes of capsules) --> c
-c --> (Manages the purchase\n and payment of capsules)
-(Manages the purchase\n and payment of capsules) --> w
-w --> (Retrieves the boxes of capsules and\nputs them on the transport vehicle)
-(Retieves the boxes of capsules and\nputs them on the transport vehicle) --> d
+c --> (Manages the purchase and payment of capsules)
+(Manages the purchase and payment of capsules) --> w
+w --> (Retrieves the boxes of capsules and puts them on the transport vehicle)
+(Retieves the boxes of capsules and puts them on the transport vehicle) --> d
 d --> (Deliveries the box)
-(Deliveries the box) --> (Manages the purchase\n and payment of capsules)
+(Deliveries the box) --> (Manages the purchase and payment of capsules)
 
 (Manages the purchase and payment of capsules) .> (Gives capsules to costumers) : <<inlcude>>
 (Manages the purchase and payment of capsules) .> (Accepts and instantiates the order of boxes of capsules) : <<inlcude>>
