@@ -298,7 +298,7 @@ d --> (Deliveries the box)
 (Manages the purchase and payment of capsules) .> (Manages credit and debt of the employees) : <<inlcude>>
 (Manages the purchase and payment of capsules) .> (Checks the local inventory) : <<inlcude>>
 
-e <-- (Gives capsules to costumers)
+e <-- (Manages the purchase and payment of capsules)
 
 @enduml
 ```
