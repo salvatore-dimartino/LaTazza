@@ -305,21 +305,21 @@ e <-- (Manage purchase and payment of capsules)
 ### Use case 1, UC1
 | Actors Involved        | Manager, Employee |
 | ------------- |:-------------:| 
-|  Precondition     | Employee has enough credit for the purchase on its account |  
+|  Precondition     | Employee has enough credit for the purchase on its account<br>A certain type of capsule is not available in local |  
 |  Post condition     | Employee receives his order |
 |  Nominal Scenario     | Manager proceeds with the order |
 
 ### Use case 2, UC2
 | Actors Involved        | Manager, Employee |
 | ------------- |:-------------:| 
-|  Precondition     | Employee has not enough credit for the purchase on its account |  
+|  Precondition     | Employee has not enough credit for the purchase on its account<br>A certain type of capsule is not available in local |  
 |  Post condition     | Employee does not receives his order |
 |  Nominal Scenario     | Manager notifies the employee of the debt |
 
 ### Use case 3, UC3
 | Actors Involved        | Manager, Employee |
 | ------------- |:-------------:| 
-|  Precondition     | Employee has not enough credit for the purchase on its account |  
+|  Precondition     | Employee has not enough credit for the purchase on its account<br>A certain type of capsule is not available in local |  
 |  Post condition     | Employee receives his order |
 |  Nominal Scenario     | Manager notifies the employee of the debt and proceed with order  |
 |  Variants     | The employee pay with cash |
@@ -327,16 +327,45 @@ e <-- (Manage purchase and payment of capsules)
 ### Use case 4, UC4
 | Actors Involved        | Manager, Visitors |
 | ------------- |:-------------:| 
-|  Precondition     | Visitors pays for the purchase |  
-|  Post condition     | Visitors recives his order |
+|  Precondition     | Visitors pays for the purchase<br>A certain type of capsule is not available in local |  
+|  Post condition     | Visitors does not receive his order |
 |  Nominal Scenario     | Manager notifies the visitors and proceed with order |
 
 ### Use case 5, UC5
 | Actors Involved        | Manager, Employee |
 | ------------- |:-------------:| 
-|  Precondition     | A certain type of capsule is not available |  
+|  Precondition     | A certain type of capsule is not available in local and in the warehouse |  
 |  Post condition     | Employee does not recive his order |
 |  Nominal Scenario     | Manager notifies the employee |
+
+### Use case 6, UC6
+| Actors Involved        | Manager, Employee |
+| ------------- |:-------------:| 
+|  Precondition     | Employee has enough credit for the purchase on its account<br>A certain type of capsule is available in local |  
+|  Post condition     | Employee recives his order |
+|  Nominal Scenario     | Manager notifies the employee |
+
+### Use case 7, UC7
+| Actors Involved        | Manager, Visitors |
+| ------------- |:-------------:| 
+|  Precondition     | Visitors pays for the purchase<br>A certain type of capsule is available in local |  
+|  Post condition     | Visitors receives his order |
+|  Nominal Scenario     | Manager notifies the visitors and proceed with order |
+
+### Use case 8, UC8
+| Actors Involved        | Manager, Employee |
+| ------------- |:-------------:| 
+|  Precondition     | Employee has not enough credit for the purchase on its account<br>A certain type of capsule is available in local |  
+|  Post condition     | Employee does not receives his order |
+|  Nominal Scenario     | Manager notifies the employee of the debt |
+
+### Use case 9, UC9
+| Actors Involved        | Manager, Employee |
+| ------------- |:-------------:| 
+|  Precondition     | Employee has not enough credit for the purchase on its account<br>A certain type of capsule is available in local |  
+|  Post condition     | Employee receives his order |
+|  Nominal Scenario     | Manager notifies the employee of the debt and proceed with order  |
+|  Variants     | The employee pay with cash |
 
 # Relevant scenarios
 State at which UC the scenario refers to
@@ -347,44 +376,50 @@ State at which UC the scenario refers to
 | ------------- |:-------------:| 
 | Step#        | Description  |
 |1|Employee sends a request to the Coffee Manager (by using the LaTazza application) for the box of capsules|  
-|2|The Coffee Manager checks the availability of the box of capsules|
-|3|The Coffee Manager performs and checks the employee payment|
-|4|The Coffee Manager sends a notification to the employee:"ok"|
-|5|The Coffee Managaer instantiates the order on the LaTazza application|
-|5|The Warehouse Worker is notified of the order and retrieves the correspondent products|
-|6|The Warehouse Worker puts the products on the transport vehicle|
-|7|The LaTazza driver deliveries the box to the Coffee Manager|
-|8|The Coffee Manager gives the box of capsules to the employee|
-|9|Update the database|
+|2|The Coffee Manager checks the availability of the box of capsules in local|
+|3|The Coffee Managaer instantiates the order on the LaTazza application|
+|4|The LaTazza sends a notification to the Coffee Manager:"ok"|
+|5|The Coffee Manager performs and checks the employee payment|
+|6|The Coffee Manager sends a notification to the employee:"ok"|
+|7|The Warehouse Worker is notified of the order and retrieves the correspondent products|
+|8|The Warehouse Worker puts the products on the transport vehicle|
+|9|The LaTazza driver deliveries the box to the Coffee Manager|
+|10|The Coffee Manager gives the box of capsules to the employee|
+|11|Update the database|
 
 ## Scenario 2
 
 | Scenario ID: SC2        | Corresponds to UC: 2 |
 | ------------- |:-------------:| 
 | Step#        | Description  |
-|1|Employee sends a request to the Coffee Manager (by using the LaTazza application) for the box of capsules|  
-|2|The Coffee Manager checks the availability of the box of capsules|
-|3|The Coffee Manager sends a warning to the employee:"credit not available"|
-|4|The employee doesn't update the credits and doesn't pay anyway with cash|
+|1|Employee sends a request to the Coffee Manager (by using the LaTazza application) for the box of capsules| 
+|2|The Coffee Manager checks the availability of the box of capsules in local|
+|3|The Coffee Managaer instantiates the order on the LaTazza application|
+|4|The LaTazza sends a notification to the Coffee Manager:"ok"|
+|5|The Coffee Manager performs and checks the employee payment|
+|6|The Coffee Manager sends a warning to the employee:"credit not available"|
+|7|The employee doesn't update the credits and doesn't pay anyway with cash|
 
 ## Scenario 3
 
 | Scenario ID: SC3        | Corresponds to UC: 3 |
 | ------------- |:-------------:| 
 | Step#        | Description  |
-|1|Employee sends a request to the Coffee Manager (by using the LaTazza application) for the box of capsules|  
-|2|The Coffee Manager checks the availability of the box of capsules|
-|3|The Coffee Manager sends a warning to the employee:"credit not available"|
-|4|The employee updates the online payment method or pays anyway with cash|
+|1|Employee sends a request to the Coffee Manager (by using the LaTazza application) for the box of capsules| 
+|2|The Coffee Manager checks the availability of the box of capsules in local|
+|3|The Coffee Managaer instantiates the order on the LaTazza application|
+|4|The LaTazza sends a notification to the Coffee Manager:"ok"|
 |5|The Coffee Manager performs and checks the employee payment|
-|6|The Coffee Manager sends a notification to the employee:"ok"|
-|7|The Coffee Managaer instantiates the order on the LaTazza application|
-|8|The Warehouse Worker is notified of the order and retrieves the correspondent products|
-|9|The Warehouse Worker puts the products on the transport vehicle|
-|10|The LaTazza driver deliveries the box to the Coffee Manager|
-|11|The Coffee Manager gives the box of capsules to the employee|
-|12|Update the database|
-
+|6|The Coffee Manager sends a warning to the employee:"credit not available"|
+|7|The employee updates the online payment method or pays anyway with cash|
+|8|The Coffee Manager performs and checks the employee payment|
+|9|The Coffee Manager sends a notification to the employee:"ok"|
+|10|The Coffee Managaer instantiates the order on the LaTazza application|
+|11|The Warehouse Worker is notified of the order and retrieves the correspondent products|
+|12|The Warehouse Worker puts the products on the transport vehicle|
+|13|The LaTazza driver deliveries the box to the Coffee Manager|
+|14|The Coffee Manager gives the box of capsules to the employee|
+|15|Update the database|
 
 ## Scenario 4
 
@@ -392,14 +427,8 @@ State at which UC the scenario refers to
 | ------------- |:-------------:| 
 | Step#        | Description  |
 |1|The visitor talks to the Coffee Manager for buying the box of capsules|  
-|2|The Coffee Manager checks the availability of the box of capsules|
-|3|The Coffee Manager takes the cash from the visitor|
-|4|The Coffee Managaer instantiates the order on the LaTazza application|
-|5|The Warehouse Worker is notified of the order and retrieves the correspondent products|
-|6|The Warehouse Worker puts the products on the transport vehicle|
-|7|The LaTazza driver deliveries the box to the Coffee Manager|
-|8|The Coffee Manager gives the box of capsules to the employee|
-|9|Update the database|
+|2|The Coffee Manager checks the availability of the box of capsules in local|
+|3|The Coffee Manager reject the request from the visitor|
 
 ## Scenario 5
 
@@ -407,8 +436,58 @@ State at which UC the scenario refers to
 | ------------- |:-------------:| 
 | Step#        | Description  |
 |1|Employee sends a request to the Coffee Manager (by using the LaTazza application) for the box of capsules|  
-|2|The Coffee Manager checks the availability of the box of capsules|
-|3|The Coffee Manager sends a warning to the employee:"box not available"|
+|2|The Coffee Manager checks the availability of the box of capsules in local|
+|3|The Coffee Managaer instantiates the order on the LaTazza application|
+|4|The LaTazza sends a notification to the Coffee Manager:"boxes unavailable"|
+
+## Scenario 6
+
+| Scenario ID: SC6        | Corresponds to UC: 6 |
+| ------------- |:-------------:| 
+| Step#        | Description  |
+|1|Employee sends a request to the Coffee Manager (by using the LaTazza application) for the box of capsules|  
+|2|The Coffee Manager checks the availability of the box of capsules in local|
+|3|The Coffee Manager performs and checks the employee payment|
+|4|The Coffee Manager sends a notification to the employee:"ok"|
+|5|The Coffee Manager gives the box of capsules to the employee|
+|6|Update the database|
+
+## Scenario 7
+
+| Scenario ID: SC7        | Corresponds to UC: 7 |
+| ------------- |:-------------:| 
+| Step#        | Description  |
+|1|The visitor talks to the Coffee Manager for buying the box of capsules|  
+|2|The Coffee Manager checks the availability of the box of capsules in local|
+|3|The visitor gives the cash to the Coffee Manager|
+|4|The Coffee Manager gives the box of capsules to the visitor|
+|5|Update the database|
+
+## Scenario 8
+
+| Scenario ID: SC8        | Corresponds to UC: 8 |
+| ------------- |:-------------:| 
+| Step#        | Description  |
+|1|Employee sends a request to the Coffee Manager (by using the LaTazza application) for the box of capsules| 
+|2|The Coffee Manager checks the availability of the box of capsules in local|
+|3|The Coffee Manager performs and checks the employee payment|
+|4|The Coffee Manager sends a warning to the employee:"credit not available"|
+|5|The employee doesn't update the credits and doesn't pay anyway with cash|
+
+## Scenario 9
+
+| Scenario ID: SC9        | Corresponds to UC: 9 |
+| ------------- |:-------------:| 
+| Step#        | Description  |
+|1|Employee sends a request to the Coffee Manager (by using the LaTazza application) for the box of capsules| 
+|2|The Coffee Manager checks the availability of the box of capsules in local|
+|3|The Coffee Manager performs and checks the employee payment|
+|4|The Coffee Manager sends a warning to the employee:"credit not available"|
+|5|The employee updates the online payment method or pays anyway with cash|
+|6|The Coffee Manager performs and checks the employee payment|
+|7|The Coffee Manager sends a notification to the employee:"ok"|
+|8|The Coffee Manager gives the box of capsules to the employee|
+|9|Update the database|
 
 # Glossary
 
