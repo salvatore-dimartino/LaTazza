@@ -493,25 +493,25 @@ State at which UC the scenario refers to
 ```plantuml
 @startuml
 
-class Employee {
-
-	+ID
+class Customer {
+    +ID
 	+firstName
 	+lastName
 	+telephoneNumber
-	
+}
+
+class Employee {
+    
+    +department
 }
 
 class Visitor {
 
-	+firstName
-	+lastName
-	+role
+    +job
 }
 
 class CoffeeManager {
-	
-	+cashAccount
+
 }
 
 class BoxOfCapsules {
@@ -535,6 +535,13 @@ class Order {
 	+total
 }
 
+class ManagerAccount {
+    +cashAccount
+}
+
+Customer <|-- Employee
+Customer <|-- Visitor
+Account "*" <|-- ManagerAccount
 Employee "*" <|-- CoffeeManager
 Employee "*"-- CoffeeManager : order to
 BoxOfCapsules "*" -- CoffeeManager : is purchased
