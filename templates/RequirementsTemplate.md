@@ -166,7 +166,7 @@ note "Manager is also an employee, but he can be considered as a lone actor beca
 
 ## Background:
 **Age:** 49<br>
-**Location:** Los Angeles<br>
+**Location:** Milano<br>
 **Marital Status:** Engaged<br>
 **Kids:** 3<br>
 **Occupation:** supervisor<br>
@@ -193,7 +193,7 @@ note "Manager is also an employee, but he can be considered as a lone actor beca
 
 ## BIO:
 
-> Enrico was born in Genova in 1970. He was a very chill boy up to adolescence as well. He was very good at school because of its smartness and its studious attitude. At 20 he enrolled in the University of Trieste of Psicology. After 6 years he got the master degree and worked in the Human Resource Department in several medium sized companies. At the age of 33 he got married with a professional dancer. He married the folowing year and he moved to Los Angeles, to his wife's house. Now he works as supervisor at Walmart. Enrico would like to make a better working environment, making happy who supervises in order to appear less like a boss. Apart from supervising his employees, moderately severely, he would like to satisfy their needs. They always complain about the bad quality of the coffee automatic machines they have in the office, complaining as well about the slowness of such machines.
+> Enrico was born in Genova in 1970. He was a very chill boy up to adolescence as well. He was very good at school because of its smartness and its studious attitude. At 20 he enrolled in the University of Trieste of Psicology. After 6 years he got the master degree and worked in the Human Resource Department in several medium sized companies. At the age of 33 he got married with a professional dancer. He married the folowing year and he moved to Milano, to his wife's house. Now he works as supervisor at Enel. Enrico would like to make a better working environment, making happy who supervises in order to appear less like a boss. Apart from supervising his employees, moderately severely, he would like to satisfy their needs. They always complain about the bad quality of the coffee automatic machines they have in the office, complaining as well about the slowness of such machines.
 
 
 ## MOTIVATION
