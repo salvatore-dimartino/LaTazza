@@ -284,21 +284,21 @@ actor Employee as e
 actor WarehouseWorker as w
 actor LaTazzadriver as d
 
-e --> (Orders boxes of capsules)
-(Orders boxes of capsules) --> c
-c --> (Manages the purchase and payment of capsules)
-(Manages the purchase and payment of capsules) --> w
-w --> (Retrieves the boxes of capsules\n and puts them on the transport vehicle)
-(Retrieves the boxes of capsules\n and puts them on the transport vehicle) --> d
-d --> (Deliveries the box)
-(Deliveries the box) --> (Manages the purchase and payment of capsules)
+e --> (Order boxes of capsules)
+(Order boxes of capsules) --> c
+c --> (Manage purchase and payment of capsules)
+(Manage purchase and payment of capsules) --> w
+w --> (Retrieve boxes of capsules\n and puts them on the transport vehicle)
+(Retrieve boxes of capsules\n and puts them on the transport vehicle) --> d
+d --> (Delivery the box)
+(Delivery the box) --> (Manage purchase and payment of capsules)
 
-(Manages the purchase and payment of capsules) .> (Gives capsules to costumers) : <<inlcude>>
-(Manages the purchase and payment of capsules) .> (Accepts and instantiates the order of boxes of capsules) : <<inlcude>>
-(Manages the purchase and payment of capsules) .> (Manages credit and debt of the employees) : <<inlcude>>
-(Manages the purchase and payment of capsules) .> (Checks the local inventory) : <<inlcude>>
+(Manage purchase and payment of capsules) .> (Give capsules to costumers) : <<inlcude>>
+(Manage purchase and payment of capsules) .> (Accept and instantiates the order of boxes of capsules) : <<inlcude>>
+(Manage purchase and payment of capsules) .> (Manage credit and debt of the employees) : <<inlcude>>
+(Manage purchase and payment of capsules) .> (Check local inventory) : <<inlcude>>
 
-e <-- (Manages the purchase and payment of capsules)
+e <-- (Manage purchase and payment of capsules)
 
 @enduml
 ```
