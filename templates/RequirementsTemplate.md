@@ -547,17 +547,17 @@ class Driver {
     +DriverID
 }
 
-Order "*" -- WarehouseWorker :handle
-Order "*" -- Driver :deliver
+Order "*" -- WarehouseWorker :handles
+Order "*" -- Driver :delivers
 Person <|-- Employee
 Person <|-- Visitor
 Person <|-- Driver
 Person <|-- WarehouseWorker
-Account "*" <|-- ManagerAccount :handle
+Account "*" <|-- ManagerAccount :handles
 Employee "*" <|-- CoffeeManager
-Employee "*"-- CoffeeManager : order to
-Order "*" -- CoffeeManager : made a
-Visitor "*" -- CoffeeManager : order to
+Employee "*"-- CoffeeManager : orders to
+Order "*" -- CoffeeManager : makes a
+Visitor "*" -- CoffeeManager : orders to
 Order -- "*" BoxOfCapsules : contains
 Employee -- Account : has
 CoffeeManager -- ManagerAccount :has
