@@ -249,25 +249,26 @@ note "Manager is also an employee, but he can be considered as a lone actor beca
 |FR8|The system should be able to handle correctly the payment procedure with the payment system, storing each transaction into the database|
 |FR9|The system should be able to send an error notification to the employee, in case of fault|
 |FR10|The Coffee Manager shall be able to manage credit and debt of the employees|
-|FR11|The Coffee Manager shall be able to check the number of capsules per type in the inventory|
+|FR11|The Coffee Manager shall be able to check the number of capsules per type in the local inventory|
 |FR12|The Coffee Manager shall be able to check the total checkout on his own cash account|
+|FR13|The system should be able to warn the Coffe Manager in case the bought quantity of boxes of capsules isn't available in the remote inventory (warehouse)|
 
 ## Non Functional Requirements
 
 | ID        | Type (efficiency, reliability, ..)           | Description  | Refers to |
 | ------------- |:-------------:| :-----:| -----:|
 |NFR1|Reliability|The application must have at most one fault per year|FR6 FR9|
-|NFR2|Usability|The system shall be easy to use|FR1 FR2 FR3 FR7 FR8 FR10 FR11 FR12|
+|NFR2|Usability|The system shall be easy to use|FR1 FR2 FR3 FR7 FR8 FR10 FR11 FR12 FR13|
 |NFR3|Performance|The payment and registration procedure should last at most 30 seconds|FR1 FR3 FR7 FR8|
-|NFR4|Availability|Each different drink product can be unavailable at most for a week|FR3 FR4 FR5|
+|NFR4|Availability|Each different drink product can be unavailable at most for a week|FR2 FR3 FR4 FR5 FR13|
 |NFR5|Capacity|The system should be able to save 4Tb of Data|FR7 FR8|
 |NFR6|Security|The transaction and the data of all actors should be encrypted|FR1 FR2 FR3 FR7 FR8|
-|NFR7|Interoperability|The system should be run on smartphone and pc|FR1 FR2 FR3 FR7 FR8 FR9 FR10 FR11 FR12|
+|NFR7|Interoperability|The system should be run on smartphone and pc|FR1 FR2 FR3 FR7 FR8 FR9 FR10 FR11 FR12 FR13|
 |NFR8|Data integrity|The system adopts a two phase locking mechanism to guarantee coherence and consistance of data|FR7 FR8|
 |NFR9|Recoverability|The system transaction steps are written on a safety log, in away in case of fault the transaction can be restored successfully|FR7 FR8|
 |NFR10|Recoverability|The system transactions and the customer accounts are also stored on 3 different backup servers|FR6 FR7 FR8 FR9|
 |NFR11|Domain|The currency is euros|FR1 FR2 FR3 FR8 FR10 FR12|
-|NFR12|Capacity|For each type of capsule the Warehouse shall always store 20 box units|FR4 FR11|
+|NFR12|Capacity|For each type of capsule the Warehouse shall always store 20 box units|FR4 FR11 FR13|
 
 # Use case diagram and use cases
 
@@ -283,21 +284,21 @@ actor Employee as e
 actor WarehouseWorker as w
 actor LaTazzadriver as d
 
-e --> (Orders boxes of capsules)
-(Orders boxes of capsules) --> c
-c --> (Manages the purchase and payment of capsules)
-(Manages the purchase and payment of capsules) --> w
-w --> (Retieves the boxes of capsules and\nputs them on the transport vehicle)
-(Retieves the boxes of capsules and\nputs them on the transport vehicle) --> d
-d --> (Deliveries the box)
-(Deliveries the box) --> (Manages the purchase and payment of capsules)
+e --> (Order boxes of capsules)
+(Order boxes of capsules) --> c
+c --> (Manage purchase and payment of capsules)
+(Manage purchase and payment of capsules) --> w
+w --> (Retrieve boxes of capsules\n and puts them on the transport vehicle)
+(Retrieve boxes of capsules\n and puts them on the transport vehicle) --> d
+d --> (Delivery the box)
+(Delivery the box) --> (Manage purchase and payment of capsules)
 
-(Manages the purchase and payment of capsules) .> (Gives capsules to costumers) : <<inlcude>>
-(Manages the purchase and payment of capsules) .> (Accepts and instantiates the order of boxes of capsules) : <<inlcude>>
-(Manages the purchase and payment of capsules) .> (Manages credit and debt of the employees) : <<inlcude>>
-(Manages the purchase and payment of capsules) .> (Checks the inventory) : <<inlcude>>
+(Manage purchase and payment of capsules) .> (Give capsules to costumers) : <<inlcude>>
+(Manage purchase and payment of capsules) .> (Accept and instantiates the order of boxes of capsules) : <<inlcude>>
+(Manage purchase and payment of capsules) .> (Manage credit and debt of the employees) : <<inlcude>>
+(Manage purchase and payment of capsules) .> (Check local inventory) : <<inlcude>>
 
-e <-- (Gives capsules to costumers)
+e <-- (Manage purchase and payment of capsules)
 
 @enduml
 ```
