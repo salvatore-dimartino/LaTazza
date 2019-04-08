@@ -521,7 +521,9 @@ class CoffeeManager {
 class BoxOfCapsules {
 
 	+type
-	+flavour
+	+subType
+	+price
+	+NumberOfCapsules
 }
 
 class Account {
