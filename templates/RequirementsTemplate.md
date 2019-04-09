@@ -564,6 +564,8 @@ class SystemAdmin {
     
 }
 
+
+Account "*" -- ManagerAccount: handles
 Account "*" -- SystemAdmin :if necessary repairs
 Order "*" -- WarehouseWorker :handles
 Order "*" -- Driver :delivers
@@ -573,7 +575,7 @@ Person <|-- Driver
 Person <|-- WarehouseWorker
 Person <|-- SystemAdmin
 BoxOfCapsules *-- "*" Capsule
-Account "*" <|-- ManagerAccount :handles
+Account "*" <|-- ManagerAccount
 Employee "*" <|-- CoffeeManager
 Employee "*"-- CoffeeManager : orders to
 Order "*" -- CoffeeManager : makes a
