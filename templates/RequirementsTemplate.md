@@ -35,7 +35,7 @@ Version: 1.0
 |	Warehouse worker	|	LaTazza' s warehouse worker, retrieving the desired amount of capsule packages from the warehouse and putting it on the transport vehicles.	|
 |	LaTazza driver		|	LaTazza driver employee, driving the vehicle that brings the coffee packages to the buyers.	|
 |   System Admin    |   Administrator who manages and handles the system.    |
-|   Credit Card System    |   System managing online payments associated to the employees credit cards  |
+|   Credit Card System    |   System managing online payments associated to the employees credit cards.  |
 
 # Context Diagram and interfaces
 
