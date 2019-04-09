@@ -564,7 +564,6 @@ class SystemAdmin {
     
 }
 
-Order "*" -- SystemAdmin :if necessary repairs
 Account "*" -- SystemAdmin :if necessary repairs
 Order "*" -- WarehouseWorker :handles
 Order "*" -- Driver :delivers
@@ -573,7 +572,7 @@ Person <|-- Visitor
 Person <|-- Driver
 Person <|-- WarehouseWorker
 Person <|-- SystemAdmin
-BoxOfCapsules o-- "*" Capsule
+BoxOfCapsules *-- "*" Capsule
 Account "*" <|-- ManagerAccount: handles
 Employee "*" <|-- CoffeeManager
 Employee "*"-- CoffeeManager : orders to
@@ -589,6 +588,10 @@ CoffeeManager -- ManagerAccount :has
 
 ```plantuml
 @startuml
+
+class LaTazzaSystem {
+  
+}
 
 class Server {
   
@@ -617,6 +620,7 @@ class BackupServer {
 Server -- BankingGateway
 Server -- Database
 Server <|-- "2" BackupServer : has
+LaTazzaSystem o-- Server
 
 @enduml
 ```
