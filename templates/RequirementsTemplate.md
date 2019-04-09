@@ -493,7 +493,7 @@ We described all the Use Cases
 |6|The Coffee Manager checks the employee payment|
 |7|The Coffee Manager sends a notification to the employee:"ok"|
 |8|The Coffee Manager gives the box of capsules or single capsules to the employee|
-|9|Update the database|
+|9|Update of the database|
 
 # Glossary
 
