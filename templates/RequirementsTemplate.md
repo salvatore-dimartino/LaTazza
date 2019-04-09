@@ -564,6 +564,7 @@ class SystemAdmin {
     
 }
 
+Order "*" -- SystemAdmin :if necessary repairs
 Account "*" -- SystemAdmin :if necessary repairs
 Order "*" -- WarehouseWorker :handles
 Order "*" -- Driver :delivers
