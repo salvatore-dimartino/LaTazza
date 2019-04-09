@@ -530,7 +530,7 @@ class BoxOfCapsules {
 	+NumberOfCapsules
 }
 
-class Capsulses {
+class Capsulse {
     
     +type
 	+subType
@@ -560,12 +560,17 @@ class Driver {
     +DriverID
 }
 
+class SystemAdmin {
+    
+}
+
 Order "*" -- WarehouseWorker :handles
 Order "*" -- Driver :delivers
 Person <|-- Employee
 Person <|-- Visitor
 Person <|-- Driver
 Person <|-- WarehouseWorker
+Person <|-- SystemAdmin
 BoxOfCapsules o-- "*" Capsule
 Account "*" <|-- ManagerAccount :handles
 Employee "*" <|-- CoffeeManager
