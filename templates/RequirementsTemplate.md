@@ -530,7 +530,7 @@ class BoxOfCapsules {
 	+NumberOfCapsules
 }
 
-class Capsulse {
+class Capsule {
     
     +type
 	+subType
