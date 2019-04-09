@@ -35,6 +35,7 @@ Version: 1.0
 |	Warehouse worker	|	LaTazza' s warehouse worker, retrieving the desired amount of capsule packages from the warehouse and putting it on the transport vehicles.	|
 |	LaTazza driver		|	LaTazza driver employee, driving the vehicle that brings the coffee packages to the buyers.	|
 |   System Admin    |   Administrator who manages and handles the system.    |
+|   Credit Card System    |   System managing online payments associated to the employees credit cards.  |
 
 # Context Diagram and interfaces
 
@@ -51,6 +52,7 @@ actor Employee as e
 actor SystemAdmin as sa
 actor WarehouseWorker as ww
 actor LaTazzaDriver as ld
+actor CreditCardSystem as cc
 
 rectangle system {
 
@@ -63,6 +65,7 @@ l -- ww
 m -- l
 e -- l
 l -- sa
+l -- cc
 
 note "Manager is also an employee, but he can be considered as a lone actor because he interacts differently with the system with respect to the employees.\nVisitor is not considered here as it doesn't interact directly with the LaTazza service but only uses the coffee manager as an intermediary." as n
 
@@ -77,6 +80,7 @@ note "Manager is also an employee, but he can be considered as a lone actor beca
 |   System Admin    | LaTazza application GUI to manage and handle the system | Electronical device like personal computer |
 |   Warahouse Worker    | LaTazza application GUI for Warehouse Worker  | Palmtop |
 |   LaTazza driver    | LaTazza application GUI for the driver | Portable eletronical device |
+|   Credit Card System    | web service, APIs accessible through internet | Internet connection |
 
 # Stories and personas
 
