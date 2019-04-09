@@ -527,10 +527,14 @@ class CoffeeManager {
 
 class BoxOfCapsules {
 
-	+type
+	+NumberOfCapsules
+}
+
+class Capsulses {
+    
+    +type
 	+subType
 	+price
-	+NumberOfCapsules
 }
 
 class Account {
@@ -562,6 +566,7 @@ Person <|-- Employee
 Person <|-- Visitor
 Person <|-- Driver
 Person <|-- WarehouseWorker
+BoxOfCapsules o-- "*" Capsule
 Account "*" <|-- ManagerAccount :handles
 Employee "*" <|-- CoffeeManager
 Employee "*"-- CoffeeManager : orders to
