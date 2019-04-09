@@ -571,7 +571,7 @@ Person <|-- Visitor
 Person <|-- Driver
 Person <|-- WarehouseWorker
 Person <|-- SystemAdmin
-BoxOfCapsules o-- "*" Capsule
+BoxOfCapsules *-- "*" Capsule
 Account "*" <|-- ManagerAccount :handles
 Employee "*" <|-- CoffeeManager
 Employee "*"-- CoffeeManager : orders to
