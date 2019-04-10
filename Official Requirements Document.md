@@ -239,6 +239,7 @@ PersonalAccount -- "*" Transaction
 
 Transaction <|-- Recharge
 Transaction <|-- Consumption
+Transaction <|-- BoxPurchase
 
 Consumption -- n
 ```
