@@ -56,7 +56,7 @@ a -- (La Tazza)
 
 
 # Stories and personas
-John works in the office and has an inclination for order and discipline. So he volunteers to keep track of what happens on the coffee machine. When a colleague uses a capsule he takes note (who consumed which capsule when). When a capsule of a certain type is close to sold out John reorders. On the money side, John computes how much each colleague should pay for what she has consumed. In practice every colleague has a virtual account, initially charged with a reasonable amount of cash (ex 10 euros). John maintains this account and asks to recharge it when close to zero.  Physically the money for capsules is in cash, and John manages it as if it where his personal money.
+John works in the office and has an inclination for order and discipline. So he volunteers to keep track of what happens on the coffee machine.  When a capsule of a certain type is close to sold out John reorders. Capsules can be purchased only in multiples of a minmum quantity (ex 40). On the money side, John computes how much each colleague should pay for what she has consumed. In practice every colleague has a virtual account, initially charged with a reasonable amount of cash given to John (ex 10 euros). John maintains this account and asks to recharge it when close to zero.  Physically the money for capsules is in cash, and John manages it as if it where his personal money.
 
 All colleagues trust each other, so negative accounts are allowed. John uses his personal money if needed to reorder capsules. 
 
@@ -121,8 +121,7 @@ Mr. Guest is a visitor in the office. As such he does not have the privilege of 
 |  Precondition     | Capsule T exists, visitor has no account |  
 |  Post condition     | T.quantity_post < T.quantity_pre |
 | | LaTazzaAccount.amount_post > LaTazzaAccount.amount_pre |
-|  Nominal Scenario     | Administrator selects capsule type T, Deduce quantity for capsule T, add price of T on LaTazzaAccount.amount
-|
+|  Nominal Scenario     | Administrator selects capsule type T, Deduce quantity for capsule T, add price of T on LaTazzaAccount.amount|
 |  Variants     | Account of colleague C has not enough money, issue warning |
 
 ### Use case 3, UC3 - FR3 Record recharge of account of colleague
@@ -230,6 +229,7 @@ LaTazza -- "*" CapsuleType
 LaTazza -- LaTazzaAccount
 
 LaTazzaAccount -- "*" BoxPurchase
+LaTazzaAccount -- "*" Consumption
 
 CapsuleType -- "*" Consumption
 CapsuleType -- "*" BoxPurchase
