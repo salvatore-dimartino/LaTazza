@@ -27,12 +27,12 @@ Version: 1
 
 # Abstract
 
-Some colleagues share a coffee machine in a common space for breaks. Capsules are left aside the machine. Whoever uses a capsule writes this down in a notebook left aside the coffee machine. One of the colleagues (called âadministratorâ) copies consumptions in an excel sheet and collects money from colleagues to (re)order capsules. 
-One of the colleagues, the âhackerâ, volunteers to develop a simple application to support the administrator. To keep things simple the application is standalone, and is meant to be used only by the administrator. Possibly the administrator role is taken by different colleagues over time. Instead of the notebook, the hacker sets up a WhatsApp group. Whenever a colleague uses a capsule, he sends a message to the group. 
+Some colleagues share a coffee machine in a common space for breaks. Capsules are left aside the machine. Whoever uses a capsule writes this down in a notebook left aside the coffee machine. One of the colleagues (called *administrator*) copies consumptions in an excel sheet and collects money from colleagues to (re)order capsules.
+
+One of the colleagues, the *hacker*, volunteers to develop a simple application to support the administrator. To keep things simple the application is standalone, and is meant to be used only by the administrator. Possibly the administrator role is taken by different colleagues over time. Instead of the notebook, the hacker sets up a WhatsApp group. Whenever a colleague uses a capsule, he sends a message to the group.
 
 
 # Stakeholders
-
 
 | Stakeholder name  | Description | 
 | ----------------- |:-----------:|
@@ -56,19 +56,17 @@ a -- (La Tazza)
 
 
 # Stories and personas
-John works in the office and has an inclination for order and discipline. So he volunteers to keep track of what happens on the coffee machine.  When a capsule of a certain type is close to sold out John reorders. Capsules can be purchased only in multiples of a minmum quantity (ex 40). On the money side, John computes how much each colleague should pay for what she has consumed. In practice every colleague has a virtual account, initially charged with a reasonable amount of cash given to John (ex 10 euros). John maintains this account and asks to recharge it when close to zero.  Physically the money for capsules is in cash, and John manages it as if it where his personal money.
+John works in the office and has an inclination for order and discipline. So he volunteers to keep track of what happens on the coffee machine. When a capsule of a certain type is close to sold out John reorders. Capsules can be purchased only in multiples of a minimum quantity (ex 40). On the money side, John computes how much each colleague should pay for what she has consumed. In practice every colleague has a virtual account, initially charged with a reasonable amount of cash given to John (ex 10 euros). John maintains this account and asks to recharge it when close to zero. Physically the money for capsules is in cash, and John manages it as if it where his personal money.
 
 All colleagues trust each other, so negative accounts are allowed. John uses his personal money if needed to reorder capsules. 
 
-John is happy to do this work, but would like to hand over to someone else after a certain amount of time. In any case when he is on vacation another colleague takes over temporarily. 
+John is happy to do this work, but would like to hand over to someone else after a certain amount of time. In any case when he is on vacation another colleague takes over temporarily.
 
-John would like to have a simple way to report (ex every one or two weeks) to each colleague all expenses and consumption for LaTazza.  Without this report nobody has a clear idea of how much was the consumption. 
+John would like to have a simple way to report (ex every one or two weeks) to each colleague all expenses and consumption for LaTazza. Without this report nobody has a clear idea of how much was the consumption.
 
-Mary works in the office and likes to share time with her colleagues in front of the coffee machine. On the side of the coffee machine is a tray with capsules. When she wants a coffee (or else) she takes a capsule from the tray and tells to John. To do so she uses a whatsapp group (LaTazza friends). 
+Mary works in the office and likes to share time with her colleagues in front of the coffee machine. On the side of the coffee machine is a tray with capsules. When she wants a coffee (or else) she takes a capsule from the tray and tells to John. To do so she uses a whatsapp group (LaTazza friends).
 
-Mr. Guest is a visitor in the office. As such he does not have the privilege of having an account. In case he can directly pay the capsule, cash, to John. 
-
-
+Mr. Guest is a visitor in the office. As such he does not have the privilege of having an account. In case he can directly pay the capsule, cash, to John.
 
 # Functional and non functional requirements
 
@@ -89,22 +87,21 @@ Mr. Guest is a visitor in the office. As such he does not have the privilege of 
 
 | ID        | Type (efficiency, reliability, .. see iso 9126)           | Description  | Refers to |
 | ------------- |:-------------:| :-----:| -----:|
-|  NFR1     | Usability | Application should be used with no training by any colleague in the office  | All FR|
-|  NFR2     | Performance | All functions should complete in < 0.5 sec  | All FR|
-|  NFR3     | Portability | The application runs on MS Windows (7 and more recent)  | All FR|
-|  NFR4     | Portability | The application (functions and data) should be portable from a PC to another PC in less than 5 minutes | All FR|
+|  NFR1     | Usability | Application should be used with no training by any colleague in the office  | All FR |
+|  NFR2     | Performance | All functions should complete in < 0.5 sec  | All FR |
+|  NFR3     | Portability | The application runs on MS Windows (7 and more recent)  | All FR |
+|  NFR4     | Portability | The application (functions and data) should be portable from a PC to another PC in less than 5 minutes | All FR |
 
 
 # Use case diagram and use cases
-
 
 ## Use case diagram
 
 
 ## Use Cases
 
-
 ### Use case 1, UC1 - FR1  Record usage of capsules by colleague
+
 | Actors Involved        | Administrator |
 | ------------- |:-------------:| 
 |  Precondition     | Capsule T exists, colleague C exists |  
@@ -115,7 +112,6 @@ Mr. Guest is a visitor in the office. As such he does not have the privilege of 
 
 ### Use case 2, UC2 - FR2 Record usage of capsules by visitor
 
-
 | Actors Involved        | Administrator |
 | ------------- |:-------------:| 
 |  Precondition     | Capsule T exists, visitor has no account |  
@@ -125,6 +121,7 @@ Mr. Guest is a visitor in the office. As such he does not have the privilege of 
 |  Variants     | Account of colleague C has not enough money, issue warning |
 
 ### Use case 3, UC3 - FR3 Record recharge of account of colleague
+
 | Actors Involved        | Administrator |
 | ------------- |:-------------:| 
 |  Precondition     | Account A exists |  
@@ -133,6 +130,7 @@ Mr. Guest is a visitor in the office. As such he does not have the privilege of 
 |  Variants     |  |
 
 ### Use case 4, UC4 - FR4 Record purchase of capsules
+
 | Actors Involved        | Administrator |
 | ------------- |:-------------:| 
 |  Precondition     | Capsule type CT exists |  
@@ -142,6 +140,7 @@ Mr. Guest is a visitor in the office. As such he does not have the privilege of 
 |  Variants     |  |
 
 ### Use case 5, FR5 Produce report on consumption of colleague
+
 | Actors Involved        | Administrator  |
 | ------------- |:-------------:| 
 |  Precondition     | Colleague C exists |  
@@ -150,6 +149,7 @@ Mr. Guest is a visitor in the office. As such he does not have the privilege of 
 |  Variants     | |
 
 ### Use case 6, FR6 Produce report on all consumptions
+
 | Actors Involved        | Administrator |
 | ------------- |:-------------:| 
 |  Precondition     |  |  
@@ -223,7 +223,6 @@ class Consumption
 
 note "amount of consumption could be different than price of capsule (ex price of capsule increases or decreases)" as n
 
-
 LaTazza -- "*" Colleague
 LaTazza -- "*" CapsuleType
 LaTazza -- LaTazzaAccount
@@ -245,14 +244,14 @@ Consumption -- n
 ```
 
 # System Design
-Not really meaningful in this case. Only one personal computer is needed
+Not really meaningful in this case. Only one personal computer is needed.
 
 ```plantuml
 class "Personal Computer"
 ```
 
 # Deployment Diagram
-As a stand-alone application only one node is needed
+As a stand-alone application only one node is needed.
 
 ```plantuml
 artifact "La Tazza Application" as a
