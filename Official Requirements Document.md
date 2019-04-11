@@ -246,7 +246,6 @@ Transaction <|-- Recharge
 Transaction <|-- Consumption
 Transaction <|-- BoxPurchase
 
-Consumption -- n
 ```
 
 # System Design
