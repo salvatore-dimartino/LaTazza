@@ -97,7 +97,16 @@ Mr. Guest is a visitor in the office. As such he does not have the privilege of 
 
 ## Use case diagram
 
-
+```plantuml
+left to right direction
+actor Administrator as a
+a -- (FR1  Record usage of capsules by colleague)
+a -- (FR2 Record usage of capsules by visitor)
+a -- (FR3 Record recharge of account of colleague)
+a -- (FR4 Record purchase of capsules)
+a -- (FR5 Produce report on consumption of colleague)
+a -- (FR6 Produce report on all consumptions)
+```
 ## Use Cases
 
 ### Use case 1, UC1 - FR1  Record usage of capsules by colleague
@@ -198,7 +207,7 @@ class PersonalAccount {
 }
 
 class CapsuleType {
-+ description
++ name
 + price
 + quantity
 }
@@ -208,9 +217,7 @@ class LaTazzaAccount {
 }
 
 class BoxPurchase {
-+ date
 + quantity
-+ expense
 }
 
 class Transaction {
@@ -221,7 +228,6 @@ class Transaction {
 class Recharge
 class Consumption
 
-note "amount of consumption could be different than price of capsule (ex price of capsule increases or decreases)" as n
 
 LaTazza -- "*" Colleague
 LaTazza -- "*" CapsuleType
