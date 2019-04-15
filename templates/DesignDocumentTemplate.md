@@ -73,6 +73,125 @@ LaTazza --> latazza.gui: import
 
 @enduml
 ```
+## latazza.exception Class diagram
+
+```plantuml
+@startuml
+allowmixing
+class BeverageExceptrion {
+    +serialVersionUID;
+}
+
+class DataExceptrion {
+    +serialVersionUID;
+}
+
+class EmployeeExceptrion {
+    +serialVersionUID;
+}
+
+class NotEnoughBalance {
+    +serialVersionUID;
+}
+
+class NotEnoughCapsules {
+    +serialVersionUID;
+}
+
+package exceptions
+
+BeverageExceptrion --> exceptions: import
+DataExceptrion --> exceptions: import
+EmployeeExceptrion  --> exceptions: import
+NotEnoughBalance --> exceptions: import
+NotEnoughCapsules --> exceptions: import
+
+@enduml
+```
+
+## latazza.data Class diagram
+
+```plantuml
+@startuml
+allowmixing
+package latazza.exception
+
+interface Datainterface {
+    +sellCapsules();
+    +sellCapsulesToVisitor();
+    +rechargeAccount();
+    +buyBoxes();
+    +getEmployeeReport();
+    +getReport();
+    +getReport();
+    +createBeverage();
+    +updateBeverage();
+    +getBeverageName();
+    +getBeverageCapsulesPerBox();
+    +getBeverageBoxPrice();
+    +getBeveragesId();
+    +getBeverages();
+    +getBeverageCapsules();
+    +createEmployee();
+    +updateEmployee();
+    +getEmployeeName();
+    +getEmployeeSurname();
+    +getEmployeeBalance();
+    +getEmployeesId();
+    +getEmployees();
+    +getBalance();
+    +reset();
+}
+
+class DataImpl {
+    +sellCapsules();
+    +sellCapsulesToVisitor();
+    +rechargeAccount();
+    +buyBoxes();
+    +getEmployeeReport();
+    +getReport();
+    +getReport();
+    +createBeverage();
+    +updateBeverage();
+    +getBeverageName();
+    +getBeverageCapsulesPerBox();
+    +getBeverageBoxPrice();
+    +getBeveragesId();
+    +getBeverages();
+    +getBeverageCapsules();
+    +createEmployee();
+    +updateEmployee();
+    +getEmployeeName();
+    +getEmployeeSurname();
+    +getEmployeeBalance();
+    +getEmployeesId();
+    +getEmployees();
+    +getBalance();
+    +reset();
+}
+
+DataImpl --> Datainterface: inplements
+DataImpl --> latazza.exception: import
+Datainterface --> latazza.exception
+
+
+@enduml
+```
+
+
+## latazza.gui Class diagram
+
+```plantuml
+@startuml
+allowmixing
+
+class MainSwing {
+
+}
+
+
+@enduml
+```
 
 
 # Verification traceability matrix
