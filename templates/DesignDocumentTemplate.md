@@ -24,6 +24,8 @@ UML diagrams **MUST** be written using plantuml notation.
 # Package diagram
 
 
+From the fist line of code of .java files, it is easy recognise the structure of UML Diagram.
+
 ```plantuml
 @startuml
 
@@ -45,6 +47,7 @@ latazza.data --> java.util: import
 
 
 # Class diagram
+
 
 
 ## latazza Class diagram
