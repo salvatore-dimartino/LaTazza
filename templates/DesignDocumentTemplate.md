@@ -13,6 +13,12 @@ Version:
 - [Verification traceability matrix](#verification-traceability-matrix)
 - [Verification sequence diagrams](#verification-sequence-diagrams)
 
+# Instructions
+
+The design document has to comply with:
+1. Official Requirement Document
+2. DataInterface.java
+
 # Package diagram
 
 \<define UML package diagram >
