@@ -23,6 +23,11 @@ UML diagrams **MUST** be written using plantuml notation.
 
 # Package diagram
 
+\<define UML package diagram >
+
+\<explain rationales for choices> 
+
+\<mention architectural patterns used, if any>
 
 From the fist line of code of .java files, it is easy recognise the structure of UML Diagram.
 
@@ -48,7 +53,9 @@ latazza.data --> java.util: import
 
 # Class diagram
 
+\<for each package define class diagram with classes defined in the package>
 
+\<mention design patterns used, if any>
 
 ## latazza Class diagram
 
