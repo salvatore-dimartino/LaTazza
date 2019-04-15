@@ -23,11 +23,6 @@ UML diagrams **MUST** be written using plantuml notation.
 
 # Package diagram
 
-\<define UML package diagram >
-
-\<explain rationales for choices> 
-
-\<mention architectural patterns used, if any>
 
 ```plantuml
 @startuml
