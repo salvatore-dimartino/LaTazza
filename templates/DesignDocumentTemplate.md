@@ -42,16 +42,22 @@ UML diagrams **MUST** be written using plantuml notation.
 \<for each functional requirement from the requirement document, list which classes concur to implement it>
 
 
-|  | Class x | Class y  | .. |
-| ------------- |:-------------:| -----:| -----:|
-| Functional requirement x  |  |  | |
-| Functional requirement y  |  |  | |
-| .. |  |  | |
+|  | DataImpl | DataInterface  | BeverageException | DateException | EmployeeException | NotEnoughBalance | NotEnoughCapsules | LaTazza | MainSwing |
+| ------------- |:-------------:| -----:| -----:| -----:| -----:| -----:| -----:| -----:|-----:|
+| Functional requirement 1  | X |  | | |  |  | |  | |
+| Functional requirement 2  | X  |  | | |  |  | |  | |
+| Functional requirement 3  | X |  | | |  |  | |  | |
+| Functional requirement 4  | X  |  | | |  |  | |  | |
+| Functional requirement 5  | X |  | | |  |  | |  | |
+| Functional requirement 6  | X |  | | |  |  | |  | |
+| Functional requirement 7  | X|  | | |  |  | |  | |
+| Functional requirement 8  | X|  | | |  |  | |  | |
+
 
 # Verification sequence diagrams 
 \<select key scenarios from the requirement document. For each of them define a sequence diagram showing that the scenario can be implemented by the classes and methods in the design>
 
 ```plantuml
-": Class X" -> ": Class Y": "1: message1()"
-": Class X" -> ": Class Y": "2: message2()"
+": Class 1" -> ": Class x": "1: message1()"
+": Class 2" -> ": Class y": "2: message2()"
 ```
