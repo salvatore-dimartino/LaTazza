@@ -29,7 +29,7 @@ UML diagrams **MUST** be written using plantuml notation.
 
 \<mention architectural patterns used, if any>
 
-From the fist line of code of .java files, it is easy recognise the structure of UML Diagram.
+From the first line of code of the .java files, it is easy to recognise the structure of the UML Diagram.
 
 ```plantuml
 @startuml
