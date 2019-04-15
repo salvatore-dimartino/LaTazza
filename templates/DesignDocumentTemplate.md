@@ -52,6 +52,7 @@ UML diagrams **MUST** be written using plantuml notation.
 | Functional requirement 6  |  |  | |
 | Functional requirement 7  |  |  | |
 | Functional requirement 8  |  |  | |
+|  | |
 
 # Verification sequence diagrams 
 \<select key scenarios from the requirement document. For each of them define a sequence diagram showing that the scenario can be implemented by the classes and methods in the design>
