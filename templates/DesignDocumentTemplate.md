@@ -55,24 +55,6 @@ latazza.data --> java.util: import
 
 \<mention design patterns used, if any>
 
-## latazza Class diagram
-
-```plantuml
-@startuml
-allowmixing
-
-package latazza.data
-package latazza.gui
-
-class LaTazza {
-    +main();
-}
-
-LaTazza --> latazza.data: import
-LaTazza --> latazza.gui: import
-
-@enduml
-```
 
 
 # Verification traceability matrix
