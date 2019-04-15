@@ -29,25 +29,6 @@ UML diagrams **MUST** be written using plantuml notation.
 
 \<mention architectural patterns used, if any>
 
-```plantuml
-@startuml
-
-package latazza.gui
-package java.util
-package latazza.data
-package latazza.exception
-package latazza
-package exceptions
-
-latazza --> latazza.gui: import
-latazza --> latazza.data: import
-latazza.data --> latazza.exception: import
-latazza.exception --> exceptions: import
-latazza.data --> java.util: import
-
-@enduml
-```
-
 
 # Class diagram
 
@@ -55,143 +36,6 @@ latazza.data --> java.util: import
 
 \<mention design patterns used, if any>
 
-### latazza Class diagram
-
-```plantuml
-@startuml
-allowmixing
-
-package latazza.data
-package latazza.gui
-
-class LaTazza {
-    +main();
-}
-
-LaTazza --> latazza.data: import
-LaTazza --> latazza.gui: import
-
-@enduml
-```
-### latazza.exception Class diagram
-
-```plantuml
-@startuml
-allowmixing
-class BeverageExceptrion {
-    +serialVersionUID;
-}
-
-class DataExceptrion {
-    +serialVersionUID;
-}
-
-class EmployeeExceptrion {
-    +serialVersionUID;
-}
-
-class NotEnoughBalance {
-    +serialVersionUID;
-}
-
-class NotEnoughCapsules {
-    +serialVersionUID;
-}
-
-package exceptions
-
-BeverageExceptrion --> exceptions: import
-DataExceptrion --> exceptions: import
-EmployeeExceptrion  --> exceptions: import
-NotEnoughBalance --> exceptions: import
-NotEnoughCapsules --> exceptions: import
-
-@enduml
-```
-
-### latazza.data Class diagram
-
-```plantuml
-@startuml
-allowmixing
-package latazza.exception
-
-interface Datainterface {
-    +sellCapsules();
-    +sellCapsulesToVisitor();
-    +rechargeAccount();
-    +buyBoxes();
-    +getEmployeeReport();
-    +getReport();
-    +getReport();
-    +createBeverage();
-    +updateBeverage();
-    +getBeverageName();
-    +getBeverageCapsulesPerBox();
-    +getBeverageBoxPrice();
-    +getBeveragesId();
-    +getBeverages();
-    +getBeverageCapsules();
-    +createEmployee();
-    +updateEmployee();
-    +getEmployeeName();
-    +getEmployeeSurname();
-    +getEmployeeBalance();
-    +getEmployeesId();
-    +getEmployees();
-    +getBalance();
-    +reset();
-}
-
-class DataImpl {
-    +sellCapsules();
-    +sellCapsulesToVisitor();
-    +rechargeAccount();
-    +buyBoxes();
-    +getEmployeeReport();
-    +getReport();
-    +getReport();
-    +createBeverage();
-    +updateBeverage();
-    +getBeverageName();
-    +getBeverageCapsulesPerBox();
-    +getBeverageBoxPrice();
-    +getBeveragesId();
-    +getBeverages();
-    +getBeverageCapsules();
-    +createEmployee();
-    +updateEmployee();
-    +getEmployeeName();
-    +getEmployeeSurname();
-    +getEmployeeBalance();
-    +getEmployeesId();
-    +getEmployees();
-    +getBalance();
-    +reset();
-}
-
-DataImpl --> Datainterface: inplements
-DataImpl --> latazza.exception: import
-Datainterface --> latazza.exception
-
-
-@enduml
-```
-
-
-### latazza.gui Class diagram
-
-```plantuml
-@startuml
-allowmixing
-
-class MainSwing {
-
-}
-
-
-@enduml
-```
 
 
 # Verification traceability matrix
@@ -199,16 +43,22 @@ class MainSwing {
 \<for each functional requirement from the requirement document, list which classes concur to implement it>
 
 
-|  | Class x | Class y  | .. |
-| ------------- |:-------------:| -----:| -----:|
-| Functional requirement x  |  |  | |
-| Functional requirement y  |  |  | |
-| .. |  |  | |
+|  | DataImpl | BeverageException | DateException | EmployeeException | NotEnoughBalance | NotEnoughCapsules |
+| ------------- |:-------------:| -----:| -----:| -----:| -----:| -----:|
+| Functional requirement 1  | X | X | X | X | X | X | 
+| Functional requirement 2  | X | X | X |   |   | X | 
+| Functional requirement 3  | X |   | X | X |   |   |   
+| Functional requirement 4  | X | X |   |   | X |   |   
+| Functional requirement 5  | X |   | X | X |   |   |   
+| Functional requirement 6  | X |   | X |   |   |   |   
+| Functional requirement 7  | X |   |   |   |   |   |   
+| Functional requirement 8  | X |   | X |   |   |   |   
+
 
 # Verification sequence diagrams 
 \<select key scenarios from the requirement document. For each of them define a sequence diagram showing that the scenario can be implemented by the classes and methods in the design>
 
 ```plantuml
-": Class X" -> ": Class Y": "1: message1()"
-": Class X" -> ": Class Y": "2: message2()"
+": Class 1" -> ": Class x": "1: message1()"
+": Class 2" -> ": Class y": "2: message2()"
 ```
