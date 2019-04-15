@@ -23,6 +23,13 @@ UML diagrams **MUST** be written using plantuml notation.
 
 # Package diagram
 
+\<define UML package diagram >
+
+\<explain rationales for choices> 
+
+\<mention architectural patterns used, if any>
+
+From the first line of code of the .java files, it is easy to recognise the structure of the UML Diagram.
 
 ```plantuml
 @startuml
@@ -190,8 +197,6 @@ class MainSwing {
 ```
 
 # Verification traceability matrix
-
-\<for each functional requirement from the requirement document, list which classes concur to implement it>
 
 
 |  | DataImpl | BeverageException | DateException | EmployeeException | NotEnoughBalance | NotEnoughCapsules |
