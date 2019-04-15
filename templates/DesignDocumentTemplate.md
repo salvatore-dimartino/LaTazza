@@ -46,9 +46,6 @@ latazza.data --> java.util: import
 
 # Class diagram
 
-\<for each package define class diagram with classes defined in the package>
-
-\<mention design patterns used, if any>
 
 ## latazza Class diagram
 
@@ -190,8 +187,6 @@ class MainSwing {
 ```
 
 # Verification traceability matrix
-
-\<for each functional requirement from the requirement document, list which classes concur to implement it>
 
 
 |  | DataImpl | BeverageException | DateException | EmployeeException | NotEnoughBalance | NotEnoughCapsules |
