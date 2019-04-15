@@ -42,7 +42,7 @@ UML diagrams **MUST** be written using plantuml notation.
 \<for each functional requirement from the requirement document, list which classes concur to implement it>
 
 
-|  | Class x | Class y  | .. |
+|  | DataImpl | DataInterface  | BeverageException | DateException | EmployeeException | NotEnoughBalance | NotEnoughCapsules | LaTazza | MainSwing |
 | ------------- |:-------------:| -----:| -----:|
 | Functional requirement 1  |  |  | |
 | Functional requirement 2  |  |  | |
