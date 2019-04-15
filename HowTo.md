@@ -50,17 +50,17 @@ After you modify the pom.xml file, you have to perform again a Maven Update of t
 * IDE configuration files (e.g., `.project`, `.classpath`). Make sure to include them in the `.gitignore` file before committing;
 * Database files. 
 
-# Scheenshot
+# Scheenshots
 
-[](figures/initial.png)
-[](figures/add_beverage.png)
-[](figures/add_employee.png)
-[](figures/recharge_employee.png)
-[](figures/recharge_employee_conf.png)
-[](figures/supply_box.png)
-[](figures/supply_conf.png)
-[](figures/sale_employee.png)
-[](figures/sale_visitor.png)
-[](figures/log_menu.png)
-[](figures/log_all.png)
-[](figures/log_employee.png)
+![](figures/initial.png)
+![](figures/add_beverage.png)
+![](figures/add_employee.png)
+![](figures/recharge_employee.png)
+![](figures/recharge_employee_conf.png)
+![](figures/supply_box.png)
+![](figures/supply_conf.png)
+![](figures/sale_employee.png)
+![](figures/sale_visitor.png)
+![](figures/log_menu.png)
+![](figures/log_all.png)
+![](figures/log_employee.png)
