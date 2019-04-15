@@ -16,13 +16,16 @@ Version:
 # Package diagram
 
 \<define UML package diagram >
+
 \<explain rationales for choices> 
+
 \<mention architectural patterns used, if any>
 
 
 # Class diagram
 
 \<for each package define class diagram with classes defined in the package>
+
 \<mention design patterns used, if any>
 
 
@@ -38,7 +41,7 @@ Version:
 | .. |  |  | |
 
 # Verification sequence diagrams 
-<select key scenarios from the requirement document. For each of them define a sequence diagram showing that the scenario can be implemented by the classes and methods in the design>
+\<select key scenarios from the requirement document. For each of them define a sequence diagram showing that the scenario can be implemented by the classes and methods in the design>
 
 ```plantuml
 ": Class X" -> ": Class Y": "1: message1()"
