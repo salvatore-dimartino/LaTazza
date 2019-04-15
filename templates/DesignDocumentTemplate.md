@@ -16,8 +16,10 @@ Version:
 # Instructions
 
 The design document has to comply with:
-1. Official Requirement Document
-2. DataInterface.java
+1. [Official Requirement Document](../Official\ Requirements\ Document.md)
+2. [DataInterface.java](../src/main/java/it/polito/latazza/data/DataInterface.java)
+
+UML diagrams **MUST** be written using plantuml notation.
 
 # Package diagram
 
