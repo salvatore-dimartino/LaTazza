@@ -55,7 +55,7 @@ latazza.data --> java.util: import
 
 \<mention design patterns used, if any>
 
-## latazza Class diagram
+### latazza Class diagram
 
 ```plantuml
 @startuml
@@ -73,7 +73,7 @@ LaTazza --> latazza.gui: import
 
 @enduml
 ```
-## latazza.exception Class diagram
+### latazza.exception Class diagram
 
 ```plantuml
 @startuml
@@ -109,7 +109,7 @@ NotEnoughCapsules --> exceptions: import
 @enduml
 ```
 
-## latazza.data Class diagram
+### latazza.data Class diagram
 
 ```plantuml
 @startuml
@@ -179,7 +179,7 @@ Datainterface --> latazza.exception
 ```
 
 
-## latazza.gui Class diagram
+### latazza.gui Class diagram
 
 ```plantuml
 @startuml
