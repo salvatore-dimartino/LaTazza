@@ -36,6 +36,20 @@ UML diagrams **MUST** be written using plantuml notation.
 
 \<mention design patterns used, if any>
 
+```plantuml
+@startuml
+class Dummy {
+  String data
+  void methods()
+}
+
+class Flight {
+   flightNumber : Integer
+   departureTime : Date
+}
+@enduml
+```
+
 
 # Verification traceability matrix
 
