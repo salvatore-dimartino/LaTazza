@@ -54,15 +54,34 @@ After you modify the `pom.xml` file, you have to perform again a Maven Update of
 
 # Scheenshots
 
+## Main GUI
 ![](figures/initial.png)
+
+## Add a beverage
 ![](figures/add_beverage.png)
+
+## Add an employee
 ![](figures/add_employee.png)
+
+# Recharge an account
 ![](figures/recharge_employee.png)
 ![](figures/recharge_employee_conf.png)
+
+## Buy boxes of capsules
 ![](figures/supply_box.png)
 ![](figures/supply_conf.png)
+
+## Sell capsules to an employee
 ![](figures/sale_employee.png)
+
+## Sell capsules to a visitor
 ![](figures/sale_visitor.png)
+
+## View the logs
 ![](figures/log_menu.png)
+
+## General log
 ![](figures/log_all.png)
+
+## Employee log
 ![](figures/log_employee.png)
