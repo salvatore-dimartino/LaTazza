@@ -1,9 +1,3 @@
-# General instructions for the design
-
-The design of your software project will have to include the packages of the template project provided. You must also consider the classes you added for the Package and Class diagram.
-
-For the design assignment follow the guidelines in the Design Template markdown file provided in the template folder of the repository.
-
 # General instructions for development
 
 The preferred version of Java is *Java 8.0*. You can use any IDE of your choice, but we suggest Eclipse as described in [this document](https://oop.polito.it/doc/ReferenceSoftware_en.html).
@@ -20,9 +14,15 @@ You can create whatever class or package you identify as necessary for the imple
 
 ## Data persistency
 
-The final project must implement data persistency. To do so, a database may be needed. If choose to use a database, to make the project portable, you will have to use an embedded database, that is a database that stores the data in local files. [H2](https://www.h2database.com/html/main.html), [DerbyDB](https://db.apache.org/derby/) and [SQLite](https://www.sqlite.org/index.html) are the suggested alternatives for this purpose.
+The final project must be portable to satisfy NFR4. 
 
-You can also create JSON, XML, or CSV files of your own to store the data of the application, or properly serialize/deserialize Java objects into local files.
+For implementing data persistency there are three options:
+
+1. Using an embedded database to make the project portable, that is a database that stores the data in local files. [H2](https://www.h2database.com/html/main.html), [DerbyDB](https://db.apache.org/derby/) and [SQLite](https://www.sqlite.org/index.html) are the suggested alternatives for this purpose.
+
+2. Creating JSON, XML, or CSV files of your own to store the data of the application 
+
+3. Properly serialize/deserialize Java objects into local files.
 
 ## Use of remote libraries
 
@@ -42,9 +42,6 @@ You will find the proper tag in the documentation of the library you want to imp
 
 After you modify the `pom.xml` file, you have to perform again a Maven Update of the project (see point 2 for details).
 
-## What to upload on the GitLab project
-
-* Implementation of the template project.
 
 ## What to NOT upload on the GitLab project
 
@@ -52,44 +49,3 @@ After you modify the `pom.xml` file, you have to perform again a Maven Update of
 * IDE configuration files (e.g., `.project`, `.classpath`). Make sure to include them in the `.gitignore` file before committing;
 * Database files or other data files. 
 
-# Scheenshots
-
-## Main GUI
-![](figures/initial.png)
-
-## Add a beverage
-![](figures/add_beverage.png)
-
-## Add an employee
-![](figures/add_employee.png)
-
-# Recharge an account
-![](figures/recharge_employee.png)
-![](figures/recharge_employee_conf.png)
-
-## Buy boxes of capsules
-![](figures/supply_box.png)
-![](figures/supply_conf.png)
-
-## Sell capsules to an employee
-
-When in 'buy credits' NO is selected, it means that the Employee is paying using cash (his balance is not affected).
-
-When in 'buy credits' YES is selected, it means that the Employee is using his/her account (his/her balance is affected).
-
-![](figures/sale_employee.png)
-
-## Sell capsules to a visitor
-
-When the manager is selling capsules to a visitor the 'buy credits' checkbox is not taken into account.
-
-![](figures/sale_visitor.png)
-
-## View the logs
-![](figures/log_menu.png)
-
-## Consumption Report
-![](figures/log_all.png)
-
-## Employee Report
-![](figures/log_employee.png)
