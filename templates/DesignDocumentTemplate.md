@@ -44,21 +44,19 @@ UML diagrams **MUST** be written using plantuml notation.
 
 |  | Class x | Class y  | .. |
 | ------------- |:-------------:| -----:| -----:|
-| Functional requirement x  |  |  | |
-| Functional requirement y  |  |  | |
-| .. |  |  | |
+| Functional requirement 1  |  |  | |
+| Functional requirement 2  |  |  | |
+| Functional requirement 3  |  |  | |
+| Functional requirement 4  |  |  | |
+| Functional requirement 5  |  |  | |
+| Functional requirement 6  |  |  | |
+| Functional requirement 7  |  |  | |
+| Functional requirement 8  |  |  | |
 
 # Verification sequence diagrams 
 \<select key scenarios from the requirement document. For each of them define a sequence diagram showing that the scenario can be implemented by the classes and methods in the design>
 
 ```plantuml
-": Class 1" -> ": FR1": "1: message1()"
-": Class 2" -> ": FR2": "2: message2()"
-": Class 3" -> ": FR3": "1: message1()"
-": Class 4" -> ": FR4": "2: message2()"
-": Class 5" -> ": FR5": "1: message1()"
-": Class 6" -> ": FR6": "2: message2()"
-": Class 7" -> ": FR7": "1: message1()"
-": Class 8" -> ": FR8": "2: message2()"
-
+": Class 1" -> ": Class x": "1: message1()"
+": Class 2" -> ": Class y": "2: message2()"
 ```
