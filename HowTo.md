@@ -14,7 +14,7 @@ To work on the project, you will have to follow these steps:
 2. From Eclipse IDE, import a Maven project (File -> Import -> Maven -> Existing Maven Projects);
 3. Update the project (right click on the project name in the left part of the IDE, then click Maven -> Update Project; enable the checkbox *Force Update of Snapshot/Releases*, then click on *OK*).
 
-At this point you can work on the class `DataImpl.java`. You will find the documentation of the methods in the interface `DataInterface.java`. Do not modify the interface `DataInterface.java` or the signatures of the methods.
+At this point you have to work on the class `DataImpl.java`. You will find the documentation of the methods in the interface `DataInterface.java`. Do not modify the interface `DataInterface.java` or the signatures of the methods.
 
 You can create whatever class or package you identify as necessary for the implementation of the requirements of the project.
 
@@ -72,16 +72,24 @@ After you modify the `pom.xml` file, you have to perform again a Maven Update of
 ![](figures/supply_conf.png)
 
 ## Sell capsules to an employee
+
+When in 'buy credits' NO is selected, it means that the Employee is paying using cash (his balance is not affected).
+
+When in 'buy credits' YES is selected, it means that the Employee is using his/her account (his/her balance is affected).
+
 ![](figures/sale_employee.png)
 
 ## Sell capsules to a visitor
+
+When the manager is selling capsules to a visitor the 'buy credits' checkbox is not taken into account.
+
 ![](figures/sale_visitor.png)
 
 ## View the logs
 ![](figures/log_menu.png)
 
-## General log
+## Consumption Report
 ![](figures/log_all.png)
 
-## Employee log
+## Employee Report
 ![](figures/log_employee.png)
