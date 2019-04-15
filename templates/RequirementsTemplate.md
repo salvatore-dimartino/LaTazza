@@ -493,7 +493,7 @@ We described all the Use Cases
 |6|The Coffee Manager checks the employee payment|
 |7|The Coffee Manager sends a notification to the employee:"ok"|
 |8|The Coffee Manager gives the box of capsules or single capsules to the employee|
-|9|Update the database|
+|9|Update of the database|
 
 # Glossary
 
@@ -527,10 +527,14 @@ class CoffeeManager {
 
 class BoxOfCapsules {
 
-	+type
+	+NumberOfCapsules
+}
+
+class Capsule {
+    
+    +type
 	+subType
 	+price
-	+NumberOfCapsules
 }
 
 class Account {
@@ -556,13 +560,21 @@ class Driver {
     +DriverID
 }
 
+class SystemAdmin {
+    
+}
+
+Order "*" -- SystemAdmin :if necessary repairs
+Account "*" -- SystemAdmin :if necessary repairs
 Order "*" -- WarehouseWorker :handles
 Order "*" -- Driver :delivers
 Person <|-- Employee
 Person <|-- Visitor
 Person <|-- Driver
 Person <|-- WarehouseWorker
-Account "*" <|-- ManagerAccount :handles
+Person <|-- SystemAdmin
+BoxOfCapsules o-- "*" Capsule
+Account "*" <|-- ManagerAccount: handles
 Employee "*" <|-- CoffeeManager
 Employee "*"-- CoffeeManager : orders to
 Order "*" -- CoffeeManager : makes a
@@ -577,6 +589,10 @@ CoffeeManager -- ManagerAccount :has
 
 ```plantuml
 @startuml
+
+class LaTazzaSystem {
+  
+}
 
 class Server {
   
@@ -605,6 +621,7 @@ class BackupServer {
 Server -- BankingGateway
 Server -- Database
 Server <|-- "2" BackupServer : has
+LaTazzaSystem o-- Server
 
 @enduml
 ```
