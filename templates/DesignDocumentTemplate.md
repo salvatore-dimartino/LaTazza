@@ -43,7 +43,7 @@ UML diagrams **MUST** be written using plantuml notation.
 
 
 |  | DataImpl | DataInterface  | BeverageException | DateException | EmployeeException | NotEnoughBalance | NotEnoughCapsules | LaTazza | MainSwing |
-| ------------- |:-------------:| -----:| -----:|
+| ------------- |:-------------:| -----:| -----:| -----:| -----:| -----:| -----:| -----:|
 | Functional requirement 1  |  |  | |
 | Functional requirement 2  |  |  | |
 | Functional requirement 3  |  |  | |
@@ -52,7 +52,7 @@ UML diagrams **MUST** be written using plantuml notation.
 | Functional requirement 6  |  |  | |
 | Functional requirement 7  |  |  | |
 | Functional requirement 8  |  |  | |
-|  | |
+
 
 # Verification sequence diagrams 
 \<select key scenarios from the requirement document. For each of them define a sequence diagram showing that the scenario can be implemented by the classes and methods in the design>
