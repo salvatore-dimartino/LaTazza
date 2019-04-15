@@ -29,12 +29,32 @@ UML diagrams **MUST** be written using plantuml notation.
 
 \<mention architectural patterns used, if any>
 
+```plantuml
+@startuml
+
+package latazza.gui
+package java.util
+package latazza.data
+package latazza.exception
+package latazza
+package exceptions
+
+latazza --> latazza.gui: import
+latazza --> latazza.data: import
+latazza.data --> latazza.exception: import
+latazza.exception --> exceptions: import
+latazza.data --> java.util: import
+
+@enduml
+```
+
 
 # Class diagram
 
 \<for each package define class diagram with classes defined in the package>
 
 \<mention design patterns used, if any>
+
 
 
 # Verification traceability matrix
