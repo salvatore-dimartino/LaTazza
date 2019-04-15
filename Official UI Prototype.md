@@ -1,3 +1,5 @@
+# Official UI Prototype
+
 ## Main GUI
 ![](figures/initial.png)
 
