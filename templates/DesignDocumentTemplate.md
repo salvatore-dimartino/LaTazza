@@ -212,9 +212,21 @@ class MainSwing {
 
 
 # Verification sequence diagrams 
-\<select key scenarios from the requirement document. For each of them define a sequence diagram showing that the scenario can be implemented by the classes and methods in the design>
+
+Scenario 1
 
 ```plantuml
-": Class 1" -> ": Class x": "1: message1()"
-": Class 2" -> ": Class y": "2: message2()"
+": Class MainSwing" -> ": Class DataImpl": "1: inputTypeOfCapsules()"
+": Class MainSwing" -> ": Class DataImpl": "2: inputCollegue()"
+": Class DataImpl" -> ": Class MainSwing": "3: response()"
+```
+
+Scenario 2
+
+```plantuml
+": Class MainSwing" -> ": Class DataImpl": "1: inputTypeOfCapsules()"
+": Class MainSwing" -> ": Class DataImpl": "2: inputCollegue()"
+": Class DataImpl" -> ": Class NotEnoughBalance": "3: exception()"
+": Class NotEnoughBalance" -> ": Class DataImpl": "4: response()"
+": Class DataImpl" -> ": Class MainSwing": "5: response()"
 ```
