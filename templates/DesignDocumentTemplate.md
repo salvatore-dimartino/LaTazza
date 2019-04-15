@@ -23,11 +23,25 @@ UML diagrams **MUST** be written using plantuml notation.
 
 # Package diagram
 
-\<define UML package diagram >
 
-\<explain rationales for choices> 
+```plantuml
+@startuml
 
-\<mention architectural patterns used, if any>
+package latazza.gui
+package java.util
+package latazza.data
+package latazza.exception
+package latazza
+package exceptions
+
+latazza --> latazza.gui: import
+latazza --> latazza.data: import
+latazza.data --> latazza.exception: import
+latazza.exception --> exceptions: import
+latazza.data --> java.util: import
+
+@enduml
+```
 
 
 # Class diagram
@@ -36,22 +50,160 @@ UML diagrams **MUST** be written using plantuml notation.
 
 \<mention design patterns used, if any>
 
+## latazza Class diagram
+
+```plantuml
+@startuml
+allowmixing
+
+package latazza.data
+package latazza.gui
+
+class LaTazza {
+    +main();
+}
+
+LaTazza --> latazza.data: import
+LaTazza --> latazza.gui: import
+
+@enduml
+```
+
+## latazza.exception Class diagram
+
+```plantuml
+@startuml
+allowmixing
+class BeverageExceptrion {
+    +serialVersionUID;
+}
+
+class DataExceptrion {
+    +serialVersionUID;
+}
+
+class EmployeeExceptrion {
+    +serialVersionUID;
+}
+
+class NotEnoughBalance {
+    +serialVersionUID;
+}
+
+class NotEnoughCapsules {
+    +serialVersionUID;
+}
+
+package exceptions
+
+BeverageExceptrion --> exceptions: import
+DataExceptrion --> exceptions: import
+EmployeeExceptrion  --> exceptions: import
+NotEnoughBalance --> exceptions: import
+NotEnoughCapsules --> exceptions: import
+
+@enduml
+```
+
+## latazza.data Class diagram
+
+```plantuml
+@startuml
+allowmixing
+package latazza.exception
+
+interface Datainterface {
+    +sellCapsules();
+    +sellCapsulesToVisitor();
+    +rechargeAccount();
+    +buyBoxes();
+    +getEmployeeReport();
+    +getReport();
+    +getReport();
+    +createBeverage();
+    +updateBeverage();
+    +getBeverageName();
+    +getBeverageCapsulesPerBox();
+    +getBeverageBoxPrice();
+    +getBeveragesId();
+    +getBeverages();
+    +getBeverageCapsules();
+    +createEmployee();
+    +updateEmployee();
+    +getEmployeeName();
+    +getEmployeeSurname();
+    +getEmployeeBalance();
+    +getEmployeesId();
+    +getEmployees();
+    +getBalance();
+    +reset();
+}
+
+class DataImpl {
+    +sellCapsules();
+    +sellCapsulesToVisitor();
+    +rechargeAccount();
+    +buyBoxes();
+    +getEmployeeReport();
+    +getReport();
+    +getReport();
+    +createBeverage();
+    +updateBeverage();
+    +getBeverageName();
+    +getBeverageCapsulesPerBox();
+    +getBeverageBoxPrice();
+    +getBeveragesId();
+    +getBeverages();
+    +getBeverageCapsules();
+    +createEmployee();
+    +updateEmployee();
+    +getEmployeeName();
+    +getEmployeeSurname();
+    +getEmployeeBalance();
+    +getEmployeesId();
+    +getEmployees();
+    +getBalance();
+    +reset();
+}
+
+DataImpl --> Datainterface: inplements
+DataImpl --> latazza.exception: import
+Datainterface --> latazza.exception
+
+
+@enduml
+```
+
+
+## latazza.gui Class diagram
+
+```plantuml
+@startuml
+allowmixing
+
+class MainSwing {
+
+}
+
+
+@enduml
+```
 
 # Verification traceability matrix
 
 \<for each functional requirement from the requirement document, list which classes concur to implement it>
 
 
-|  | DataImpl | DataInterface  | BeverageException | DateException | EmployeeException | NotEnoughBalance | NotEnoughCapsules | LaTazza | MainSwing |
-| ------------- |:-------------:| -----:| -----:| -----:| -----:| -----:| -----:| -----:|-----:|
-| Functional requirement 1  | X |  | | |  |  | |  | |
-| Functional requirement 2  | X  |  | | |  |  | |  | |
-| Functional requirement 3  | X |  | | |  |  | |  | |
-| Functional requirement 4  | X  |  | | |  |  | |  | |
-| Functional requirement 5  | X |  | | |  |  | |  | |
-| Functional requirement 6  | X |  | | |  |  | |  | |
-| Functional requirement 7  | X|  | | |  |  | |  | |
-| Functional requirement 8  | X|  | | |  |  | |  | |
+|  | DataImpl | BeverageException | DateException | EmployeeException | NotEnoughBalance | NotEnoughCapsules |
+| ------------- |:-------------:| -----:| -----:| -----:| -----:| -----:|
+| Functional requirement 1  | X | X | X | X | X | X | 
+| Functional requirement 2  | X | X | X |   |   | X | 
+| Functional requirement 3  | X |   | X | X |   |   |   
+| Functional requirement 4  | X | X |   |   | X |   |   
+| Functional requirement 5  | X |   | X | X |   |   |   
+| Functional requirement 6  | X |   | X |   |   |   |   
+| Functional requirement 7  | X |   |   |   |   |   |   
+| Functional requirement 8  | X |   | X |   |   |   |   
 
 
 # Verification sequence diagrams 
