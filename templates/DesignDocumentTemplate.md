@@ -43,15 +43,15 @@ UML diagrams **MUST** be written using plantuml notation.
 
 
 |  | DataImpl | DataInterface  | BeverageException | DateException | EmployeeException | NotEnoughBalance | NotEnoughCapsules | LaTazza | MainSwing |
-| ------------- |:-------------:| -----:| -----:| -----:| -----:| -----:| -----:| -----:|
-| Functional requirement 1  |  |  | | |  |  | |  |
-| Functional requirement 2  |  |  | | |  |  | |  |
-| Functional requirement 3  |  |  | | |  |  | |  |
-| Functional requirement 4  |  |  | | |  |  | |  |
-| Functional requirement 5  |  |  | | |  |  | |  |
-| Functional requirement 6  |  |  | | |  |  | |  |
-| Functional requirement 7  |  |  | | |  |  | |  |
-| Functional requirement 8  |  |  | | |  |  | |  |
+| ------------- |:-------------:| -----:| -----:| -----:| -----:| -----:| -----:| -----:|-----:|
+| Functional requirement 1  |  |  | | |  |  | |  | |
+| Functional requirement 2  |  |  | | |  |  | |  | |
+| Functional requirement 3  |  |  | | |  |  | |  | |
+| Functional requirement 4  |  |  | | |  |  | |  | |
+| Functional requirement 5  |  |  | | |  |  | |  | |
+| Functional requirement 6  |  |  | | |  |  | |  | |
+| Functional requirement 7  |  |  | | |  |  | |  | |
+| Functional requirement 8  |  |  | | |  |  | |  | |
 
 
 # Verification sequence diagrams 
