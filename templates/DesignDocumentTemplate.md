@@ -128,11 +128,23 @@ class DataImpl {
 
 DataImpl --> Datainterface: implements
 
+class Account {
+    
+}
+
 class PersonalAccount {
-+ balance
++ balance_personal
 }
 
 PersonalAccount --> DataImpl
+PersonalAccount --|> Account
+
+class LaTazzaAccount {
++ balance_total
+}
+
+LaTazzaAccount --> DataImpl
+LaTazzaAccount --|> Account
 
 class CapsuleType {
 + name
@@ -141,12 +153,6 @@ class CapsuleType {
 }
 
 CapsuleType --> DataImpl
-
-class LaTazzaAccount {
-+ balance
-}
-
-LaTazzaAccount --> DataImpl
 
 class BoxPurchase {
 + quantity
