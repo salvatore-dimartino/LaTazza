@@ -126,7 +126,48 @@ class DataImpl {
     +reset();
 }
 
-DataImpl --> Datainterface: inplements
+DataImpl --> Datainterface: implements
+
+class PersonalAccount {
++ balance
+}
+
+PersonalAccount --> DataImpl
+
+class CapsuleType {
++ name
++ price
++ quantity
+}
+
+CapsuleType --> DataImpl
+
+class LaTazzaAccount {
++ balance
+}
+
+LaTazzaAccount --> DataImpl
+
+class BoxPurchase {
++ quantity
+}
+
+BoxPurchase --> DataImpl
+
+class Transaction {
++ date
++ amount
+}
+
+Transaction --> DataImpl
+
+class Recharge
+
+Recharge --> DataImpl
+
+class Consumption
+
+Consumption --> DataImpl
 
 
 @enduml
