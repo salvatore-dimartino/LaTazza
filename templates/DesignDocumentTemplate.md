@@ -130,7 +130,7 @@ class PersonalAccount {
 + balance_personal
 }
 
-PersonalAccount --> DataImpl
+PersonalAccount * --> DataImpl
 
 class LaTazzaAccount {
 + balance_total
