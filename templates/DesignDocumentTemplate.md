@@ -126,23 +126,17 @@ class DataImpl {
 
 DataImpl --> Datainterface: implements
 
-class Account {
-    
-}
-
 class PersonalAccount {
 + balance_personal
 }
 
 PersonalAccount --> DataImpl
-PersonalAccount --|> Account
 
 class LaTazzaAccount {
 + balance_total
 }
 
 LaTazzaAccount --> DataImpl
-LaTazzaAccount --|> Account
 
 class CapsuleType {
 + name
@@ -162,6 +156,10 @@ class Transaction {
 + date
 + amount
 }
+
+DataImpl <-- "*" Colleague
+DataImpl <-- "*" CapsuleType
+DataImpl <-- LaTazzaAccount
 
 Transaction --> DataImpl
 
