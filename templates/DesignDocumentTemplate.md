@@ -159,7 +159,7 @@ class Transaction {
 + amount
 }
 
-DataImpl <-- "*" Colleague
+DataImpl <-- "*" Employee
 DataImpl <-- "*" CapsuleType
 DataImpl <-- "*" Beverage
 DataImpl <-- LaTazzaAccount
@@ -170,7 +170,7 @@ LaTazzaAccount -- "*" Consumption
 CapsuleType -- "*" Consumption
 CapsuleType -- "*" BoxPurchase
 
-Colleague -- PersonalAccount
+Employee -- PersonalAccount
 PersonalAccount -- "*" Transaction
 
 Transaction <|-- Recharge
