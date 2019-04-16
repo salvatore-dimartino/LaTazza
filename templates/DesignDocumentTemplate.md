@@ -152,8 +152,6 @@ class CapsuleType {
 + quantity
 }
 
-CapsuleType --> DataImpl
-
 class BoxPurchase {
 + quantity
 }
