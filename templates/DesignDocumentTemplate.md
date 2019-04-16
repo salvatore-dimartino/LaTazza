@@ -35,17 +35,13 @@ From the first line of code of the .java files, it is easy to recognise the stru
 @startuml
 
 package latazza.gui
-package java.util
 package latazza.data
 package latazza.exception
 package latazza
-package exceptions
 
 latazza --> latazza.gui: import
 latazza --> latazza.data: import
 latazza.data --> latazza.exception: import
-latazza.exception --> exceptions: import
-latazza.data --> java.util: import
 
 @enduml
 ```
@@ -63,51 +59,9 @@ latazza.data --> java.util: import
 @startuml
 allowmixing
 
-package latazza.data
-package latazza.gui
-
 class LaTazza {
     +main();
 }
-
-LaTazza --> latazza.data: import
-LaTazza --> latazza.gui: import
-
-@enduml
-```
-
-## latazza.exception Class diagram
-
-```plantuml
-@startuml
-allowmixing
-class BeverageExceptrion {
-    +serialVersionUID;
-}
-
-class DataExceptrion {
-    +serialVersionUID;
-}
-
-class EmployeeExceptrion {
-    +serialVersionUID;
-}
-
-class NotEnoughBalance {
-    +serialVersionUID;
-}
-
-class NotEnoughCapsules {
-    +serialVersionUID;
-}
-
-package exceptions
-
-BeverageExceptrion --> exceptions: import
-DataExceptrion --> exceptions: import
-EmployeeExceptrion  --> exceptions: import
-NotEnoughBalance --> exceptions: import
-NotEnoughCapsules --> exceptions: import
 
 @enduml
 ```
@@ -117,7 +71,6 @@ NotEnoughCapsules --> exceptions: import
 ```plantuml
 @startuml
 allowmixing
-package latazza.exception
 
 interface Datainterface {
     +sellCapsules();
@@ -125,7 +78,6 @@ interface Datainterface {
     +rechargeAccount();
     +buyBoxes();
     +getEmployeeReport();
-    +getReport();
     +getReport();
     +createBeverage();
     +updateBeverage();
@@ -153,7 +105,6 @@ class DataImpl {
     +buyBoxes();
     +getEmployeeReport();
     +getReport();
-    +getReport();
     +createBeverage();
     +updateBeverage();
     +getBeverageName();
@@ -173,10 +124,87 @@ class DataImpl {
     +reset();
 }
 
-DataImpl --> Datainterface: inplements
-DataImpl --> latazza.exception: import
-Datainterface --> latazza.exception
+DataImpl --> Datainterface: implements
 
+class PersonalAccount {
++ balance_personal
+}
+
+PersonalAccount "*" --> DataImpl
+
+class LaTazzaAccount {
++ balance_total
+}
+
+class Beverage {
++ name
++ price
++ description
+}
+
+CapsuleType -- Beverage
+
+class CapsuleType {
++ name
++ price
++ quantity
+}
+
+class BoxPurchase {
++ quantity
+}
+
+class Transaction {
++ date
++ amount
+}
+
+DataImpl <-- "*" Employee
+DataImpl <-- "*" CapsuleType
+DataImpl <-- "*" Beverage
+DataImpl <-- LaTazzaAccount
+
+LaTazzaAccount -- "*" BoxPurchase
+LaTazzaAccount -- "*" Consumption
+
+CapsuleType -- "*" Consumption
+CapsuleType -- "*" BoxPurchase
+
+Employee -- PersonalAccount
+PersonalAccount -- "*" Transaction
+
+Transaction <|-- Recharge
+Transaction <|-- Consumption
+Transaction <|-- BoxPurchase
+
+Transaction "*" --> DataImpl
+
+class Recharge
+class Consumption
+
+
+@enduml
+```
+
+## latazza.exception Class diagram
+
+```plantuml
+@startuml
+allowmixing
+class BeverageExceptrion {
+}
+
+class DataExceptrion {
+}
+
+class EmployeeExceptrion {
+}
+
+class NotEnoughBalance {
+}
+
+class NotEnoughCapsules {
+}
 
 @enduml
 ```
@@ -188,7 +216,43 @@ Datainterface --> latazza.exception
 @startuml
 allowmixing
 
+class BeveragesFrame {
+
+}
+
+class Buy {
+
+}
+
+class EmployeesFrame {
+
+}
+
+class Euro {
+
+}
+
 class MainSwing {
+
+}
+
+class MappedArray {
+
+}
+
+class Payment {
+
+}
+
+class PrintLogsFrame {
+
+}
+
+class Refill {
+
+}
+
+class ReportFrame {
 
 }
 
