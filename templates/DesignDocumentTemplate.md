@@ -79,7 +79,6 @@ interface Datainterface {
     +buyBoxes();
     +getEmployeeReport();
     +getReport();
-    +getReport();
     +createBeverage();
     +updateBeverage();
     +getBeverageName();
