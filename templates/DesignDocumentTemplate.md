@@ -113,7 +113,6 @@ NotEnoughCapsules --> exceptions: import
 ```plantuml
 @startuml
 allowmixing
-package latazza.exception
 
 interface Datainterface {
     +sellCapsules();
@@ -170,8 +169,6 @@ class DataImpl {
 }
 
 DataImpl --> Datainterface: inplements
-DataImpl --> latazza.exception: import
-Datainterface --> latazza.exception
 
 
 @enduml
