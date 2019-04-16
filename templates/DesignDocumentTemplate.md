@@ -161,6 +161,19 @@ DataImpl <-- "*" Colleague
 DataImpl <-- "*" CapsuleType
 DataImpl <-- LaTazzaAccount
 
+LaTazzaAccount -- "*" BoxPurchase
+LaTazzaAccount -- "*" Consumption
+
+CapsuleType -- "*" Consumption
+CapsuleType -- "*" BoxPurchase
+
+Colleague -- PersonalAccount
+PersonalAccount -- "*" Transaction
+
+Transaction <|-- Recharge
+Transaction <|-- Consumption
+Transaction <|-- BoxPurchase
+
 Transaction --> DataImpl
 
 class Recharge
