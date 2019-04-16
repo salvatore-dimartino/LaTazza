@@ -168,7 +168,43 @@ DataImpl --> Datainterface: inplements
 @startuml
 allowmixing
 
+class BeveragesFrame {
+
+}
+
+class Buy {
+
+}
+
+class EmployeesFrame {
+
+}
+
+class Euro {
+
+}
+
 class MainSwing {
+
+}
+
+class MappedArray {
+
+}
+
+class Payment {
+
+}
+
+class PrintLogsFrame {
+
+}
+
+class Refill {
+
+}
+
+class ReportFrame {
 
 }
 
