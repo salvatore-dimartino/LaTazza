@@ -177,7 +177,7 @@ Transaction <|-- Recharge
 Transaction <|-- Consumption
 Transaction <|-- BoxPurchase
 
-Transaction --> DataImpl
+Transaction "*" --> DataImpl
 
 class Recharge
 class Consumption
