@@ -105,7 +105,6 @@ class DataImpl {
     +buyBoxes();
     +getEmployeeReport();
     +getReport();
-    +getReport();
     +createBeverage();
     +updateBeverage();
     +getBeverageName();
