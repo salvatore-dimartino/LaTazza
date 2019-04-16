@@ -138,6 +138,14 @@ class LaTazzaAccount {
 
 LaTazzaAccount --> DataImpl
 
+class Beverage {
++ name
++ price
++ description
+}
+
+CapsuleType -- Beverage
+
 class CapsuleType {
 + name
 + price
@@ -157,6 +165,7 @@ class Transaction {
 
 DataImpl <-- "*" Colleague
 DataImpl <-- "*" CapsuleType
+DataImpl <-- "*" Beverage
 DataImpl <-- LaTazzaAccount
 
 LaTazzaAccount -- "*" BoxPurchase
