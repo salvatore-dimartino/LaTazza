@@ -78,32 +78,19 @@ LaTazza --> latazza.gui: import
 @startuml
 allowmixing
 class BeverageExceptrion {
-    +serialVersionUID;
 }
 
 class DataExceptrion {
-    +serialVersionUID;
 }
 
 class EmployeeExceptrion {
-    +serialVersionUID;
 }
 
 class NotEnoughBalance {
-    +serialVersionUID;
 }
 
 class NotEnoughCapsules {
-    +serialVersionUID;
 }
-
-package exceptions
-
-BeverageExceptrion --> exceptions: import
-DataExceptrion --> exceptions: import
-EmployeeExceptrion  --> exceptions: import
-NotEnoughBalance --> exceptions: import
-NotEnoughCapsules --> exceptions: import
 
 @enduml
 ```
