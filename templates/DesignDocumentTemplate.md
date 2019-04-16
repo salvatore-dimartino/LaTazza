@@ -59,37 +59,8 @@ latazza.data --> latazza.exception: import
 @startuml
 allowmixing
 
-package latazza.data
-package latazza.gui
-
 class LaTazza {
     +main();
-}
-
-LaTazza --> latazza.data: import
-LaTazza --> latazza.gui: import
-
-@enduml
-```
-
-## latazza.exception Class diagram
-
-```plantuml
-@startuml
-allowmixing
-class BeverageExceptrion {
-}
-
-class DataExceptrion {
-}
-
-class EmployeeExceptrion {
-}
-
-class NotEnoughBalance {
-}
-
-class NotEnoughCapsules {
 }
 
 @enduml
@@ -157,6 +128,29 @@ class DataImpl {
 
 DataImpl --> Datainterface: inplements
 
+
+@enduml
+```
+
+## latazza.exception Class diagram
+
+```plantuml
+@startuml
+allowmixing
+class BeverageExceptrion {
+}
+
+class DataExceptrion {
+}
+
+class EmployeeExceptrion {
+}
+
+class NotEnoughBalance {
+}
+
+class NotEnoughCapsules {
+}
 
 @enduml
 ```
