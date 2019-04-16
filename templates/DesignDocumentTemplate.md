@@ -35,7 +35,6 @@ From the first line of code of the .java files, it is easy to recognise the stru
 @startuml
 
 package latazza.gui
-package java.util
 package latazza.data
 package latazza.exception
 package latazza
@@ -45,7 +44,6 @@ latazza --> latazza.gui: import
 latazza --> latazza.data: import
 latazza.data --> latazza.exception: import
 latazza.exception --> exceptions: import
-latazza.data --> java.util: import
 
 @enduml
 ```
