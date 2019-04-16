@@ -150,8 +150,6 @@ class BoxPurchase {
 + quantity
 }
 
-BoxPurchase --> DataImpl
-
 class Transaction {
 + date
 + amount
