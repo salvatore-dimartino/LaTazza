@@ -38,12 +38,10 @@ package latazza.gui
 package latazza.data
 package latazza.exception
 package latazza
-package exceptions
 
 latazza --> latazza.gui: import
 latazza --> latazza.data: import
 latazza.data --> latazza.exception: import
-latazza.exception --> exceptions: import
 
 @enduml
 ```
