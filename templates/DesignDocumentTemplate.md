@@ -177,12 +177,7 @@ Transaction <|-- BoxPurchase
 Transaction --> DataImpl
 
 class Recharge
-
-Recharge --> DataImpl
-
 class Consumption
-
-Consumption --> DataImpl
 
 
 @enduml
