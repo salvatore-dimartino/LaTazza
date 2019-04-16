@@ -136,8 +136,6 @@ class LaTazzaAccount {
 + balance_total
 }
 
-LaTazzaAccount --> DataImpl
-
 class Beverage {
 + name
 + price
