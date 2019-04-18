@@ -296,5 +296,5 @@ Scenario 2
 ": Class DataImpl" -> ": Class Beverage": "3: getBeverage()"
 ": Class DataImpl" -> ": Class CapsuleType": "4: updateAmount()"
 ": Class DataImpl" -> ": Class PersonalAccount": "5: updateAmount()"
-": Class PersonalAccount" -> ": Class NotEnoughBalance"
+": Class PersonalAccount" -> ": Class NotEnoughBalance": "6: NotEnoughBalance()"
 ```
