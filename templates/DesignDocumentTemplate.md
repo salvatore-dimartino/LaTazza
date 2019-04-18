@@ -288,7 +288,6 @@ Scenario 1
 ": Class DataImpl" -> ": Class CapsuleType": "updateAmount(Beverage,Amount)"
 ": Class DataImpl" -> ": Class PersonalAccount": "updateAmount(EmployeeAmount)"
 ": Class DataImpl" -> ": Class Transaction": "Transaction(Date,Amount)"
-": Class DataImpl" --> ": Class MainSwing": "Response"
 ```
 
 Scenario 2
@@ -302,5 +301,4 @@ Scenario 2
 ": Class DataImpl" -> ": Class CapsuleType": "updateAmount(Beverage,Amount)"
 ": Class DataImpl" -> ": Class PersonalAccount": "updateAmount(EmployeeAmount)"
 ": Class PersonalAccount" -> ": Class NotEnoughBalance": "NotEnoughBalance(Exception)"
-": Class DataImpl" --> ": Class MainSwing": "Response"
 ```
