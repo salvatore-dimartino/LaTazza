@@ -281,12 +281,16 @@ Scenario 1
 
 ```plantuml
 ": Class MainSwing" -> ": Class DataImpl": "sellCapsules(employeeId,beverageId,numberOfCapsules,fromAccount)"
-": Class DataImpl" -> ": Class Employee": "getEmployee(employeeId)"
+": Class DataImpl" -> ": Class Employee": "getEmployee()"
 ": Class Employee" --> ": Class DataImpl": "Employee"
-": Class DataImpl" -> ": Class Beverage": "getBeverage(beverageId)"
+": Class DataImpl" -> ": Class Beverage": "getBeverage()"
 ": Class Beverage" --> ": Class DataImpl": "Beverage"
-": Class DataImpl" -> ": Class CapsuleType": "updateAmount(Beverage,Amount)"
-": Class DataImpl" -> ": Class PersonalAccount": "updateAmount(EmployeeAmount)"
+": Class DataImpl" -> ": Class Beverage": "getCapsuleType()"
+": Class Beverage" --> ": Class DataImpl": "CapsuleType"
+": Class DataImpl" -> ": Class CapsuleType": "updateAmount(numberofCapsules)"
+": Class DataImpl" -> ": Class Employee": "getPersonalAccount()"
+": Class Employee" --> ": Class DataImpl": "PersonalAccount"
+": Class DataImpl" -> ": Class PersonalAccount": "updateAmount(Amount)"
 ": Class DataImpl" -> ": Class Transaction": "Transaction(Date,Amount)"
 ```
 
@@ -294,11 +298,15 @@ Scenario 2
 
 ```plantuml
 ": Class MainSwing" -> ": Class DataImpl": "sellCapsules(employeeId,beverageId,numberOfCapsules,fromAccount)"
-": Class DataImpl" -> ": Class Employee": "getEmployee(employeeId)"
+": Class DataImpl" -> ": Class Employee": "getEmployee()"
 ": Class Employee" --> ": Class DataImpl": "Employee"
-": Class DataImpl" -> ": Class Beverage": "getBeverage(beverageId)"
+": Class DataImpl" -> ": Class Beverage": "getBeverage()"
 ": Class Beverage" --> ": Class DataImpl": "Beverage"
-": Class DataImpl" -> ": Class CapsuleType": "updateAmount(Beverage,Amount)"
-": Class DataImpl" -> ": Class PersonalAccount": "updateAmount(EmployeeAmount)"
+": Class DataImpl" -> ": Class Beverage": "getCapsuleType()"
+": Class Beverage" --> ": Class DataImpl": "CapsuleType"
+": Class DataImpl" -> ": Class CapsuleType": "updateAmount(numberofCapsules)"
+": Class DataImpl" -> ": Class Employee": "getPersonalAccount()"
+": Class Employee" --> ": Class DataImpl": "PersonalAccount"
+": Class DataImpl" -> ": Class PersonalAccount": "updateAmount(Amount)"
 ": Class PersonalAccount" -> ": Class NotEnoughBalance": "NotEnoughBalance(Exception)"
 ```
