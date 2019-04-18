@@ -280,21 +280,27 @@ class ReportFrame {
 Scenario 1
 
 ```plantuml
-": Class MainSwing" --> ": Class DataImpl": "1: sellCapsules()"
-": Class DataImpl" -> ": Class Employee": "2: getEmployee()"
-": Class DataImpl" -> ": Class Beverage": "3: getBeverage()"
-": Class DataImpl" -> ": Class CapsuleType": "4: updateAmount()"
-": Class DataImpl" -> ": Class PersonalAccount": "5: updateAmount()"
-": Class DataImpl" -> ": Class Transaction": "6: Transaction()"
+": Class MainSwing" -> ": Class DataImpl": "sellCapsules()"
+": Class DataImpl" -> ": Class Employee": "getEmployee(employeeId)"
+": Class Employee" --> ": Class DataImpl": "Employee"
+": Class DataImpl" -> ": Class Beverage": "getBeverage(beverageId)"
+": Class Beverage" --> ": Class DataImpl": "Beverage"
+": Class DataImpl" -> ": Class CapsuleType": "updateAmount(Beverage,Amount)"
+": Class DataImpl" -> ": Class PersonalAccount": "updateAmount(EmployeeAmount)"
+": Class DataImpl" -> ": Class Transaction": "Transaction(Date,Amount)"
+": Class DataImpl" --> ": Class MainSwing": "Response"
 ```
 
 Scenario 2
 
 ```plantuml
-": Class MainSwing" -> ": Class DataImpl": "1: sellCapsules()"
-": Class DataImpl" -> ": Class Employee": "2: getEmployee()"
-": Class DataImpl" -> ": Class Beverage": "3: getBeverage()"
-": Class DataImpl" -> ": Class CapsuleType": "4: updateAmount()"
-": Class DataImpl" -> ": Class PersonalAccount": "5: updateAmount()"
-": Class PersonalAccount" -> ": Class NotEnoughBalance": "6: NotEnoughBalance()"
+": Class MainSwing" -> ": Class DataImpl": "sellCapsules()"
+": Class DataImpl" -> ": Class Employee": "getEmployee(employeeId)"
+": Class Employee" --> ": Class DataImpl": "Employee"
+": Class DataImpl" -> ": Class Beverage": "getBeverage(beverageId)"
+": Class Beverage" --> ": Class DataImpl": "Beverage"
+": Class DataImpl" -> ": Class CapsuleType": "updateAmount(Beverage,Amount)"
+": Class DataImpl" -> ": Class PersonalAccount": "updateAmount(EmployeeAmount)"
+": Class PersonalAccount" -> ": Class NotEnoughBalance": "NotEnoughBalance(Exception)"
+": Class DataImpl" --> ": Class MainSwing": "Response"
 ```
