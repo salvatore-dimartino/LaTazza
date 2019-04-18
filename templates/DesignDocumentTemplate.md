@@ -280,7 +280,7 @@ class ReportFrame {
 Scenario 1
 
 ```plantuml
-": Class MainSwing" -> ": Class DataImpl": "1: sellCapsules()"
+": Class MainSwing" --> ": Class DataImpl": "1: sellCapsules()"
 ": Class DataImpl" -> ": Class Employee": "2: getEmployee()"
 ": Class DataImpl" -> ": Class Beverage": "3: getBeverage()"
 ": Class DataImpl" -> ": Class CapsuleType": "4: updateAmount()"
