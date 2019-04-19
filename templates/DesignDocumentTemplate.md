@@ -137,17 +137,10 @@ class LaTazzaAccount {
 }
 
 class Beverage {
-+ name
++ beverage ID
++ beverage name
 + price
-+ description
-}
-
-CapsuleType -- Beverage
-
-class CapsuleType {
-+ name
-+ price
-+ quantity
++ quantity_per_box
 }
 
 class BoxPurchase {
@@ -160,15 +153,14 @@ class Transaction {
 }
 
 DataImpl <-- "*" Employee
-DataImpl <-- "*" CapsuleType
 DataImpl <-- "*" Beverage
 DataImpl <-- LaTazzaAccount
 
 LaTazzaAccount -- "*" BoxPurchase
 LaTazzaAccount -- "*" Consumption
 
-CapsuleType -- "*" Consumption
-CapsuleType -- "*" BoxPurchase
+Beverage -- "*" Consumption
+Beverage -- "*" BoxPurchase
 
 Employee -- PersonalAccount
 PersonalAccount -- "*" Transaction
@@ -263,16 +255,16 @@ class ReportFrame {
 # Verification traceability matrix
 
 
-|  | DataImpl | BeverageException | DateException | EmployeeException | NotEnoughBalance | NotEnoughCapsules |
-| ------------- |:-------------:| -----:| -----:| -----:| -----:| -----:|
-| Functional requirement 1  | X | X | X | X | X | X | 
-| Functional requirement 2  | X | X | X |   |   | X | 
-| Functional requirement 3  | X |   | X | X |   |   |   
-| Functional requirement 4  | X | X |   |   | X |   |   
-| Functional requirement 5  | X |   | X | X |   |   |   
-| Functional requirement 6  | X |   | X |   |   |   |   
-| Functional requirement 7  | X |   |   |   |   |   |   
-| Functional requirement 8  | X |   | X |   |   |   |   
+|  | DataImpl | PersonalAccount | LaTazzaAccount| Beverage | BoxPurchase | Transaction | Recharge | Consumption |
+| ------------- |:-------------:| -----:| -----:| -----:   | -----:      | -----:      | -----:   | -----:      |
+| FR1  | X    |      X          |               |    X     |             |          X  |          |   X         |
+| FR2  | X    |                 |               |    X     |             |    X        |          |   X         |  
+| FR3  | X    |                 |               |          |             |   X         |      X   |             |   
+| FR4  | X    |                 |   X           |   X      |      X      |  X          |          |             |    
+| FR5  | X    |          X      |               |          |             |   X         |        X |      X      |   
+| FR6  | X    |                 |               |          |             |       X     |    X     |   X         |  
+| FR7  | X    |                 |               |    X     |             |             |          |             |  
+| FR8  | X    |         X       |               |          |             |             |          |             |  
 
 
 # Verification sequence diagrams 
