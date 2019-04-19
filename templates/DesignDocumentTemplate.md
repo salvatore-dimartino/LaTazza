@@ -56,6 +56,29 @@ Finally, concerning parallelization, concurrency is not needed so 1 thread only 
 We'll use the DataImpl class as a 'facade': it will serve as a single wrapper class and entry point.
 
 ## latazza Class diagram
+```plantuml
+@startuml
+
+package latazza.gui
+package latazza.data
+package latazza.exception
+package latazza
+
+latazza --> latazza.gui: import
+latazza --> latazza.data: import
+latazza.data --> latazza.exception: import
+
+@enduml
+```
+
+
+# Class diagram
+
+\<for each package define class diagram with classes defined in the package>
+
+\<mention design patterns used, if any>
+
+## latazza Class diagram
 
 ```plantuml
 @startuml
@@ -75,103 +98,116 @@ class LaTazza {
 allowmixing
 
 interface Datainterface {
-    +sellCapsules();
-    +sellCapsulesToVisitor();
-    +rechargeAccount();
-    +buyBoxes();
-    +getEmployeeReport();
-    +getReport();
-    +createBeverage();
-    +updateBeverage();
-    +getBeverageName();
-    +getBeverageCapsulesPerBox();
-    +getBeverageBoxPrice();
-    +getBeveragesId();
-    +getBeverages();
-    +getBeverageCapsules();
-    +createEmployee();
-    +updateEmployee();
-    +getEmployeeName();
-    +getEmployeeSurname();
-    +getEmployeeBalance();
-    +getEmployeesId();
-    +getEmployees();
-    +getBalance();
-    +reset();
+    +sellCapsules()
+    +sellCapsulesToVisitor()
+    +rechargeAccount()
+    +buyBoxes()
+    +getEmployeeReport()
+    +getReport()
+    +createBeverage()
+    +updateBeverage()
+    +getBeverageName()
+    +getBeverageCapsulesPerBox()
+    +getBeverageBoxPrice()
+    +getBeveragesId()
+    +getBeverages()
+    +getBeverageCapsules()
+    +createEmployee()
+    +updateEmployee()
+    +getEmployeeName()
+    +getEmployeeSurname()
+    +getEmployeeBalance()
+    +getEmployeesId()
+    +getEmployees()
+    +getBalance()
+    +reset()
 }
 
 class DataImpl {
-    +sellCapsules();
-    +sellCapsulesToVisitor();
-    +rechargeAccount();
-    +buyBoxes();
-    +getEmployeeReport();
-    +getReport();
-    +createBeverage();
-    +updateBeverage();
-    +getBeverageName();
-    +getBeverageCapsulesPerBox();
-    +getBeverageBoxPrice();
-    +getBeveragesId();
-    +getBeverages();
-    +getBeverageCapsules();
-    +createEmployee();
-    +updateEmployee();
-    +getEmployeeName();
-    +getEmployeeSurname();
-    +getEmployeeBalance();
-    +getEmployeesId();
-    +getEmployees();
-    +getBalance();
-    +reset();
+
+    +List<Employee>
+    +List<Beverege>
+    +List<Transaction>
+    +balance : Balance
+
+    +sellCapsules()
+    +sellCapsulesToVisitor()
+    +rechargeAccount()
+    +buyBoxes()
+    +getEmployeeReport()
+    +getReport()
+    +createBeverage()
+    +updateBeverage()
+    +getBeverageName()
+    +getBeverageCapsulesPerBox()
+    +getBeverageBoxPrice()
+    +getBeveragesId()
+    +getBeverages()
+    +getBeverageCapsules()
+    +createEmployee()
+    +updateEmployee()
+    +getEmployeeName()
+    +getEmployeeSurname()
+    +getEmployeeBalance()
+    +getEmployeesId()
+    +getEmployees()
+    +getBalance()
+    +reset()
 }
 
 DataImpl --> Datainterface: implements
 
 class PersonalAccount {
-+ balance_personal
+    +balance_personal : Float
 }
 
 PersonalAccount "*" --> DataImpl
 
 class LaTazzaAccount {
-+ balance_total
+    +balanceTotal : Float
 }
 
 class Employee {
-+ name
-+ surname
-+ employee ID
+    +name : String
+    +surname : String
+    +employeeID : Integer
+    +getEmployeebyID(String) : Employee
+
 }
 
 class Beverage {
-+ beverage ID
-+ beverage name
-+ price
-+ quantity_per_box
-+ available_quantity
+    +beverageID : String
+    +beverageName : String
+    +price : Float
+    +quantityPerBox : Integer
+    +availableQuantity : Integer
+    +getBeneragebyID(String) : Balance
 }
 
 class BoxPurchase {
-+ quantity
+    
+    +quantity : Integer
 }
 
 class Transaction {
-+ date
-+ amount
+    +date : Date
+    +amount : Float
+
+
+    +getTransactionbyDate(Date) : List<Transaction>
 }
 
 DataImpl <-- "*" Employee
 DataImpl <-- "*" Beverage
-DataImpl <-- LaTazzaAccount
+DataImpl o-- LaTazzaAccount
 
 LaTazzaAccount -- "*" BoxPurchase
 LaTazzaAccount -- "*" Consumption
 
-Beverage -- "*" Consumption
-Beverage -- "*" BoxPurchase
+Beverage o-- "*" Consumption
+Beverage o-- "*" BoxPurchase
 
-Employee -- PersonalAccount
+Employee o-- PersonalAccount
 PersonalAccount -- "*" Transaction
 
 Transaction <|-- Recharge
@@ -180,8 +216,12 @@ Transaction <|-- BoxPurchase
 
 Transaction "*" --> DataImpl
 
-class Recharge
-class Consumption
+class Recharge {
+    +charge(Employee) : void
+}
+class Consumption {
+    +updateQty(Beverage) : void
+}
 
 
 @enduml
@@ -218,48 +258,49 @@ class NotEnoughCapsules {
 allowmixing
 
 class BeveragesFrame {
-
+    +main(String[])
 }
 
 class Buy {
-
+    +main(String[])
 }
 
 class EmployeesFrame {
-
+    +main(String[])
 }
 
 class Euro {
-
+    +main(String[])
 }
 
 class MainSwing {
-
+    +main(String[])
 }
 
 class MappedArray {
-
+    +main(String[])
 }
 
 class Payment {
-
+    +main(String[])
 }
 
 class PrintLogsFrame {
-
+    +main(String[])
 }
 
 class Refill {
-
+    +main(String[])
 }
 
 class ReportFrame {
-
+    +main(String[])
 }
 
 
 @enduml
 ```
+
 
 # Verification traceability matrix
 
