@@ -57,6 +57,8 @@ latazza.data --> latazza.exception: import
 
 \<mention design patterns used, if any>
 
+We'll use the DataImpl class as a 'facade': it will serve as a single wrapper class and entry point.
+
 ## latazza Class diagram
 
 ```plantuml
