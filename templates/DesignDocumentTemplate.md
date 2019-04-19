@@ -263,16 +263,16 @@ class ReportFrame {
 # Verification traceability matrix
 
 
-|  | DataImpl | BeverageException | DateException | EmployeeException | NotEnoughBalance | NotEnoughCapsules |
-| ------------- |:-------------:| -----:| -----:| -----:| -----:| -----:|
-| Functional requirement 1  | X | X | X | X | X | X | 
-| Functional requirement 2  | X | X | X |   |   | X | 
-| Functional requirement 3  | X |   | X | X |   |   |   
-| Functional requirement 4  | X | X |   |   | X |   |   
-| Functional requirement 5  | X |   | X | X |   |   |   
-| Functional requirement 6  | X |   | X |   |   |   |   
-| Functional requirement 7  | X |   |   |   |   |   |   
-| Functional requirement 8  | X |   | X |   |   |   |   
+|  | DataImpl | PersonalAccount | LaTazzaAccount| Beverage | CapsuleType | BoxPurchase | Transaction | Recharge | Consumption |
+| ------------- |:-------------:| -----:| -----:| -----:   | -----:      | -----:      | -----:      | -----:   |-----:       |
+| FR1  | X    |                 |               |          |             |             |             |          |             |
+| FR2  | X    |                 |               |          |             |             |             |          |             |  
+| FR3  | X    |                 |               |          |             |             |             |          |             |   
+| FR4  | X    |                 |               |          |             |             |             |          |             |    
+| FR5  | X    |                 |               |          |             |             |             |          |             |   
+| FR6  | X    |                 |               |          |             |             |             |          |             |  
+| FR7  | X    |                 |               |          |             |             |             |          |             |  
+| FR8  | X    |                 |               |          |             |             |             |          |             |  
 
 
 # Verification sequence diagrams 
