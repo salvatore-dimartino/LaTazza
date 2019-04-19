@@ -106,30 +106,30 @@ class DataImpl {
     +List<Beverege>
     +List<Transaction>
     +balance : Balance
-
-    +sellCapsules()
+    
+    sellCapsules()
     +sellCapsulesToVisitor()
     +rechargeAccount()
     +buyBoxes()
     +getEmployeeReport()
     +getReport()
-    +createBeverage()
-    +updateBeverage()
-    +getBeverageName()
-    +getBeverageCapsulesPerBox()
-    +getBeverageBoxPrice()
-    +getBeveragesId()
-    +getBeverages()
-    +getBeverageCapsules()
-    +createEmployee()
+    +createBeverage() : Beverege
+    +updateBeverage() 
+    +getBeverageName() 
+    +getBeverageCapsulesPerBox() : Integer
+    +getBeverageBoxPrice() : Integer
+    +getBeveragesId() : String
+    +getBeverages() : List<Beverege>
+    +getBeverageCapsules() : Integer
+    +createEmployee() 
     +updateEmployee()
-    +getEmployeeName()
-    +getEmployeeSurname()
-    +getEmployeeBalance()
-    +getEmployeesId()
-    +getEmployees()
-    +getBalance()
-    +reset()
+    +getEmployeeName() : String
+    +getEmployeeSurname() : String
+    +getEmployeeBalance() : Float
+    +getEmployeesId() : String
+    +getEmployees() : List<Employee>
+    +getBalance() : Float
+    +reset() 
 }
 
 DataImpl --> Datainterface: implements
