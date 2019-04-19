@@ -29,23 +29,19 @@ UML diagrams **MUST** be written using plantuml notation.
 
 \<mention architectural patterns used, if any>
 
-From the fist line of code of .java files, it is easy recognise the structure of UML Diagram.
+From the first line of code of the .java files, it is easy to recognise the structure of the UML Diagram.
 
 ```plantuml
 @startuml
 
 package latazza.gui
-package java.util
 package latazza.data
 package latazza.exception
 package latazza
-package exceptions
 
 latazza --> latazza.gui: import
 latazza --> latazza.data: import
 latazza.data --> latazza.exception: import
-latazza.exception --> exceptions: import
-latazza.data --> java.util: import
 
 @enduml
 ```
@@ -57,58 +53,15 @@ latazza.data --> java.util: import
 
 \<mention design patterns used, if any>
 
-
 ## latazza Class diagram
 
 ```plantuml
 @startuml
 allowmixing
 
-package latazza.data
-package latazza.gui
-
 class LaTazza {
     +main();
 }
-
-LaTazza --> latazza.data: import
-LaTazza --> latazza.gui: import
-
-@enduml
-```
-
-## latazza.exception Class diagram
-
-```plantuml
-@startuml
-allowmixing
-class BeverageExceptrion {
-    +serialVersionUID;
-}
-
-class DataExceptrion {
-    +serialVersionUID;
-}
-
-class EmployeeExceptrion {
-    +serialVersionUID;
-}
-
-class NotEnoughBalance {
-    +serialVersionUID;
-}
-
-class NotEnoughCapsules {
-    +serialVersionUID;
-}
-
-package exceptions
-
-BeverageExceptrion --> exceptions: import
-DataExceptrion --> exceptions: import
-EmployeeExceptrion  --> exceptions: import
-NotEnoughBalance --> exceptions: import
-NotEnoughCapsules --> exceptions: import
 
 @enduml
 ```
@@ -118,7 +71,6 @@ NotEnoughCapsules --> exceptions: import
 ```plantuml
 @startuml
 allowmixing
-package latazza.exception
 
 interface Datainterface {
     +sellCapsules();
@@ -126,7 +78,6 @@ interface Datainterface {
     +rechargeAccount();
     +buyBoxes();
     +getEmployeeReport();
-    +getReport();
     +getReport();
     +createBeverage();
     +updateBeverage();
@@ -154,7 +105,6 @@ class DataImpl {
     +buyBoxes();
     +getEmployeeReport();
     +getReport();
-    +getReport();
     +createBeverage();
     +updateBeverage();
     +getBeverageName();
@@ -174,10 +124,79 @@ class DataImpl {
     +reset();
 }
 
-DataImpl --> Datainterface: inplements
-DataImpl --> latazza.exception: import
-Datainterface --> latazza.exception
+DataImpl --> Datainterface: implements
 
+class PersonalAccount {
++ balance_personal
+}
+
+PersonalAccount "*" --> DataImpl
+
+class LaTazzaAccount {
++ balance_total
+}
+
+class Beverage {
++ beverage ID
++ beverage name
++ price
++ quantity_per_box
+}
+
+class BoxPurchase {
++ quantity
+}
+
+class Transaction {
++ date
++ amount
+}
+
+DataImpl <-- "*" Employee
+DataImpl <-- "*" Beverage
+DataImpl <-- LaTazzaAccount
+
+LaTazzaAccount -- "*" BoxPurchase
+LaTazzaAccount -- "*" Consumption
+
+Beverage -- "*" Consumption
+Beverage -- "*" BoxPurchase
+
+Employee -- PersonalAccount
+PersonalAccount -- "*" Transaction
+
+Transaction <|-- Recharge
+Transaction <|-- Consumption
+Transaction <|-- BoxPurchase
+
+Transaction "*" --> DataImpl
+
+class Recharge
+class Consumption
+
+
+@enduml
+```
+
+## latazza.exception Class diagram
+
+```plantuml
+@startuml
+allowmixing
+class BeverageExceptrion {
+}
+
+class DataExceptrion {
+}
+
+class EmployeeExceptrion {
+}
+
+class NotEnoughBalance {
+}
+
+class NotEnoughCapsules {
+}
 
 @enduml
 ```
@@ -189,7 +208,43 @@ Datainterface --> latazza.exception
 @startuml
 allowmixing
 
+class BeveragesFrame {
+
+}
+
+class Buy {
+
+}
+
+class EmployeesFrame {
+
+}
+
+class Euro {
+
+}
+
 class MainSwing {
+
+}
+
+class MappedArray {
+
+}
+
+class Payment {
+
+}
+
+class PrintLogsFrame {
+
+}
+
+class Refill {
+
+}
+
+class ReportFrame {
 
 }
 
@@ -199,25 +254,47 @@ class MainSwing {
 
 # Verification traceability matrix
 
-\<for each functional requirement from the requirement document, list which classes concur to implement it>
 
-
-|  | DataImpl | BeverageException | DateException | EmployeeException | NotEnoughBalance | NotEnoughCapsules |
-| ------------- |:-------------:| -----:| -----:| -----:| -----:| -----:|
-| Functional requirement 1  | X | X | X | X | X | X | 
-| Functional requirement 2  | X | X | X |   |   | X | 
-| Functional requirement 3  | X |   | X | X |   |   |   
-| Functional requirement 4  | X | X |   |   | X |   |   
-| Functional requirement 5  | X |   | X | X |   |   |   
-| Functional requirement 6  | X |   | X |   |   |   |   
-| Functional requirement 7  | X |   |   |   |   |   |   
-| Functional requirement 8  | X |   | X |   |   |   |   
+|  | DataImpl | PersonalAccount | LaTazzaAccount| Beverage | BoxPurchase | Transaction | Recharge | Consumption |
+| ------------- |:-------------:| -----:| -----:| -----:   | -----:      | -----:      | -----:   | -----:      |
+| FR1  | X    |      X          |               |    X     |             |          X  |          |   X         |
+| FR2  | X    |                 |               |    X     |             |    X        |          |   X         |  
+| FR3  | X    |                 |               |          |             |   X         |      X   |             |   
+| FR4  | X    |                 |   X           |   X      |      X      |  X          |          |             |    
+| FR5  | X    |          X      |               |          |             |   X         |        X |      X      |   
+| FR6  | X    |                 |               |          |             |       X     |    X     |   X         |  
+| FR7  | X    |                 |               |    X     |             |             |          |             |  
+| FR8  | X    |         X       |               |          |             |             |          |             |  
 
 
 # Verification sequence diagrams 
-\<select key scenarios from the requirement document. For each of them define a sequence diagram showing that the scenario can be implemented by the classes and methods in the design>
+
+Scenario 1
 
 ```plantuml
-": Class 1" -> ": Class x": "1: message1()"
-": Class 2" -> ": Class y": "2: message2()"
+": Class MainSwing" -> ": Class DataImpl": "sellCapsules(employeeId,beverageId,numberOfCapsules,fromAccount)"
+": Class DataImpl" -> ": Class Beverage": "getCapsuleType()"
+": Class Beverage" --> ": Class DataImpl": "CapsuleType"
+": Class DataImpl" -> ": Class CapsuleType": "updateAmount(numberofCapsules)"
+": Class DataImpl" -> ": Class Employee": "getPersonalAccount()"
+": Class Employee" --> ": Class DataImpl": "PersonalAccount"
+": Class DataImpl" -> ": Class Beverage": "getPrice()"
+": Class Beverage" --> ": Class DataImpl": "Price"
+": Class DataImpl" -> ": Class PersonalAccount": "updateAmount(Price)"
+": Class DataImpl" -> ": Class Transaction": "Transaction(Date,Price)"
+```
+
+Scenario 2
+
+```plantuml
+": Class MainSwing" -> ": Class DataImpl": "sellCapsules(employeeId,beverageId,numberOfCapsules,fromAccount)"
+": Class DataImpl" -> ": Class Beverage": "getCapsuleType()"
+": Class Beverage" --> ": Class DataImpl": "CapsuleType"
+": Class DataImpl" -> ": Class CapsuleType": "updateAmount(numberofCapsules)"
+": Class DataImpl" -> ": Class Employee": "getPersonalAccount()"
+": Class Employee" --> ": Class DataImpl": "PersonalAccount"
+": Class DataImpl" -> ": Class Beverage": "getPrice()"
+": Class Beverage" --> ": Class DataImpl": "Price"
+": Class DataImpl" -> ": Class PersonalAccount": "updateAmount(Price)"
+": Class PersonalAccount" -> ": Class NotEnoughBalance": "NotEnoughBalance(Exception)"
 ```
