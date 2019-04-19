@@ -141,6 +141,7 @@ class Beverage {
 + beverage name
 + price
 + quantity_per_box
++ available_quantity
 }
 
 class BoxPurchase {
