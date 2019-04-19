@@ -10,9 +10,9 @@ Change history
 
 | Version | Changes | 
 | ----------------- |:-----------|
-| 2 | Fixed defect in scenario 2: precondition was wrong  |
-| | Fixed defect in scenario format: added post conditions |
-| | Fixed defect in use case 2: variants text canceled |
+| 2 | Fixed defect in [scenario 2](#scenario-2): precondition was wrong  |
+| | Fixed defect in scenario [format](#relevant-scenarios): added post conditions |
+| | Fixed defect in [use case 2](#use-cases): variants text canceled |
 
 # Contents
 - [Abstract](#abstract)
