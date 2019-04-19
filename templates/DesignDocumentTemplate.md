@@ -256,15 +256,15 @@ class ReportFrame {
 
 
 |  | DataImpl | PersonalAccount | LaTazzaAccount| Beverage | BoxPurchase | Transaction | Recharge | Consumption |
-| ------------- |:-------------:| -----:| -----:| -----:   | -----:      | -----:      | -----:    | -----:   |
-| FR1  | X    |      X          |      X        |    X     |             |          X  |          |   X         |
-| FR2  | X    |                 |               |          |             |             |          |             |  
-| FR3  | X    |                 |               |          |             |             |          |             |   
-| FR4  | X    |                 |               |          |             |             |          |             |    
-| FR5  | X    |                 |               |          |             |             |          |             |   
-| FR6  | X    |                 |               |          |             |             |          |             |  
-| FR7  | X    |                 |               |          |             |             |          |             |  
-| FR8  | X    |                 |               |          |             |             |          |             |  
+| ------------- |:-------------:| -----:| -----:| -----:   | -----:      | -----:      | -----:   | -----:      |
+| FR1  | X    |      X          |               |    X     |             |          X  |          |   X         |
+| FR2  | X    |                 |               |    X     |             |    X        |          |   X         |  
+| FR3  | X    |                 |               |          |             |   X         |      X   |             |   
+| FR4  | X    |                 |   X           |   X      |      X      |  X          |          |             |    
+| FR5  | X    |          X      |               |          |             |   X         |        X |      X      |   
+| FR6  | X    |                 |               |          |             |       X     |    X     |   X         |  
+| FR7  | X    |                 |               |    X     |             |             |          |             |  
+| FR8  | X    |         X       |               |          |             |             |          |             |  
 
 
 # Verification sequence diagrams 
