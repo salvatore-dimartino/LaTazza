@@ -33,7 +33,7 @@ We decided to use a 3-Layers Architecture, with presentation(gui), application l
 The Database stores transactions only, its only purpose is to produce reports. <br>
 As parallelization is not needed, 1 thread only is sufficient.
 
-From the first line of code of the .java files, it is easy to recognise the structure of the UML Diagram.
+By importing the LaTazza project into Eclipse and inspecting the packages, and by looking at the first lines of code of the .java files as well, we recognized the following structure:
 
 ```plantuml
 @startuml
