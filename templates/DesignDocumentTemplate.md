@@ -1,6 +1,6 @@
 # Design Document Template
 
-Authors: Francesco Dibitonto s265421 Federico Silvio Gorrino sXXXXXX Salvatore Di Martino sXXXXXX
+Authors: Francesco Dibitonto s265421 Federico Silvio Gorrino sXXXXXX Salvatore Di Martino s267553
 
 Date:
 
@@ -54,29 +54,6 @@ Finally, concerning parallelization, concurrency is not needed so 1 thread only 
 \<mention design patterns used, if any>
 
 We'll use the DataImpl class as a 'facade': it will serve as a single wrapper class and entry point.
-
-## latazza Class diagram
-```plantuml
-@startuml
-
-package latazza.gui
-package latazza.data
-package latazza.exception
-package latazza
-
-latazza --> latazza.gui: import
-latazza --> latazza.data: import
-latazza.data --> latazza.exception: import
-
-@enduml
-```
-
-
-# Class diagram
-
-\<for each package define class diagram with classes defined in the package>
-
-\<mention design patterns used, if any>
 
 ## latazza Class diagram
 
