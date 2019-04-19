@@ -29,8 +29,8 @@ UML diagrams **MUST** be written using plantuml notation.
 
 \<mention architectural patterns used, if any>
 
-We decided to use a 3-Layers Architecture, with presentation(gui), application logic layers(functions) and Data (DBMS) for getting the reports. <br>
-The Database stores transactions only, its only purpose is to produce reports. <br>
+We decided to use a 3-Layers Architecture: presentation(gui), application logic (functions) and Data (DBMS) for getting the reports. <br>
+The Database stores transactions only and its only purpose is to produce reports. <br>
 As parallelization is not needed, 1 thread only is sufficient.
 
 By importing the LaTazza project into Eclipse and inspecting the packages, and by looking at the first lines of code of the .java files as well, we recognized the following structure:
