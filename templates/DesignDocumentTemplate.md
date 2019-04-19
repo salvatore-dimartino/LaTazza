@@ -263,16 +263,16 @@ class ReportFrame {
 # Verification traceability matrix
 
 
-|  | DataImpl | PersonalAccount | LaTazzaAccount| Beverage | CapsuleType | BoxPurchase | Transaction | Recharge | Consumption |
-| ------------- |:-------------:| -----:| -----:| -----:   | -----:      | -----:      | -----:      | -----:   |-----:       |
-| FR1  | X    |                 |               |          |             |             |             |          |             |
-| FR2  | X    |                 |               |          |             |             |             |          |             |  
-| FR3  | X    |                 |               |          |             |             |             |          |             |   
-| FR4  | X    |                 |               |          |             |             |             |          |             |    
-| FR5  | X    |                 |               |          |             |             |             |          |             |   
-| FR6  | X    |                 |               |          |             |             |             |          |             |  
-| FR7  | X    |                 |               |          |             |             |             |          |             |  
-| FR8  | X    |                 |               |          |             |             |             |          |             |  
+|  | DataImpl | PersonalAccount | LaTazzaAccount| Beverage | BoxPurchase | Transaction | Recharge | Consumption |
+| ------------- |:-------------:| -----:| -----:| -----:   | -----:      | -----:      | -----:    | -----:   |
+| FR1  | X    |      X          |      X        |    X     |             |          X  |          |   X         |
+| FR2  | X    |                 |               |          |             |             |          |             |  
+| FR3  | X    |                 |               |          |             |             |          |             |   
+| FR4  | X    |                 |               |          |             |             |          |             |    
+| FR5  | X    |                 |               |          |             |             |          |             |   
+| FR6  | X    |                 |               |          |             |             |          |             |  
+| FR7  | X    |                 |               |          |             |             |          |             |  
+| FR8  | X    |                 |               |          |             |             |          |             |  
 
 
 # Verification sequence diagrams 
