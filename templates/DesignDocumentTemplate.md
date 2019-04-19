@@ -40,10 +40,10 @@ latazza.data --> latazza.exception: import
 @enduml
 ```
 
-We decided to use a 3-Layers Architecture: presentation(gui), application logic (functions) and Data (DBMS) for getting the reports. <br>
+We decided to use a 3-Layers Architecture as we have 3 well-defined different layers: presentation(gui), application logic(functions) and Data(DBMS) for getting the reports. <br>
 The Database stores transactions only and its only purpose is to produce reports. <br>
 For the sake of interactivity as well, we decided to use the MVC model too, so our final Architectural pattern choice is MVC + Layers. <br>
-Finally, concerning parallelization, 1 thread only is sufficient.
+Finally, concerning parallelization, concurrency is not needed so 1 thread only is sufficient.
 
 
 # Class diagram
