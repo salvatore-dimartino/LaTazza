@@ -137,17 +137,10 @@ class LaTazzaAccount {
 }
 
 class Beverage {
-+ name
++ beverage ID
++ beverage name
 + price
-+ description
-}
-
-CapsuleType -- Beverage
-
-class CapsuleType {
-+ name
-+ price
-+ quantity
++ quantity_per_box
 }
 
 class BoxPurchase {
@@ -160,15 +153,14 @@ class Transaction {
 }
 
 DataImpl <-- "*" Employee
-DataImpl <-- "*" CapsuleType
 DataImpl <-- "*" Beverage
 DataImpl <-- LaTazzaAccount
 
 LaTazzaAccount -- "*" BoxPurchase
 LaTazzaAccount -- "*" Consumption
 
-CapsuleType -- "*" Consumption
-CapsuleType -- "*" BoxPurchase
+Beverage -- "*" Consumption
+Beverage -- "*" BoxPurchase
 
 Employee -- PersonalAccount
 PersonalAccount -- "*" Transaction
