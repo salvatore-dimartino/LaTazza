@@ -23,17 +23,6 @@ UML diagrams **MUST** be written using plantuml notation.
 
 # Package diagram
 
-\<define UML package diagram >
-
-\<explain rationales for choices> 
-
-\<mention architectural patterns used, if any>
-
-We decided to use a 3-Layers Architecture: presentation(gui), application logic (functions) and Data (DBMS) for getting the reports. <br>
-The Database stores transactions only and its only purpose is to produce reports. <br>
-For the sake of interactivity as well, we decided to use the MVC model too, so our final Architectural pattern choice is MVC + Layers. <br>
-Finally, concerning parallelization, 1 thread only is sufficient.
-
 By importing the LaTazza project into Eclipse and inspecting the packages, and by looking at the first lines of code of the .java files as well, we recognized the following structure:
 
 ```plantuml
@@ -50,6 +39,11 @@ latazza.data --> latazza.exception: import
 
 @enduml
 ```
+
+We decided to use a 3-Layers Architecture: presentation(gui), application logic (functions) and Data (DBMS) for getting the reports. <br>
+The Database stores transactions only and its only purpose is to produce reports. <br>
+For the sake of interactivity as well, we decided to use the MVC model too, so our final Architectural pattern choice is MVC + Layers. <br>
+Finally, concerning parallelization, 1 thread only is sufficient.
 
 
 # Class diagram
