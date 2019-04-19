@@ -135,6 +135,7 @@ DataImpl --> Datainterface: implements
 
 class PersonalAccount {
     +balance_personal : Float
+    +List<Transaction>
 }
 
 PersonalAccount "*" --> DataImpl
@@ -148,8 +149,7 @@ class Employee {
     +surname : String
     +employeeID : Integer
     +getEmployeebyID(String) : Employee
-    List<Transaction>
-
+   
 }
 
 class Beverage {
