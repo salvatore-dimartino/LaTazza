@@ -29,7 +29,8 @@ UML diagrams **MUST** be written using plantuml notation.
 
 \<mention architectural patterns used, if any>
 
-We decided to use a 2-Layers Architecture, with presentation(gui) and application logic layers.
+We decided to use a 3-Layers Architecture, with presentation(gui), application logic layers(functions) and Data (DBMS) for getting the reports.
+As parallelization is not needed, 1 thread only is sufficient.
 
 From the first line of code of the .java files, it is easy to recognise the structure of the UML Diagram.
 
