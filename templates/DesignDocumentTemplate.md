@@ -29,7 +29,11 @@ UML diagrams **MUST** be written using plantuml notation.
 
 \<mention architectural patterns used, if any>
 
-From the first line of code of the .java files, it is easy to recognise the structure of the UML Diagram.
+We decided to use a 3-Layers Architecture: presentation(gui), application logic (functions) and Data (DBMS) for getting the reports. <br>
+The Database stores transactions only and its only purpose is to produce reports. <br>
+As parallelization is not needed, 1 thread only is sufficient.
+
+By importing the LaTazza project into Eclipse and inspecting the packages, and by looking at the first lines of code of the .java files as well, we recognized the following structure:
 
 ```plantuml
 @startuml
@@ -136,11 +140,18 @@ class LaTazzaAccount {
 + balance_total
 }
 
+class Employee {
++ name
++ surname
++ employee ID
+}
+
 class Beverage {
 + beverage ID
 + beverage name
 + price
 + quantity_per_box
++ available_quantity
 }
 
 class BoxPurchase {
@@ -275,7 +286,7 @@ Scenario 1
 ": Class MainSwing" -> ": Class DataImpl": "sellCapsules(employeeId,beverageId,numberOfCapsules,fromAccount)"
 ": Class DataImpl" -> ": Class Beverage": "getCapsuleType()"
 ": Class Beverage" --> ": Class DataImpl": "CapsuleType"
-": Class DataImpl" -> ": Class CapsuleType": "updateAmount(numberofCapsules)"
+": Class DataImpl" -> ": Class Beverage": "updateAmount(numberofCapsules)"
 ": Class DataImpl" -> ": Class Employee": "getPersonalAccount()"
 ": Class Employee" --> ": Class DataImpl": "PersonalAccount"
 ": Class DataImpl" -> ": Class Beverage": "getPrice()"
@@ -290,7 +301,7 @@ Scenario 2
 ": Class MainSwing" -> ": Class DataImpl": "sellCapsules(employeeId,beverageId,numberOfCapsules,fromAccount)"
 ": Class DataImpl" -> ": Class Beverage": "getCapsuleType()"
 ": Class Beverage" --> ": Class DataImpl": "CapsuleType"
-": Class DataImpl" -> ": Class CapsuleType": "updateAmount(numberofCapsules)"
+": Class DataImpl" -> ": Class Beverage": "updateAmount(numberofCapsules)"
 ": Class DataImpl" -> ": Class Employee": "getPersonalAccount()"
 ": Class Employee" --> ": Class DataImpl": "PersonalAccount"
 ": Class DataImpl" -> ": Class Beverage": "getPrice()"
