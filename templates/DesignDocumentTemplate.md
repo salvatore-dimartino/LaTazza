@@ -163,7 +163,6 @@ class Transaction {
 + amount
 }
 
-Employee "*" <|--  Manager
 DataImpl <-- "*" Employee
 DataImpl <-- "*" Beverage
 DataImpl <-- LaTazzaAccount
