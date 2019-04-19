@@ -140,6 +140,12 @@ class LaTazzaAccount {
 + balance_total
 }
 
+class Employee {
++ name
++ surname
++ employee ID
+}
+
 class Beverage {
 + beverage ID
 + beverage name
@@ -157,6 +163,7 @@ class Transaction {
 + amount
 }
 
+Employee "*" <|--  Manager
 DataImpl <-- "*" Employee
 DataImpl <-- "*" Beverage
 DataImpl <-- LaTazzaAccount
