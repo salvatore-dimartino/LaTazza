@@ -105,30 +105,29 @@ class DataImpl {
     +List<Employee>
     +List<Beverege>
     +List<Transaction>
-    +balance : Balance
     
     sellCapsules()
     +sellCapsulesToVisitor()
     +rechargeAccount()
     +buyBoxes()
     +getEmployeeReport()
-    +getReport()
-    +createBeverage() : Beverege
+    +getReport(Transaction)
+    +createBeverage()
     +updateBeverage() 
-    +getBeverageName() 
-    +getBeverageCapsulesPerBox() : Integer
-    +getBeverageBoxPrice() : Integer
-    +getBeveragesId() : String
-    +getBeverages() : List<Beverege>
-    +getBeverageCapsules() : Integer
+    +getBeverageName(String) : String 
+    +getBeverageCapsulesPerBox(String) : Integer
+    +getBeverageBoxPrice(String) : Integer
+    +getBeveragesId(String) : List<String>
+    +getBeverages(String) : List<Beverege>
+    +getBeverageCapsules(String) : Integer
     +createEmployee() 
     +updateEmployee()
-    +getEmployeeName() : String
-    +getEmployeeSurname() : String
-    +getEmployeeBalance() : Float
-    +getEmployeesId() : String
-    +getEmployees() : List<Employee>
-    +getBalance() : Float
+    +getEmployeeName(String) : String
+    +getEmployeeSurname(String) : String
+    +getEmployeeBalance(String) : Float
+    +getEmployeesId(String) : List<String>
+    +getEmployees(String) : List<Employee>
+    +getBalance(String) : Float
     +reset() 
 }
 
@@ -149,6 +148,7 @@ class Employee {
     +surname : String
     +employeeID : Integer
     +getEmployeebyID(String) : Employee
+    List<Transaction>
 
 }
 
