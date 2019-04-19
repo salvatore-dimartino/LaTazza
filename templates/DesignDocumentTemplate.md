@@ -280,17 +280,29 @@ class ReportFrame {
 Scenario 1
 
 ```plantuml
-": Class MainSwing" -> ": Class DataImpl": "1: inputTypeOfCapsules()"
-": Class MainSwing" -> ": Class DataImpl": "2: inputCollegue()"
-": Class DataImpl" -> ": Class MainSwing": "3: response()"
+": Class MainSwing" -> ": Class DataImpl": "sellCapsules(employeeId,beverageId,numberOfCapsules,fromAccount)"
+": Class DataImpl" -> ": Class Beverage": "getCapsuleType()"
+": Class Beverage" --> ": Class DataImpl": "CapsuleType"
+": Class DataImpl" -> ": Class CapsuleType": "updateAmount(numberofCapsules)"
+": Class DataImpl" -> ": Class Employee": "getPersonalAccount()"
+": Class Employee" --> ": Class DataImpl": "PersonalAccount"
+": Class DataImpl" -> ": Class Beverage": "getPrice()"
+": Class Beverage" --> ": Class DataImpl": "Price"
+": Class DataImpl" -> ": Class PersonalAccount": "updateAmount(Price)"
+": Class DataImpl" -> ": Class Transaction": "Transaction(Date,Price)"
 ```
 
 Scenario 2
 
 ```plantuml
-": Class MainSwing" -> ": Class DataImpl": "1: inputTypeOfCapsules()"
-": Class MainSwing" -> ": Class DataImpl": "2: inputCollegue()"
-": Class DataImpl" -> ": Class NotEnoughBalance": "3: exception()"
-": Class NotEnoughBalance" -> ": Class DataImpl": "4: response()"
-": Class DataImpl" -> ": Class MainSwing": "5: response()"
+": Class MainSwing" -> ": Class DataImpl": "sellCapsules(employeeId,beverageId,numberOfCapsules,fromAccount)"
+": Class DataImpl" -> ": Class Beverage": "getCapsuleType()"
+": Class Beverage" --> ": Class DataImpl": "CapsuleType"
+": Class DataImpl" -> ": Class CapsuleType": "updateAmount(numberofCapsules)"
+": Class DataImpl" -> ": Class Employee": "getPersonalAccount()"
+": Class Employee" --> ": Class DataImpl": "PersonalAccount"
+": Class DataImpl" -> ": Class Beverage": "getPrice()"
+": Class Beverage" --> ": Class DataImpl": "Price"
+": Class DataImpl" -> ": Class PersonalAccount": "updateAmount(Price)"
+": Class PersonalAccount" -> ": Class NotEnoughBalance": "NotEnoughBalance(Exception)"
 ```
