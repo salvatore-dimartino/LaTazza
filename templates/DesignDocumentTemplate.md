@@ -135,36 +135,42 @@ class DataImpl {
 DataImpl --> Datainterface: implements
 
 class PersonalAccount {
-    +balance_personal : Float
-    +AccountMap : HashMap<String,Transaction>
+    -balance : Float
+    -TransactionMap : HashMap<String,Transaction>
     
-    +getTansactions() : HashMap<Integer,Transaction>
+    +getBalance() : Integer
+    +setBalance(Integer) : void
+    +getTansactions() : List<Transaction>
+    +addTransaction(Transaction) : void
+    +deleteTransaction(Transaction) : void
 }
 
 class LaTazzaAccount {
-    +balanceTotal : Float
+    -Total : Float
     
+    +setTotal(Float) : void
     +getTotal() : Float
 }
 
 class Employee {
-    +name : String
-    +surname : String
-    +employeeID : String
-    +account : PersonalAccount
+    -name : String
+    -surname : String
+    -ID : String
+    -account : PersonalAccount
     
     +getName() : String
     +getSurname() : String
     +update(String,String) : void
     +getPersonalAccount() : PersonalAccount
+    +setPersonalAccount(PersonalAccount) : void
 }
 
 class Beverage {
-    +beverageID : String
-    +beverageName : String
-    +price : Float
-    +quantityPerBox : Integer
-    +availableQuantity : Integer
+    -ID : String
+    -Name : String
+    -price : Float
+    -quantityPerBox : Integer
+    -availableQuantity : Integer
     
     +getQuantityperBox() : Integer
     +getAvailableQuantity() : Integer
@@ -172,21 +178,30 @@ class Beverage {
     +getName() : String
     +setName(String) : void
     +setPrice(Float) : void
+    +setQuantityperBox(Integer) : void
+    +incrementQuantityperBox(Integer) : void
+    +decrementQuantityperBox(Integer) : void
+    +setAvailableQuantity(Integer) : void
+    +incrementAvailableQuantity(Integer) : void
+    +decrementAvailableQuantity(Integer) : void
 }
 
 class BoxPurchase {
-    +quantity : Integer
+    -quantity : Integer
     
     +getQuantity() : Integer
+    +setQuantity(Integer) : void
 }
 
 class Transaction {
-    +transactionID : String
-    +date : Date
-    +amount : Float
+    -ID : String
+    -date : Date
+    -amount : Float
 
     +getDate() : Date
+    +setDate(Date) : void
     +getAmount() : Float
+    +setAmount(Float) : void
 }
 
 DataImpl <-- "*" Employee
@@ -209,10 +224,14 @@ Transaction <|-- BoxPurchase
 Transaction "*" --> DataImpl
 
 class Recharge {
-    +charge(Employee) : void
+    -amount : Integer
+
+    +charge(Employee,Integer) : void
 }
 class Consumption {
-    +updateQty(Beverage) : void
+    -quantity : Integer
+    
+    +updateQty(Beverage,Integer) : void
 }
 
 
