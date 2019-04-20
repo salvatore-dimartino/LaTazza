@@ -237,52 +237,92 @@ class NotEnoughCapsules {
 ```
 
 
+
 ## latazza.gui Class diagram
 
 ```plantuml
 @startuml
-allowmixing
-
-class BeveragesFrame {
-    +main(String[])
-}
-
-class Buy {
-    +main(String[])
-}
-
-class EmployeesFrame {
-    +main(String[])
-}
-
-class Euro {
-    +main(String[])
-}
 
 class MainSwing {
     +main(String[])
+    +getPaymantFrame()
+    +getSupplyOfCapsulesFrame()
+    +getSellCapsulesFrame()
+    +getSummaryFrame()
 }
 
-class MappedArray {
-    +main(String[])
+class PaymentFrame {
+    +getMainSwing()
 }
 
-class Payment {
-    +main(String[])
+class CommandMenuBar {
+    +getMainSwing()
 }
 
-class PrintLogsFrame {
-    +main(String[])
+class SummaryFrame {
+    +getMainSwing()
 }
 
-class Refill {
-    +main(String[])
+class MenuMenu {
+    +getCommandMenuBar()
+    +showConsuptionReport()
 }
 
-class ReportFrame {
-    +main(String[])
+class EditMenu {
+    +getCommandMenuBar()
+    +showManageEmployees()
+    +showManageBeverages()
 }
 
+class SupplyOfCapsulesFrame {
+    +getMainSwing()
+}
+
+class SellCapsulesFrame {
+    +getMainSwing()
+}
+
+class EditEmployees {
+    +getEditMenu()
+}
+
+class EditBeverages {
+    +getEditMenu()
+}
+
+class LaTazzaReportFrame {
+    +getMenuMenu()
+}
+
+class ConsuptionReportFrame {
+    +getLaTazzaReportFrame()
+}
+
+class EmployeeReportFrame {
+    +getLaTazzaReportFrame()
+}
+
+class ConsuptionReport {
+    -textArea
+}
+class EmployeeReport {
+    -textArea
+}
+
+MainSwing o-- CommandMenuBar
+MainSwing o-- PaymentFrame
+MainSwing o-- SupplyOfCapsulesFrame
+MainSwing o-- SellCapsulesFrame
+MainSwing o-- SummaryFrame
+EditMenu o-- EditEmployees
+EditMenu o-- EditBeverages
+CommandMenuBar  o-- MenuMenu
+CommandMenuBar  o-- EditMenu
+MenuMenu o-- LaTazzaReportFrame
+LaTazzaReportFrame o-- ConsuptionReportFrame
+LaTazzaReportFrame o-- EmployeeReportFrame
+ConsuptionReportFrame o-- ConsuptionReport
+EmployeeReportFrame o-- EmployeeReport
 
 @enduml
 ```
