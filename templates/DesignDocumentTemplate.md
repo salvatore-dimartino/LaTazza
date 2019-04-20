@@ -162,9 +162,11 @@ class Beverage {
     +beverageID : String
     +beverageName : String
     +price : Float
+    +quantityPerBox : Integer
+    +availableQuantity : Integer
     
-    +quantityPerBox() : Integer
-    +availableQuantity() : Integer
+    +getQuantityperBox() : Integer
+    +getAvailableQuantity() : Integer
     +getPrice() : Float
 }
 
