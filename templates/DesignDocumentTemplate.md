@@ -168,6 +168,9 @@ class Beverage {
     +getQuantityperBox() : Integer
     +getAvailableQuantity() : Integer
     +getPrice() : Float
+    +getName() : String
+    +updateName(String) : void;
+    +updatePrice(Float) : Float;
 }
 
 class BoxPurchase {
