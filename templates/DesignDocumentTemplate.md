@@ -36,7 +36,7 @@ package latazza
 latazza --> latazza.gui: import
 latazza --> latazza.data: import
 latazza.data --> latazza.exception: import
-latazza.gui --> latazza.data
+latazza.gui --> latazza.data: import
 
 @enduml
 ```
