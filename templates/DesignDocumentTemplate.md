@@ -167,7 +167,7 @@ class Beverage {
 class BoxPurchase {
     +quantity : Integer
     
-    +getQuantity : Integer
+    +getQuantity() : Integer
 }
 
 class Transaction {
