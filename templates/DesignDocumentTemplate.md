@@ -299,29 +299,29 @@ class ReportFrame {
 Scenario 1
 
 ```plantuml
-": Class MainSwing" -> ": Class DataImpl": "sellCapsules(employeeId,beverageId,numberOfCapsules,fromAccount)"
-": Class DataImpl" -> ": Class Beverage": "getCapsuleType()"
-": Class Beverage" --> ": Class DataImpl": "CapsuleType"
-": Class DataImpl" -> ": Class Beverage": "updateAmount(numberofCapsules)"
-": Class DataImpl" -> ": Class Employee": "getPersonalAccount()"
-": Class Employee" --> ": Class DataImpl": "PersonalAccount"
-": Class DataImpl" -> ": Class Beverage": "getPrice()"
-": Class Beverage" --> ": Class DataImpl": "Price"
-": Class DataImpl" -> ": Class PersonalAccount": "updateAmount(Price)"
-": Class DataImpl" -> ": Class Transaction": "Transaction(Date,Price)"
+": Class MainSwing" -> ": Class DataImpl": 1: sellCapsules(employeeId,beverageId,numberOfCapsules,fromAccount)
+": Class DataImpl" -> ": Class Beverage": 2: getCapsuleType()
+": Class Beverage" -> ": Class DataImpl": 3: CapsuleType
+": Class DataImpl" -> ": Class Beverage": 4: updateAmount(numberofCapsules)
+": Class DataImpl" -> ": Class Employee": 5: getPersonalAccount()
+": Class Employee" -> ": Class DataImpl": 6: PersonalAccount
+": Class DataImpl" -> ": Class Beverage": 7: getPrice()
+": Class Beverage" -> ": Class DataImpl": 8: Price
+": Class DataImpl" -> ": Class PersonalAccount": 9: updateAmount(Price)
+": Class DataImpl" -> ": Class Transaction": 10: Transaction(Date,Price)
 ```
 
 Scenario 2
 
 ```plantuml
-": Class MainSwing" -> ": Class DataImpl": "sellCapsules(employeeId,beverageId,numberOfCapsules,fromAccount)"
-": Class DataImpl" -> ": Class Beverage": "getCapsuleType()"
-": Class Beverage" --> ": Class DataImpl": "CapsuleType"
-": Class DataImpl" -> ": Class Beverage": "updateAmount(numberofCapsules)"
-": Class DataImpl" -> ": Class Employee": "getPersonalAccount()"
-": Class Employee" --> ": Class DataImpl": "PersonalAccount"
-": Class DataImpl" -> ": Class Beverage": "getPrice()"
-": Class Beverage" --> ": Class DataImpl": "Price"
-": Class DataImpl" -> ": Class PersonalAccount": "updateAmount(Price)"
-": Class PersonalAccount" -> ": Class NotEnoughBalance": "NotEnoughBalance(Exception)"
+": Class MainSwing" -> ": Class DataImpl": 1: sellCapsules(employeeId,beverageId,numberOfCapsules,fromAccount)
+": Class DataImpl" -> ": Class Beverage": 2: getCapsuleType()
+": Class Beverage" -> ": Class DataImpl": 3: CapsuleType
+": Class DataImpl" -> ": Class Beverage": 4: updateAmount(numberofCapsules)
+": Class DataImpl" -> ": Class Employee": 5: getPersonalAccount()
+": Class Employee" -> ": Class DataImpl": 6: PersonalAccount
+": Class DataImpl" -> ": Class Beverage": 7: getPrice()
+": Class Beverage" -> ": Class DataImpl": 8: Price
+": Class DataImpl" -> ": Class PersonalAccount": 9: updateAmount(Price)
+": Class PersonalAccount" -> ": Class NotEnoughBalance": 10: NotEnoughBalance(Exception)
 ```
