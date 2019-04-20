@@ -169,8 +169,8 @@ class Beverage {
     +getAvailableQuantity() : Integer
     +getPrice() : Float
     +getName() : String
-    +updateName(String) : void
-    +updatePrice(Float) : Float
+    +setName(String) : void
+    +setPrice(Float) : void
 }
 
 class BoxPurchase {
