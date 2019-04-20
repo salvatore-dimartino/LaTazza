@@ -148,30 +148,34 @@ class Employee {
     +name : String
     +surname : String
     +employeeID : Integer
-    +getNamebyID(String) : String
-    +getSurnamebyID(String) : String
+    
+    +getName() : String
+    +getSurname() : String
+    +update(String,String) : void
 }
 
 class Beverage {
     +beverageID : String
     +beverageName : String
     +price : Float
-    +quantityPerBox : Integer
-    +availableQuantity : Integer
-    +getBeneragebyID(String) : Balance
+    
+    +quantityPerBox() : Integer
+    +availableQuantity() : Integer
+    +getPrice() : Float
 }
 
 class BoxPurchase {
-    
     +quantity : Integer
+    
+    +getQuantity : Integer
 }
 
 class Transaction {
     +date : Date
     +amount : Float
 
-
-    +getTransactionbyDate(Date) : List<Transaction>
+    +getDate() : Date
+    +getAmount() : Float
 }
 
 DataImpl <-- "*" Employee
