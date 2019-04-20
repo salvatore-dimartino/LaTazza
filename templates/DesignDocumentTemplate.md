@@ -103,7 +103,7 @@ interface Datainterface {
 class DataImpl {
 
     +EmployeeMap : HashMap<String,Employee>
-    +BeveregeMap : <String,Beverege>
+    +BeveregeMap : HashMap<String,Beverege>
     +TransactionMap : HashMap<String,Transaction>
     
     sellCapsules()
