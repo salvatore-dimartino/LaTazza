@@ -102,9 +102,9 @@ interface Datainterface {
 
 class DataImpl {
 
-    +EmployeeMap : HashMap<Integer,Employee>
-    +BeveregeMap : <Integer,Beverege>
-    +TransactionMap : HashMap<Integer,Transaction>
+    +EmployeeMap : HashMap<String,Employee>
+    +BeveregeMap : <String,Beverege>
+    +TransactionMap : HashMap<String,Transaction>
     
     sellCapsules()
     +sellCapsulesToVisitor()
@@ -135,12 +135,10 @@ DataImpl --> Datainterface: implements
 
 class PersonalAccount {
     +balance_personal : Float
-    +AccountMap : HashMap<Integer,Transaction>
+    +AccountMap : HashMap<String,Transaction>
     
     +getTansactions() : HashMap<Integer,Transaction>
 }
-
-PersonalAccount "*" --> DataImpl
 
 class LaTazzaAccount {
     +balanceTotal : Float
@@ -151,7 +149,7 @@ class LaTazzaAccount {
 class Employee {
     +name : String
     +surname : String
-    +employeeID : Integer
+    +employeeID : String
     +account : PersonalAccount
     
     +getName() : String
@@ -161,13 +159,18 @@ class Employee {
 }
 
 class Beverage {
-    +beverageID : Integer
+    +beverageID : String
     +beverageName : String
     +price : Float
+    +quantityPerBox : Integer
+    +availableQuantity : Integer
     
-    +quantityPerBox() : Integer
-    +availableQuantity() : Integer
+    +getQuantityperBox() : Integer
+    +getAvailableQuantity() : Integer
     +getPrice() : Float
+    +getName() : String
+    +updateName(String) : void;
+    +updatePrice(Float) : Float;
 }
 
 class BoxPurchase {
@@ -177,7 +180,7 @@ class BoxPurchase {
 }
 
 class Transaction {
-    +transactionID : Integer
+    +transactionID : String
     +date : Date
     +amount : Float
 
