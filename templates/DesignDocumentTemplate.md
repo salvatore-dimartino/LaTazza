@@ -106,7 +106,7 @@ class DataImpl {
     +BeveregeMap : HashMap<String,Beverege>
     +TransactionMap : HashMap<String,Transaction>
     
-    sellCapsules()
+    +sellCapsules()
     +sellCapsulesToVisitor()
     +rechargeAccount()
     +buyBoxes()
