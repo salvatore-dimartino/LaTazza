@@ -102,33 +102,32 @@ interface Datainterface {
 
 class DataImpl {
 
-    +List<Employee>
-    +List<Beverege>
-    +List<Transaction>
-    +balance : Balance
+    +EmployeeMap : HashMap<Integer,Employee>
+    +BeveregeMap : <Integer,Beverege>
+    +TransactionMap : HashMap<Integer,Transaction>
     
     sellCapsules()
     +sellCapsulesToVisitor()
     +rechargeAccount()
     +buyBoxes()
     +getEmployeeReport()
-    +getReport()
-    +createBeverage() : Beverege
+    +getReport(Transaction)
+    +createBeverage()
     +updateBeverage() 
-    +getBeverageName() 
-    +getBeverageCapsulesPerBox() : Integer
-    +getBeverageBoxPrice() : Integer
-    +getBeveragesId() : String
-    +getBeverages() : List<Beverege>
-    +getBeverageCapsules() : Integer
+    +getBeverageName(String) : String 
+    +getBeverageCapsulesPerBox(String) : Integer
+    +getBeverageBoxPrice(String) : Integer
+    +getBeveragesId(String) : List<String>
+    +getBeverages(String) : List<Beverege>
+    +getBeverageCapsules(String) : Integer
     +createEmployee() 
     +updateEmployee()
-    +getEmployeeName() : String
-    +getEmployeeSurname() : String
-    +getEmployeeBalance() : Float
-    +getEmployeesId() : String
-    +getEmployees() : List<Employee>
-    +getBalance() : Float
+    +getEmployeeName(String) : String
+    +getEmployeeSurname(String) : String
+    +getEmployeeBalance(String) : Float
+    +getEmployeesId(String) : List<String>
+    +getEmployees(String) : List<Employee>
+    +getBalance(String) : Float
     +reset() 
 }
 
@@ -136,42 +135,54 @@ DataImpl --> Datainterface: implements
 
 class PersonalAccount {
     +balance_personal : Float
+    +AccountMap : HashMap<Integer,Transaction>
+    
+    +getTansactions() : HashMap<Integer,Transaction>
 }
 
 PersonalAccount "*" --> DataImpl
 
 class LaTazzaAccount {
     +balanceTotal : Float
+    
+    +getTotal() : Float
 }
 
 class Employee {
     +name : String
     +surname : String
     +employeeID : Integer
-    +getEmployeebyID(String) : Employee
-
+    +account : PersonalAccount
+    
+    +getName() : String
+    +getSurname() : String
+    +update(String,String) : void
+    +getPersonalAccount() : PersonalAccount
 }
 
 class Beverage {
-    +beverageID : String
+    +beverageID : Integer
     +beverageName : String
     +price : Float
-    +quantityPerBox : Integer
-    +availableQuantity : Integer
-    +getBeneragebyID(String) : Balance
+    
+    +quantityPerBox() : Integer
+    +availableQuantity() : Integer
+    +getPrice() : Float
 }
 
 class BoxPurchase {
-    
     +quantity : Integer
+    
+    +getQuantity() : Integer
 }
 
 class Transaction {
+    +transactionID : Integer
     +date : Date
     +amount : Float
 
-
-    +getTransactionbyDate(Date) : List<Transaction>
+    +getDate() : Date
+    +getAmount() : Float
 }
 
 DataImpl <-- "*" Employee
@@ -299,29 +310,29 @@ class ReportFrame {
 Scenario 1
 
 ```plantuml
-": Class MainSwing" -> ": Class DataImpl": "sellCapsules(employeeId,beverageId,numberOfCapsules,fromAccount)"
-": Class DataImpl" -> ": Class Beverage": "getCapsuleType()"
-": Class Beverage" --> ": Class DataImpl": "CapsuleType"
-": Class DataImpl" -> ": Class Beverage": "updateAmount(numberofCapsules)"
-": Class DataImpl" -> ": Class Employee": "getPersonalAccount()"
-": Class Employee" --> ": Class DataImpl": "PersonalAccount"
-": Class DataImpl" -> ": Class Beverage": "getPrice()"
-": Class Beverage" --> ": Class DataImpl": "Price"
-": Class DataImpl" -> ": Class PersonalAccount": "updateAmount(Price)"
-": Class DataImpl" -> ": Class Transaction": "Transaction(Date,Price)"
+": Class MainSwing" -> ": Class DataImpl": 1: sellCapsules(employeeId,beverageId,numberOfCapsules,fromAccount)
+": Class DataImpl" -> ": Class Beverage": 2: getCapsuleType()
+": Class Beverage" -> ": Class DataImpl": 3: CapsuleType
+": Class DataImpl" -> ": Class Beverage": 4: updateAmount(numberofCapsules)
+": Class DataImpl" -> ": Class Employee": 5: getPersonalAccount()
+": Class Employee" -> ": Class DataImpl": 6: PersonalAccount
+": Class DataImpl" -> ": Class Beverage": 7: getPrice()
+": Class Beverage" -> ": Class DataImpl": 8: Price
+": Class DataImpl" -> ": Class PersonalAccount": 9: updateAmount(Price)
+": Class DataImpl" -> ": Class Transaction": 10: Transaction(Date,Price)
 ```
 
 Scenario 2
 
 ```plantuml
-": Class MainSwing" -> ": Class DataImpl": "sellCapsules(employeeId,beverageId,numberOfCapsules,fromAccount)"
-": Class DataImpl" -> ": Class Beverage": "getCapsuleType()"
-": Class Beverage" --> ": Class DataImpl": "CapsuleType"
-": Class DataImpl" -> ": Class Beverage": "updateAmount(numberofCapsules)"
-": Class DataImpl" -> ": Class Employee": "getPersonalAccount()"
-": Class Employee" --> ": Class DataImpl": "PersonalAccount"
-": Class DataImpl" -> ": Class Beverage": "getPrice()"
-": Class Beverage" --> ": Class DataImpl": "Price"
-": Class DataImpl" -> ": Class PersonalAccount": "updateAmount(Price)"
-": Class PersonalAccount" -> ": Class NotEnoughBalance": "NotEnoughBalance(Exception)"
+": Class MainSwing" -> ": Class DataImpl": 1: sellCapsules(employeeId,beverageId,numberOfCapsules,fromAccount)
+": Class DataImpl" -> ": Class Beverage": 2: getCapsuleType()
+": Class Beverage" -> ": Class DataImpl": 3: CapsuleType
+": Class DataImpl" -> ": Class Beverage": 4: updateAmount(numberofCapsules)
+": Class DataImpl" -> ": Class Employee": 5: getPersonalAccount()
+": Class Employee" -> ": Class DataImpl": 6: PersonalAccount
+": Class DataImpl" -> ": Class Beverage": 7: getPrice()
+": Class Beverage" -> ": Class DataImpl": 8: Price
+": Class DataImpl" -> ": Class PersonalAccount": 9: updateAmount(Price)
+": Class PersonalAccount" -> ": Class NotEnoughBalance": 10: NotEnoughBalance(Exception)
 ```
