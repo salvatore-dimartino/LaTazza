@@ -102,9 +102,9 @@ interface Datainterface {
 
 class DataImpl {
 
-    +List<Employee>
-    +List<Beverege>
-    +List<Transaction>
+    +HashMap<String,Employee>
+    +HashMap<String,Beverege>
+    +HashMap<String,Transaction>
     
     sellCapsules()
     +sellCapsulesToVisitor()
@@ -148,8 +148,8 @@ class Employee {
     +name : String
     +surname : String
     +employeeID : Integer
-    +getEmployeebyID(String) : Employee
-   
+    +getNamebyID(String) : String
+    +getSurnamebyID(String) : String
 }
 
 class Beverage {
