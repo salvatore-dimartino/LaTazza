@@ -140,8 +140,6 @@ class PersonalAccount {
     +getTansactions() : HashMap<Integer,Transaction>
 }
 
-PersonalAccount "*" --> DataImpl
-
 class LaTazzaAccount {
     +balanceTotal : Float
     
