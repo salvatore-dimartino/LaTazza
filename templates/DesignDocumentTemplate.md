@@ -257,6 +257,9 @@ class MainSwing {
 }
 
 class PaymentFrame {
+    +JLabel Employee
+    +JLabel Balance
+    +JButton Pay
     +getMainSwing()
 }
 
@@ -265,6 +268,7 @@ class CommandMenuBar {
 }
 
 class SummaryFrame {
+    +JLabel Cash_Account
     +getMainSwing()
 }
 
@@ -280,18 +284,38 @@ class EditMenu {
 }
 
 class SupplyOfCapsulesFrame {
+    +JLabel Number_of_Boxes
+    +JLabel Beverage
+    +JButton Buy
     +getMainSwing()
 }
 
 class SellCapsulesFrame {
+    +JLabel Buy_credits
+    +JLabel Employee
+    +JLabel Beverage
+    +JLabel Number_of_Capsules
+    +JButton Sell
     +getMainSwing()
 }
 
 class EditEmployees {
+    +Jlabel Id
+    +Jlabel Name
+    +Jlabel Surname
+    +Jlabel Balance
+    +JButton Insert
+    +JButton Update
     +getEditMenu()
 }
 
 class EditBeverages {
+    +Jlabel Id
+    +Jlabel Name
+    +Jlabel Capsules
+    +Jlabel Price
+    +JButton Insert
+    +JButton Update
     +getEditMenu()
 }
 
@@ -300,10 +324,17 @@ class LaTazzaReportFrame {
 }
 
 class ConsuptionReportFrame {
+    +JLabel Start_Date
+    +JLabel End_Date
+    +JButton Generate_consuption_report
     +getLaTazzaReportFrame()
 }
 
 class EmployeeReportFrame {
+    +JLabel Employee
+    +JLabel Start_Date
+    +JLabel End_Date
+    +JButton employee_report
     +getLaTazzaReportFrame()
 }
 
@@ -312,6 +343,10 @@ class ConsuptionReport {
 }
 class EmployeeReport {
     -textArea
+}
+
+class Message {
+
 }
 
 MainSwing o-- CommandMenuBar
@@ -329,6 +364,9 @@ LaTazzaReportFrame o-- EmployeeReportFrame
 ConsuptionReportFrame o-- ConsuptionReport
 EmployeeReportFrame o-- EmployeeReport
 
+PaymentFrame o-- Message
+SupplyOfCapsulesFrame o-- Message
+SellCapsulesFrame o-- Message
 @enduml
 ```
 
