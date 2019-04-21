@@ -146,8 +146,7 @@ class PersonalAccount {
     
     +getBalance() : Integer
     +setBalance(Integer) : void
-    +getTansactions() : List<Transaction>
-    +getMapTansactions() : Map<Integer,Transaction>
+    +getTansactions() : Map<Integer,Transaction>
     +addTransaction(Transaction) : void
     +deleteTransaction(Transaction) : void
 }
