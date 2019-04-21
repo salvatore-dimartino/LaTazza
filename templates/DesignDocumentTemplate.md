@@ -104,7 +104,7 @@ interface Datainterface {
 class DataImpl {
 
     +EmployeeMap : HashMap<String,Employee>
-    +BeveregeMap : HashMap<String,Beverege>
+    +BeverageMap : HashMap<String,Beverage>
     +TransactionMap : HashMap<String,Transaction>
     
     +sellCapsules()
@@ -188,6 +188,7 @@ class Beverage {
 
 class BoxPurchase {
     -quantity : Integer
+    -beverage : Beverage
     
     +getQuantity() : Integer
     +setQuantity(Integer) : void
