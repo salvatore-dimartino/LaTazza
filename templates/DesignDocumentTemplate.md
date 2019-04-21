@@ -436,18 +436,18 @@ SellCapsulesFrame o-- Message
 Scenario 1
 
 ```plantuml
-activate ": Beverage"
+activate ": Class Beverage"
 ": Class DataImpl" -> ": Class Beverage": 1: getAvailableQuantity()
 ": Class DataImpl" -> ": Class Beverage": 2: setAvailableQuantity(Integer)
 ": Class DataImpl" -> ": Class Beverage": 3: getPrice()
-deactivate ": Beverage"
-activate ": Employee"
+deactivate ": Class Beverage"
+activate ": Class Employee"
 ": Class DataImpl" -> ": Class Employee": 4: getPersonalAccount()
-deactivate ": Employee"
-activate ": PersonalAccount"
+deactivate ": Class Employee"
+activate ": Class PersonalAccount"
 ": Class DataImpl" -> ": Class PersonalAccount": 5: getBalance()
 ": Class DataImpl" -> ": Class PersonalAccount": 6: setBalance(Integer)
-deactivate ": PersonalAccount"
+deactivate ": Class PersonalAccount"
 ```
 
 Scenario 2
