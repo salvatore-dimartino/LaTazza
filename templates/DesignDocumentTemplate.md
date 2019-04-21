@@ -437,19 +437,19 @@ Scenario 1
 
 ```plantuml
 ": Class DataImpl" -> ": Class Beverage": 1: getAvailableQuantity()
-": Class Beverage" --> ": Class DataImpl": 2: Integer
 activate ": Class Beverage"
+": Class Beverage" --> ": Class DataImpl": 2: Integer
 ": Class DataImpl" -> ": Class Beverage": 3: setAvailableQuantity(Integer)
 ": Class DataImpl" -> ": Class Beverage": 4: getPrice()
 ": Class Beverage" --> ": Class DataImpl": 5: Integer
 deactivate ": Class Beverage"
 ": Class DataImpl" -> ": Class Employee": 6: getPersonalAccount()
-": Class Employee" --> ": Class DataImpl": 7: PersonalAccount
 activate ": Class Employee"
+": Class Employee" --> ": Class DataImpl": 7: PersonalAccount
 deactivate ": Class Employee"
 ": Class DataImpl" -> ": Class PersonalAccount": 8: getBalance()
-": Class PersonalAccount" --> ": Class DataImpl": 9: Integer
 activate ": Class PersonalAccount"
+": Class PersonalAccount" --> ": Class DataImpl": 9: Integer
 ": Class DataImpl" -> ": Class PersonalAccount": 10: setBalance(Integer)
 deactivate ": Class PersonalAccount"
 ```
@@ -458,19 +458,19 @@ Scenario 2
 
 ```plantuml
 ": Class DataImpl" -> ": Class Beverage": 1: getAvailableQuantity()
-": Class Beverage" --> ": Class DataImpl": 2: Integer
 activate ": Class Beverage"
+": Class Beverage" --> ": Class DataImpl": 2: Integer
 ": Class DataImpl" -> ": Class Beverage": 3: setAvailableQuantity(Integer)
 ": Class DataImpl" -> ": Class Beverage": 4: getPrice()
 ": Class Beverage" --> ": Class DataImpl": 5: Integer
 deactivate ": Class Beverage"
 ": Class DataImpl" -> ": Class Employee": 6: getPersonalAccount()
-": Class Employee" --> ": Class DataImpl": 7: PersonalAccount
 activate ": Class Employee"
+": Class Employee" --> ": Class DataImpl": 7: PersonalAccount
 deactivate ": Class Employee"
 ": Class DataImpl" -> ": Class PersonalAccount": 8: getBalance()
-": Class PersonalAccount" --> ": Class DataImpl": 9: Integer
 activate ": Class PersonalAccount"
+": Class PersonalAccount" --> ": Class DataImpl": 9: Integer
 deactivate ": Class PersonalAccount"
 ": Class DataImpl" -> ": Class NotEnoughBalance": 10: NotEnoughBalance(Exception)
 activate ": Class NotEnoughBalance"
