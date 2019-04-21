@@ -76,10 +76,10 @@ class LaTazza {
 allowmixing
 
 interface Datainterface {
-    -EmployeeMap : Map<Integer,Employee>
-    -BeverageMap : Map<Integer,Beverage>
-    -TransactionMap : Map<Integer,Transaction>
-    -MainAccount : LaTazzaAccount
+    -Employees : Map<Integer,Employee>
+    -Beverages : Map<Integer,Beverage>
+    -Transactions : Map<Integer,Transaction>
+    -account : LaTazzaAccount
     
     +sellCapsules(Integer,Integer,Integer,Boolean) : Integer
     +sellCapsulesToVisitor(Integer,Integer) : void
@@ -108,10 +108,10 @@ interface Datainterface {
 
 class DataImpl {
 
-    -EmployeeMap : Map<Integer,Employee>
-    -BeverageMap : Map<Integer,Beverage>
-    -TransactionMap : Map<Integer,Transaction>
-    -MainAccount : LaTazzaAccount
+    -Employees : Map<Integer,Employee>
+    -Beverages : Map<Integer,Beverage>
+    -Transactions : Map<Integer,Transaction>
+    -account : LaTazzaAccount
     
     +sellCapsules(Integer,Integer,Integer,Boolean) : Integer
     +sellCapsulesToVisitor(Integer,Integer) : void
@@ -142,7 +142,7 @@ DataImpl --> Datainterface: implements
 
 class PersonalAccount {
     -balance : Integer
-    -TransactionMap : Map<Integer,Transaction>
+    -Transactions : Map<Integer,Transaction>
     
     +getBalance() : Integer
     +setBalance(Integer) : void
@@ -152,7 +152,7 @@ class PersonalAccount {
 }
 
 class LaTazzaAccount {
-    -Total : Integer
+    -total : Integer
     
     +setTotal(Integer) : void
     +getTotal() : Integer
@@ -177,8 +177,8 @@ class Beverage {
     -ID : Integer
     -Name : String
     -price : Integer
-    -quantityPerBox : Integer
-    -availableQuantity : Integer
+    -quantityperbox : Integer
+    -availablequantity : Integer
     
     +getQuantityperBox() : Integer
     +getAvailableQuantity() : Integer
@@ -437,16 +437,20 @@ Scenario 1
 
 ```plantuml
 ": Class DataImpl" -> ": Class Beverage": 1: getAvailableQuantity()
+": Class Beverage" --> ": Class DataImpl": 2: Integer
 activate ": Class Beverage"
-": Class DataImpl" -> ": Class Beverage": 2: setAvailableQuantity(Integer)
-": Class DataImpl" -> ": Class Beverage": 3: getPrice()
+": Class DataImpl" -> ": Class Beverage": 3: setAvailableQuantity(Integer)
+": Class DataImpl" -> ": Class Beverage": 4: getPrice()
+": Class Beverage" --> ": Class DataImpl": 5: Integer
 deactivate ": Class Beverage"
-": Class DataImpl" -> ": Class Employee": 4: getPersonalAccount()
+": Class DataImpl" -> ": Class Employee": 6: getPersonalAccount()
+": Class Employee" --> ": Class DataImpl": 7: PersonalAccount
 activate ": Class Employee"
 deactivate ": Class Employee"
-": Class DataImpl" -> ": Class PersonalAccount": 5: getBalance()
+": Class DataImpl" -> ": Class PersonalAccount": 8: getBalance()
+": Class PersonalAccount" --> ": Class DataImpl": 9: Integer
 activate ": Class PersonalAccount"
-": Class DataImpl" -> ": Class PersonalAccount": 6: setBalance(Integer)
+": Class DataImpl" -> ": Class PersonalAccount": 10: setBalance(Integer)
 deactivate ": Class PersonalAccount"
 ```
 
@@ -454,17 +458,21 @@ Scenario 2
 
 ```plantuml
 ": Class DataImpl" -> ": Class Beverage": 1: getAvailableQuantity()
+": Class Beverage" --> ": Class DataImpl": 2: Integer
 activate ": Class Beverage"
-": Class DataImpl" -> ": Class Beverage": 2: setAvailableQuantity(Integer)
-": Class DataImpl" -> ": Class Beverage": 3: getPrice()
+": Class DataImpl" -> ": Class Beverage": 3: setAvailableQuantity(Integer)
+": Class DataImpl" -> ": Class Beverage": 4: getPrice()
+": Class Beverage" --> ": Class DataImpl": 5: Integer
 deactivate ": Class Beverage"
-": Class DataImpl" -> ": Class Employee": 4: getPersonalAccount()
+": Class DataImpl" -> ": Class Employee": 6: getPersonalAccount()
+": Class Employee" --> ": Class DataImpl": 7: PersonalAccount
 activate ": Class Employee"
 deactivate ": Class Employee"
-": Class DataImpl" -> ": Class PersonalAccount": 5: getBalance()
+": Class DataImpl" -> ": Class PersonalAccount": 8: getBalance()
+": Class PersonalAccount" --> ": Class DataImpl": 9: Integer
 activate ": Class PersonalAccount"
 deactivate ": Class PersonalAccount"
-": Class DataImpl" -> ": Class NotEnoughBalance": 6: NotEnoughBalance(Exception)
+": Class DataImpl" -> ": Class NotEnoughBalance": 10: NotEnoughBalance(Exception)
 activate ": Class NotEnoughBalance"
 deactivate ": Class NotEnoughBalance"
 ```
