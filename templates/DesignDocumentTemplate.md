@@ -1,8 +1,8 @@
 # Design Document Template
 
-Authors: Francesco Dibitonto s265421 Federico Silvio Gorrino sXXXXXX Salvatore Di Martino s267553
+Authors: Francesco Dibitonto s265421 Federico Silvio Gorrino s262948 Salvatore Di Martino s267553
 
-Date:
+Date: 23/04/2019
 
 Version: 1.0
 
