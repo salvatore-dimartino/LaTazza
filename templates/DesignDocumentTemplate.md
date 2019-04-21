@@ -79,6 +79,7 @@ interface Datainterface {
     -EmployeeMap : Map<Integer,Employee>
     -BeverageMap : Map<Integer,Beverage>
     -TransactionMap : Map<Integer,Transaction>
+    -MainAccount : LaTazzaAccount
     
     +sellCapsules(Integer,Integer,Integer,Boolean) : Integer
     +sellCapsulesToVisitor(Integer,Integer) : void
@@ -110,6 +111,7 @@ class DataImpl {
     -EmployeeMap : Map<Integer,Employee>
     -BeverageMap : Map<Integer,Beverage>
     -TransactionMap : Map<Integer,Transaction>
+    -MainAccount : LaTazzaAccount
     
     +sellCapsules(Integer,Integer,Integer,Boolean) : Integer
     +sellCapsulesToVisitor(Integer,Integer) : void
