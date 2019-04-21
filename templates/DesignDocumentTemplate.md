@@ -129,27 +129,28 @@ class DataImpl {
     +getEmployeesId(String) : List<String>
     +getEmployees(String) : List<Employee>
     +getBalance(String) : Float
-    +reset() 
+    +reset() : void
 }
 
 DataImpl --> Datainterface: implements
 
 class PersonalAccount {
-    -balance : Float
+    -balance : Integer
     -TransactionMap : HashMap<String,Transaction>
     
     +getBalance() : Integer
     +setBalance(Integer) : void
     +getTansactions() : List<Transaction>
+    +getMapTansactions() : HashMap<String,Transaction>
     +addTransaction(Transaction) : void
     +deleteTransaction(Transaction) : void
 }
 
 class LaTazzaAccount {
-    -Total : Float
+    -Total : Integer
     
-    +setTotal(Float) : void
-    +getTotal() : Float
+    +setTotal(Integer) : void
+    +getTotal() : Integer
 }
 
 class Employee {
@@ -160,7 +161,8 @@ class Employee {
     
     +getName() : String
     +getSurname() : String
-    +update(String,String) : void
+    +setName(String) : void
+    +setSurname(String) : void
     +getPersonalAccount() : PersonalAccount
     +setPersonalAccount(PersonalAccount) : void
 }
@@ -168,22 +170,18 @@ class Employee {
 class Beverage {
     -ID : String
     -Name : String
-    -price : Float
+    -price : Integer
     -quantityPerBox : Integer
     -availableQuantity : Integer
     
     +getQuantityperBox() : Integer
     +getAvailableQuantity() : Integer
-    +getPrice() : Float
+    +getPrice() : Integer
     +getName() : String
     +setName(String) : void
-    +setPrice(Float) : void
+    +setPrice(Integer) : void
     +setQuantityperBox(Integer) : void
-    +incrementQuantityperBox(Integer) : void
-    +decrementQuantityperBox(Integer) : void
     +setAvailableQuantity(Integer) : void
-    +incrementAvailableQuantity(Integer) : void
-    +decrementAvailableQuantity(Integer) : void
 }
 
 class BoxPurchase {
@@ -192,6 +190,8 @@ class BoxPurchase {
     
     +getQuantity() : Integer
     +setQuantity(Integer) : void
+    +getBeverage() : Beverage
+    +setQuantity(Beverage) : void
 }
 
 class Transaction {
@@ -226,12 +226,15 @@ class Recharge {
 
     +charge(Employee,Integer) : void
 }
+
 class Consumption {
     -quantity : Integer
     -beverage : Beverage
     
     +getQuantity() : Integer
     +setQuantity(Integer) : void
+    +getBeverage() : Beverage
+    +setQuantity(Beverage) : void
 }
 
 
