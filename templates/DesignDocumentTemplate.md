@@ -103,32 +103,32 @@ interface Datainterface {
 
 class DataImpl {
 
-    +EmployeeMap : HashMap<String,Employee>
-    +BeverageMap : HashMap<String,Beverage>
-    +TransactionMap : HashMap<String,Transaction>
+    +EmployeeMap : Map<String,Employee>
+    +BeverageMap : Map<String,Beverage>
+    +TransactionMap : Map<String,Transaction>
     
-    +sellCapsules()
-    +sellCapsulesToVisitor()
-    +rechargeAccount()
-    +buyBoxes()
-    +getEmployeeReport()
-    +getReport(Transaction)
-    +createBeverage()
-    +updateBeverage() 
-    +getBeverageName(String) : String 
-    +getBeverageCapsulesPerBox(String) : Integer
-    +getBeverageBoxPrice(String) : Integer
-    +getBeveragesId(String) : List<String>
-    +getBeverages(String) : List<Beverege>
-    +getBeverageCapsules(String) : Integer
-    +createEmployee() 
-    +updateEmployee()
-    +getEmployeeName(String) : String
-    +getEmployeeSurname(String) : String
-    +getEmployeeBalance(String) : Float
-    +getEmployeesId(String) : List<String>
-    +getEmployees(String) : List<Employee>
-    +getBalance(String) : Float
+    +sellCapsules(Integer,Integer,Integer,Boolean) : Integer
+    +sellCapsulesToVisitor(Integer,Integer) : void
+    +rechargeAccount(Integer,Integer) : Integer
+    +buyBoxes(Integer,Integer) : void
+    +getEmployeeReport(Integer,Date,Date) : List<String>
+    +getReport(Date,Date) : List<String>
+    +createBeverage(String,Integer,Integer) : Integer
+    +updateBeverage(Integer,String,Integer,Integer) : void 
+    +getBeverageName(Integer) : String 
+    +getBeverageCapsulesPerBox(Integer) : Integer
+    +getBeverageBoxPrice(Integer) : Integer
+    +getBeveragesId() : List<Integer>
+    +getBeverages() : Map<Integer,String>
+    +getBeverageCapsules(Integer) : Integer
+    +createEmployee(String,String) : Integer 
+    +updateEmployee(Integer,String,String) : void
+    +getEmployeeName(Integer) : String
+    +getEmployeeSurname(Integer) : String
+    +getEmployeeBalance(Integer) : Integer
+    +getEmployeesId() : List<Integer>
+    +getEmployees() : Map<Integer,String>
+    +getBalance() : Integer
     +reset() : void
 }
 
@@ -136,12 +136,12 @@ DataImpl --> Datainterface: implements
 
 class PersonalAccount {
     -balance : Integer
-    -TransactionMap : HashMap<String,Transaction>
+    -TransactionMap : Map<String,Transaction>
     
     +getBalance() : Integer
     +setBalance(Integer) : void
     +getTansactions() : List<Transaction>
-    +getMapTansactions() : HashMap<String,Transaction>
+    +getMapTansactions() : Map<String,Transaction>
     +addTransaction(Transaction) : void
     +deleteTransaction(Transaction) : void
 }
@@ -223,8 +223,12 @@ Transaction "*" --> DataImpl
 
 class Recharge {
     -amount : Integer
+    -employee : Employee
 
-    +charge(Employee,Integer) : void
+    +getAmount() : Integer
+    +setAmountInteger) : void
+    +getEmployee() : Beverage
+    +setEmployee(Beverage) : void
 }
 
 class Consumption {
