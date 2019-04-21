@@ -436,16 +436,18 @@ SellCapsulesFrame o-- Message
 Scenario 1
 
 ```plantuml
-": Class MainSwing" -> ": Class DataImpl": 1: sellCapsules(employeeId,beverageId,numberOfCapsules,fromAccount)
-": Class DataImpl" -> ": Class Beverage": 2: getCapsuleType()
-": Class Beverage" -> ": Class DataImpl": 3: CapsuleType
-": Class DataImpl" -> ": Class Beverage": 4: updateAmount(numberofCapsules)
-": Class DataImpl" -> ": Class Employee": 5: getPersonalAccount()
-": Class Employee" -> ": Class DataImpl": 6: PersonalAccount
-": Class DataImpl" -> ": Class Beverage": 7: getPrice()
-": Class Beverage" -> ": Class DataImpl": 8: Price
-": Class DataImpl" -> ": Class PersonalAccount": 9: updateAmount(Price)
-": Class DataImpl" -> ": Class Transaction": 10: Transaction(Date,Price)
+activate Beverage
+": Class DataImpl" -> ": Class Beverage": 1: getAvailableQuantity()
+": Class DataImpl" -> ": Class Beverage": 2: setAvailableQuantity(Integer)
+": Class DataImpl" -> ": Class Beverage": 3: getPrice()
+deactivate Beverage
+activate Employee
+": Class DataImpl" -> ": Class Employee": 4: getPersonalAccount()
+deactivate Employee
+activate PersonalAccount
+": Class DataImpl" -> ": Class PersonalAccount": 5: getBalance()
+": Class DataImpl" -> ": Class PersonalAccount": 6: setBalance(Integer)
+deactivate PersonalAccount
 ```
 
 Scenario 2
