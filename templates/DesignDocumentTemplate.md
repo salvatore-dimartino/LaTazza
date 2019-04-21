@@ -50,10 +50,6 @@ Finally, concerning parallelization, concurrency is not needed so 1 thread only 
 
 # Class diagram
 
-\<for each package define class diagram with classes defined in the package>
-
-\<mention design patterns used, if any>
-
 We'll use the DataImpl class as a 'facade': it will serve as a single wrapper class and entry point.
 
 ## latazza Class diagram
