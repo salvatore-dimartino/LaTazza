@@ -76,36 +76,40 @@ class LaTazza {
 allowmixing
 
 interface Datainterface {
-    +sellCapsules()
-    +sellCapsulesToVisitor()
-    +rechargeAccount()
-    +buyBoxes()
-    +getEmployeeReport()
-    +getReport()
-    +createBeverage()
-    +updateBeverage()
-    +getBeverageName()
-    +getBeverageCapsulesPerBox()
-    +getBeverageBoxPrice()
-    +getBeveragesId()
-    +getBeverages()
-    +getBeverageCapsules()
-    +createEmployee()
-    +updateEmployee()
-    +getEmployeeName()
-    +getEmployeeSurname()
-    +getEmployeeBalance()
-    +getEmployeesId()
-    +getEmployees()
-    +getBalance()
-    +reset()
+    -EmployeeMap : Map<Integer,Employee>
+    -BeverageMap : Map<Integer,Beverage>
+    -TransactionMap : Map<Integer,Transaction>
+    
+    +sellCapsules(Integer,Integer,Integer,Boolean) : Integer
+    +sellCapsulesToVisitor(Integer,Integer) : void
+    +rechargeAccount(Integer,Integer) : Integer
+    +buyBoxes(Integer,Integer) : void
+    +getEmployeeReport(Integer,Date,Date) : List<String>
+    +getReport(Date,Date) : List<String>
+    +createBeverage(String,Integer,Integer) : Integer
+    +updateBeverage(Integer,String,Integer,Integer) : void 
+    +getBeverageName(Integer) : String 
+    +getBeverageCapsulesPerBox(Integer) : Integer
+    +getBeverageBoxPrice(Integer) : Integer
+    +getBeveragesId() : List<Integer>
+    +getBeverages() : Map<Integer,String>
+    +getBeverageCapsules(Integer) : Integer
+    +createEmployee(String,String) : Integer 
+    +updateEmployee(Integer,String,String) : void
+    +getEmployeeName(Integer) : String
+    +getEmployeeSurname(Integer) : String
+    +getEmployeeBalance(Integer) : Integer
+    +getEmployeesId() : List<Integer>
+    +getEmployees() : Map<Integer,String>
+    +getBalance() : Integer
+    +reset() : void
 }
 
 class DataImpl {
 
-    +EmployeeMap : Map<String,Employee>
-    +BeverageMap : Map<String,Beverage>
-    +TransactionMap : Map<String,Transaction>
+    -EmployeeMap : Map<Integer,Employee>
+    -BeverageMap : Map<Integer,Beverage>
+    -TransactionMap : Map<Integer,Transaction>
     
     +sellCapsules(Integer,Integer,Integer,Boolean) : Integer
     +sellCapsulesToVisitor(Integer,Integer) : void
@@ -136,12 +140,12 @@ DataImpl --> Datainterface: implements
 
 class PersonalAccount {
     -balance : Integer
-    -TransactionMap : Map<String,Transaction>
+    -TransactionMap : Map<Integer,Transaction>
     
     +getBalance() : Integer
     +setBalance(Integer) : void
     +getTansactions() : List<Transaction>
-    +getMapTansactions() : Map<String,Transaction>
+    +getMapTansactions() : Map<Integer,Transaction>
     +addTransaction(Transaction) : void
     +deleteTransaction(Transaction) : void
 }
@@ -191,7 +195,8 @@ class BoxPurchase {
     +getQuantity() : Integer
     +setQuantity(Integer) : void
     +getBeverage() : Beverage
-    +setQuantity(Beverage) : void
+    +setBeverage(Beverage) : void
+    +getString() :String
 }
 
 class Transaction {
@@ -226,19 +231,27 @@ class Recharge {
     -employee : Employee
 
     +getAmount() : Integer
-    +setAmountInteger) : void
+    +setAmount(Integer) : void
     +getEmployee() : Beverage
     +setEmployee(Beverage) : void
+    +getString() :String
 }
 
 class Consumption {
     -quantity : Integer
     -beverage : Beverage
+    -employee : Employee
+    -type : String
     
     +getQuantity() : Integer
     +setQuantity(Integer) : void
     +getBeverage() : Beverage
-    +setQuantity(Beverage) : void
+    +setBeverage(Beverage) : void
+    +getType() : String
+    +setType(String) : void
+    +getEmployee() : Employee
+    +setEmployee(Employee) : void
+    +getString() :String
 }
 
 
