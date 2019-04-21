@@ -197,12 +197,9 @@ class BoxPurchase {
 class Transaction {
     -ID : String
     -date : Date
-    -amount : Float
 
     +getDate() : Date
     +setDate(Date) : void
-    +getAmount() : Float
-    +setAmount(Float) : void
 }
 
 DataImpl <-- "*" Employee
