@@ -161,7 +161,7 @@ class LaTazzaAccount {
 class Employee {
     -name : String
     -surname : String
-    -ID : String
+    -ID : Integer
     -account : PersonalAccount
     
     +getName() : String
@@ -170,10 +170,11 @@ class Employee {
     +setSurname(String) : void
     +getPersonalAccount() : PersonalAccount
     +setPersonalAccount(PersonalAccount) : void
+    +getID() : Integer
 }
 
 class Beverage {
-    -ID : String
+    -ID : Integer
     -Name : String
     -price : Integer
     -quantityPerBox : Integer
@@ -187,6 +188,7 @@ class Beverage {
     +setPrice(Integer) : void
     +setQuantityperBox(Integer) : void
     +setAvailableQuantity(Integer) : void
+    +getID() : Integer
 }
 
 class BoxPurchase {
@@ -201,11 +203,12 @@ class BoxPurchase {
 }
 
 class Transaction {
-    -ID : String
+    -ID : Integer
     -date : Date
 
     +getDate() : Date
     +setDate(Date) : void
+    +getID() : Integer
 }
 
 DataImpl <-- "*" Employee
