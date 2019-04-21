@@ -231,8 +231,10 @@ class Recharge {
 }
 class Consumption {
     -quantity : Integer
+    -beverage : Beverage
     
-    +updateQty(Beverage,Integer) : void
+    +getQuantity() : Integer
+    +setQuantity(Integer) : void
 }
 
 
