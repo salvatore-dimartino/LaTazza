@@ -199,7 +199,7 @@ class BoxPurchase {
     +setQuantity(Integer) : void
     +getBeverage() : Beverage
     +setBeverage(Beverage) : void
-    +getString() :String
+    +getString() : String
 }
 
 class Transaction {
@@ -209,6 +209,7 @@ class Transaction {
     +getDate() : Date
     +setDate(Date) : void
     +getID() : Integer
+    +getString() : String
 }
 
 DataImpl <-- "*" Employee
@@ -238,7 +239,7 @@ class Recharge {
     +setAmount(Integer) : void
     +getEmployee() : Beverage
     +setEmployee(Beverage) : void
-    +getString() :String
+    +getString() : String
 }
 
 class Consumption {
@@ -255,7 +256,7 @@ class Consumption {
     +setType(String) : void
     +getEmployee() : Employee
     +setEmployee(Employee) : void
-    +getString() :String
+    +getString() : String
 }
 
 
