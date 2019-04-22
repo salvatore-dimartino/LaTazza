@@ -448,6 +448,7 @@ activate ": Class Beverage"
 ": Class Beverage" --> ": Class DataImpl": 2: Integer
 ": Class DataImpl" -> ": Class Beverage": 3: getPrice()
 ": Class Beverage" --> ": Class DataImpl": 4: Integer
+deactivate ": Class Beverage"
 ": Class DataImpl" -> ": Class Employee": 5: getPersonalAccount()
 activate ": Class Employee"
 ": Class Employee" --> ": Class DataImpl": 6: PersonalAccount
@@ -455,7 +456,9 @@ deactivate ": Class Employee"
 ": Class DataImpl" -> ": Class PersonalAccount": 7: getBalance()
 activate ": Class PersonalAccount"
 ": Class PersonalAccount" --> ": Class DataImpl": 8: Integer
+": Class DataImpl" -> ": Class Beverage": 1: setAvailableQuantity(Integer)
 activate ": Class Beverage"
+deactivate ": Class Beverage"
 ": Class DataImpl" -> ": Class PersonalAccount": 10: setBalance(Integer)
 deactivate ": Class PersonalAccount"
 ```
@@ -468,6 +471,7 @@ activate ": Class Beverage"
 ": Class Beverage" --> ": Class DataImpl": 2: Integer
 ": Class DataImpl" -> ": Class Beverage": 3: getPrice()
 ": Class Beverage" --> ": Class DataImpl": 4: Integer
+deactivate ": Class Beverage"
 ": Class DataImpl" -> ": Class Employee": 5: getPersonalAccount()
 activate ": Class Employee"
 ": Class Employee" --> ": Class DataImpl": 6: PersonalAccount
@@ -475,7 +479,6 @@ deactivate ": Class Employee"
 ": Class DataImpl" -> ": Class PersonalAccount": 7: getBalance()
 activate ": Class PersonalAccount"
 ": Class PersonalAccount" --> ": Class DataImpl": 8: Integer
-activate ": Class Beverage"
 deactivate ": Class PersonalAccount"
 ": Class DataImpl" -> ": Class NotEnoughBalance": 9: NotEnoughBalance(Exception)
 activate ": Class NotEnoughBalance"
