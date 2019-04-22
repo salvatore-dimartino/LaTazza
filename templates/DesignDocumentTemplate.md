@@ -372,14 +372,14 @@ class LaTazzaReportFrame {
     +getMenuMenu()
 }
 
-class ConsuptionReportFrame {
+class ConsuptionReportPane {
     +JLabel Start_Date
     +JLabel End_Date
     +JButton Generate_consuption_report
     +getLaTazzaReportFrame()
 }
 
-class EmployeeReportFrame {
+class EmployeeReportPane {
     +JLabel Employee
     +JLabel Start_Date
     +JLabel End_Date
@@ -399,23 +399,23 @@ class Message {
 }
 
 MainSwing o-- CommandMenuBar
-MainSwing o-- PaymentFrame
-MainSwing o-- SupplyOfCapsulesFrame
-MainSwing o-- SellCapsulesFrame
-MainSwing o-- SummaryFrame
+MainSwing o-- PaymentPane
+MainSwing o-- SupplyOfCapsulesPane
+MainSwing o-- SellCapsulesPane
+MainSwing o-- SummaryPane
 EditMenu o-- EditEmployees
 EditMenu o-- EditBeverages
 CommandMenuBar  o-- MenuMenu
 CommandMenuBar  o-- EditMenu
 MenuMenu o-- LaTazzaReportFrame
-LaTazzaReportFrame o-- ConsuptionReportFrame
-LaTazzaReportFrame o-- EmployeeReportFrame
+LaTazzaReportFrame o-- ConsuptionReportPane
+LaTazzaReportFrame o-- EmployeeReportPane
 ConsuptionReportFrame o-- ConsuptionReport
 EmployeeReportFrame o-- EmployeeReport
 
-PaymentFrame o-- Message
-SupplyOfCapsulesFrame o-- Message
-SellCapsulesFrame o-- Message
+PaymentPane o-- Message
+SupplyOfCapsulesPAne o-- Message
+SellCapsulesPane o-- Message
 @enduml
 ```
 
