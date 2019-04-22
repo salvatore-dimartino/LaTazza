@@ -410,11 +410,11 @@ CommandMenuBar  o-- EditMenu
 MenuMenu o-- LaTazzaReportFrame
 LaTazzaReportFrame o-- ConsuptionReportPane
 LaTazzaReportFrame o-- EmployeeReportPane
-ConsuptionReportFrame o-- ConsuptionReport
-EmployeeReportFrame o-- EmployeeReport
+ConsuptionReportPane o-- ConsuptionReport
+EmployeeReportPane o-- EmployeeReport
 
 PaymentPane o-- Message
-SupplyOfCapsulesPAne o-- Message
+SupplyOfCapsulesPane o-- Message
 SellCapsulesPane o-- Message
 @enduml
 ```
