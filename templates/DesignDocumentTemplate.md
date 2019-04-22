@@ -397,7 +397,8 @@ class EmployeeReport {
 }
 
 class Message {
-
+    +JLabel message
+    +JLabel pic
 }
 
 MainSwing o-- CommandMenuBar
