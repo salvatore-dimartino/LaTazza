@@ -333,6 +333,8 @@ class SupplyOfCapsulesFrame {
 
 class SellCapsulesFrame {
     +JLabel Buy_credits
+    +JRadioButton yesButton
+    +JRadioButton noButton
     +JLabel Employee
     +JLabel Beverage
     +JLabel Number_of_Capsules
@@ -342,6 +344,7 @@ class SellCapsulesFrame {
 
 class EditEmployees {
     -String[] columnNames
+    -Object[][] data
     +JTable Employees
     +JLabel Id
     +JLabel Name
@@ -354,6 +357,7 @@ class EditEmployees {
 
 class EditBeverages {
     -String[] columnNames
+    -Object[][] data
     +JTable Beverages
     +JLabel Id
     +JLabel Name
