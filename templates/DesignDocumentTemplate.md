@@ -343,10 +343,10 @@ class SellCapsulesFrame {
 class EditEmployees {
     -String[] columnNames
     +JTable Employees
-    +Jlabel Id
-    +Jlabel Name
-    +Jlabel Surname
-    +Jlabel Balance
+    +JLabel Id
+    +JLabel Name
+    +JLabel Surname
+    +JLabel Balance
     +JButton Insert
     +JButton Update
     +getEditMenu()
@@ -355,10 +355,10 @@ class EditEmployees {
 class EditBeverages {
     -String[] columnNames
     +JTable Beverages
-    +Jlabel Id
-    +Jlabel Name
-    +Jlabel Capsules
-    +Jlabel Price
+    +JLabel Id
+    +JLabel Name
+    +JLabel Capsules
+    +JLabel Price
     +JButton Insert
     +JButton Update
     +getEditMenu()
