@@ -341,6 +341,7 @@ class SellCapsulesFrame {
 }
 
 class EditEmployees {
+    -String[] columnNames
     +JTable Employees
     +Jlabel Id
     +Jlabel Name
@@ -352,6 +353,7 @@ class EditEmployees {
 }
 
 class EditBeverages {
+    -String[] columnNames
     +JTable Beverages
     +Jlabel Id
     +Jlabel Name
