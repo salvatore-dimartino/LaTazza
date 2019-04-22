@@ -291,10 +291,10 @@ class NotEnoughCapsules {
 
 class MainSwing {
     +main(String[])
-    +getPaymantFrame()
-    +getSupplyOfCapsulesFrame()
-    +getSellCapsulesFrame()
-    +getSummaryFrame()
+    +getPaymantPane()
+    +getSupplyOfCapsulesPane()
+    +getSellCapsulesPane()
+    +getSummaryPane()
 }
 
 class PaymentPane {
@@ -369,6 +369,8 @@ class EditBeverages {
 }
 
 class LaTazzaReportFrame {
+    +JLayeredPane consuptionReport
+    +JlayeredPAne  employeeReport
     +getMenuMenu()
 }
 
