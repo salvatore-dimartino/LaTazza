@@ -456,7 +456,7 @@ deactivate ": Class Employee"
 ": Class DataImpl" -> ": Class PersonalAccount": 7: getBalance()
 activate ": Class PersonalAccount"
 ": Class PersonalAccount" --> ": Class DataImpl": 8: Integer
-": Class DataImpl" -> ": Class Beverage": 1: setAvailableQuantity(Integer)
+": Class DataImpl" -> ": Class Beverage": 9: setAvailableQuantity(Integer)
 activate ": Class Beverage"
 deactivate ": Class Beverage"
 ": Class DataImpl" -> ": Class PersonalAccount": 10: setBalance(Integer)
