@@ -297,7 +297,7 @@ class MainSwing {
     +getSummaryFrame()
 }
 
-class PaymentFrame {
+class PaymentPane {
     +JLabel Employee
     +JLabel Balance
     +JButton Pay
@@ -308,7 +308,7 @@ class CommandMenuBar {
     +getMainSwing()
 }
 
-class SummaryFrame {
+class SummaryPane {
     +JLabel Cash_Account
     +getMainSwing()
 }
@@ -324,14 +324,14 @@ class EditMenu {
     +showManageBeverages()
 }
 
-class SupplyOfCapsulesFrame {
+class SupplyOfCapsulesPane {
     +JLabel Number_of_Boxes
     +JLabel Beverage
     +JButton Buy
     +getMainSwing()
 }
 
-class SellCapsulesFrame {
+class SellCapsulesPane {
     +JLabel Buy_credits
     +JRadioButton yesButton
     +JRadioButton noButton
