@@ -341,6 +341,7 @@ class SellCapsulesFrame {
 }
 
 class EditEmployees {
+    +JTable Employees
     +Jlabel Id
     +Jlabel Name
     +Jlabel Surname
@@ -351,6 +352,7 @@ class EditEmployees {
 }
 
 class EditBeverages {
+    +JTable Beverages
     +Jlabel Id
     +Jlabel Name
     +Jlabel Capsules
