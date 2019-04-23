@@ -76,11 +76,6 @@ interface Datainterface {
     -Beverages : Map<Integer,Beverage>
     -Transactions : Map<Integer,Transaction>
     -account : LaTazzaAccount
-    -Reader : FileReader
-    -Writer : FileWriter
-    -BuffR : BufferedReader
-    -BuffW : BufferedWriter
-    -str : String
     
     +sellCapsules(Integer,Integer,Integer,Boolean) : Integer
     +sellCapsulesToVisitor(Integer,Integer) : void
@@ -113,11 +108,6 @@ class DataImpl {
     -Beverages : Map<Integer,Beverage>
     -Transactions : Map<Integer,Transaction>
     -account : LaTazzaAccount
-    -Reader : FileReader
-    -Writer : FileWriter
-    -BuffR : BufferedReader
-    -BuffW : BufferedWriter
-    -str : String
     
     +sellCapsules(Integer,Integer,Integer,Boolean) : Integer
     +sellCapsulesToVisitor(Integer,Integer) : void
