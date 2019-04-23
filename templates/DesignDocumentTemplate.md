@@ -264,13 +264,13 @@ class Consumption {
 ```plantuml
 @startuml
 allowmixing
-class BeverageExceptrion {
+class BeverageException {
 }
 
-class DataExceptrion {
+class DataException {
 }
 
-class EmployeeExceptrion {
+class EmployeeException {
 }
 
 class NotEnoughBalance {
