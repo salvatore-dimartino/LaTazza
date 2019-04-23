@@ -44,7 +44,8 @@ latazza.gui --> latazza.data: import
 We decided to use a 3-Layers Architecture as we have 3 layers: presentation(gui), application logic(functions) and Data(DBMS for getting the reports). <br>
 These last two layers (application logic and Data) are both inside the latazza.data package. <br>
 The Database stores transactions only and its only purpose is to produce reports. <br>
-For the sake of interactivity as well, we decided to use the MVC model too, so our final Architectural pattern choice is MVC + Layers. <br>
+For the sake of interactivity as well, we decided to use the MVC(MV) model too, where the models and the views are in the latazza.data and latazza.gui package respectively. <br>
+So our final Architectural pattern choice is MVC + Layers. <br>
 Finally, concerning parallelization, concurrency is not needed so 1 thread only is sufficient.
 
 
