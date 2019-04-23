@@ -354,6 +354,7 @@ class EditEmployees {
     +JButton Insert
     +JButton Update
     +getEditMenu()
+    +actionPerformed()
 }
 
 class EditBeverages {
@@ -367,6 +368,7 @@ class EditBeverages {
     +JButton Insert
     +JButton Update
     +getEditMenu()
+    +actionPerformed()
 }
 
 class LaTazzaReportFrame {
