@@ -19,18 +19,9 @@ Please use this table to provide the total working time per deliverable. This me
 |Coding | 80 |
 |Testing | 30 |
 
-##Team Members
+# Team Members
 
-###Salvatore Di Martino
-
-| Deliverable | Total working time in hours |
-|:-----------:|:------------------:|
-|Requirements| |
-|Design | |
-|Coding | |
-|Testing | |
-
-###Federico Silvio Gorrino
+### Salvatore Di Martino
 
 | Deliverable | Total working time in hours |
 |:-----------:|:------------------:|
@@ -39,7 +30,16 @@ Please use this table to provide the total working time per deliverable. This me
 |Coding | |
 |Testing | |
 
-###Francesco Dibitonto
+### Federico Silvio Gorrino
+
+| Deliverable | Total working time in hours |
+|:-----------:|:------------------:|
+|Requirements| |
+|Design | |
+|Coding | |
+|Testing | |
+
+### Francesco Dibitonto
 
 | Deliverable | Total working time in hours |
 |:-----------:|:------------------:|
