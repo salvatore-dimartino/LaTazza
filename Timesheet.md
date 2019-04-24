@@ -18,3 +18,32 @@ Please use this table to provide the total working time per deliverable. This me
 |Design | 8 |
 |Coding | 80 |
 |Testing | 30 |
+
+#Team Members
+
+###Salvatore Di Martino
+
+| Deliverable | Total working time in hours |
+|:-----------:|:------------------:|
+|Requirements| |
+|Design | |
+|Coding | |
+|Testing | |
+
+###Federico Silvio Gorrino
+
+| Deliverable | Total working time in hours |
+|:-----------:|:------------------:|
+|Requirements| |
+|Design | |
+|Coding | |
+|Testing | |
+
+###Francesco Dibitonto
+
+| Deliverable | Total working time in hours |
+|:-----------:|:------------------:|
+|Requirements| |
+|Design | |
+|Coding | |
+|Testing | |
