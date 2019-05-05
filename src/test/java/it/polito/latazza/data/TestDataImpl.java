@@ -1,4 +1,4 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
+Fimport static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 import java.util.Map;
@@ -129,12 +129,12 @@ public class TestDataImpl {
         assertThrows(BeverageException.class, ()->{
             DataTest.createBeverage("Latte",8,null);
         });
-        assertEquals(1,DataTest.createBeverage("CaffÃƒÂ¨",5,500));
+        assertEquals(1,DataTest.createBeverage("Caffe¨",5,500));
         Id=DataTest.getBeveragesId();
         Emp=DataTest.getBeverages();
         assertEquals(1,Id.size());
         assertEquals(1,Emp.size());
-        Name=Collections.singletonList("CaffÃƒÂ¨");
+        Name=Collections.singletonList("Caffe¨");
         Id.forEach(elem->{
             assertEquals(i,elem);
             assertEquals(Emp.get(i),Name.get(i));
@@ -142,7 +142,7 @@ public class TestDataImpl {
         });
         i=1;
         assertEquals(2,DataTest.createBeverage("The",3,150));
-        assertEquals("CaffÃƒÂ¨",DataTest.getBeverageName(1));
+        assertEquals("Caffe¨",DataTest.getBeverageName(1));
         assertEquals(5,DataTest.getBeverageCapsulesPerBox(1));
         assertEquals(500,DataTest.getBeverageBoxPrice(1));
         assertEquals("The",DataTest.getBeverageName(2));
@@ -152,7 +152,7 @@ public class TestDataImpl {
         Emp=DataTest.getBeverages();
         assertEquals(2,Id.size());
         assertEquals(2,Emp.size());
-        Name=Arrays.asList("CaffÃƒÂ¨", "The");
+        Name=Arrays.asList("Caffe¨", "The");
         Id.forEach(elem->{
             assertEquals(i,elem);
             assertEquals(Emp.get(i),Name.get(i));
