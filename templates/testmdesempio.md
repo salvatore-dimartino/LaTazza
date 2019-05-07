@@ -129,8 +129,8 @@ In the table, report the description of the black box test case and the correspo
 ### Code coverage report
 
 ```
-<Add here the report of the code and branch coverage obtanied using
-the Eclemma/Jacoco tool. >
+<Add here the screenshot report of the code and branch coverage obtained using
+the Jacoco tool. >
 ```
 
 ### Loop coverage analysis
