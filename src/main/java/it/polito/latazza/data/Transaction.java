@@ -27,4 +27,7 @@ public class Transaction {
 		this.date = date;
 	}
 
+    public String getString() {
+		return "";
+	}
 }
