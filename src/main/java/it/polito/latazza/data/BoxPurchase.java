@@ -1,12 +1,14 @@
 package it.polito.latazza.data;
+import java.util.Date;
 
-public class BoxPurchase {
+public class BoxPurchase extends Transaction {
 	
 	Integer quantity;
 	Beverage beverage;
 	
-	public BoxPurchase(Integer quantity, Beverage beverage){
+	public BoxPurchase(Integer ID, Date date, Integer quantity, Beverage beverage) {
 		
+		super(ID, date);
 		this.quantity = quantity;
 		this.beverage = beverage;
 	}
@@ -29,7 +31,7 @@ public class BoxPurchase {
 	
 	@Override
 	public String getString() {
-		return  super.getDate().toString() + " " + "BUY " beverage.getName() + " " + quantity.toString();
+		return  this.getDate().toString() + " " + "BUY " + beverage.getName() + " " + quantity.toString();
 	}
 	
 	
