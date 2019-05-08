@@ -4,8 +4,8 @@ public class LaTazzaAccount {
 	
 	private Integer total;
 
-	public LaTazzaAccount() {
-		
+	public LaTazzaAccount(Integer total) {
+		this.total = total;
 	}
 
 	public Integer getTotal() {
