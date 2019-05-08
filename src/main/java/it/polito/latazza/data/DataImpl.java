@@ -43,8 +43,18 @@ public class DataImpl implements DataInterface {
 	@Override
 	public List<String> getEmployeeReport(Integer employeeId, Date startDate, Date endDate)
 			throws EmployeeException, DateException {
-		// TODO Auto-generated method stub
-		return new ArrayList<String>();
+		if(Employees.keySet().contains(employeeId))
+			throw new EmployeeException();
+		if(startDate==null||endDate==null)
+			throw new DateException();
+		Map <Integer,Transaction> Transactions=Employees.get(employeeId).getPersonalaccount().getTransactions();
+		List<String> Report= new ArrayList();
+		Transactions.forEach((k,v)->{
+			Date d=v.getDate();
+			if(v.getDate().after(startDate) && v.getDate().before(endDate))
+				Report.add(v.getString());
+		});
+		return Report;
 	}
 
 	@Override
