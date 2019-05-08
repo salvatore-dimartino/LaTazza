@@ -19,7 +19,7 @@ public class PersonalAccount {
 		this.balance=balance;
 	}
 	
-	public Map<Integer,Transaction> Transactions(){
+	public Map<Integer,Transaction> getTransactions(){
 		return this.Transactions;
 	}
 	
