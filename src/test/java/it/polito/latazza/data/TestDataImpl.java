@@ -27,6 +27,10 @@ public class TestDataImpl {
         List<String> Report;
         int i=1;
         DataTest.reset();
+        Report=DataTest.getEmployeeReport(1,begin,end);
+        assertEquals(0,Report.size());
+        Report=DataTest.getReport(begin,end);
+        assertEquals(0,Report.size());
         assertThrows(EmployeeException.class, ()->{
             DataTest.updateEmployee(1,"Marco","Antonio");
         });
@@ -48,6 +52,10 @@ public class TestDataImpl {
         assertThrows(EmployeeException.class, ()->{
             DataTest.createEmployee("Fede",null);
         });
+        Id=DataTest.getEmployeesId();
+        Emp=DataTest.getEmployees();
+        assertEquals(0,Id.size());
+        assertEquals(0,Emp.size());
         assertEquals(1,DataTest.createEmployee("Antonio","LaRuspa"));
         Id=DataTest.getEmployeesId();
         Emp=DataTest.getEmployees();
@@ -129,6 +137,8 @@ public class TestDataImpl {
         assertThrows(BeverageException.class, ()->{
             DataTest.createBeverage("Latte",8,null);
         });
+        assertEquals(0,Id.size());
+        assertEquals(0,Emp.size());
         assertEquals(1,DataTest.createBeverage("Caffe¨",5,500));
         Id=DataTest.getBeveragesId();
         Emp=DataTest.getBeverages();
