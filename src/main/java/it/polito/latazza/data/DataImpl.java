@@ -13,6 +13,11 @@ import it.polito.latazza.exceptions.NotEnoughBalance;
 import it.polito.latazza.exceptions.NotEnoughCapsules;
 
 public class DataImpl implements DataInterface {
+    
+    private static Map<Integer, Employee> Employees = new HashMap<>();
+    private static Map<Integer, Beverage> Beverages = new HashMap<>();
+    private static Map<Integer, Transaction> Transactions = new HashMap<>();
+    private LaTazzaAccount account = new LaTazzaAccount();
 
 	@Override
 	public Integer sellCapsules(Integer employeeId, Integer beverageId, Integer numberOfCapsules, Boolean fromAccount)
