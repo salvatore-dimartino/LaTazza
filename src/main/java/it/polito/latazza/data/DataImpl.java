@@ -116,44 +116,54 @@ public class DataImpl implements DataInterface {
 
 	@Override
 	public String getEmployeeName(Integer id) throws EmployeeException {
-		// TODO Auto-generated method stub
-		return "";
+		if(Employees.keySet().contains(id))
+			throw new EmployeeException();
+		return Employees.get(id).getName();
 	}
 
 	@Override
 	public String getEmployeeSurname(Integer id) throws EmployeeException {
-		// TODO Auto-generated method stub
-		return "";
+		if(Employees.keySet().contains(id))
+			throw new EmployeeException();
+		return Employees.get(id).getSurname();
 	}
 
 	@Override
 	public Integer getEmployeeBalance(Integer id) throws EmployeeException {
-		// TODO Auto-generated method stub
-		return 0;
+		if(Employees.keySet().contains(id))
+			throw new EmployeeException();
+		return Employees.get(id).getPersonalaccount().getBalance();
 	}
 
 	@Override
 	public List<Integer> getEmployeesId() {
-		// TODO Auto-generated method stub
-		return new ArrayList<Integer>();
+		List<Integer> Emp=new ArrayList<>();
+		Employees.forEach((k,v)->{
+			Emp.add(k);
+		});
+		return Emp;
 	}
 
 	@Override
 	public Map<Integer, String> getEmployees() {
-		// TODO Auto-generated method stub
-		return new HashMap<Integer, String>();
+		Map<Integer,String> Emp=new HashMap<>();
+		Employees.forEach((k,v)->{
+			Emp.put(k,v.getName()+" "+v.getSurname());
+		});
+		return Emp;
 	}
 
 	@Override
 	public Integer getBalance() {
-		// TODO Auto-generated method stub
-		return 0;
+		return account.getTotal();
 	}
 
 	@Override
 	public void reset() {
-		// TODO Auto-generated method stub
-		
+		Employees.clear();
+		Beverages.clear();
+		Transactions.clear();
+		account.setTotal(0);
 	}
-
+	
 }
