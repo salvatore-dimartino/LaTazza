@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class PersonalAccount {
 	private Integer balance;
-	private Map<Integer,Transaction> Transactions=new HahMap<Integer,Transaction>
+	private Map<Integer,Transaction> Transactions=new HahMap<Integer,Transaction>;
 	
 	public PersonalAccount(Integer balance) {
 		this.balance=balance;
