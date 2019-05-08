@@ -29,7 +29,7 @@ public class BoxPurchase {
 	
 	@Override
 	public String getString() {
-		return  super.getDate().toString() + " " + "BUY " beverage.getName() + " " + quantity.toString();
+		return  super.getDate().toString() + " " + "BUY " + beverage.getName() + " " + quantity.toString();
 	}
 	
 	
