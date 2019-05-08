@@ -54,12 +54,30 @@ public class DataImpl implements DataInterface {
 
 	@Override
 	public List<String> getReport(Date startDate, Date endDate) throws DateException {
+		
+		if(startDate == null || endDate == null) {
+			throw new DateException();
+		}
+		
+		List<String> l = new ArrayList<String>();
+		Transactions.forEach((k, v) -> {
+			if(v.getDate().after(startDate) && v.getDate().before(endDate))
+				l.add(v.getString());
+			});
+		
 		// TODO Auto-generated method stub
-		return new ArrayList<String>();
+		return l;
 	}
 
 	@Override
 	public Integer createBeverage(String name, Integer capsulesPerBox, Integer boxPrice) throws BeverageException {
+		
+		if(name == null || capsulesPerBox == 0 || boxPrice == 0) {
+			throw new BeverageException();
+		} else {
+		Beverage b = new Beverage(Beverages.size(), name, boxPrice, capsulesPerBox, 0);
+		Beverages.put(Beverages.size(), b);
+		}
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -67,56 +85,101 @@ public class DataImpl implements DataInterface {
 	@Override
 	public void updateBeverage(Integer id, String name, Integer capsulesPerBox, Integer boxPrice)
 			throws BeverageException {
-		// TODO Auto-generated method stub
 		
+		if (Beverages.get(id) == null) {
+			throw new BeverageException();
+		}else{
+		Beverages.get(id).setName(name);
+		Beverages.get(id).setPrice(boxPrice);
+		Beverages.get(id).setQuantityPerBox(capsulesPerBox);
+		}
+		// TODO Auto-generated method stub
+		return;
 	}
 
 	@Override
 	public String getBeverageName(Integer id) throws BeverageException {
+		
+		if (Beverages.get(id) == null) {
+			throw new BeverageException();
+		}
 		// TODO Auto-generated method stub
-		return "";
+		return Beverages.get(id).getName();
 	}
 
 	@Override
 	public Integer getBeverageCapsulesPerBox(Integer id) throws BeverageException {
+		
+		if (Beverages.get(id) == null) {
+			throw new BeverageException();
+		}
+		
 		// TODO Auto-generated method stub
-		return 0;
+		return Beverages.get(id).getQuantityPerBox();
 	}
 
 	@Override
 	public Integer getBeverageBoxPrice(Integer id) throws BeverageException {
+		
+
+		if (Beverages.get(id) == null) {
+			throw new BeverageException();
+		}
+		
 		// TODO Auto-generated method stub
-		return 0;
+		return Beverages.get(id).getPrice();
 	}
 
 	@Override
 	public List<Integer> getBeveragesId() {
+		List<Integer> id = new ArrayList<Integer>();
+		Beverages.forEach((k, v) -> {id.add(k);});
 		// TODO Auto-generated method stub
-		return new ArrayList<Integer>();
+		return id;
 	}
 
 	@Override
 	public Map<Integer, String> getBeverages() {
+		
+		HashMap<Integer, String> b = new HashMap<Integer, String>();
+		Beverages.forEach((k, v) -> {b.put(k, v.getName());});
 		// TODO Auto-generated method stub
-		return new HashMap<Integer, String>();
+		return b;
 	}
 
 	@Override
 	public Integer getBeverageCapsules(Integer id) throws BeverageException {
+		
+		if (Beverages.get(id) == null) {
+			throw new BeverageException();
+		}
 		// TODO Auto-generated method stub
-		return 0;
+		return Beverages.get(id).getAvailableQuantity();
 	}
 
 	@Override
 	public Integer createEmployee(String name, String surname) throws EmployeeException {
+		
+		if(name == null || surname == null) {
+			throw new EmployeeException();
+		} else {
+		Employee e = new Employee(name, surname, Employees.size());
+		Employees.put(Employees.size(), e);
+		}
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public void updateEmployee(Integer id, String name, String surname) throws EmployeeException {
+		if(Employees.get(id) == null) {
+			throw new EmployeeException();
+		} else {
+			Employees.get(id).setName(name);
+			Employees.get(id).setSurname(surname);
+		}
 		// TODO Auto-generated method stub
-		
+		return;
 	}
 
 	@Override
