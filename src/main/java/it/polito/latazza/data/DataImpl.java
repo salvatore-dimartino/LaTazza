@@ -22,26 +22,96 @@ public class DataImpl implements DataInterface {
 	@Override
 	public Integer sellCapsules(Integer employeeId, Integer beverageId, Integer numberOfCapsules, Boolean fromAccount)
 			throws EmployeeException, BeverageException, NotEnoughCapsules {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		// check employee existence
+		Employee employee = Employees.get(employeeId);
+		if(employee == null) throw new EmployeeException();
+		
+		// check beverage existence
+		Beverage beverage = Beverages.get(beverageId);
+		if(beverage == null) throw new BeverageException();
+		
+		// check availability
+		Integer avail_qty = beverage.getAvailableQuantity();
+		if(avail_qty < numberOfCapsules) throw new NotEnoughCapsules();
+		
+		// update the availability
+		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
+		
+		// update the transactions
+		Integer TID = Transactions.size()+1;
+		Transaction transaction = new Transaction(TID, new Date());
+		Transactions.put(TID, transaction);
+		
+		// update personal account
+		PersonalAccount P_account = employee.getPersonalaccount();
+		if(fromAccount == true) {
+			P_account.addTransaction(transaction);
+			P_account.setBalance(P_account.getBalance()-numberOfCapsules*beverage.getPrice());
+		}
+		return P_account.getBalance();
 	}
 
 	@Override
 	public void sellCapsulesToVisitor(Integer beverageId, Integer numberOfCapsules)
 			throws BeverageException, NotEnoughCapsules {
-		// TODO Auto-generated method stub
+		
+		// check beverage existence
+		Beverage beverage = Beverages.get(beverageId);
+		if(beverage == null) throw new BeverageException();
+		
+		// check availability
+		Integer avail_qty = beverage.getAvailableQuantity();
+		if(avail_qty < numberOfCapsules) throw new NotEnoughCapsules();
+				
+		// update the availability
+		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
+		
+		// update the transactions
+		Integer TID = Transactions.size()+1;
+		Transaction transaction = new Transaction(TID, new Date());
+		Transactions.put(TID, transaction);
 		
 	}
 
 	@Override
 	public Integer rechargeAccount(Integer id, Integer amountInCents) throws EmployeeException {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		// check employee existence
+		Employee employee = Employees.get(id);
+		if(employee == null) throw new EmployeeException();
+		
+		// update the transactions
+		Integer TID = Transactions.size()+1;
+		Recharge recharge = new Recharge(TID, new Date(), amountInCents, employee);
+		Transactions.put(TID, recharge);
+		
+		// update personal account
+		PersonalAccount P_account = employee.getPersonalaccount();
+		P_account.addTransaction(recharge);
+		P_account.setBalance(P_account.getBalance()+amountInCents);
+		
+		return P_account.getBalance();
 	}
 
 	@Override
 	public void buyBoxes(Integer beverageId, Integer boxQuantity) throws BeverageException, NotEnoughBalance {
-		// TODO Auto-generated method stub
+		
+		// check beverage existence
+		Beverage beverage = Beverages.get(beverageId);
+		if(beverage == null) throw new BeverageException();
+		
+		// get total amount to pay
+		Integer price = beverage.getQuantityPerBox()*beverage.getPrice()*boxQuantity;
+		
+		// update the manager account
+		if(account.getTotal() < price) throw new NotEnoughBalance();
+		account.setTotal(account.getTotal()-price);
+		
+		// update the transactions
+		Integer TID = Transactions.size()+1;
+		BoxPurchase boxpurchase= new BoxPurchase(TID, new Date(), boxQuantity, beverage);
+		Transactions.put(TID, boxpurchase);
 		
 	}
 
