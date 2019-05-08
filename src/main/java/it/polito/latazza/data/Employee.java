@@ -13,19 +13,19 @@ public class Employee {
 		this.account= new PersonalAccount(0);
 	}
 	
-	public String getname() {
+	public String getName() {
 		return this.name;
 	}
 	
-	public void setname(String name) {
+	public void setName(String name) {
 		this.name=name;
 	}
 	
-	public String getsurname() {
+	public String getSurname() {
 		return this.surname;
 	}
 	
-	public void setsurname(String surname) {
+	public void setSurname(String surname) {
 		this.surname=surname;
 	}
 	

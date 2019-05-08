@@ -27,7 +27,9 @@ public class Transaction {
 		this.date = date;
 	}
 
-    public String getString() {
-		return "";
+	public String getString() {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
 }

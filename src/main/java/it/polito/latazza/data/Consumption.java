@@ -1,14 +1,16 @@
 package it.polito.latazza.data;
+import java.util.Date;
 
-public class Consuption extends Transaction { 
+public class Consumption extends Transaction { 
 	
 	private Integer quantity;
 	private Beverage beverage;
 	private Employee employee;
 	private String type;
 	
-	public Consuption(Integer quantity, Beverage beverage, Employee employee, String type) {
+	public Consumption(Integer ID, Date date, Integer quantity, Beverage beverage, Employee employee, String type) {
 		
+		super(ID, date);
 		this.quantity = quantity;
 		this.beverage = beverage;
 		this.employee = employee;
@@ -51,11 +53,13 @@ public class Consuption extends Transaction {
 	public String getString() {
 		
 		if(type.equals("CASH"))
-			return super.getDate().toString() + " " + type + " " + employee.getName() + " " + beverage.getName() + " " +  beverage.getQuantityPerBox().toString(); 
+			return this.getDate().toString() + " " + type + " " + employee.getName() + " " + beverage.getName() + " " +  beverage.getQuantityPerBox().toString(); 
 		if(type.equals("BALANCE"))
-			return super.getDate().toString() + " " + type + " " + employee.getName() + " " + beverage.getName() + " " + beverage.getQuantityPerBox().toString(); 
+			return this.getDate().toString() + " " + type + " " + employee.getName() + " " + beverage.getName() + " " + beverage.getQuantityPerBox().toString(); 
 		if(type.equals("VISITOR"))
-			return super.getDate().toString() + " " + type + " " + beverage.getName() + " " + beverage.getQuantityPerBox().toString(); 
+			return this.getDate().toString() + " " + type + " " + beverage.getName() + " " + beverage.getQuantityPerBox().toString();
+		
+		return ""; 
 	
 	}
 	
