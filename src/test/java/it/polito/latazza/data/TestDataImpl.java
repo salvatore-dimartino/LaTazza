@@ -33,7 +33,7 @@ public class TestDataImpl {
         	assertEquals(0,Emp.size());
         	Emp=DataTest.getBeverages();
         	assertEquals(0,Emp.size());
-        	Report=DataTest.getEmployeeReport(1,begin,end);
+        	Report=DataTest.getEmployeeReport(0,begin,end);
         	assertEquals(0,Report.size());
         	Report=DataTest.getReport(begin,end);
         	assertEquals(0,Report.size());
@@ -55,7 +55,7 @@ public class TestDataImpl {
 			fail();
     	}
     	assertThrows(NotEnoughBalance.class, ()->{
-            DataTest.buyBoxes(1,100000000);
+            DataTest.buyBoxes(0,100000000);
         });
     }
     
@@ -66,19 +66,19 @@ public class TestDataImpl {
     	try {
     		DataTest.createEmployee("Antonio","LaRuspa");
     		DataTest.createBeverage("Caffe",5,500);
-    		DataTest.rechargeAccount(1,10000);
+    		DataTest.rechargeAccount(0,10000);
     	} catch (Exception e) {
     		System.out.println("Exception occurs");
 			fail();
     	}
         assertThrows(NotEnoughCapsules.class, ()->{
-            DataTest.sellCapsulesToVisitor(1,100000000);
+            DataTest.sellCapsulesToVisitor(0,100000000);
         });
         assertThrows(NotEnoughCapsules.class, ()->{
-            DataTest.sellCapsules(1,1,1000,true);
+            DataTest.sellCapsules(0,0,1000,true);
         });
         assertThrows(NotEnoughCapsules.class, ()->{
-            DataTest.sellCapsules(1,1,1000,false);
+            DataTest.sellCapsules(0,0,1000,false);
         });
     }
     
@@ -88,10 +88,10 @@ public class TestDataImpl {
         i=1;
         DataTest.reset();
     	assertThrows(DateException.class, ()->{
-            DataTest.getEmployeeReport(1,null,end);
+            DataTest.getEmployeeReport(0,null,end);
         });
         assertThrows(DateException.class, ()->{
-            DataTest.getEmployeeReport(1,begin,null);
+            DataTest.getEmployeeReport(0,begin,null);
         });
     }
     
@@ -107,19 +107,19 @@ public class TestDataImpl {
 			fail();
 	    }
 		assertThrows(EmployeeException.class, ()->{
-            DataTest.updateEmployee(1,"Marco","Antonio");
+            DataTest.updateEmployee(0,"Marco","Antonio");
         });
         assertThrows(EmployeeException.class, ()->{
-            DataTest.getEmployeeName(1);
+            DataTest.getEmployeeName(0);
         });
         assertThrows(EmployeeException.class, ()->{
-            DataTest.getEmployeeSurname(1);
+            DataTest.getEmployeeSurname(0);
         });
         assertThrows(EmployeeException.class, ()->{
-            DataTest.getEmployeeBalance(1);
+            DataTest.getEmployeeBalance(0);
         });
         assertThrows(EmployeeException.class, ()->{
-            DataTest.rechargeAccount(1,10000);
+            DataTest.rechargeAccount(0,10000);
         });
         assertThrows(EmployeeException.class, ()->{
             DataTest.createEmployee(null,"Fede");
@@ -128,10 +128,10 @@ public class TestDataImpl {
             DataTest.createEmployee("Fede",null);
         });
         assertThrows(EmployeeException.class, ()->{
-            DataTest.sellCapsules(3,1,1,true);
+            DataTest.sellCapsules(2,0,1,true);
         });
         assertThrows(EmployeeException.class, ()->{
-            DataTest.sellCapsules(3,1,1,false);
+            DataTest.sellCapsules(2,0,1,false);
         });
 	}
 	
@@ -147,19 +147,19 @@ public class TestDataImpl {
 			fail();
 		}
 		assertThrows(BeverageException.class, ()->{
-            DataTest.updateBeverage(1,"Latte",8, 3000);
+            DataTest.updateBeverage(0,"Latte",8, 3000);
         });
         assertThrows(BeverageException.class, ()->{
-            DataTest.getBeverageName(1);
+            DataTest.getBeverageName(0);
         });
         assertThrows(BeverageException.class, ()->{
-            DataTest.getBeverageCapsulesPerBox(1);
+            DataTest.getBeverageCapsulesPerBox(0);
         });
         assertThrows(BeverageException.class, ()->{
-            DataTest.getBeverageBoxPrice(1);
+            DataTest.getBeverageBoxPrice(0);
         });
         assertThrows(BeverageException.class, ()->{
-            DataTest.getBeverageCapsules(1);
+            DataTest.getBeverageCapsules(0);
         });
         assertThrows(BeverageException.class, ()->{
             DataTest.createBeverage(null,8,3000);
@@ -171,13 +171,13 @@ public class TestDataImpl {
             DataTest.createBeverage("Latte",8,null);
         });
         assertThrows(BeverageException.class, ()->{
-            DataTest.sellCapsulesToVisitor(3,1);
+            DataTest.sellCapsulesToVisitor(2,1);
         });
         assertThrows(BeverageException.class, ()->{
-            DataTest.sellCapsules(1,3,1,true);
+            DataTest.sellCapsules(0,2,1,true);
         });
         assertThrows(BeverageException.class, ()->{
-            DataTest.sellCapsules(1,3,1,false);
+            DataTest.sellCapsules(0,2,1,false);
         });
 	}
 	
@@ -191,7 +191,7 @@ public class TestDataImpl {
 	        Emp=DataTest.getEmployees();
 	        assertEquals(0,Id.size());
 	        assertEquals(0,Emp.size());
-	        assertEquals(1,DataTest.createEmployee("Antonio","LaRuspa").intValue());
+	        assertEquals(0,DataTest.createEmployee("Antonio","LaRuspa").intValue());
 	        Id=DataTest.getEmployeesId();
 	        Emp=DataTest.getEmployees();
 	        assertEquals(1,Id.size());
@@ -204,7 +204,7 @@ public class TestDataImpl {
 	            i++;
 	        });
 	        i=1;
-	        assertEquals(2,DataTest.createEmployee("Eugenio","Vitale").intValue());
+	        assertEquals(1,DataTest.createEmployee("Eugenio","Vitale").intValue());
 	        assertEquals("Antonio",DataTest.getEmployeeName(1));
 	        assertEquals("LaRuspa",DataTest.getEmployeeSurname(1));
 	        assertEquals("Eugenio",DataTest.getEmployeeName(2));
@@ -220,8 +220,8 @@ public class TestDataImpl {
 	            i++;
 	        });
 	        i=1;
-	        DataTest.updateEmployee(1,"Vincenzo","LaRuspa");
-	        DataTest.updateEmployee(2,"Eugenio","Coriandolo");
+	        DataTest.updateEmployee(0,"Vincenzo","LaRuspa");
+	        DataTest.updateEmployee(1,"Eugenio","Coriandolo");
 	        assertEquals("Vincenzo",DataTest.getEmployeeName(1));
 	        assertEquals("LaRuspa",DataTest.getEmployeeSurname(1));
 	        assertEquals("Eugenio",DataTest.getEmployeeName(2));
@@ -248,7 +248,7 @@ public class TestDataImpl {
 	    i=1;
 	    DataTest.reset();
 		try {
-			assertEquals(1,DataTest.createBeverage("Caffe",5,500).intValue());
+			assertEquals(0,DataTest.createBeverage("Caffe",5,500).intValue());
 	        Id=DataTest.getBeveragesId();
 	        Emp=DataTest.getBeverages();
 	        assertEquals(1,Id.size());
@@ -260,7 +260,7 @@ public class TestDataImpl {
 	            i++;
 	        });
 	        i=1;
-	        assertEquals(2,DataTest.createBeverage("The",3,150).intValue());
+	        assertEquals(1,DataTest.createBeverage("The",3,150).intValue());
 	        assertEquals("Caffe",DataTest.getBeverageName(1));
 	        assertEquals(5,DataTest.getBeverageCapsulesPerBox(1).intValue());
 	        assertEquals(500,DataTest.getBeverageBoxPrice(1).intValue());
@@ -278,8 +278,8 @@ public class TestDataImpl {
 	            i++;
 	        });
 	        i=1;
-	        DataTest.updateBeverage(1,"Cioccolata",5,500);
-	        DataTest.updateBeverage(2,"The",10,1500);
+	        DataTest.updateBeverage(0,"Cioccolata",5,500);
+	        DataTest.updateBeverage(1,"The",10,1500);
 	        assertEquals("Cioccolata",DataTest.getBeverageName(1));
 	        assertEquals(5,DataTest.getBeverageCapsulesPerBox(1).intValue());
 	        assertEquals(500,DataTest.getBeverageBoxPrice(1).intValue());
@@ -336,17 +336,17 @@ public class TestDataImpl {
 		try {
 			DataTest.createEmployee("Antonio","LaRuspa");
 			DataTest.createBeverage("Caffe",5,500);
-			DataTest.rechargeAccount(1,7500);
+			DataTest.rechargeAccount(0,7500);
 			assertEquals(7500,DataTest.getBalance().intValue());
-			DataTest.buyBoxes(1,5);
+			DataTest.buyBoxes(0,5);
 			assertEquals(5000,DataTest.getBalance().intValue());
-			assertEquals(25,DataTest.getBeverageCapsules(1).intValue());
-			DataTest.sellCapsulesToVisitor(1,10);
-			assertEquals(15,DataTest.getBeverageCapsules(1).intValue());
-			assertEquals(7500,DataTest.sellCapsules(1,1,5,false).intValue());
-			assertEquals(10,DataTest.getBeverageCapsules(1).intValue());
-			assertEquals(7000,DataTest.sellCapsules(1,1,5,true).intValue());
-	        assertEquals(5,DataTest.getBeverageCapsules(1).intValue());
+			assertEquals(25,DataTest.getBeverageCapsules(0).intValue());
+			DataTest.sellCapsulesToVisitor(0,10);
+			assertEquals(15,DataTest.getBeverageCapsules(0).intValue());
+			assertEquals(7500,DataTest.sellCapsules(0,0,5,false).intValue());
+			assertEquals(10,DataTest.getBeverageCapsules(0).intValue());
+			assertEquals(7000,DataTest.sellCapsules(0,0,5,true).intValue());
+	        assertEquals(5,DataTest.getBeverageCapsules(0).intValue());
 		} catch (Exception e) {
 			System.out.println("Exception occurs");
 			fail();
@@ -360,12 +360,12 @@ public class TestDataImpl {
         try{
         	DataTest.createEmployee("Antonio","LaRuspa");
         	DataTest.createBeverage("Caffe",5,500);
-        	DataTest.rechargeAccount(1,1000000);
-        	DataTest.buyBoxes(1,25);
-        	DataTest.sellCapsules(1,1,5,false);
-        	DataTest.sellCapsules(1,1,5,true);
+        	DataTest.rechargeAccount(0,1000000);
+        	DataTest.buyBoxes(0,25);
+        	DataTest.sellCapsules(0,0,5,false);
+        	DataTest.sellCapsules(0,0,5,true);
         	end=new Date();
-        	Report=DataTest.getEmployeeReport(1,begin,end);
+        	Report=DataTest.getEmployeeReport(0,begin,end);
         	assertEquals(3,Report.size());
         	Name=Arrays.asList("RECHARGE", "CASH", "BALANCE");
         	Report.forEach(elem->{
