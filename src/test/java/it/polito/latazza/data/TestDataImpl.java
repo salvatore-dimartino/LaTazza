@@ -8,7 +8,6 @@ import java.util.Collections;
 import java.util.Date;
 
 import org.junit.jupiter.api.Test;
-import jdk.internal.instrumentation.TypeMapping;
 
 import it.polito.latazza.exceptions.BeverageException;
 import it.polito.latazza.exceptions.DateException;
@@ -17,59 +16,52 @@ import it.polito.latazza.exceptions.NotEnoughBalance;
 import it.polito.latazza.exceptions.NotEnoughCapsules;
 
 public class TestDataImpl {
-    
+	Date begin = new Date();
+    Date end = new Date();
+	List<Integer> Id;
+	Map<Integer,String> Emp;
+    List<String> Name;
+    List<String> Report;
+    int i;
     @Test
     public void EmptyList() {
     	DataImpl DataTest = new DataImpl();
-        Date begin = new Date();
-        Date end = new Date();
-    	List<Integer> Id;
-        Map<Integer,String> Emp;
-        List<String> Name;
-        List<String> Report;
-        int i=1;
-        DataTest.reset();
-    	Emp=DataTest.getEmployees();
-        assertEquals(0,Emp.size());
-        Emp=DataTest.getBeverages();
-        assertEquals(0,Emp.size());
-        Report=DataTest.getEmployeeReport(1,begin,end);
-        assertEquals(0,Report.size());
-        Report=DataTest.getReport(begin,end);
-        assertEquals(0,Report.size());
+        i=1;
+        try {
+        	DataTest.reset();
+    		Emp=DataTest.getEmployees();
+        	assertEquals(0,Emp.size());
+        	Emp=DataTest.getBeverages();
+        	assertEquals(0,Emp.size());
+        	Report=DataTest.getEmployeeReport(1,begin,end);
+        	assertEquals(0,Report.size());
+        	Report=DataTest.getReport(begin,end);
+        	assertEquals(0,Report.size());
+        } catch(Exception e) {
+        	System.out.println("Exception occurs");
+			fail();
+        }
     }
     
     @Test
     public void ExceptionNotEnoughBalance() {
     	DataImpl DataTest = new DataImpl();
-        Date begin = new Date();
-        Date end = new Date();
-    	List<Integer> Id;
-        Map<Integer,String> Emp;
-        List<String> Name;
-        List<String> Report;
-        int i=1;
+        i=1;
         DataTest.reset();
     	try {
     		DataTest.createBeverage("Caffe",5,500);
     	} catch (Exception e) {
     		System.out.println("Exception occurs");
-			fails();
+			fail();
     	}
     	assertThrows(NotEnoughBalance.class, ()->{
             DataTest.buyBoxes(1,100000000);
         });
     }
     
-    public void ExceptionNotEnoughBalance() {
+    public void ExceptionNotEnoughCapsules() {
     	DataImpl DataTest = new DataImpl();
-        Date begin = new Date();
-        Date end = new Date();
-    	List<Integer> Id;
-        Map<Integer,String> Emp;
-        List<String> Name;
-        List<String> Report;
-        int i=1;
+        i=1;
         DataTest.reset();
     	try {
     		DataTest.createEmployee("Antonio","LaRuspa");
@@ -77,7 +69,7 @@ public class TestDataImpl {
     		DataTest.rechargeAccount(1,10000);
     	} catch (Exception e) {
     		System.out.println("Exception occurs");
-			fails();
+			fail();
     	}
         assertThrows(NotEnoughCapsules.class, ()->{
             DataTest.sellCapsulesToVisitor(1,100000000);
@@ -93,13 +85,7 @@ public class TestDataImpl {
     @Test
     public void ExceptionData() {
     	DataImpl DataTest = new DataImpl();
-        Date begin = new Date();
-        Date end = new Date();
-    	List<Integer> Id;
-        Map<Integer,String> Emp;
-        List<String> Name;
-        List<String> Report;
-        int i=1;
+        i=1;
         DataTest.reset();
     	assertThrows(DateException.class, ()->{
             DataTest.getEmployeeReport(1,null,end);
@@ -112,19 +98,13 @@ public class TestDataImpl {
 	@Test
 	public void ExceptionEmployee() {
 		DataImpl DataTest = new DataImpl();
-	    Date begin = new Date();
-	    Date end = new Date();
-		List<Integer> Id;
-	    Map<Integer,String> Emp;
-	    List<String> Name;
-	    List<String> Report;
-	    int i=1;
+	    i=1;
 	    DataTest.reset();
 	    try {
 	    	DataTest.createBeverage("Caffe",5,500);
 	    } catch (Exception e) {
 	    	System.out.println("Exception occurs");
-			fails();
+			fail();
 	    }
 		assertThrows(EmployeeException.class, ()->{
             DataTest.updateEmployee(1,"Marco","Antonio");
@@ -158,19 +138,13 @@ public class TestDataImpl {
 	@Test
 	public void ExceptionBeverage() {
 		DataImpl DataTest = new DataImpl();
-	    Date begin = new Date();
-	    Date end = new Date();
-		List<Integer> Id;
-	    Map<Integer,String> Emp;
-	    List<String> Name;
-	    List<String> Report;
-	    int i=1;
+	    i=1;
 	    DataTest.reset();
 		try {
 			DataTest.createEmployee("Antonio","LaRuspa");
 		} catch (Exception e) {
 			System.out.println("Exception occurs");
-			fails();
+			fail();
 		}
 		assertThrows(BeverageException.class, ()->{
             DataTest.updateBeverage(1,"Latte",8, 3000);
@@ -210,13 +184,7 @@ public class TestDataImpl {
 	@Test
 	public void NewEmployee() {
 		DataImpl DataTest = new DataImpl();
-	    Date begin = new Date();
-	    Date end = new Date();
-		List<Integer> Id;
-	    Map<Integer,String> Emp;
-	    List<String> Name;
-	    List<String> Report;
-	    int i=1;
+	    i=1;
 	    DataTest.reset();
 		try {
 			Id=DataTest.getEmployeesId();
@@ -230,6 +198,7 @@ public class TestDataImpl {
 	        assertEquals(1,Emp.size());
 	        Name=Collections.singletonList("Antonio LaRuspa");
 	        Id.forEach(elem->{
+	        	Emp=DataTest.getEmployees();
 	            assertEquals(i,elem.intValue());
 	            assertEquals(Emp.get(i),Name.get(i));
 	            i++;
@@ -269,20 +238,14 @@ public class TestDataImpl {
 	        });
 		} catch (Exception e) {
 			System.out.println("Exception occurs");
-			fails();
+			fail();
 		}
 	}
 	
 	@Test
-	public void NewBeverage{
+	public void NewBeverage() {
 		DataImpl DataTest = new DataImpl();
-	    Date begin = new Date();
-	    Date end = new Date();
-		List<Integer> Id;
-	    Map<Integer,String> Emp;
-	    List<String> Name;
-	    List<String> Report;
-	    int i=1;
+	    i=1;
 	    DataTest.reset();
 		try {
 			assertEquals(1,DataTest.createBeverage("Caffe",5,500).intValue());
@@ -335,52 +298,40 @@ public class TestDataImpl {
 	        });
 		} catch (Exception e) {
 			System.out.println("Exception occurs");
-			fails();
+			fail();
 		}
 	}
 	
 	@Test
 	public void Recharge() {
 		DataImpl DataTest = new DataImpl();
-	    Date begin = new Date();
-	    Date end = new Date();
-		List<Integer> Id;
-	    Map<Integer,String> Emp;
-	    List<String> Name;
-	    List<String> Report;
-	    int i=1;
+	    i=1;
 	    DataTest.reset();
 		try {
 	        DataTest.createEmployee("Antonio","LaRuspa");
 	        DataTest.createEmployee("Eugenio","Vitale");
-	        assertEquals(5000,DataTest.rechargeAccount(1,5000).intValue());
-	        assertEquals(5000,DataTest.getEmployeeBalance(1).intValue());
+	        assertEquals(5000,DataTest.rechargeAccount(0,5000).intValue());
+	        assertEquals(5000,DataTest.getEmployeeBalance(0).intValue());
 	        assertEquals(5000,DataTest.getBalance().intValue());
-	        assertEquals(15000,DataTest.rechargeAccount(1,10000).intValue());
-	        assertEquals(15000,DataTest.getEmployeeBalance(1).intValue());
+	        assertEquals(15000,DataTest.rechargeAccount(0,10000).intValue());
+	        assertEquals(15000,DataTest.getEmployeeBalance(0).intValue());
 	        assertEquals(15000,DataTest.getBalance().intValue());
-	        assertEquals(7500,DataTest.rechargeAccount(1,-7500).intValue());
-	        assertEquals(7500,DataTest.getEmployeeBalance(1).intValue());
+	        assertEquals(7500,DataTest.rechargeAccount(0,-7500).intValue());
+	        assertEquals(7500,DataTest.getEmployeeBalance(0).intValue());
 	        assertEquals(7500,DataTest.getBalance().intValue());
-	        assertEquals(50000,DataTest.rechargeAccount(2,5000).intValue());
-	        assertEquals(50000,DataTest.getEmployeeBalance(2).intValue());
+	        assertEquals(50000,DataTest.rechargeAccount(1,5000).intValue());
+	        assertEquals(50000,DataTest.getEmployeeBalance(1).intValue());
 	        assertEquals(57500,DataTest.getBalance().intValue());
 		} catch (Exception e) {
 			System.out.println("Exception occurs");
-			fails();
+			fail();
 		}
 	}
 	
 	@Test
 	public void BuyTest(){
 		DataImpl DataTest = new DataImpl();
-	    Date begin = new Date();
-	    Date end = new Date();
-		List<Integer> Id;
-	    Map<Integer,String> Emp;
-	    List<String> Name;
-	    List<String> Report;
-	    int i=1;
+	    i=1;
 	    DataTest.reset();
 		try {
 			DataTest.createEmployee("Antonio","LaRuspa");
@@ -398,19 +349,13 @@ public class TestDataImpl {
 	        assertEquals(5,DataTest.getBeverageCapsules(1).intValue());
 		} catch (Exception e) {
 			System.out.println("Exception occurs");
-			fails();
+			fail();
 		}
 	}
 	
 	public void ReportTest() {
 		DataImpl DataTest = new DataImpl();
-	    Date begin = new Date();
-	    Date end = new Date();
-		List<Integer> Id;
-	    Map<Integer,String> Emp;
-	    List<String> Name;
-	    List<String> Report;
-	    int i=1;
+	    i=1;
 	    DataTest.reset();
         try{
         	DataTest.createEmployee("Antonio","LaRuspa");
@@ -439,7 +384,7 @@ public class TestDataImpl {
         	});
         } catch(Exception e) {
         	System.out.println("Exception occurs");
-			fails();
+			fail();
         }
 	}
 }
