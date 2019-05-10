@@ -4,9 +4,6 @@ import java.util.Date;
 
 public class Recharge extends Transaction {
 	
-	//default serialVersion id
-	private static final long serialVersionUID = 1L;
-	
 	private Integer amount;
 	private Employee employee;
 
@@ -14,8 +11,6 @@ public class Recharge extends Transaction {
 		super(ID, date);
 		this.amount=amount;
 		this.employee=employee;
-		
-		this.WriteObjectToFile(this);
 	}
 
 	public Integer getAmount() {

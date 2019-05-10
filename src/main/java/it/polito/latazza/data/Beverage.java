@@ -1,22 +1,12 @@
 package it.polito.latazza.data;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-
-public class Beverage implements Serializable{
-	
-	//default serialVersion id
-    private static final long serialVersionUID = 1L;
+public class Beverage {
 	
 	private Integer ID;
 	private String name;
 	private Integer price;
 	private Integer quantityPerBox;
 	private Integer availableQuantity;
-	
-	private static final String filepath=(new File("beverages.txt")).getAbsolutePath();
 	
 	public Beverage(Integer ID, String name, Integer price, Integer quantityPerBox, Integer availableQuantity) {
 		
@@ -25,8 +15,6 @@ public class Beverage implements Serializable{
 		this.price = price;
 		this.quantityPerBox = quantityPerBox;
 		this.availableQuantity = availableQuantity;
-		
-		this.WriteObjectToFile(this);
 	}
 	
 	public Integer getID() {
@@ -69,17 +57,7 @@ public class Beverage implements Serializable{
 		this.availableQuantity = availableQuantity;
 	}
 	
-	public void WriteObjectToFile(Object serObj) {
-		 
-        try {
-            FileOutputStream fileOut = new FileOutputStream(filepath, true);
-            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-            objectOut.writeObject(serObj);
-            objectOut.close();
- 
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }	
+	
+	
 	
 }
