@@ -3,6 +3,9 @@ import java.util.Date;
 
 public class Consumption extends Transaction { 
 	
+	//default serialVersion id
+	private static final long serialVersionUID = 1L;
+	
 	private Integer quantity;
 	private Beverage beverage;
 	private Employee employee;
@@ -15,6 +18,8 @@ public class Consumption extends Transaction {
 		this.beverage = beverage;
 		this.employee = employee;
 		this.type = type;
+		
+		this.WriteObjectToFile(this);
 	}
 	
 	public Integer getQuantity() {
