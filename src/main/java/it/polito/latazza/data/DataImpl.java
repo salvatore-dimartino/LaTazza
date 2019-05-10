@@ -118,7 +118,7 @@ public class DataImpl implements DataInterface {
 	@Override
 	public List<String> getEmployeeReport(Integer employeeId, Date startDate, Date endDate)
 			throws EmployeeException, DateException {
-		if(Employees.keySet().contains(employeeId))
+		if(!Employees.keySet().contains(employeeId))
 			throw new EmployeeException();
 		if(startDate==null||endDate==null)
 			throw new DateException();
@@ -264,21 +264,21 @@ public class DataImpl implements DataInterface {
 
 	@Override
 	public String getEmployeeName(Integer id) throws EmployeeException {
-		if(Employees.keySet().contains(id))
+		if(!Employees.keySet().contains(id))
 			throw new EmployeeException();
 		return Employees.get(id).getName();
 	}
 
 	@Override
 	public String getEmployeeSurname(Integer id) throws EmployeeException {
-		if(Employees.keySet().contains(id))
+		if(!Employees.keySet().contains(id))
 			throw new EmployeeException();
 		return Employees.get(id).getSurname();
 	}
 
 	@Override
 	public Integer getEmployeeBalance(Integer id) throws EmployeeException {
-		if(Employees.keySet().contains(id))
+		if(!Employees.keySet().contains(id))
 			throw new EmployeeException();
 		return Employees.get(id).getPersonalaccount().getBalance();
 	}
