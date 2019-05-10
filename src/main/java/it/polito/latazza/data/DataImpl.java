@@ -17,7 +17,7 @@ public class DataImpl implements DataInterface {
     private static Map<Integer, Employee> Employees = new HashMap<>();
     private static Map<Integer, Beverage> Beverages = new HashMap<>();
     private static Map<Integer, Transaction> Transactions = new HashMap<>();
-    private LaTazzaAccount account = new LaTazzaAccount();
+    private LaTazzaAccount account = new LaTazzaAccount(0);
 
 	@Override
 	public Integer sellCapsules(Integer employeeId, Integer beverageId, Integer numberOfCapsules, Boolean fromAccount)
@@ -90,7 +90,7 @@ public class DataImpl implements DataInterface {
 		PersonalAccount P_account = employee.getPersonalaccount();
 		P_account.addTransaction(recharge);
 		P_account.setBalance(P_account.getBalance()+amountInCents);
-		
+		account.setTotal(account.getTotal+amountInCents);
 		return P_account.getBalance();
 	}
 
@@ -118,7 +118,7 @@ public class DataImpl implements DataInterface {
 	@Override
 	public List<String> getEmployeeReport(Integer employeeId, Date startDate, Date endDate)
 			throws EmployeeException, DateException {
-		if(Employees.keySet().contains(employeeId))
+		if(!Employees.keySet().contains(employeeId))
 			throw new EmployeeException();
 		if(startDate==null||endDate==null)
 			throw new DateException();
@@ -264,21 +264,21 @@ public class DataImpl implements DataInterface {
 
 	@Override
 	public String getEmployeeName(Integer id) throws EmployeeException {
-		if(Employees.keySet().contains(id))
+		if(!Employees.keySet().contains(id))
 			throw new EmployeeException();
 		return Employees.get(id).getName();
 	}
 
 	@Override
 	public String getEmployeeSurname(Integer id) throws EmployeeException {
-		if(Employees.keySet().contains(id))
+		if(!Employees.keySet().contains(id))
 			throw new EmployeeException();
 		return Employees.get(id).getSurname();
 	}
 
 	@Override
 	public Integer getEmployeeBalance(Integer id) throws EmployeeException {
-		if(Employees.keySet().contains(id))
+		if(!Employees.keySet().contains(id))
 			throw new EmployeeException();
 		return Employees.get(id).getPersonalaccount().getBalance();
 	}

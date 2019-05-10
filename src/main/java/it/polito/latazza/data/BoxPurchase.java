@@ -3,9 +3,6 @@ import java.util.Date;
 
 public class BoxPurchase extends Transaction {
 	
-	//default serialVersion id
-	private static final long serialVersionUID = 1L;
-	
 	Integer quantity;
 	Beverage beverage;
 	
@@ -14,8 +11,6 @@ public class BoxPurchase extends Transaction {
 		super(ID, date);
 		this.quantity = quantity;
 		this.beverage = beverage;
-		
-		this.WriteObjectToFile(this);
 	}
 
 	public Integer getQuantity() {
