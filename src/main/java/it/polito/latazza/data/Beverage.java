@@ -1,5 +1,7 @@
 package it.polito.latazza.data;
 
+import org.json.simple.JsonObject;
+
 public class Beverage {
 	
 	private Integer ID;
@@ -8,6 +10,8 @@ public class Beverage {
 	private Integer quantityPerBox;
 	private Integer availableQuantity;
 	
+	private JsonObject json = new JsonObject();
+	
 	public Beverage(Integer ID, String name, Integer price, Integer quantityPerBox, Integer availableQuantity) {
 		
 		this.ID = ID;
@@ -15,8 +19,24 @@ public class Beverage {
 		this.price = price;
 		this.quantityPerBox = quantityPerBox;
 		this.availableQuantity = availableQuantity;
+		
+		// create beverage json file
+		json.put("ID", ID.toString());  
+		json.put("name", name);
+		json.put("price", price.toString());
+		json.put("quantityPerBox", quantityPerBox.toString());
+		json.put("availableQuantity", availableQuantity.toString());
+		
 	}
 	
+	public JsonObject getJson() {
+		return json;
+	}
+
+	public void setJson(JsonObject json) {
+		this.json = json;
+	}
+
 	public Integer getID() {
 		return ID;
 	}
