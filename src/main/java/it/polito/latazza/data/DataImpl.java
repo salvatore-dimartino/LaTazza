@@ -90,7 +90,7 @@ public class DataImpl implements DataInterface {
 		PersonalAccount P_account = employee.getPersonalaccount();
 		P_account.addTransaction(recharge);
 		P_account.setBalance(P_account.getBalance()+amountInCents);
-		
+		account.setTotal(account.getTotal+amountInCents);
 		return P_account.getBalance();
 	}
 
