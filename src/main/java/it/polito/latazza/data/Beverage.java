@@ -1,5 +1,8 @@
 package it.polito.latazza.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.json.simple.JSONObject;
 
 public class Beverage {
@@ -11,6 +14,7 @@ public class Beverage {
 	private Integer availableQuantity;
 	
 	private JSONObject json = new JSONObject();
+	private List<String> attributes = new ArrayList<String>();
 	
 	@SuppressWarnings("unchecked")
 	public Beverage(Integer ID, String name, Integer price, Integer quantityPerBox, Integer availableQuantity) {
@@ -20,16 +24,27 @@ public class Beverage {
 		this.price = price;
 		this.quantityPerBox = quantityPerBox;
 		this.availableQuantity = availableQuantity;
+
+		attributes.add(0, name);
+		attributes.add(1, price.toString());
+		attributes.add(2, quantityPerBox.toString());
+		attributes.add(3, availableQuantity.toString());
 		
-		// create beverage json file
-		json.put("ID", ID.toString());  
-		json.put("name", name);
-		json.put("price", price.toString());
-		json.put("quantityPerBox", quantityPerBox.toString());
-		json.put("availableQuantity", availableQuantity.toString());
-		
+		json.put(ID.toString(), attributes);
+	
 	}
 	
+
+	public List<String> getAttributes() {
+		return attributes;
+	}
+
+
+	public void setAttributes(List<String> attributes) {
+		this.attributes = attributes;
+	}
+
+
 	public JSONObject getJson() {
 		return json;
 	}
@@ -82,4 +97,3 @@ public class Beverage {
 	
 	
 }
-
