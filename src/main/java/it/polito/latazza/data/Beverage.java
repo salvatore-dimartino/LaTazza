@@ -1,6 +1,6 @@
 package it.polito.latazza.data;
 
-import org.json.simple.JsonObject;
+import org.json.simple.JSONObject;
 
 public class Beverage {
 	
@@ -10,8 +10,9 @@ public class Beverage {
 	private Integer quantityPerBox;
 	private Integer availableQuantity;
 	
-	private JsonObject json = new JsonObject();
+	private JSONObject json = new JSONObject();
 	
+	@SuppressWarnings("unchecked")
 	public Beverage(Integer ID, String name, Integer price, Integer quantityPerBox, Integer availableQuantity) {
 		
 		this.ID = ID;
@@ -29,11 +30,11 @@ public class Beverage {
 		
 	}
 	
-	public JsonObject getJson() {
+	public JSONObject getJson() {
 		return json;
 	}
 
-	public void setJson(JsonObject json) {
+	public void setJson(JSONObject json) {
 		this.json = json;
 	}
 
@@ -81,3 +82,4 @@ public class Beverage {
 	
 	
 }
+
