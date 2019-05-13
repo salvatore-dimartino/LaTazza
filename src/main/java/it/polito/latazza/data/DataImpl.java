@@ -1,18 +1,10 @@
 package it.polito.latazza.data;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import it.polito.latazza.exceptions.BeverageException;
 import it.polito.latazza.exceptions.DateException;
@@ -158,7 +150,6 @@ public class DataImpl implements DataInterface {
 		return l;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public Integer createBeverage(String name, Integer capsulesPerBox, Integer boxPrice) throws BeverageException {
 		
@@ -168,42 +159,13 @@ public class DataImpl implements DataInterface {
 			throw new BeverageException();
 		} else {
 			Beverages.put(Beverages.size(), b);
-		
-			// read the json file
-			JSONParser parser = new JSONParser();
-			JSONObject j_file = new JSONObject();
-			try {
-				j_file = (JSONObject) parser.parse(new FileReader("./Beverages.json"));
-				
-			} catch (FileNotFoundException e1) {
-				// TODO Auto-generated catch block
-				System.out.println("file not found\n");
-				e1.printStackTrace();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				System.out.println("IO Error\n");
-				e1.printStackTrace();
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				System.out.println("Parse Error\n");
-				e1.printStackTrace();
-			}	
-				j_file.put(b.getID().toString(), b.getAttributes());
-				
-				// write the json object to the file
-				try (FileWriter file = new FileWriter("./Beverages.json")) {
-			        file.write(j_file.toJSONString());
-			        file.flush();
-			 
-			    } catch (IOException e) {
-			        e.printStackTrace();
-			    }		
+			
+			b.toJsonBeverage();
 		}
 		// TODO Auto-generated method stub
 		return b.getID();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void updateBeverage(Integer id, String name, Integer capsulesPerBox, Integer boxPrice)
 			throws BeverageException {
@@ -217,37 +179,7 @@ public class DataImpl implements DataInterface {
 			beverage.setPrice(boxPrice);
 			beverage.setQuantityPerBox(capsulesPerBox);
 			
-			// update json object locally
-			JSONObject json = beverage.getJson();
-			List<String> attributes = beverage.getAttributes();
-			json.put(id.toString(), attributes);
-					
-			// update json file
-			// read the json file
-			JSONParser parser = new JSONParser();
-			try {
-				JSONObject j_file = (JSONObject) parser.parse(new FileReader("./Beverages.json"));
-				j_file.put(beverage.getID().toString(), beverage.getAttributes());
-							
-				// write the json object to the file
-				try (FileWriter file = new FileWriter("./Beverages.json")) {
-						file.write(j_file.toJSONString());
-						file.flush();
-						 
-				} catch (IOException e) {
-						e.printStackTrace();
-				}
-			} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-			} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-			} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-			}
-		
+			beverage.toJsonBeverage();		
 		}
 		
 		return;
@@ -390,5 +322,4 @@ public class DataImpl implements DataInterface {
 		Transactions.clear();
 		account.setTotal(0);
 	}
-	
 }
