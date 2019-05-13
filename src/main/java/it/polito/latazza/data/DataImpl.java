@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.json.simple.JsonObject;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -133,9 +133,8 @@ public class DataImpl implements DataInterface {
 		if(startDate==null||endDate==null)
 			throw new DateException();
 		Map <Integer,Transaction> Transactions=Employees.get(employeeId).getPersonalaccount().getTransactions();
-		List<String> Report= new ArrayList();
+		List<String> Report= new ArrayList<String>();
 		Transactions.forEach((k,v)->{
-			Date d=v.getDate();
 			if(v.getDate().after(startDate) && v.getDate().before(endDate))
 				Report.add(v.getString());
 		});
@@ -173,6 +172,7 @@ public class DataImpl implements DataInterface {
 		return b.getID();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void updateBeverage(Integer id, String name, Integer capsulesPerBox, Integer boxPrice)
 			throws BeverageException {
@@ -186,20 +186,19 @@ public class DataImpl implements DataInterface {
 		}
 		
 		// update json object locally
-		JsonObject json = Beverages.get(id).getJson();
+		JSONObject json = Beverages.get(id).getJson();
 		json.put("name", name);
 		json.put("capsulesPerBox", capsulesPerBox.toString());
 		json.put("boxPrice", boxPrice.toString());
 		
 		// update json file
 		JSONParser parser = new JSONParser();
-		JsonObject j_obj;
+		JSONObject j_obj;
 		try {
-			j_obj = (JsonObject) parser.parse(new FileReader("c:\\my_json_file.json"));
+			j_obj = (JSONObject) parser.parse(new FileReader("c:\\projects\\test.json"));
 			j_obj.put("name", name);
-			try (FileWriter file = new FileWriter("c:\\my_json_file.json")) {
-				 
-	            file.write(j_obj.toJson());
+			try (FileWriter file = new FileWriter("c:\\projects\\test.json")) {
+	            file.write(j_obj.toJSONString());
 	            file.flush();
 	 
 	        } catch (IOException e) {
