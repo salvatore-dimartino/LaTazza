@@ -61,6 +61,7 @@ public class BoxPurchase extends Transaction {
 		return att;
 	}
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public void toJsonTransaction() {
 		
