@@ -192,28 +192,16 @@ public class DataImpl implements DataInterface {
 		json.put("boxPrice", boxPrice.toString());
 		
 		// update json file
-		JSONParser parser = new JSONParser();
-		JSONObject j_obj;
-		try {
-			j_obj = (JSONObject) parser.parse(new FileReader("c:\\projects\\test.json"));
-			j_obj.put("name", name);
-			try (FileWriter file = new FileWriter("c:\\projects\\test.json")) {
-	            file.write(j_obj.toJSONString());
-	            file.flush();
+		//JSONParser parser = new JSONParser();
+		//JSONObject j_obj;
+		//j_obj = (JSONObject) parser.parse(new FileReader("c:\\projects\\test.json"));
+		try (FileWriter file = new FileWriter("c:\\projects\\test.json")) {
+			file.write(json.toJSONString());
+			file.flush();
 	 
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
 		
 		return;
 	}
