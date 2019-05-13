@@ -158,6 +158,7 @@ public class DataImpl implements DataInterface {
 		return l;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Integer createBeverage(String name, Integer capsulesPerBox, Integer boxPrice) throws BeverageException {
 		
@@ -166,7 +167,37 @@ public class DataImpl implements DataInterface {
 		if(name == null || capsulesPerBox == 0 || boxPrice == 0) {
 			throw new BeverageException();
 		} else {
-		Beverages.put(Beverages.size(), b);
+			Beverages.put(Beverages.size(), b);
+		
+			// read the json file
+			JSONParser parser = new JSONParser();
+			JSONObject j_file = new JSONObject();
+			try {
+				j_file = (JSONObject) parser.parse(new FileReader("./Beverages.json"));
+				
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				System.out.println("file not found\n");
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				System.out.println("IO Error\n");
+				e1.printStackTrace();
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				System.out.println("Parse Error\n");
+				e1.printStackTrace();
+			}	
+				j_file.put(b.getID().toString(), b.getAttributes());
+				
+				// write the json object to the file
+				try (FileWriter file = new FileWriter("./Beverages.json")) {
+			        file.write(j_file.toJSONString());
+			        file.flush();
+			 
+			    } catch (IOException e) {
+			        e.printStackTrace();
+			    }		
 		}
 		// TODO Auto-generated method stub
 		return b.getID();
@@ -177,31 +208,47 @@ public class DataImpl implements DataInterface {
 	public void updateBeverage(Integer id, String name, Integer capsulesPerBox, Integer boxPrice)
 			throws BeverageException {
 		
-		if (Beverages.get(id) == null) {
+		Beverage beverage = Beverages.get(id);
+		
+		if (beverage == null) {
 			throw new BeverageException();
 		}else{
-		Beverages.get(id).setName(name);
-		Beverages.get(id).setPrice(boxPrice);
-		Beverages.get(id).setQuantityPerBox(capsulesPerBox);
+			beverage.setName(name);
+			beverage.setPrice(boxPrice);
+			beverage.setQuantityPerBox(capsulesPerBox);
+			
+			// update json object locally
+			JSONObject json = beverage.getJson();
+			List<String> attributes = beverage.getAttributes();
+			json.put(id.toString(), attributes);
+					
+			// update json file
+			// read the json file
+			JSONParser parser = new JSONParser();
+			try {
+				JSONObject j_file = (JSONObject) parser.parse(new FileReader("./Beverages.json"));
+				j_file.put(beverage.getID().toString(), beverage.getAttributes());
+							
+				// write the json object to the file
+				try (FileWriter file = new FileWriter("./Beverages.json")) {
+						file.write(j_file.toJSONString());
+						file.flush();
+						 
+				} catch (IOException e) {
+						e.printStackTrace();
+				}
+			} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+			} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+			} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+			}
+		
 		}
-		
-		// update json object locally
-		JSONObject json = Beverages.get(id).getJson();
-		json.put("name", name);
-		json.put("capsulesPerBox", capsulesPerBox.toString());
-		json.put("boxPrice", boxPrice.toString());
-		
-		// update json file
-		//JSONParser parser = new JSONParser();
-		//JSONObject j_obj;
-		//j_obj = (JSONObject) parser.parse(new FileReader("c:\\projects\\test.json"));
-		try (FileWriter file = new FileWriter("c:\\projects\\test.json")) {
-			file.write(json.toJSONString());
-			file.flush();
-	 
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }
 		
 		return;
 	}
