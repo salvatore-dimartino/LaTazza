@@ -1,5 +1,9 @@
 package it.polito.latazza.data;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -51,7 +55,7 @@ public class DataImpl implements DataInterface {
 		PersonalAccount P_account = employee.getPersonalaccount();
 		if(fromAccount == true) {
 			P_account.addTransaction(transaction);
-			P_account.setBalance(P_account.getBalance()-numberOfCapsules*beverage.getPrice());
+			P_account.setBalance(P_account.getBalance()-numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
 		}
 		return P_account.getBalance();
 	}
@@ -94,7 +98,7 @@ public class DataImpl implements DataInterface {
 		PersonalAccount P_account = employee.getPersonalaccount();
 		P_account.addTransaction(recharge);
 		P_account.setBalance(P_account.getBalance()+amountInCents);
-		account.setTotal(account.getTotal+amountInCents);
+		account.setTotal(account.getTotal()+amountInCents);
 		return P_account.getBalance();
 	}
 
@@ -106,7 +110,7 @@ public class DataImpl implements DataInterface {
 		if(beverage == null) throw new BeverageException();
 		
 		// get total amount to pay
-		Integer price = beverage.getQuantityPerBox()*beverage.getPrice()*boxQuantity;
+		Integer price = beverage.getPrice()*boxQuantity;
 		
 		// update the manager account
 		if(account.getTotal() < price) throw new NotEnoughBalance();
@@ -117,6 +121,8 @@ public class DataImpl implements DataInterface {
 		BoxPurchase boxpurchase= new BoxPurchase(TID, new Date(), boxQuantity, beverage);
 		Transactions.put(TID, boxpurchase);
 		
+		// update the availability
+		beverage.setAvailableQuantity(beverage.getAvailableQuantity()+boxQuantity*beverage.getQuantityPerBox());
 	}
 
 	@Override
@@ -156,14 +162,15 @@ public class DataImpl implements DataInterface {
 	@Override
 	public Integer createBeverage(String name, Integer capsulesPerBox, Integer boxPrice) throws BeverageException {
 		
+		Beverage b = new Beverage(Beverages.size(), name, boxPrice, capsulesPerBox, 0);
+		
 		if(name == null || capsulesPerBox == 0 || boxPrice == 0) {
 			throw new BeverageException();
 		} else {
-		Beverage b = new Beverage(Beverages.size(), name, boxPrice, capsulesPerBox, 0);
 		Beverages.put(Beverages.size(), b);
 		}
 		// TODO Auto-generated method stub
-		return 0;
+		return b.getID();
 	}
 
 	@Override
@@ -275,14 +282,15 @@ public class DataImpl implements DataInterface {
 	@Override
 	public Integer createEmployee(String name, String surname) throws EmployeeException {
 		
+		Employee e = new Employee(name, surname, Employees.size());
+		
 		if(name == null || surname == null) {
 			throw new EmployeeException();
 		} else {
-		Employee e = new Employee(name, surname, Employees.size());
 		Employees.put(Employees.size(), e);
 		}
 		// TODO Auto-generated method stub
-		return 0;
+		return e.getID();
 	}
 
 	@Override
