@@ -6,10 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.json.simple.JsonObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
 import it.polito.latazza.exceptions.BeverageException;
 import it.polito.latazza.exceptions.DateException;
 import it.polito.latazza.exceptions.EmployeeException;
@@ -51,7 +47,7 @@ public class DataImpl implements DataInterface {
 		PersonalAccount P_account = employee.getPersonalaccount();
 		if(fromAccount == true) {
 			P_account.addTransaction(transaction);
-			P_account.setBalance(P_account.getBalance()-numberOfCapsules*beverage.getPrice());
+			P_account.setBalance(P_account.getBalance()-numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
 		}
 		return P_account.getBalance();
 	}
@@ -94,7 +90,7 @@ public class DataImpl implements DataInterface {
 		PersonalAccount P_account = employee.getPersonalaccount();
 		P_account.addTransaction(recharge);
 		P_account.setBalance(P_account.getBalance()+amountInCents);
-		account.setTotal(account.getTotal+amountInCents);
+		account.setTotal(account.getTotal()+amountInCents);
 		return P_account.getBalance();
 	}
 
@@ -106,7 +102,7 @@ public class DataImpl implements DataInterface {
 		if(beverage == null) throw new BeverageException();
 		
 		// get total amount to pay
-		Integer price = beverage.getQuantityPerBox()*beverage.getPrice()*boxQuantity;
+		Integer price = beverage.getPrice()*boxQuantity;
 		
 		// update the manager account
 		if(account.getTotal() < price) throw new NotEnoughBalance();
@@ -117,6 +113,8 @@ public class DataImpl implements DataInterface {
 		BoxPurchase boxpurchase= new BoxPurchase(TID, new Date(), boxQuantity, beverage);
 		Transactions.put(TID, boxpurchase);
 		
+		// update the availability
+		beverage.setAvailableQuantity(beverage.getAvailableQuantity()+boxQuantity*beverage.getQuantityPerBox());
 	}
 
 	@Override
@@ -127,9 +125,8 @@ public class DataImpl implements DataInterface {
 		if(startDate==null||endDate==null)
 			throw new DateException();
 		Map <Integer,Transaction> Transactions=Employees.get(employeeId).getPersonalaccount().getTransactions();
-		List<String> Report= new ArrayList();
+		List<String> Report= new ArrayList<String>();
 		Transactions.forEach((k,v)->{
-			Date d=v.getDate();
 			if(v.getDate().after(startDate) && v.getDate().before(endDate))
 				Report.add(v.getString());
 		});
@@ -156,57 +153,33 @@ public class DataImpl implements DataInterface {
 	@Override
 	public Integer createBeverage(String name, Integer capsulesPerBox, Integer boxPrice) throws BeverageException {
 		
+		Beverage b = new Beverage(Beverages.size(), name, boxPrice, capsulesPerBox, 0);
+		
 		if(name == null || capsulesPerBox == 0 || boxPrice == 0) {
 			throw new BeverageException();
 		} else {
-		Beverage b = new Beverage(Beverages.size(), name, boxPrice, capsulesPerBox, 0);
-		Beverages.put(Beverages.size(), b);
+			Beverages.put(Beverages.size(), b);
+			
+			b.toJsonBeverage();
 		}
 		// TODO Auto-generated method stub
-		return 0;
+		return b.getID();
 	}
 
 	@Override
 	public void updateBeverage(Integer id, String name, Integer capsulesPerBox, Integer boxPrice)
 			throws BeverageException {
 		
-		if (Beverages.get(id) == null) {
+		Beverage beverage = Beverages.get(id);
+		
+		if (beverage == null) {
 			throw new BeverageException();
 		}else{
-		Beverages.get(id).setName(name);
-		Beverages.get(id).setPrice(boxPrice);
-		Beverages.get(id).setQuantityPerBox(capsulesPerBox);
-		}
-		
-		// update json object locally
-		JsonObject json = Beverages.get(id).getJson();
-		json.put("name", name);
-		json.put("capsulesPerBox", capsulesPerBox.toString());
-		json.put("boxPrice", boxPrice.toString());
-		
-		// update json file
-		JSONParser parser = new JSONParser();
-		JsonObject j_obj;
-		try {
-			j_obj = (JsonObject) parser.parse(new FileReader("c:\\my_json_file.json"));
-			j_obj.put("name", name);
-			try (FileWriter file = new FileWriter("c:\\my_json_file.json")) {
-				 
-	            file.write(j_obj.toJson());
-	            file.flush();
-	 
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			beverage.setName(name);
+			beverage.setPrice(boxPrice);
+			beverage.setQuantityPerBox(capsulesPerBox);
+			
+			beverage.toJsonBeverage();		
 		}
 		
 		return;
@@ -275,14 +248,15 @@ public class DataImpl implements DataInterface {
 	@Override
 	public Integer createEmployee(String name, String surname) throws EmployeeException {
 		
+		Employee e = new Employee(name, surname, Employees.size());
+		
 		if(name == null || surname == null) {
 			throw new EmployeeException();
 		} else {
-		Employee e = new Employee(name, surname, Employees.size());
 		Employees.put(Employees.size(), e);
 		}
 		// TODO Auto-generated method stub
-		return 0;
+		return e.getID();
 	}
 
 	@Override
@@ -348,5 +322,4 @@ public class DataImpl implements DataInterface {
 		Transactions.clear();
 		account.setTotal(0);
 	}
-	
 }
