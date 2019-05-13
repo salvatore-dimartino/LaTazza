@@ -1,9 +1,15 @@
 package it.polito.latazza.data;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class Beverage {
 	
@@ -13,10 +19,6 @@ public class Beverage {
 	private Integer quantityPerBox;
 	private Integer availableQuantity;
 	
-	private JSONObject json = new JSONObject();
-	private List<String> attributes = new ArrayList<String>();
-	
-	@SuppressWarnings("unchecked")
 	public Beverage(Integer ID, String name, Integer price, Integer quantityPerBox, Integer availableQuantity) {
 		
 		this.ID = ID;
@@ -24,33 +26,18 @@ public class Beverage {
 		this.price = price;
 		this.quantityPerBox = quantityPerBox;
 		this.availableQuantity = availableQuantity;
-
+	
+	}
+	
+	public List<String> getAttributes(){
+		List<String> attributes = new ArrayList<String>();
+		
 		attributes.add(0, name);
 		attributes.add(1, price.toString());
 		attributes.add(2, quantityPerBox.toString());
 		attributes.add(3, availableQuantity.toString());
 		
-		json.put(ID.toString(), attributes);
-	
-	}
-	
-
-	public List<String> getAttributes() {
 		return attributes;
-	}
-
-
-	public void setAttributes(List<String> attributes) {
-		this.attributes = attributes;
-	}
-
-
-	public JSONObject getJson() {
-		return json;
-	}
-
-	public void setJson(JSONObject json) {
-		this.json = json;
 	}
 
 	public Integer getID() {
@@ -93,7 +80,29 @@ public class Beverage {
 		this.availableQuantity = availableQuantity;
 	}
 	
-	
-	
-	
+	@SuppressWarnings("unchecked")
+	public void toJsonBeverage() {
+		// read the json file
+		JSONParser parser = new JSONParser();
+		JSONObject j_file = new JSONObject();
+		try {
+			j_file = (JSONObject) parser.parse(new FileReader("./Beverages.json"));
+						
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		} catch (ParseException e) {
+		}		
+		
+		j_file.put(this.getID().toString(), this.getAttributes());
+						
+		// write the json object to the file
+		try (FileWriter file = new FileWriter("./Beverages.json")) {
+			file.write(j_file.toJSONString());
+			file.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+	}
 }
