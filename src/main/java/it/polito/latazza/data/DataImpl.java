@@ -43,6 +43,8 @@ public class DataImpl implements DataInterface {
 		Transaction transaction = new Transaction(TID, new Date());
 		Transactions.put(TID, transaction);
 		
+		transaction.toJsonTransaction();
+		
 		// update personal account
 		PersonalAccount P_account = employee.getPersonalaccount();
 		if(fromAccount == true) {
@@ -67,8 +69,10 @@ public class DataImpl implements DataInterface {
 		// update the availability
 		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
 		
+		transaction.toJsonTransaction();
+		
 		// update the transactions
-		Integer TID = Transactions.size()+1;
+		Integer TID = Transactions.size();
 		Transaction transaction = new Transaction(TID, new Date());
 		Transactions.put(TID, transaction);
 		
@@ -85,6 +89,8 @@ public class DataImpl implements DataInterface {
 		Integer TID = Transactions.size()+1;
 		Recharge recharge = new Recharge(TID, new Date(), amountInCents, employee);
 		Transactions.put(TID, recharge);
+		
+		recharge.toJsonTransaction();
 		
 		// update personal account
 		PersonalAccount P_account = employee.getPersonalaccount();
@@ -112,6 +118,8 @@ public class DataImpl implements DataInterface {
 		Integer TID = Transactions.size()+1;
 		BoxPurchase boxpurchase= new BoxPurchase(TID, new Date(), boxQuantity, beverage);
 		Transactions.put(TID, boxpurchase);
+		
+		boxpurchase.toJsonTransaction();
 		
 		// update the availability
 		beverage.setAvailableQuantity(beverage.getAvailableQuantity()+boxQuantity*beverage.getQuantityPerBox());
