@@ -388,4 +388,9 @@ public class TestDataImpl {
 			fail();
         }
 	}
+	
+	public void ResetTest(){
+	    DataImpl DataTest = new DataImpl();
+	    DataTest.reset();
+	}
 }
