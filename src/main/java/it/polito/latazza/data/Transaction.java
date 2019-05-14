@@ -60,6 +60,15 @@ public class Transaction {
 		
 		JSONParser parser = new JSONParser();
 		JSONObject j_file = new JSONObject();
+		
+		File myfile = new File("Transactions.json");
+		try {
+			myfile.createNewFile();
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		
 		try {
 			j_file = (JSONObject) parser.parse(new FileReader("./Transactions.json"));
 						
@@ -72,9 +81,6 @@ public class Transaction {
 			System.out.println("IO Error\n");
 			e1.printStackTrace();
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			System.out.println("Parse Error\n");
-			e1.printStackTrace();
 		}	
 		
 		j_file.put(this.ID.toString(), this.getAttributes());
