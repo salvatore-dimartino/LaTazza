@@ -87,6 +87,7 @@ public class Consumption extends Transaction {
 		att.add(this.getID().toString());
 		att.add(this.getDate().toString());
 		att.add(this.quantity.toString());
+		//TODO
 		att.addAll(this.beverage.getAttributes());
 		att.addAll(this.employee.getAttributes());
 		att.add(this.type);
