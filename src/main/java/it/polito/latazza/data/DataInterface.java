@@ -1,18 +1,8 @@
 package it.polito.latazza.data;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import it.polito.latazza.exceptions.BeverageException;
 import it.polito.latazza.exceptions.DateException;
@@ -20,330 +10,272 @@ import it.polito.latazza.exceptions.EmployeeException;
 import it.polito.latazza.exceptions.NotEnoughBalance;
 import it.polito.latazza.exceptions.NotEnoughCapsules;
 
-public class DataImpl implements DataInterface {
-    
-    private static Map<Integer, Employee> Employees = new HashMap<>();
-    private static Map<Integer, Beverage> Beverages = new HashMap<>();
-    private static Map<Integer, Transaction> Transactions = new HashMap<>();
-    private LaTazzaAccount account = new LaTazzaAccount(0);
+public interface DataInterface {
 
-	@Override
+	// --------------- FR1 --------------- //
+	/**
+	 * Record that an employee has used some capsules of a certain beverage.
+	 * 
+	 * @param employeeId       the identifier of the employee
+	 * @param beverageId       the identifier of the beverage
+	 * @param numberOfCapsules the number of consumed capsules
+	 * @param fromAccount      if true the employee pays with her account, if false
+	 *                         she pays with cash
+	 * @return the updated amount of the account in cents
+	 * @throws EmployeeException if the identifier of the employee is not valid
+	 * @throws BeverageException if the identifier of the beverage is not valid
+	 * @throws NotEnoughCapsules if the number of available capsules is insufficient
+	 */
 	public Integer sellCapsules(Integer employeeId, Integer beverageId, Integer numberOfCapsules, Boolean fromAccount)
-			throws EmployeeException, BeverageException, NotEnoughCapsules {
-		
-		// check employee existence
-		Employee employee = Employees.get(employeeId);
-		if(employee == null) throw new EmployeeException();
-		
-		// check beverage existence
-		Beverage beverage = Beverages.get(beverageId);
-		if(beverage == null) throw new BeverageException();
-		
-		// check availability
-		Integer avail_qty = beverage.getAvailableQuantity();
-		if(avail_qty < numberOfCapsules) throw new NotEnoughCapsules();
-		
-		// update the availability
-		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
-		
-		// update the transactions
-		Integer TID = Transactions.size();
-		Transaction transaction = new Transaction(TID, new Date());
-		Transactions.put(TID, transaction);
-		
-		// update personal account
-		PersonalAccount P_account = employee.getPersonalaccount();
-		if(fromAccount == true) {
-			P_account.addTransaction(transaction);
-			P_account.setBalance(P_account.getBalance()-numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
-		}
-		return P_account.getBalance();
-	}
+			throws EmployeeException, BeverageException, NotEnoughCapsules;
 
-	@Override
+	// --------------- FR2 --------------- //
+	/**
+	 * Record that a visitor has used some capsules of a certain beverage.
+	 * 
+	 * @param beverageId       the identifier of the beverage
+	 * @param numberOfCapsules the number of consumed capsules
+	 * @throws BeverageException if the identifier of the beverage is not valid
+	 * @throws NotEnoughCapsules if the number of available capsules is insufficient
+	 */
 	public void sellCapsulesToVisitor(Integer beverageId, Integer numberOfCapsules)
-			throws BeverageException, NotEnoughCapsules {
-		
-		// check beverage existence
-		Beverage beverage = Beverages.get(beverageId);
-		if(beverage == null) throw new BeverageException();
-		
-		// check availability
-		Integer avail_qty = beverage.getAvailableQuantity();
-		if(avail_qty < numberOfCapsules) throw new NotEnoughCapsules();
-				
-		// update the availability
-		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
-		
-		// update the transactions
-		Integer TID = Transactions.size();
-		Transaction transaction = new Transaction(TID, new Date());
-		Transactions.put(TID, transaction);
-		
-	}
+			throws BeverageException, NotEnoughCapsules;
 
-	@Override
-	public Integer rechargeAccount(Integer id, Integer amountInCents) throws EmployeeException {
-		
-		// check employee existence
-		Employee employee = Employees.get(id);
-		if(employee == null) throw new EmployeeException();
-		
-		// update the transactions
-		Integer TID = Transactions.size();
-		Recharge recharge = new Recharge(TID, new Date(), amountInCents, employee);
-		Transactions.put(TID, recharge);
-		
-		// update personal account
-		PersonalAccount P_account = employee.getPersonalaccount();
-		P_account.addTransaction(recharge);
-		P_account.setBalance(P_account.getBalance()+amountInCents);
-		account.setTotal(account.getTotal()+amountInCents);
-		return P_account.getBalance();
-	}
+	// --------------- FR3 --------------- //
+	/**
+	 * Record that an employee has recharged on her account a certain amount in
+	 * cents.
+	 * 
+	 * @param id            the identifier of the employee
+	 * @param amountInCents the amount of the transaction in cents
+	 * @return the updated amount of the account in cents
+	 * @throws EmployeeException if the identifier is not valid
+	 */
+	public Integer rechargeAccount(Integer id, Integer amountInCents) throws EmployeeException;
 
-	@Override
-	public void buyBoxes(Integer beverageId, Integer boxQuantity) throws BeverageException, NotEnoughBalance {
-		
-		// check beverage existence
-		Beverage beverage = Beverages.get(beverageId);
-		if(beverage == null) throw new BeverageException();
-		
-		// get total amount to pay
-		Integer price = beverage.getPrice()*boxQuantity;
-		
-		// update the manager account
-		if(account.getTotal() < price) throw new NotEnoughBalance();
-		account.setTotal(account.getTotal()-price);
-		
-		// update the transactions
-		Integer TID = Transactions.size();
-		BoxPurchase boxpurchase= new BoxPurchase(TID, new Date(), boxQuantity, beverage);
-		Transactions.put(TID, boxpurchase);
-		
-		// update the availability
-		beverage.setAvailableQuantity(beverage.getAvailableQuantity()+boxQuantity*beverage.getQuantityPerBox());
-	}
+	// --------------- FR4 --------------- //
+	/**
+	 * Record that some boxes of a beverage have been received and paid for.
+	 * 
+	 * @param beverageId  the identifier of the beverage
+	 * @param boxQuantity the number of boxes
+	 * @throws BeverageException if the identifier is not valid
+	 * @throws NotEnoughBalance  if the shared balance is insufficient
+	 */
+	public void buyBoxes(Integer beverageId, Integer boxQuantity) throws BeverageException, NotEnoughBalance;
 
-	@Override
+	// --------------- FR5 --------------- //
+	/**
+	 * Produce a report about consumption and recharges of an employee.
+	 * 
+	 * The string format for a consumption payed by cash is "[datetime] CASH
+	 * [employee] [beverageName] [numberOfCapsules]".
+	 * 
+	 * The string format for a consumption payed with the balance is "[datetime]
+	 * BALANCE [employee] [beverageName] [numberOfCapsules]".
+	 * 
+	 * The string format for a recharge is "[datetime] RECHARGE [employee]
+	 * [amount]".
+	 * 
+	 * The string format for [datetime] is "yyyy-MM-dd HH:mm:ss". The string format
+	 * for [employee] is "[employeeName] [employeeSurname]". The string format for
+	 * [amount] is "%.2f \u20ac".
+	 * 
+	 * @param employeeId the identifier of the employee
+	 * @param startDate  the start date of the report
+	 * @param endDate    the end date of the report
+	 * @return a list of strings
+	 * @throws EmployeeException if the identifier of the employee is not valid
+	 * @throws DateException     if the dates are not valid
+	 */
 	public List<String> getEmployeeReport(Integer employeeId, Date startDate, Date endDate)
-			throws EmployeeException, DateException {
-		if(!Employees.keySet().contains(employeeId))
-			throw new EmployeeException();
-		if(startDate==null||endDate==null)
-			throw new DateException();
-		Map <Integer,Transaction> Transactions=Employees.get(employeeId).getPersonalaccount().getTransactions();
-		List<String> Report= new ArrayList<String>();
-		Transactions.forEach((k,v)->{
-			if(v.getDate().after(startDate) && v.getDate().before(endDate))
-				Report.add(v.getString());
-		});
-		return Report;
-	}
+			throws EmployeeException, DateException;
 
-	@Override
-	public List<String> getReport(Date startDate, Date endDate) throws DateException {
-		
-		if(startDate == null || endDate == null) {
-			throw new DateException();
-		}
-		
-		List<String> l = new ArrayList<String>();
-		Transactions.forEach((k, v) -> {
-			if(v.getDate().after(startDate) && v.getDate().before(endDate))
-				l.add(v.getString());
-			});
-		
-		// TODO Auto-generated method stub
-		return l;
-	}
+	// --------------- FR6 --------------- //
+	/**
+	 * Produce a report about all consumption, recharges, and capsules purchases.
+	 * 
+	 * The string format for a consumption payed by cash is "[datetime] CASH
+	 * [employee] [beverageName] [numberOfCapsules]".
+	 * 
+	 * The string format for a consumption payed with the balance is "[datetime]
+	 * BALANCE [employee] [beverageName] [numberOfCapsules]".
+	 * 
+	 * The string format for a consumption of a visitor is "[datetime] VISITOR
+	 * [beverageName] [numberOfCapsules]".
+	 * 
+	 * The string format for a recharge is "[datetime] RECHARGE [employee]
+	 * [amount]".
+	 * 
+	 * The string format for a box purchase is "[datetime] BUY [beverageName]
+	 * [boxQuantity]".
+	 * 
+	 * The string format for [datetime] is "yyyy-MM-dd HH:mm:ss". The string format
+	 * for [employee] is "[employeeName] [employeeSurname]". The string format for
+	 * [amount] is "%.2f \u20ac".
+	 * 
+	 * @param startDate the start date of the report
+	 * @param endDate   the end date of the report
+	 * @return a list of strings
+	 * @throws DateException if the dates are not valid
+	 */
+	public List<String> getReport(Date startDate, Date endDate) throws DateException;
 
-	@Override
-	public Integer createBeverage(String name, Integer capsulesPerBox, Integer boxPrice) throws BeverageException {
-		
-		Beverage b = new Beverage(Beverages.size(), name, boxPrice, capsulesPerBox, 0);
-		
-		if(name == null || capsulesPerBox == 0 || boxPrice == 0) {
-			throw new BeverageException();
-		} else {
-		Beverages.put(Beverages.size(), b);
-		}
-		// TODO Auto-generated method stub
-		return b.getID();
-	}
+	// --------------- FR7 --------------- //
+	/**
+	 * Create a new beverage, given its name, the number of capsules per box and the
+	 * price of the box.
+	 * 
+	 * @param name           the name of the beverage
+	 * @param capsulesPerBox the number of capsules per box
+	 * @param boxPrice       the price of a box in cents
+	 * @return a unique identifier of the beverage
+	 * @throws BeverageException if the beverage cannot be created
+	 */
+	public Integer createBeverage(String name, Integer capsulesPerBox, Integer boxPrice) throws BeverageException;
 
-	@SuppressWarnings("unchecked")
-	@Override
+	/**
+	 * Update the name, the number of capsules per box, and the box price of a
+	 * beverage.
+	 * 
+	 * @param id             the identifier of the beverage
+	 * @param name           the name of the beverage
+	 * @param capsulesPerBox the number of capsules per box
+	 * @param boxPrice       the price of a box in cents
+	 * @throws BeverageException if the identifier is not valid
+	 */
 	public void updateBeverage(Integer id, String name, Integer capsulesPerBox, Integer boxPrice)
-			throws BeverageException {
-		
-		if (Beverages.get(id) == null) {
-			throw new BeverageException();
-		}else{
-		Beverages.get(id).setName(name);
-		Beverages.get(id).setPrice(boxPrice);
-		Beverages.get(id).setQuantityPerBox(capsulesPerBox);
-		}
-		
-		// update json object locally
-		JSONObject json = Beverages.get(id).getJson();
-		json.put("name", name);
-		json.put("capsulesPerBox", capsulesPerBox.toString());
-		json.put("boxPrice", boxPrice.toString());
-		
-		// update json file
-		//JSONParser parser = new JSONParser();
-		//JSONObject j_obj;
-		//j_obj = (JSONObject) parser.parse(new FileReader("c:\\projects\\test.json"));
-		try (FileWriter file = new FileWriter("c:\\projects\\test.json")) {
-			file.write(json.toJSONString());
-			file.flush();
-	 
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }
-		
-		return;
-	}
+			throws BeverageException;
 
-	@Override
-	public String getBeverageName(Integer id) throws BeverageException {
-		
-		if (Beverages.get(id) == null) {
-			throw new BeverageException();
-		}
-		// TODO Auto-generated method stub
-		return Beverages.get(id).getName();
-	}
+	/**
+	 * Get the name of a beverage.
+	 * 
+	 * @param id the identifier of the beverage
+	 * @return the name of the beverage
+	 * @throws BeverageException if the identifier is not valid
+	 */
+	public String getBeverageName(Integer id) throws BeverageException;
 
-	@Override
-	public Integer getBeverageCapsulesPerBox(Integer id) throws BeverageException {
-		
-		if (Beverages.get(id) == null) {
-			throw new BeverageException();
-		}
-		
-		// TODO Auto-generated method stub
-		return Beverages.get(id).getQuantityPerBox();
-	}
+	/**
+	 * Get the number of capsules per box of a beverage.
+	 * 
+	 * @param id the identifier of the beverage
+	 * @return the number of capsules per box
+	 * @throws BeverageException if the identifier is not valid
+	 */
+	public Integer getBeverageCapsulesPerBox(Integer id) throws BeverageException;
 
-	@Override
-	public Integer getBeverageBoxPrice(Integer id) throws BeverageException {
-		
+	/**
+	 * Get the price of a box in cents.
+	 * 
+	 * @param id the identifier of the beverage
+	 * @return the price of a box in cents
+	 * @throws BeverageException if the identifier is not valid
+	 */
+	public Integer getBeverageBoxPrice(Integer id) throws BeverageException;
 
-		if (Beverages.get(id) == null) {
-			throw new BeverageException();
-		}
-		
-		// TODO Auto-generated method stub
-		return Beverages.get(id).getPrice();
-	}
+	/**
+	 * Get a list containing the identifiers of the beverages.
+	 * 
+	 * @return a list of identifiers
+	 */
+	public List<Integer> getBeveragesId();
 
-	@Override
-	public List<Integer> getBeveragesId() {
-		List<Integer> id = new ArrayList<Integer>();
-		Beverages.forEach((k, v) -> {id.add(k);});
-		// TODO Auto-generated method stub
-		return id;
-	}
+	/**
+	 * Get a map with the identifiers of the beverages as keys and their names as
+	 * values.
+	 * 
+	 * @return a map of identifiers and their corresponding strings
+	 */
+	public Map<Integer, String> getBeverages();
 
-	@Override
-	public Map<Integer, String> getBeverages() {
-		
-		HashMap<Integer, String> b = new HashMap<Integer, String>();
-		Beverages.forEach((k, v) -> {b.put(k, v.getName());});
-		// TODO Auto-generated method stub
-		return b;
-	}
+	/**
+	 * Get the number of available capsules of a beverage. The initial number of
+	 * capsules is zero.
+	 * 
+	 * @param id the identifier of the beverage
+	 * @return the number of available capsules
+	 * @throws BeverageException if the identifier is not valid
+	 */
+	public Integer getBeverageCapsules(Integer id) throws BeverageException;
 
-	@Override
-	public Integer getBeverageCapsules(Integer id) throws BeverageException {
-		
-		if (Beverages.get(id) == null) {
-			throw new BeverageException();
-		}
-		// TODO Auto-generated method stub
-		return Beverages.get(id).getAvailableQuantity();
-	}
+	// --------------- FR8 --------------- //
+	/**
+	 * Create a new employee, given her name and surname.
+	 * 
+	 * @param name    the name of the employee
+	 * @param surname the surname of the employee
+	 * @return a unique identifier of the employee
+	 * @throws EmployeeException if the employee cannot be created
+	 */
+	public Integer createEmployee(String name, String surname) throws EmployeeException;
 
-	@Override
-	public Integer createEmployee(String name, String surname) throws EmployeeException {
-		
-		Employee e = new Employee(name, surname, Employees.size());
+	/**
+	 * Update the name and the surname of an employee.
+	 * 
+	 * @param id      the identifier of the employee
+	 * @param name    the name of the employee
+	 * @param surname the surname of the employee
+	 * @throws EmployeeException if the identifier is not valid
+	 */
+	public void updateEmployee(Integer id, String name, String surname) throws EmployeeException;
 
-		if(name == null || surname == null) {
-			throw new EmployeeException();
-		} else {
-			Employees.put(Employees.size(), e);
-			e.toJsonEmployee();
-		}
-		
-		return e.getID();
-	}
+	/**
+	 * Get the name of an employee.
+	 * 
+	 * @param id the identifier of the employee
+	 * @return the name of the employee
+	 * @throws EmployeeException if the identifier is not valid
+	 */
+	public String getEmployeeName(Integer id) throws EmployeeException;
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public void updateEmployee(Integer id, String name, String surname) throws EmployeeException {
-		if(Employees.get(id) == null) {
-			throw new EmployeeException();
-		} else {
-			Employees.get(id).setName(name);
-			Employees.get(id).setSurname(surname);
-			Employees.get(id).toJsonEmployee();
-		}
-		return;
-	}
+	/**
+	 * Get the surname of an employee.
+	 * 
+	 * @param id the identifier of the employee
+	 * @return the surname of the employee
+	 * @throws EmployeeException if the identifier is not valid
+	 */
+	public String getEmployeeSurname(Integer id) throws EmployeeException;
 
-	@Override
-	public String getEmployeeName(Integer id) throws EmployeeException {
-		if(!Employees.keySet().contains(id))
-			throw new EmployeeException();
-		return Employees.get(id).getName();
-	}
+	/**
+	 * Get the balance of an employee in cents. The balance of a new employee is
+	 * zero.
+	 * 
+	 * @param id the identifier of the employee
+	 * @return the balance of the employee in cents
+	 * @throws EmployeeException if the identifier is not valid
+	 */
+	public Integer getEmployeeBalance(Integer id) throws EmployeeException;
 
-	@Override
-	public String getEmployeeSurname(Integer id) throws EmployeeException {
-		if(!Employees.keySet().contains(id))
-			throw new EmployeeException();
-		return Employees.get(id).getSurname();
-	}
+	/**
+	 * Get a list containing the identifiers of the employees.
+	 * 
+	 * @return a list of identifiers
+	 */
+	public List<Integer> getEmployeesId();
 
-	@Override
-	public Integer getEmployeeBalance(Integer id) throws EmployeeException {
-		if(!Employees.keySet().contains(id))
-			throw new EmployeeException();
-		return Employees.get(id).getPersonalaccount().getBalance();
-	}
+	/**
+	 * Get a map with the identifiers of the employees as keys and the concatenation
+	 * of their names and surnames separated by a space as values.
+	 * 
+	 * @return a map of identifiers and their corresponding strings
+	 */
+	public Map<Integer, String> getEmployees();
 
-	@Override
-	public List<Integer> getEmployeesId() {
-		List<Integer> Emp=new ArrayList<>();
-		Employees.forEach((k,v)->{
-			Emp.add(k);
-		});
-		return Emp;
-	}
+	/**
+	 * Get the balance of the shared account in cents. The initial balance is zero.
+	 * 
+	 * @return the shared balance in cents
+	 */
+	public Integer getBalance();
 
-	@Override
-	public Map<Integer, String> getEmployees() {
-		Map<Integer,String> Emp=new HashMap<>();
-		Employees.forEach((k,v)->{
-			Emp.put(k,v.getName()+" "+v.getSurname());
-		});
-		return Emp;
-	}
+	/**
+	 * Clear all data structures and restore the initial status of the application,
+	 * with no beverages and no employees. The shared balance must be zero and the
+	 * log empty. This method is only used for testing purposes.
+	 */
+	public void reset();
 
-	@Override
-	public Integer getBalance() {
-		return account.getTotal();
-	}
-
-	@Override
-	public void reset() {
-		Employees.clear();
-		Beverages.clear();
-		Transactions.clear();
-		account.setTotal(0);
-	}
-	
 }
+
