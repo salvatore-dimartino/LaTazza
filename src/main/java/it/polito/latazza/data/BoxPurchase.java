@@ -87,10 +87,7 @@ public class BoxPurchase extends Transaction {
 			// TODO Auto-generated catch block
 			System.out.println("IO Error\n");
 			e1.printStackTrace();
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			System.out.println("Parse Error\n");
-			e1.printStackTrace();
+		} catch (ParseException e1) 
 		}	
 		
 		j_file.put(this.getID().toString(), this.getAttributes());
