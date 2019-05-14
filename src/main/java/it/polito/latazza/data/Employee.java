@@ -70,6 +70,15 @@ public class Employee {
 		// read the json file
 		JSONParser parser = new JSONParser();
 		JSONObject j_file = new JSONObject();
+		
+		File myfile = new File("Employees.json");
+		try {
+			myfile.createNewFile();
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		
 		try {
 			j_file = (JSONObject) parser.parse(new FileReader("./Employees.json"));
 						
