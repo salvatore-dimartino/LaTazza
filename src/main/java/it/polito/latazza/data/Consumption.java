@@ -84,8 +84,8 @@ public class Consumption extends Transaction {
 		
 		List<String> att = new ArrayList<String>();
 		
-		att.add(super.getID().toString());
-		att.add(super.getDate().toString());
+		att.add(this.getID().toString());
+		att.add(this.getDate().toString());
 		att.add(this.quantity.toString());
 		att.addAll(this.beverage.getAttributes());
 		att.addAll(this.employee.getAttributes());
