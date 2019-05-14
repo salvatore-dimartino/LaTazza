@@ -120,9 +120,6 @@ public class Consumption extends Transaction {
 			System.out.println("IO Error\n");
 			e1.printStackTrace();
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			System.out.println("Parse Error\n");
-			e1.printStackTrace();
 		}	
 		
 		j_file.put(this.getID().toString(), this.getAttributes());
