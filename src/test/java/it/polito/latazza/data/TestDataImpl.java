@@ -388,9 +388,24 @@ public class TestDataImpl {
 			fail();
         }
 	}
+
+	public void ReadJson(){
+		DataImpl DataTest = new DataImpl();
+		assertEquals(1,DataTest.getBeverages.size().toString());
+		assertEquals(1,DataTest.getEmployees.size().toString());
+		assertEquals(997500,DataTest.getBalance().toString());
+		assertEquals("Caffe",DataTest.getBeverageName(0));
+	    assertEquals(5,DataTest.getBeverageCapsulesPerBox(0).intValue());
+		assertEquals(500,DataTest.getBeverageBoxPrice(0).intValue());
+		assertEquals("Antonio",DataTest.getEmployeeName(0));
+	    assertEquals("LaRuspa",DataTest.getEmployeeSurname(0));
+	}
 	
 	public void ResetTest(){
 	    DataImpl DataTest = new DataImpl();
-	    DataTest.reset();
+		DataTest.reset();
+		assertEquals(0,DataTest.getBeverages.size().toString());
+		assertEquals(0,DataTest.getEmployees.size().toString());
+		assertEquals(0,DataTest.getBalance().toString());
 	}
 }
