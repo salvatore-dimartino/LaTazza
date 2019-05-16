@@ -190,8 +190,8 @@ Version:
 
 | SignOfPrice | Valid / Invalid | Description of the test case | JUnit test case |
 |-------|-------|-------|-------|
-| Namber is positive | Valid | testSetAvailableQuantity(10) | it.polito.latazza.data.BeverageTest.ttestSetQuantityPerBox |
-| Namber is negative | Invalid | testSetAvailableQuantity(-10) -> BeverageException() | it.polito.latazza.data.BeverageTest.testSetQuantityPerBox |
+| Number is positive | Valid | testSetAvailableQuantity(10) | it.polito.latazza.data.BeverageTest.ttestSetQuantityPerBox |
+| Number is negative | Invalid | testSetAvailableQuantity(-10) -> BeverageException() | it.polito.latazza.data.BeverageTest.testSetQuantityPerBox |
 
 
 # White Box Unit Tests
