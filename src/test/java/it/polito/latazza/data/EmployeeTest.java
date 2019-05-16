@@ -15,11 +15,11 @@ public class EmployeeTest extends junit.framework.TestCase {
 
 	Employee e1, e2, e3, e4, e5, e6;
 	
-	public BeverageTest() throws BeverageException {
+	public EmployeeTest() throws EmployeeException {
 		setUp();
 	}
 	
-	protected void setUp() throws BeverageException {
+	protected void setUp() throws EmployeeException {
 		
 		e1 = new Employee("Nicola", "Molino", 0);
 		e2 = new Employee("Paolo", "Vinovo", 1);
@@ -27,7 +27,7 @@ public class EmployeeTest extends junit.framework.TestCase {
 	}
 	
 	@Test
-	public void Beverage() throws BeverageException {
+	public void Employeee() throws EmployeeException {
 		
 		Employee e3;
 			
@@ -48,17 +48,17 @@ public class EmployeeTest extends junit.framework.TestCase {
 	public void testSetName() {
 
 		try{
-			b1.setName("Vincenzo");
+			e1.setName("Vincenzo");
 		}catch(Exception e) {	
 			fail();
 		}	
-		assertThrows(EmployeeException.class, () -> b1.setName("Vinc879nzo"));
+		assertThrows(EmployeeException.class, () -> e1.setName("Vinc879nzo"));
 		return;
 		}
 	
 	@Test
 	public void testGetName() {
-		assertTrue(b1.getName().equals("Vincenzo"));
+		assertTrue(e1.getName().equals("Vincenzo"));
 		return;
 	}
 	
