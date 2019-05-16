@@ -18,7 +18,7 @@ public class LaTazzaAccount {
 		return total;
 	}
 
-	public void setTotal(Integer total) {
+	public void setTotal(Integer total) throws NotEnoughBalance {
 		if(total >= 0)
 			this.total = total;
 		else
