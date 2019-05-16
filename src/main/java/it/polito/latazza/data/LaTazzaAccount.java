@@ -1,11 +1,17 @@
 package it.polito.latazza.data;
 
+import it.polito.latazza.exceptions.NotEnoughBalance;
+
 public class LaTazzaAccount {
 	
 	private Integer total;
 
-	public LaTazzaAccount(Integer total) {
-		this.total = total;
+	public LaTazzaAccount(Integer total) throws NotEnoughBalance{
+		if(total >= 0)
+			this.total = total;
+		else
+            throw new NotEnoughBalanceException();
+
 	}
 
 	public Integer getTotal() {
@@ -13,6 +19,9 @@ public class LaTazzaAccount {
 	}
 
 	public void setTotal(Integer total) {
-		this.total = total;
+		if(total >= 0)
+			this.total = total;
+		else
+            throw new NotEnoughBalanceException();
 	}
 }
