@@ -13,7 +13,7 @@ import it.polito.latazza.exceptions.NotEnoughCapsules;
 
 public class BeverageTest extends junit.framework.TestCase {
 
-	Beverage b1, b2, b3, b4, b5, b6, b7;
+	Beverage b1, b2, b3, b4, b5, b6;
 	
 	public BeverageTest() throws BeverageException {
 		setUp();
