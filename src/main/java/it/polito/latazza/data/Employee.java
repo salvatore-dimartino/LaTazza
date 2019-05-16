@@ -20,7 +20,7 @@ public class Employee {
 	private Integer ID;
 	private PersonalAccount account;
 	
-	public Employee(String name, String surname, Integer ID) throws EmploteeException{
+	public Employee(String name, String surname, Integer ID) throws EmployeeException{
         if(ID >= 0)
 			this.ID = ID;
 		else
@@ -63,7 +63,7 @@ public class Employee {
 		return this.name;
 	}
 	
-	public void setName(String name) throws EmploteeException{
+	public void setName(String name) throws EmployeeException{
 		Pattern p = Pattern.compile("[A-Z][a-zéèòùì]*([ ][A-Z][a-zéèòùì]*)*");
 		Matcher m = p.matcher(name);
         boolean t = m.matches();
@@ -79,7 +79,7 @@ public class Employee {
 		return this.surname;
 	}
 	
-	public void setSurname(String surname) throws EmploteeException{
+	public void setSurname(String surname) throws EmployeeException{
 		Pattern p = Pattern.compile("[A-Z][a-zéèòùì]*([ ][A-Z][a-zéèòùì]*)*");
 		Matcher m = p.matcher(surname);
         boolean t = m.matches();
