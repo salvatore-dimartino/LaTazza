@@ -87,7 +87,7 @@ Version:
 **Combination of predicates**:
 
 | ValidityOfName | Valid / Invalid | Description of the test case | JUnit test case |
-|-------|-------|-------|-------|-------|-------|-------|
+|-------|-------|-------|-------|
 | Name does not contain invalid characters | Valid | setName("Caffe") | it.polito.latazza.data.BeverageTest.testSetName |
 | Name  contain invalid characters | Invalid | setName("Caff3") -> BeverageException() | it.polito.latazza.data.BeverageTest.testSetName |
 
