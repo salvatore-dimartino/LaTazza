@@ -13,24 +13,26 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import java.lang.NumberFormatException;
+
 public class Transaction {
 	
 	private Integer ID;
 	private Date date; 
 	
-	public Transaction(int ID, Date date) {
-		
-		this.ID = ID;
+	public Transaction(int ID, Date date) throws NumberFormatException{
+	    
+		if(ID >= 0)
+			this.ID = ID;
+		else
+			throw new NumberFormatException();
+
 		this.date = date;
 		
 	}
 
 	public Integer getID() {
 		return ID;
-	}
-
-	public void setID(int ID) {
-		this.ID = ID;
 	}
 
 	public Date getDate() {

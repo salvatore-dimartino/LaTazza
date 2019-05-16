@@ -7,10 +7,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import it.polito.latazza.exceptions.BeverageException;
 
 public class Beverage {
 	
@@ -27,7 +31,7 @@ public class Beverage {
 		else
 			throw new BeverageException();
 		
-		Pattern p = Pattern.compile("[A-Z][A-Za-zéèòùì ]*");
+		Pattern p = Pattern.compile("[A-Z][a-zéèòùì]*([ ][A-Z][a-zéèòùì]*)*");
 		Matcher m = p.matcher(name);
 		boolean t = m.matches();
 		if(t) {
@@ -86,7 +90,7 @@ public class Beverage {
 
 	public void setName(String name) throws BeverageException {
 		
-		Pattern p = Pattern.compile("[A-Z][A-Za-zéèòùì ]*");
+		Pattern p = Pattern.compile("[A-Z][a-zéèòùì]*([ ][A-Z][a-zéèòùì]*)*");
 		Matcher m = p.matcher(name);
 		boolean t = m.matches();
 		if(t) {

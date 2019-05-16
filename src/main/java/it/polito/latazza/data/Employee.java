@@ -12,16 +12,39 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import it.polito.latazza.exceptions.EmployeeException;
+
 public class Employee {
 	private String name;
 	private String surname;
 	private Integer ID;
 	private PersonalAccount account;
 	
-	public Employee(String name, String surname, Integer ID) {
-		this.name=name;
-		this.surname=surname;
-		this.ID=ID;
+	public Employee(String name, String surname, Integer ID) throws EmployeeException{
+        if(ID >= 0)
+			this.ID = ID;
+		else
+            throw new EmployeeException();
+
+        Pattern p = Pattern.compile("[A-Z][a-zéèòùì]*([ ][A-Z][a-zéèòùì]*)*");
+		Matcher m = p.matcher(name);
+        boolean t = m.matches();
+        
+		if(t) {
+			this.name = name;
+		} else {
+			throw new EmployeeException();
+		}
+
+        m = p.matcher(surname);
+        t = m.matches();
+
+		if(t) {
+			this.surname = surname;
+		} else {
+			throw new EmployeeException();
+        }
+        
 		this.account= new PersonalAccount(0);
 	}
 
@@ -40,16 +63,32 @@ public class Employee {
 		return this.name;
 	}
 	
-	public void setName(String name) {
-		this.name=name;
+	public void setName(String name) throws EmployeeException{
+		Pattern p = Pattern.compile("[A-Z][a-zéèòùì]*([ ][A-Z][a-zéèòùì]*)*");
+		Matcher m = p.matcher(name);
+        boolean t = m.matches();
+        
+		if(t) {
+			this.name = name;
+		} else {
+			throw new EmployeeException();
+		}
 	}
 	
 	public String getSurname() {
 		return this.surname;
 	}
 	
-	public void setSurname(String surname) {
-		this.surname=surname;
+	public void setSurname(String surname) throws EmployeeException{
+		Pattern p = Pattern.compile("[A-Z][a-zéèòùì]*([ ][A-Z][a-zéèòùì]*)*");
+		Matcher m = p.matcher(surname);
+        boolean t = m.matches();
+        
+		if(t) {
+			this.surname = surname;
+		} else {
+			throw new EmployeeException();
+		}
 	}
 	
 	public PersonalAccount getPersonalaccount() {
@@ -98,5 +137,4 @@ public class Employee {
 			e.printStackTrace();
 		}	
 	}
-
 }

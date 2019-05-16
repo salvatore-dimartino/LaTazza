@@ -1,15 +1,9 @@
 package it.polito.latazza.data;
 
 import static org.junit.jupiter.api.Assertions.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import org.junit.jupiter.api.Test;
-import it.polito.latazza.data.*;
 import it.polito.latazza.exceptions.BeverageException;
-import it.polito.latazza.exceptions.DateException;
-import it.polito.latazza.exceptions.EmployeeException;
-import it.polito.latazza.exceptions.NotEnoughBalance;
-import it.polito.latazza.exceptions.NotEnoughCapsules;
+
 
 public class BeverageTest extends junit.framework.TestCase {
 
@@ -27,10 +21,10 @@ public class BeverageTest extends junit.framework.TestCase {
 	}
 	
 	@Test
-	public void Beverage() throws BeverageException {
+	public void testBeverage() throws BeverageException {
 		
 		Beverage b3;
-			
+		
 		try{
 			b3 = new Beverage(2, "Caffe", 3000, 10, 0);
 		}catch(Exception e) {
@@ -40,6 +34,7 @@ public class BeverageTest extends junit.framework.TestCase {
 		assertThrows(BeverageException.class, () -> {Beverage b4 = new Beverage(3, "Caff3", 3000, 10, 0);});
 		assertThrows(BeverageException.class, () -> {Beverage b5 = new Beverage(4, "Caffe", -3000, 10, 0);});
 		assertThrows(BeverageException.class, () -> {Beverage b6 = new Beverage(5, "Caffe", 3000, -10, 0);});
+		assertThrows(BeverageException.class, () -> {Beverage b7 = new Beverage(6, "Caffe", 3000, 10, -10);});
 
 		return;
 	}
@@ -92,7 +87,7 @@ public class BeverageTest extends junit.framework.TestCase {
 	}
 	
 	@Test
-	public void TestGetQuantityPerBox() {
+	public void testGetQuantityPerBox() {
 		assertTrue(b1.getQuantityPerBox() == 10);
 		return;
 	}
