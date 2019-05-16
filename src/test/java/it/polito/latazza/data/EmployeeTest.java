@@ -27,7 +27,7 @@ public class EmployeeTest extends junit.framework.TestCase {
 	}
 	
 	@Test
-	public void Employeee() throws EmployeeException {
+	public void testEmployee() throws EmployeeException {
 		
 		Employee e3;
 			
