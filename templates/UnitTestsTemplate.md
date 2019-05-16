@@ -1,4 +1,3 @@
-
 # Unit Testing Documentation template
 
 Authors:
@@ -23,54 +22,176 @@ Version:
     Define test cases to cover all equivalence classes and boundary conditions.
     In the table, report the description of the black box test case and the correspondence with the JUnit black box test case name/number>
 
- ### **Class *class_name* - method *name***
+## **Class *Beverage***
+
+### **Class *Beverage* - constructor *Beverage()***
 
 
-
-**Criteria for method *name*:**
+**Criteria for constructor *Beverage()*:**
 	
+ - ValidityOfName (on input)
+ - SignOfPrice (on input)
+ - SignOfAvaibleQuantity (on input)
+ - SignOfQuantityPerBox (on input)
 
- - 
- - 
-
-
-
-
-
-**Predicates for method *name*:**
+**Predicates for constructor *Beverage*:**
 
 | Criteria | Predicate |
-| -------- | --------- |
-|          |           |
-|          |           |
-|          |           |
-|          |           |
-
-
-
-
+| ------------- | --------- |
+| ValidityOfName            | Name does not contain invalid characters |
+|                           | Name contains invalid characters |
+| SignOfPrice               | Sign of number is positive |
+|                           | Sign of number is negative |
+| SignOfAvailableQuantity   | Sign of number is positive |
+|                           | Sign of number is negative |
+| SignOfQuantityPerBox      | Sign of number is positive |
+|                           | Sign of number is negative |
 
 **Boundaries**:
 
 | Criteria | Boundary values |
 | -------- | --------------- |
-|          |                 |
-|          |                 |
+| SignOfPrice              |         >= 0         |
+|                          |   <  2,147,483,647   |
+| SignOfAvailableQuantity  |         >= 0         |
+|                          |   <  2,147,483,647   |
+| SignOfQuantityPerBox     |         >= 0         |
+|                          |   <  2,147,483,647   |
 
 
 
 **Combination of predicates**:
 
+| ValidityOfName | SignOfPrice | SignOfAvailableQuantity | SignOfQuantityPerBox | Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|-------|-------|-------|
+| Name does not contain invalid characters | Sign of number is positive | Sign of number is positive | Sign of number is positive | Valid | Beverage("Caffe",,,) | it.polito.latazza.data.BeverageTest.testBeverage |
+| Name  contain invalid characters | Sign of number is positive | Sign of number is positive | Sign of number is positive | Invalid | Beverage("Caff3",,,) -> BeverageException() | it.polito.latazza.data.BeverageTest.testBeverage |
+| Name does not contain invalid characters | Sign of number is negative | Sign of number is positive | Sign of number is positive | Invalid | Beverage(,-5000,,) -> BeverageException() | it.polito.latazza.data.BeverageTest.testBeverage |
+| Name does not contain invalid characters | Sign of number is positive | Sign of number is negative | Sign of number is positive | Invalid | Beverage(,,-10,) -> BeverageException() | it.polito.latazza.data.BeverageTest.testBeverage |
+| Name does not contain invalid characters | Sign of number is positive | Sign of number is positive | Sign of number is negative | Invalid | Beverage(,,,-10) -> BeverageException() | it.polito.latazza.data.BeverageTest.testBeverage |
 
-| Criteria 1 | Criteria 2 | ... | Valid / Invalid | Description of the test case | JUnit test case |
-|-------|-------|-------|-------|-------|-------|
-|||||||
-|||||||
-|||||||
-|||||||
-|||||||
+
+### **Class *Beverage* - method *setName()***
+
+**Criteria for  *setName()*:**
+	
+ - ValidityOfName (on input)
+
+**Predicates for method *setName()*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| ValidityOfName            | Name does not contain invalid characters |
+|                           | Name contains invalid characters |
+
+**Combination of predicates**:
+
+| ValidityOfName | Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|
+| Name does not contain invalid characters | Valid | setName("Caffe") | it.polito.latazza.data.BeverageTest.testSetName |
+| Name  contain invalid characters | Invalid | setName("Caff3") -> BeverageException() | it.polito.latazza.data.BeverageTest.testSetName |
 
 
+### **Class *Beverage* - method *setName()***
+
+**Criteria for method *setName()*:**
+	
+ - ValidityOfName (on input)
+
+**Predicates for method *setName()*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| ValidityOfName            | Name does not contain invalid characters |
+|                           | Name contains invalid characters |
+
+**Combination of predicates**:
+
+| ValidityOfName | Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|
+| Name does not contain invalid characters | Valid | setName("Caffe") | it.polito.latazza.data.BeverageTest.testSetPrice |
+| Name  contain invalid characters | Invalid | setName("Caff3") -> BeverageException() | it.polito.latazza.data.BeverageTest.testSetPrice |
+
+### **Class *Beverage* - method *setPrice()***
+
+**Criteria for method *setPrice()*:**
+	
+ - SignOfPrice (on input)
+
+**Predicates for method *setPrice()*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| SignOfPrice | Namber is positive |
+|             | Namber is negative |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| SignOfPrice              |         >= 0         |
+|                          |   <  2,147,483,647   |
+
+**Combination of predicates**:
+
+| SignOfPrice | Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|
+| Number is positive | Valid | setPrice(3000) | it.polito.latazza.data.BeverageTest.testSetPrice |
+| Number is negative | Invalid | setPrice(-3000) -> BeverageException() | it.polito.latazza.data.BeverageTest.testSetPrice |
+
+### **Class *Beverage* - method *testSetQuantityPerBox()***
+
+**Criteria for  method *testSetQuantityPerBox()*:**
+	
+ - SignOfQuantityPerBox (on input)
+
+**Predicates for method *testSetQuantityPerBox()*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| SignOfQuantityPerBox | Number is positive |
+|             | Number is negative |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| SignOfPrice              |         >= 0         |
+|                          |   <  2,147,483,647   |
+
+**Combination of predicates**:
+
+| SignOfQuantityPerBox | Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|
+| Number is positive | Valid | testSetQuantityPerBox(10) | it.polito.latazza.data.BeverageTest.ttestSetQuantityPerBox |
+| Number is negative | Invalid | testSetQuantityPerBox(-10) -> BeverageException() | it.polito.latazza.data.BeverageTest.testSetQuantityPerBox |
+
+### **Class *Beverage* - method *testSetAvailableQuantity()***
+
+**Criteria for  method *testSetAvailableQuantity()*:**
+	
+ - SignOfAvailableQuantity (on input)
+
+**Predicates for method *testSetAvailableQuantity()*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| SignOfAvailableQuantity | Number is positive |
+|             | Number is negative |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| SignOfAvailableQuantity              |         >= 0         |
+|                          |   <  2,147,483,647   |
+
+**Combination of predicates**:
+
+| SignOfPrice | Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|
+| Number is positive | Valid | testSetAvailableQuantity(10) | it.polito.latazza.data.BeverageTest.ttestSetQuantityPerBox |
+| Number is negative | Invalid | testSetAvailableQuantity(-10) -> BeverageException() | it.polito.latazza.data.BeverageTest.testSetQuantityPerBox |
 
 
 # White Box Unit Tests
@@ -102,6 +223,7 @@ Version:
 |||||
 |||||
 ||||||
+
 
 
 
