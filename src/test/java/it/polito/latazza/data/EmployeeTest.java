@@ -58,7 +58,7 @@ public class EmployeeTest extends junit.framework.TestCase {
 	
 	@Test
 	public void testGetName() {
-		assertTrue(e1.getName().equals("Vincenzo"));
+		assertTrue(e1.getName().equals("Nicola"));
 		return;
 	}
 	
@@ -76,7 +76,7 @@ public class EmployeeTest extends junit.framework.TestCase {
 	
 	@Test
 	public void testGetSurname() {
-		assertTrue(e1.getName().equals("Valencia"));
+		assertTrue(e1.getName().equals("Molino"));
 		return;
 	}
 	
