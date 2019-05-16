@@ -65,17 +65,17 @@ public class EmployeeTest extends junit.framework.TestCase {
 	public void testSetSurname() {
 
 		try{
-			e1.setName("Valencia");
+			e1.setSurname("Valencia");
 		}catch(Exception e) {	
 			fail();
 		}	
-		assertThrows(EmployeeException.class, () -> e1.setName("Val219ncia"));
+		assertThrows(EmployeeException.class, () -> e1.setSurname("Val219ncia"));
 		return;
 		}
 	
 	@Test
 	public void testGetSurname() {
-		assertTrue(e1.getName().equals("Molino"));
+		assertTrue(e1.getSurname().equals("Molino"));
 		return;
 	}
 	
