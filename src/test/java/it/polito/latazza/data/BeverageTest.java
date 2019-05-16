@@ -40,7 +40,6 @@ public class BeverageTest extends junit.framework.TestCase {
 		assertThrows(BeverageException.class, () -> {Beverage b4 = new Beverage(3, "Caff3", 3000, 10, 0);});
 		assertThrows(BeverageException.class, () -> {Beverage b5 = new Beverage(4, "Caffe", -3000, 10, 0);});
 		assertThrows(BeverageException.class, () -> {Beverage b6 = new Beverage(5, "Caffe", 3000, -10, 0);});
-		assertThrows(BeverageException.class, () -> {Beverage b7 = new Beverage(5, "Caff3", 3000, 10, 0);});
 
 		return;
 	}
