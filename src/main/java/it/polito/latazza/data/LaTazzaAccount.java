@@ -10,7 +10,7 @@ public class LaTazzaAccount {
 		if(total >= 0)
 			this.total = total;
 		else
-            throw new NotEnoughBalanceException();
+            throw new NotEnoughBalance();
 
 	}
 
@@ -22,6 +22,6 @@ public class LaTazzaAccount {
 		if(total >= 0)
 			this.total = total;
 		else
-            throw new NotEnoughBalanceException();
+            throw new NotEnoughBalance();
 	}
 }
