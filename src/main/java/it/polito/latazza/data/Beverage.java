@@ -20,13 +20,36 @@ public class Beverage {
 	private Integer quantityPerBox;
 	private Integer availableQuantity;
 	
-	public Beverage(Integer ID, String name, Integer price, Integer quantityPerBox, Integer availableQuantity) {
+	public Beverage(Integer ID, String name, Integer price, Integer quantityPerBox, Integer availableQuantity)  throws BeverageException {
 		
-		this.ID = ID;
-		this.name = name;
-		this.price = price;
-		this.quantityPerBox = quantityPerBox;
-		this.availableQuantity = availableQuantity;
+	if(ID >= 0)
+			this.ID = ID;
+		else
+			throw new BeverageException();
+		
+		Pattern p = Pattern.compile("[A-Z][A-Za-zéèòùì ]*");
+		Matcher m = p.matcher(name);
+		boolean t = m.matches();
+		if(t) {
+			this.name = name;
+		} else {
+			throw new BeverageException();
+		}
+		
+		if(price >= 0)
+			this.price = price;
+		else
+			throw new BeverageException();
+		
+		if(quantityPerBox >= 0)
+			this.quantityPerBox = quantityPerBox;
+		else
+			throw new BeverageException();
+		
+		if(availableQuantity >= 0)
+			this.availableQuantity = availableQuantity;
+		else
+			throw new BeverageException();
 	
 	}
 	
@@ -61,24 +84,47 @@ public class Beverage {
 		return price;
 	}
 
-	public void setID(Integer ID) {
-		this.ID = ID;
+	public void setName(String name) throws BeverageException {
+		
+		Pattern p = Pattern.compile("[A-Z][A-Za-zéèòùì ]*");
+		Matcher m = p.matcher(name);
+		boolean t = m.matches();
+		if(t) {
+			this.name = name;
+		} else {
+			throw new BeverageException();
+		}
+		
+		return;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setPrice(Integer price) throws BeverageException {
+		
+		if(price > 0)
+			this.price = price;
+		else
+			throw new BeverageException();
+		
+		return;
 	}
 
-	public void setPrice(Integer price) {
-		this.price = price;
+	public void setQuantityPerBox(Integer quantityPerBox) throws BeverageException {
+		if(quantityPerBox > 0)
+			this.quantityPerBox = quantityPerBox;
+		else
+			throw new BeverageException();
+		
+		return;
 	}
 
-	public void setQuantityPerBox(Integer quantityPerBox) {
-		this.quantityPerBox = quantityPerBox;
-	}
-
-	public void setAvailableQuantity(Integer availableQuantity) {
-		this.availableQuantity = availableQuantity;
+	public void setAvailableQuantity(Integer availableQuantity) throws BeverageException {
+		
+		if(availableQuantity > 0)
+			this.availableQuantity = availableQuantity;
+		else
+			throw new BeverageException();
+		
+		return;
 	}
 	
 	@SuppressWarnings("unchecked")
