@@ -108,7 +108,7 @@ Version:
 **Combination of predicates**:
 
 | ValidityOfName | Valid / Invalid | Description of the test case | JUnit test case |
-|-------|-------|-------|-------|-------|-------|-------|
+|-------|-------|-------|-------|
 | Name does not contain invalid characters | Valid | setName("Caffe") | it.polito.latazza.data.BeverageTest.testSetPrice |
 | Name  contain invalid characters | Invalid | setName("Caff3") -> BeverageException() | it.polito.latazza.data.BeverageTest.testSetPrice |
 
@@ -135,7 +135,7 @@ Version:
 **Combination of predicates**:
 
 | SignOfPrice | Valid / Invalid | Description of the test case | JUnit test case |
-|-------|-------|-------|-------|-------|-------|-------|
+|-------|-------|-------|-------|
 | Number is positive | Valid | setPrice(3000) | it.polito.latazza.data.BeverageTest.testSetPrice |
 | Number is negative | Invalid | setPrice(-3000) -> BeverageException() | it.polito.latazza.data.BeverageTest.testSetPrice |
 
@@ -162,7 +162,7 @@ Version:
 **Combination of predicates**:
 
 | SignOfQuantityPerBox | Valid / Invalid | Description of the test case | JUnit test case |
-|-------|-------|-------|-------|-------|-------|-------|
+|-------|-------|-------|-------|
 | Number is positive | Valid | testSetQuantityPerBox(10) | it.polito.latazza.data.BeverageTest.ttestSetQuantityPerBox |
 | Number is negative | Invalid | testSetQuantityPerBox(-10) -> BeverageException() | it.polito.latazza.data.BeverageTest.testSetQuantityPerBox |
 
@@ -189,7 +189,7 @@ Version:
 **Combination of predicates**:
 
 | SignOfPrice | Valid / Invalid | Description of the test case | JUnit test case |
-|-------|-------|-------|-------|-------|-------|-------|
+|-------|-------|-------|-------|
 | Namber is positive | Valid | testSetAvailableQuantity(10) | it.polito.latazza.data.BeverageTest.ttestSetQuantityPerBox |
 | Namber is negative | Invalid | testSetAvailableQuantity(-10) -> BeverageException() | it.polito.latazza.data.BeverageTest.testSetQuantityPerBox |
 
