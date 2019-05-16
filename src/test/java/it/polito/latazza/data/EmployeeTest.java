@@ -13,7 +13,7 @@ import it.polito.latazza.exceptions.NotEnoughCapsules;
 
 public class EmployeeTest extends junit.framework.TestCase {
 
-	Employee e1, e2, e3, e4, e5, e6;
+	Employee e1, e2, e3, e4, e5;
 	
 	public EmployeeTest() throws EmployeeException {
 		setUp();
@@ -37,9 +37,8 @@ public class EmployeeTest extends junit.framework.TestCase {
 			fail();
 		}
 		
-		assertThrows(EmployeeException.class, () -> {Employee e4 = new Employee("Nicola", "Molino", -1);});
-		assertThrows(EmployeeException.class, () -> {Employee e5 = new Employee("Nicola", "Molin329o", 0);});
-		assertThrows(EmployeeException.class, () -> {Employee e6 = new Employee("Nico3277la", "Molino", 0);});
+		assertThrows(EmployeeException.class, () -> {Employee e4 = new Employee("Nicola", "Molin329o", 0);});
+		assertThrows(EmployeeException.class, () -> {Employee e5 = new Employee("Nico3277la", "Molino", 0);});
 
 		return;
 	}
