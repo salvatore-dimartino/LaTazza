@@ -1,5 +1,6 @@
 package it.polito.latazza.data;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -32,10 +33,10 @@ public class Beverage {
 	public List<String> getAttributes(){
 		List<String> attributes = new ArrayList<String>();
 		
-		attributes.add(0, name);
-		attributes.add(1, price.toString());
-		attributes.add(2, quantityPerBox.toString());
-		attributes.add(3, availableQuantity.toString());
+		attributes.add(name);
+		attributes.add(price.toString());
+		attributes.add(quantityPerBox.toString());
+		attributes.add(availableQuantity.toString());
 		
 		return attributes;
 	}
@@ -85,6 +86,15 @@ public class Beverage {
 		// read the json file
 		JSONParser parser = new JSONParser();
 		JSONObject j_file = new JSONObject();
+		
+		File myfile = new File("Beverages.json");
+		try {
+			myfile.createNewFile();
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		
 		try {
 			j_file = (JSONObject) parser.parse(new FileReader("./Beverages.json"));
 						

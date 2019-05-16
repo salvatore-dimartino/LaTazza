@@ -69,12 +69,12 @@ public class DataImpl implements DataInterface {
 		// update the availability
 		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
 		
-		transaction.toJsonTransaction();
-		
 		// update the transactions
 		Integer TID = Transactions.size();
 		Transaction transaction = new Transaction(TID, new Date());
 		Transactions.put(TID, transaction);
+		
+		transaction.toJsonTransaction();
 		
 	}
 
@@ -262,8 +262,9 @@ public class DataImpl implements DataInterface {
 			throw new EmployeeException();
 		} else {
 		Employees.put(Employees.size(), e);
+		e.toJsonEmployee();
 		}
-		// TODO Auto-generated method stub
+	
 		return e.getID();
 	}
 
@@ -274,8 +275,9 @@ public class DataImpl implements DataInterface {
 		} else {
 			Employees.get(id).setName(name);
 			Employees.get(id).setSurname(surname);
+			Employees.get(id).toJsonEmployee();
 		}
-		// TODO Auto-generated method stub
+	
 		return;
 	}
 

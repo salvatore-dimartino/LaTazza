@@ -1,4 +1,5 @@
 package it.polito.latazza.data;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -16,9 +17,6 @@ public class BoxPurchase extends Transaction {
 	Integer quantity;
 	Beverage beverage;
 	
-	private JSONObject jsonMap = new JSONObject();
-	
-	@SuppressWarnings("unchecked")
 	public BoxPurchase(Integer ID, Date date, Integer quantity, Beverage beverage) {
 		
 		super(ID, date);
@@ -53,34 +51,36 @@ public class BoxPurchase extends Transaction {
 		
 		List<String> att = new ArrayList<String>();
 		
-		att.add(super.getID().toString());
-		att.add(super.getDate().toString());
+		att.add(this.getDate().toString());
 		att.add(this.quantity.toString());
-		att.addAll(this.beverage.getAttributes());
+		att.add(this.beverage.getID().toString());
 		
 		return att;
 	}
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public void toJsonTransaction() {
 		
 		JSONParser parser = new JSONParser();
 		JSONObject j_file = new JSONObject();
+		
+		File myfile = new File("Transactions.json");
+		try {
+			myfile.createNewFile();
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		
 		try {
 			j_file = (JSONObject) parser.parse(new FileReader("./Transactions.json"));
 						
 		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			System.out.println("file not found\n");
 			e1.printStackTrace();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			System.out.println("IO Error\n");
 			e1.printStackTrace();
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			System.out.println("Parse Error\n");
-			e1.printStackTrace();
+		} catch (ParseException e) {
 		}	
 		
 		j_file.put(this.getID().toString(), this.getAttributes());

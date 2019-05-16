@@ -4,6 +4,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -16,10 +17,7 @@ public class Recharge extends Transaction {
 	
 	private Integer amount;
 	private Employee employee;
-	
-	private JSONObject jsonMap = new JSONObject();
 
-	@SuppressWarnings("unchecked")
 	public Recharge(int ID, Date date, Integer amount, Employee employee) {
 		
 		super(ID, date);
@@ -56,10 +54,9 @@ public class Recharge extends Transaction {
 		
 		List<String> att = new ArrayList<String>();
 		
-		att.add(super.getID().toString());
-		att.add(super.getDate().toString());
+		att.add(this.getDate().toString());
 		att.add(this.amount.toString());
-		att.addAll(this.employee.getAttributes());
+		att.add(this.employee.getID().toString());
 		
 		return att;
 	}
@@ -69,6 +66,15 @@ public class Recharge extends Transaction {
 		
 		JSONParser parser = new JSONParser();
 		JSONObject j_file = new JSONObject();
+		
+		File myfile = new File("Transactions.json");
+		try {
+			myfile.createNewFile();
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		
 		try {
 			j_file = (JSONObject) parser.parse(new FileReader("./Transactions.json"));
 						
@@ -81,9 +87,6 @@ public class Recharge extends Transaction {
 			System.out.println("IO Error\n");
 			e1.printStackTrace();
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			System.out.println("Parse Error\n");
-			e1.printStackTrace();
 		}	
 		
 		j_file.put(this.getID().toString(), this.getAttributes());
