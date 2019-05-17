@@ -27,8 +27,8 @@ public class Transaction {
 		this.date = date;
 	}
 
+	@SuppressWarnings("deprecation")
 	public String getString() {
-		// TODO Auto-generated method stub
 	    return String.valueOf(date.getYear()+1900)+"-"+String.valueOf(date.getMonth())+"-"+String.valueOf(date.getDate())+" "+String.valueOf(date.getHours())+":"+String.valueOf(date.getMinutes())+":"+String.valueOf(date.getSeconds());
 	}
 	
