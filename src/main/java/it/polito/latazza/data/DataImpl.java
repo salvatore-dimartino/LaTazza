@@ -141,6 +141,12 @@ public class DataImpl implements DataInterface {
 		Employee employee = Employees.get(id);
 		if(employee == null) throw new EmployeeException();
 		
+		try{
+	      account.setTotal(account.getTotal()+amountInCents);
+	    } catch(Exception e){
+		  return 0;
+	    }
+	    
 		// update the transactions
 		Integer TID = Transactions.size()+1;
 		Recharge recharge = new Recharge(TID, new Date(), amountInCents, employee);
@@ -152,7 +158,6 @@ public class DataImpl implements DataInterface {
 		PersonalAccount P_account = employee.getPersonalaccount();
 		P_account.addTransaction(recharge);
 		P_account.setBalance(P_account.getBalance()+amountInCents);
-		account.setTotal(account.getTotal()+amountInCents);
 		account.toJsonLaTazzaAccount();
 		return P_account.getBalance();
 	}
