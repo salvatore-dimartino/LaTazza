@@ -138,8 +138,6 @@ public class DataImpl implements DataInterface {
 		
 		consumption.toJsonTransaction();
 		
-		consumption.toJsonTransaction();
-		
 	}
 
 	@Override
@@ -224,7 +222,6 @@ public class DataImpl implements DataInterface {
 				l.add(v.getString());
 			});
 		
-		// TODO Auto-generated method stub
 		return l;
 	}
 
@@ -270,7 +267,7 @@ public class DataImpl implements DataInterface {
 		if (Beverages.get(id) == null) {
 			throw new BeverageException();
 		}
-		// TODO Auto-generated method stub
+		
 		return Beverages.get(id).getName();
 	}
 
@@ -281,7 +278,6 @@ public class DataImpl implements DataInterface {
 			throw new BeverageException();
 		}
 		
-		// TODO Auto-generated method stub
 		return Beverages.get(id).getQuantityPerBox();
 	}
 
@@ -319,7 +315,7 @@ public class DataImpl implements DataInterface {
 		if (Beverages.get(id) == null) {
 			throw new BeverageException();
 		}
-		// TODO Auto-generated method stub
+
 		return Beverages.get(id).getAvailableQuantity();
 	}
 
@@ -413,7 +409,6 @@ public class DataImpl implements DataInterface {
 			new FileWriter("./Transactions.json").close();
 			new FileWriter("./LaTazzaAccount.json").close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 				
@@ -605,7 +600,6 @@ public class DataImpl implements DataInterface {
 						Transactions.put(transactions.size(), rec);
 					}
 					
-				//} catch (java.text.ParseException e) {
 				}   catch (Exception e) {
 					e.printStackTrace();
 				}	
