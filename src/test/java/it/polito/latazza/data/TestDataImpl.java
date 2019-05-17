@@ -389,35 +389,30 @@ public class TestDataImpl {
         }
 	}
 
+	@Test
 	public void ReadJson(){
 		DataImpl DataTest = new DataImpl();
-		assertEquals(1,DataTest.getBeverages().size());
-		assertEquals(1,DataTest.getEmployees().size());
-		assertEquals(997500,DataTest.getBalance().toString());
+	    i=0;
+	    DataTest.reset();
 		try {
+			DataTest.createEmployee("Antonio","LaRuspa");
+        	DataTest.createBeverage("Caffe",5,500);
+        	DataTest.rechargeAccount(0,1000000);
+        	DataTest.buyBoxes(0,25);
+        	DataTest.sellCapsules(0,0,5,false);
+        	DataTest.sellCapsules(0,0,5,true);
+			DataTest = new DataImpl();
+			assertEquals(1,DataTest.getBeverages().size());
+			assertEquals(1,DataTest.getEmployees().size());
+			assertEquals(997500,DataTest.getBalance());
 			assertEquals("Caffe",DataTest.getBeverageName(0));
-		} catch (BeverageException e) {
-			e.printStackTrace();
-		}
-	    try {
 			assertEquals(5,DataTest.getBeverageCapsulesPerBox(0).intValue());
-		} catch (BeverageException e) {
-			e.printStackTrace();
-		}
-		try {
 			assertEquals(500,DataTest.getBeverageBoxPrice(0).intValue());
-		} catch (BeverageException e) {
-			e.printStackTrace();
-		}
-		try {
 			assertEquals("Antonio",DataTest.getEmployeeName(0));
-		} catch (EmployeeException e) {
-			e.printStackTrace();
-		}
-	    try {
-			assertEquals("LaRuspa",DataTest.getEmployeeSurname(0));
-		} catch (EmployeeException e) {
-			e.printStackTrace();
+			assertEquals("Laruspa",DataTest.getEmployeeSurname(0));
+		} catch (BeverageException e) {
+			System.out.println("Exception occurs");
+			fail();
 		}
 	}
 	
