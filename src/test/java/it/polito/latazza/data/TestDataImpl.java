@@ -389,7 +389,7 @@ public class TestDataImpl {
         }
 	}
 
-	@Test
+    @Test
 	public void ReadJson(){
 		DataImpl DataTest = new DataImpl();
 	    i=0;
@@ -404,13 +404,13 @@ public class TestDataImpl {
 			DataTest = new DataImpl();
 			assertEquals(1,DataTest.getBeverages().size());
 			assertEquals(1,DataTest.getEmployees().size());
-			assertEquals(997500,DataTest.getBalance());
+			assertEquals(997500,DataTest.getBalance().intValue());
 			assertEquals("Caffe",DataTest.getBeverageName(0));
 			assertEquals(5,DataTest.getBeverageCapsulesPerBox(0).intValue());
 			assertEquals(500,DataTest.getBeverageBoxPrice(0).intValue());
 			assertEquals("Antonio",DataTest.getEmployeeName(0));
 			assertEquals("Laruspa",DataTest.getEmployeeSurname(0));
-		} catch (BeverageException e) {
+		} catch (Exception e) {
 			System.out.println("Exception occurs");
 			fail();
 		}
