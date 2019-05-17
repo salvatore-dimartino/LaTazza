@@ -79,6 +79,8 @@ public class DataImpl implements DataInterface {
 		Integer avail_qty = beverage.getAvailableQuantity();
 		if(avail_qty < numberOfCapsules) throw new NotEnoughCapsules();
 		
+		if(numberOfCapsules<=0) return P_account.getBalance();
+		
 		// update the availability
 		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
 		
@@ -135,6 +137,8 @@ public class DataImpl implements DataInterface {
 		// check availability
 		Integer avail_qty = beverage.getAvailableQuantity();
 		if(avail_qty < numberOfCapsules) throw new NotEnoughCapsules();
+		
+		if(numberOfCapsules<=0) return P_account.getBalance();
 			
 		try {
 			account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
