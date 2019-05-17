@@ -9,7 +9,7 @@ Version:
 # Contents
 
 - [Black Box Unit Tests](#black-box-unit-tests)
-- [Class Beverage](#Class-Beverage)
+    - [Class Beverage](#class-beverage)
     - [Class Employee](#Class-Employee)
     - [Class PersonalAccount](#Class-PersonalAccount)
     - [Class LaTazzaAccount](#Class-LaTazzaAccount)
