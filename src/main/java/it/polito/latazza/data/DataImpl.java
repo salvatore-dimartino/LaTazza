@@ -686,4 +686,4 @@ public class DataImpl implements DataInterface {
 		
 		return new LaTazzaAccount(balance);
 	}
-	
+}	

@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -76,11 +74,11 @@ public class Consumption extends Transaction {
 	public String getString() {
 		
 		if(type.equals("CASH"))
-			return this.getDate().toString() + " " + type + " " + employee.getName() + " " + beverage.getName() + " " +  quantity.toString(); 
+			return super.getString() + " " + type + " " + employee.getName() + " " + beverage.getName() + " " +  quantity.toString(); 
 		if(type.equals("BALANCE"))
-			return this.getDate().toString() + " " + type + " " + employee.getName() + " " + beverage.getName() + " " + quantity.toString(); 
+			return super.getString() + " " + type + " " + employee.getName() + " " + beverage.getName() + " " + quantity.toString(); 
 		if(type.equals("VISITOR"))
-			return this.getDate().toString() + " " + type + " " + beverage.getName() + " " + quantity.toString();
+			return super.getString() + " " + type + " " + beverage.getName() + " " + quantity.toString();
 		
 		return ""; 
 	
