@@ -214,7 +214,7 @@ Version:
 **Combination of predicates**:
 
 | ValidityOfName | ValidityOfSurname | Valid / Invalid | Description of the test case | JUnit test case |
-|-------|-------|-------|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 | Name does not contain invalid characters | Surname does not contain invalid character | Valid | Employee("Paolo","Vinovi",) | it.polito.latazza.data.EmployeeTest.testEmployee |
 | Name does not contain invalid characters | Surname does contain invalid character | Invalid | Employee("Nicola", "Molin329o",) | it.polito.latazza.data.EmployeeTest.testEmployee |
 | Name does contain invalid characters | Surname does not contain invalid character | Invalid | Employee("Nico3277la", "Molino",) | it.polito.latazza.data.EmployeeTest.testEmployee |
@@ -283,7 +283,7 @@ Version:
 **Combination of predicates**:
 
 | SignOfBalance | Valid / Invalid | Description of the test case | JUnit test case |
-|-------|-------|-------|-------|-------|-------|-------|
+|-------|-------|-------|-------|
 | Sign of number is positive | Valid | PersonalAccount(1) | it.polito.latazza.data.PersonalAccountTest.testPersonalAccount |
 | Sign of number is negative | Invalid | PersonalAccount(-1) | it.polito.latazza.data.PersonalAccountTest.testPersonalAccount |
 
@@ -339,7 +339,7 @@ Version:
 **Combination of predicates**:
 
 | SignOfBalance | Valid / Invalid | Description of the test case | JUnit test case |
-|-------|-------|-------|-------|-------|-------|-------|
+|-------|-------|-------|-------|
 | Sign of number is positive | Valid | LaTazzaAccount(1) | it.polito.latazza.data.LaTazzaAccountTest.testLaTazzaAccount |
 | Sign of number is negative | Invalid | LaTazzaAccount(-1) | it.polito.latazza.data.LaTazzaAccountTest.testLaTazzaAccount |
 
