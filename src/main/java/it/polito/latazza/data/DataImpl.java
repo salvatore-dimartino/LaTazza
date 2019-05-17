@@ -91,7 +91,7 @@ public class DataImpl implements DataInterface {
 			try {
 				account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
 				account.toJsonLaTazzaAccount();
-			} catch (NotEnoughBalance e) {
+			} catch (Exception e) {
 				return P_account.getBalance();
 			}
 		}
@@ -139,7 +139,7 @@ public class DataImpl implements DataInterface {
 		try {
 			account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
 			account.toJsonLaTazzaAccount();
-		} catch (NotEnoughBalance e) {
+		} catch (Exception e) {
 			return;
 		}
 		
@@ -157,7 +157,6 @@ public class DataImpl implements DataInterface {
 			
 			consumption.toJsonTransaction();
 			
-			consumption.toJsonTransaction();
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
