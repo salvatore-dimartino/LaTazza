@@ -389,22 +389,24 @@ public class TestDataImpl {
         }
 	}
 
-    @Test
+	@Test
 	public void ReadJson(){
 		DataImpl DataTest = new DataImpl();
 	    i=0;
 	    DataTest.reset();
 		try {
-			DataTest.createEmployee("Antonio","LaRuspa");
+			DataTest.createEmployee("Antonio","Laruspa");
         	DataTest.createBeverage("Caffe",5,500);
         	DataTest.rechargeAccount(0,1000000);
         	DataTest.buyBoxes(0,25);
         	DataTest.sellCapsules(0,0,5,false);
         	DataTest.sellCapsules(0,0,5,true);
+        	System.out.println(DataTest.getBalance());
 			DataTest = new DataImpl();
+			System.out.println(DataTest.getBalance());
 			assertEquals(1,DataTest.getBeverages().size());
 			assertEquals(1,DataTest.getEmployees().size());
-			assertEquals(997500,DataTest.getBalance().intValue());
+			assertEquals(998000,DataTest.getBalance().intValue());
 			assertEquals("Caffe",DataTest.getBeverageName(0));
 			assertEquals(5,DataTest.getBeverageCapsulesPerBox(0).intValue());
 			assertEquals(500,DataTest.getBeverageBoxPrice(0).intValue());
