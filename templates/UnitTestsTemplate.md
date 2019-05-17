@@ -9,9 +9,13 @@ Version:
 # Contents
 
 - [Black Box Unit Tests](#black-box-unit-tests)
-
-
-
+    - [Class Beverage](#Class-Beverage)
+    - [Class Employee](#Class-Employee)
+    - [Class PersonalAccount](#Class-PersonalAccount)
+    - [Class LaTazzaAccount](#Class-LaTazzaAccount)
+    - [Class Consumption](#Class-Consumption)
+    - [Class Recharge](#Class-Recharge)
+    - [Class BoxPurchase](#Class-BoxPurchase)
 
 - [White Box Unit Tests](#white-box-unit-tests)
 
@@ -369,6 +373,176 @@ Version:
 |-------|-------|-------|-------|
 | Number is positive | Valid | setTotal(2500) | it.polito.latazza.data.LaTazzaAccountTest.testSetTotal |
 | Number is negative | Invalid | setTotal(-1000) -> NotEnoughBalance() | it.polito.latazza.data.LaTazzaAccountTest.testSetTotal |
+
+## **Class *Consumption***
+
+### **Class *Consumption* - constructor *Consumption()***
+
+**Criteria for constructor *Consumption()*:**
+	
+ - SignOfQuantity (on input)
+
+**Predicates for constructor *Consumption*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| SignOfQuantity            | > 0 |
+|                           | <= 0 |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| SignOfQuantity              |         > 0         |
+|                          |   <  2,147,483,647   |
+
+**Combination of predicates**:
+
+| SignOfQuantity | Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|
+| > 0 | Valid | Consumption(10,,,) | it.polito.latazza.data.ConsumptionTest.testConsumption |
+| <= 0 | Invalid | Consumption(-10,,,) -> Exception() | it.polito.latazza.data.ConsumptionTest.testConsumption |
+
+### **Class *Consumption* - method *setQuantity()***
+
+**Criteria for method *setQuantity()*:**
+	
+ - SignOfQuantity (on input)
+
+**Predicates for method *setQuantity()*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| SignOfQuantity | > 0 |
+|                | <= 0 |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| SignOfQuantity             |         > 0         |
+|                            |   <  2,147,483,647   |
+
+**Combination of predicates**:
+
+| SignOfQuantity | Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|
+| > 0 | Valid | setQuantity(10) | it.polito.latazza.data.ConsumptionTest.testSetQuantity |
+| <= 0 | Invalid | setQuantity(-10) -> Exception() | it.polito.latazza.data.ConsumptionTest.testSetQuantity |
+
+
+## **Class *Recharge***
+
+### **Class *Recharge* - constructor *Recharge()***
+
+**Criteria for constructor *Recharge()*:**
+	
+ - SignOfAmount (on input)
+
+**Predicates for constructor *Recharge*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| SignOfAmount              | > 0|
+|                           | <= 0 |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| SignOfAmount             |         > 0         |
+|                            |   <  2,147,483,647   |
+
+**Combination of predicates**:
+
+| SignOfAmount | Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|
+| > 0| Valid | Recharge(,,100,) | it.polito.latazza.data.RechargeTest.testRecharge |
+| <= 0 | Invalid | Recharge(,,-100,) -> Exception() | it.polito.latazza.data.RechargeTest.testRecharge |
+
+### **Class *Recharge* - method *setQuantity()***
+
+**Criteria for method *setAmount()*:**
+	
+ - SignOfAmount (on input)
+
+**Predicates for method *setAmount()*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| SignOfAmount | > 0 |
+|             | <= 0 |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| SignOfAmount               |         > 0         |
+|                            |   <  2,147,483,647   |
+
+**Combination of predicates**:
+
+| SignOfAmount | Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|
+| > 0 | Valid | setAmount(10) | it.polito.latazza.data.RechargeTest.testSetAmount |
+| <= 0 | Invalid | setAmount(-10) -> Exception() | it.polito.latazza.data.RechargeTest.testSetAmount |
+
+
+## **Class *BoxPurchase***
+
+### **Class *BoxPurchase* - constructor *BoxPurchase()***
+
+**Criteria for constructor *BoxPurchase()*:**
+	
+ - SignOfQuantity (on input)
+
+**Predicates for constructor *BoxPurchase*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| SignOfQuantity            | > 0 |
+|                           | <= 0 |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| SignOfQuantity              |         > 0         |
+|                          |   <  2,147,483,647   |
+
+**Combination of predicates**:
+
+| SignOfQuantity | Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|
+| > 0 | Valid | BoxPurchase(,,10,) | it.polito.latazza.data.BoxPurchaseTest.testBoxPurchase |
+| <= 0 | Invalid | BoxPurchase(,,-10,) -> Exception() | it.polito.latazza.data.BoxPurchaseTest.testBoxPurchase |
+
+### **Class *BoxPurchase* - method *setQuantity()***
+
+**Criteria for method *setQuantity()*:**
+	
+ - SignOfQuantity (on input)
+
+**Predicates for method *setQuantity()*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| SignOfQuantity | > 0 |
+|                | <= 0 |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| SignOfQuantity             |         > 0         |
+|                            |   <  2,147,483,647   |
+
+**Combination of predicates**:
+
+| SignOfQuantity | Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|
+| > 0 | Valid | setQuantity(10) | it.polito.latazza.data.BoxPurchaseTest.testSetQuantity |
+| <= 0 | Invalid | setQuantity(-10) -> Exception() | it.polito.latazza.data.BoxPurchaseTest.testSetQuantity |
 
 # White Box Unit Tests
 
