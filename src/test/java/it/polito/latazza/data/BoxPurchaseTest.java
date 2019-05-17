@@ -24,6 +24,7 @@ public class BoxPurchaseTest extends junit.framework.TestCase {
 			
 		}
 		
+		@SuppressWarnings("unused")
 		@Test
 		public void testConsumption() throws Exception {
 			
