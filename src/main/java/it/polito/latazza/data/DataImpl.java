@@ -83,6 +83,8 @@ public class DataImpl implements DataInterface {
 		
 		consumption.toJsonTransaction();
 		
+		transaction.toJsonTransaction();
+		
 		// update personal account
 		PersonalAccount P_account = employee.getPersonalaccount();
 		if(fromAccount == true) {
@@ -113,6 +115,8 @@ public class DataImpl implements DataInterface {
 		Transactions.put(TID, consumption);
 		
 		consumption.toJsonTransaction();
+		
+		transaction.toJsonTransaction();
 		
 	}
 
