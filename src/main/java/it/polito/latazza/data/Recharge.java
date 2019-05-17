@@ -5,6 +5,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import it.polito.latazza.exceptions.BeverageException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -19,10 +20,15 @@ public class Recharge extends Transaction {
 	private Integer amount;
 	private Employee employee;
 
-	public Recharge(int ID, Date date, Integer amount, Employee employee) {
+	public Recharge(int ID, Date date, Integer amount, Employee employee) throws Exception {
 		
 		super(ID, date);
-		this.amount=amount;
+		
+		if(amount > 0)
+			this.amount=amount;
+		else
+			throw new Exception();
+		
 		this.employee=employee;
 	
 	}
@@ -31,8 +37,14 @@ public class Recharge extends Transaction {
 		return amount;
 	}
 
-	public void setAmount(Integer amount) {
-		this.amount = amount;
+	public void setAmount(Integer amount) throws Exception {
+		
+		if(amount > 0)
+			this.amount = amount;
+		else
+			throw new Exception();
+		
+		
 	}
 
 	public Employee getEmployee() {
@@ -45,7 +57,7 @@ public class Recharge extends Transaction {
 	
 	// The string format for a recharge is "[datetime] RECHARGE [employee] [amount]".
 	public String getString() {
-		return this.getDate().toString() + " RECHARGE " + this.getEmployee().getName() + " " +
+		return super.getString() + " RECHARGE " + this.getEmployee().getName() + " " +
 			   this.getEmployee().getSurname() + " " + this.amount.toString();
 	}
 	

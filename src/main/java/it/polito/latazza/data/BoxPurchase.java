@@ -18,10 +18,13 @@ public class BoxPurchase extends Transaction {
 	Integer quantity;
 	Beverage beverage;
 	
-	public BoxPurchase(Integer ID, Date date, Integer quantity, Beverage beverage) {
+	public BoxPurchase(Integer ID, Date date, Integer quantity, Beverage beverage) throws Exception {
 		
 		super(ID, date);
-		this.quantity = quantity;
+		if(quantity > 0 )
+			this.quantity = quantity;
+		else throw new Exception();
+		
 		this.beverage = beverage;
 
 	}
@@ -30,8 +33,10 @@ public class BoxPurchase extends Transaction {
 		return quantity;
 	}
 
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
+	public void setQuantity(Integer quantity) throws Exception {
+		if(quantity > 0)
+			this.quantity = quantity;
+		else throw new Exception();
 	}
 
 	public Beverage getBeverage() {
@@ -44,7 +49,7 @@ public class BoxPurchase extends Transaction {
 	
 	@Override
 	public String getString() {
-		return  this.getDate().toString() + " " + "BUY " + beverage.getName() + " " + quantity.toString();
+		return  super.getString() + " BUY " + beverage.getName() + " " + quantity.toString();
 	}
 	
 	public List<String> getAttributes() {

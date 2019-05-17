@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -22,22 +24,28 @@ public class Consumption extends Transaction {
 	private Employee employee;
 	private String type;
 	
-	public Consumption(Integer ID, Date date, Integer quantity, Beverage beverage, Employee employee, String type) {
+	public Consumption(Integer ID, Date date, Integer quantity, Beverage beverage, Employee employee, String type) throws Exception {
 		
 		super(ID, date);
-		this.quantity = quantity;
+		if(quantity > 0)
+			this.quantity = quantity;
+		else throw new Exception();
+		
 		this.beverage = beverage;
 		this.employee = employee;
-		this.type = type;
-
+		
 	}
 	
 	public Integer getQuantity() {
 		return quantity;
 	}
 	
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
+	public void setQuantity(Integer quantity) throws Exception {
+		
+		if(quantity > 0)
+			this.quantity = quantity;
+		else throw new Exception();
+		
 	}
 	
 	public Beverage getBeverage() {
@@ -68,11 +76,11 @@ public class Consumption extends Transaction {
 	public String getString() {
 		
 		if(type.equals("CASH"))
-			return this.getDate().toString() + " " + type + " " + employee.getName() + " " + beverage.getName() + " " +  quantity.toString(); 
+			return super.getString() + " " + type + " " + employee.getName() + " " + beverage.getName() + " " +  quantity.toString(); 
 		if(type.equals("BALANCE"))
-			return this.getDate().toString() + " " + type + " " + employee.getName() + " " + beverage.getName() + " " + quantity.toString(); 
+			return super.getString() + " " + type + " " + employee.getName() + " " + beverage.getName() + " " + quantity.toString(); 
 		if(type.equals("VISITOR"))
-			return this.getDate().toString() + " " + type + " " + beverage.getName() + " " + quantity.toString();
+			return super.getString() + " " + type + " " + beverage.getName() + " " + quantity.toString();
 		
 		return ""; 
 	
@@ -136,3 +144,4 @@ public class Consumption extends Transaction {
 
 	
 }
+
