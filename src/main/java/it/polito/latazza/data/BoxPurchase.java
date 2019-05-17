@@ -49,7 +49,7 @@ public class BoxPurchase extends Transaction {
 	
 	@Override
 	public String getString() {
-		return  super() + " BUY " + beverage.getName() + " " + quantity.toString();
+		return  super().getString() + " BUY " + beverage.getName() + " " + quantity.toString();
 	}
 	
 	public List<String> getAttributes() {
