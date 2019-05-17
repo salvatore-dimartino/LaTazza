@@ -76,6 +76,9 @@ public class DataImpl implements DataInterface {
 		if(fromAccount) payMode="BALANCE";
 		else payMode="CASH";
 		
+		if(!fromAccount)
+		    account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
+		
 		// update the transactions
 		Integer TID = Transactions.size()+1;
 		Consumption consumption = new Consumption(TID, new Date(), numberOfCapsules, Beverages.get(beverageId), Employees.get(employeeId), payMode);
@@ -108,6 +111,8 @@ public class DataImpl implements DataInterface {
 				
 		// update the availability
 		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
+		
+		account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
 		
 		// update the transactions
 		Integer TID = Transactions.size();
