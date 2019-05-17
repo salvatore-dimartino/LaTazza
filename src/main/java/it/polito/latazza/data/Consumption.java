@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -77,7 +78,6 @@ public class Consumption extends Transaction {
 	
 	}
 	
-	@Override
 	public List<String> getAttributes() {
 		
 		List<String> att = new ArrayList<String>();
@@ -85,7 +85,8 @@ public class Consumption extends Transaction {
 		att.add(this.getDate().toString());
 		att.add(this.quantity.toString());
 		att.add(this.beverage.getID().toString());
-		att.add(this.employee.getID().toString());
+		if(this.employee != null) att.add(this.employee.getID().toString());
+		else att.add(null);
 		att.add(this.type);
 		
 		return att;
@@ -95,7 +96,7 @@ public class Consumption extends Transaction {
 	public void toJsonTransaction() {
 		
 		JSONParser parser = new JSONParser();
-		JSONObject j_file = new JSONObject();
+		JSONArray j_file = new JSONArray();
 		
 		File myfile = new File("Transactions.json");
 		try {
@@ -106,7 +107,7 @@ public class Consumption extends Transaction {
 		}
 		
 		try {
-			j_file = (JSONObject) parser.parse(new FileReader("./Transactions.json"));
+			j_file = (JSONArray) parser.parse(new FileReader("./Transactions.json"));
 						
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
@@ -115,13 +116,17 @@ public class Consumption extends Transaction {
 		} catch (ParseException e) {
 		}	
 		
-		j_file.put(this.getID().toString(), this.getAttributes());
+		JSONObject consumptionObject = new JSONObject();
+		consumptionObject.put("ID", this.getID().toString());
+		consumptionObject.put("List_Attributes", this.getAttributes());
+		consumptionObject.put("Type", "CONSUMPTION");
+		j_file.add(consumptionObject);
 						
 		// write the json object to the file
 		try (FileWriter file = new FileWriter("./Transactions.json")) {
 			file.write(j_file.toJSONString());
 			file.flush();
-					 
+			file.close(); 
 		} catch (IOException e) {
 			e.printStackTrace();
 	    }
