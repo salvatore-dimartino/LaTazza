@@ -132,6 +132,10 @@ class DataImpl {
     +getEmployees() : Map<Integer,String>
     +getBalance() : Integer
     +reset() : void
+    -loadEmployees() : Map<Integer, Employee>
+    -loadBeverages() : Map<Integer, Beverages>
+    -loadTransactions() : Map<Integer, Transactions>
+    -loadLaTazzaAccount() : LaTazzaAccount
 }
 
 DataImpl --> Datainterface: implements
@@ -152,6 +156,7 @@ class LaTazzaAccount {
     
     +setTotal(Integer) : void
     +getTotal() : Integer
+    +toJsonLaTazzaAccount() : void
 }
 
 class Employee {
@@ -167,6 +172,8 @@ class Employee {
     +getPersonalAccount() : PersonalAccount
     +setPersonalAccount(PersonalAccount) : void
     +getID() : Integer
+    +getAttributes() : List<String>
+    +toJsonEmployee() : void
 }
 
 class Beverage {
@@ -185,6 +192,8 @@ class Beverage {
     +setQuantityperBox(Integer) : void
     +setAvailableQuantity(Integer) : void
     +getID() : Integer
+    +getAttributes() : List<String>
+    +toJsonBeverage() : void
 }
 
 class BoxPurchase {
@@ -196,6 +205,8 @@ class BoxPurchase {
     +getBeverage() : Beverage
     +setBeverage(Beverage) : void
     +getString() : String
+    +getAttributes() : List<String>
+    +toJsonTransaction() : void
 }
 
 class Transaction {
@@ -236,6 +247,8 @@ class Recharge {
     +getEmployee() : Beverage
     +setEmployee(Beverage) : void
     +getString() : String
+    +getAttributes() : List<String>
+    +toJsonTransaction() : void
 }
 
 class Consumption {
@@ -253,6 +266,8 @@ class Consumption {
     +getEmployee() : Employee
     +setEmployee(Employee) : void
     +getString() : String
+    +getAttributes() : List<String>
+    +toJsonTransaction() : void
 }
 
 
