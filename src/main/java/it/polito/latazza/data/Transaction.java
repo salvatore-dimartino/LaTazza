@@ -29,7 +29,7 @@ public class Transaction {
 
 	public String getString() {
 		// TODO Auto-generated method stub
-		return null;
+		return (date.getYear()+1900)+"-"+date.getMonth()+"-"+date.getDate()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
 	}
 	
 }
