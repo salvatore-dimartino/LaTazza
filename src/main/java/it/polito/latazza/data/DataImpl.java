@@ -87,12 +87,14 @@ public class DataImpl implements DataInterface {
 		if(fromAccount) payMode="BALANCE";
 		else payMode="CASH";
 		
-		if(!fromAccount)
+		if(!fromAccount){
 			try {
 				account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
+				account.toJsonLaTazzaAccount();
 			} catch (NotEnoughBalance e) {
-				e.printStackTrace();
+				return P_account.getBalance();
 			}
+		}
 		
 		// update the transactions
 		Integer TID = Transactions.size()+1;
@@ -133,15 +135,17 @@ public class DataImpl implements DataInterface {
 		// check availability
 		Integer avail_qty = beverage.getAvailableQuantity();
 		if(avail_qty < numberOfCapsules) throw new NotEnoughCapsules();
-				
+			
+		try {
+			account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
+			account.toJsonLaTazzaAccount();
+		} catch (NotEnoughBalance e) {
+			return;
+		}
+		
 		// update the availability
 		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
 		
-		try {
-			account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
-		} catch (NotEnoughBalance e) {
-			e.printStackTrace();
-		}
 		
 		// update the transactions
 		Integer TID = Transactions.size();
