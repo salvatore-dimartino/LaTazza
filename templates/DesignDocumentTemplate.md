@@ -4,7 +4,7 @@ Authors: Francesco Dibitonto s265421 Federico Silvio Gorrino s262948 Salvatore D
 
 Date: 23/04/2019
 
-Version: 1.0
+Version: 1.1
 
 # Contents
 
@@ -41,11 +41,10 @@ latazza.gui --> latazza.data: import
 @enduml
 ```
 
-We decided to use a 3-Layers Architecture as we have 3 layers: presentation(gui), application logic(functions) and Data(transactions). <br>
-These last two layers (application logic and Data) are both inside the latazza.data package. <br>
-Data is serialized and saved in a local output file (in the PC of the manager). <br>
-For the sake of interactivity as well, we decided to use the MVC(MV) model too, where the models and the views are in the latazza.data and latazza.gui package respectively. <br>
-So our final Architectural pattern choice is MVC + Layers. <br>
+We decided to use a 2-Layers Architecture as we have 2 layers: presentation(gui) and application logic(functions) plus Data merged together. <br>
+Application logic and Data are both inside the latazza.data package. <br>
+Data is serialized and saved inside local output files in the JSON format (in the PC of the manager). <br>
+We decided to serialize one file respectively for: Manager Account, Beverages, Employees, Transactions. <br> 
 Finally, concerning parallelization, concurrency is not needed so 1 thread only is sufficient.
 
 
