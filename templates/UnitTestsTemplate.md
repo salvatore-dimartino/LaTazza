@@ -11,11 +11,11 @@ Version:
 - [Black Box Unit Tests](#black-box-unit-tests)
     - [Class Beverage](#class-beverage)
     - [Class Employee](#class-employee)
-    - [Class PersonalAccount](#class-personalAccount)
-    - [Class LaTazzaAccount](#class-laTazzaAccount)
+    - [Class PersonalAccount](#class-personalaccount)
+    - [Class LaTazzaAccount](#class-latazzaaccount)
     - [Class Consumption](#class-consumption)
     - [Class Recharge](#class-recharge)
-    - [Class BoxPurchase](#class-boxPurchase)
+    - [Class BoxPurchase](#class-boxpurchase)
 
 - [White Box Unit Tests](#white-box-unit-tests)
 
