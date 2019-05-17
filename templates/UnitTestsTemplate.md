@@ -109,8 +109,8 @@ Version:
 
 | ValidityOfName | Valid / Invalid | Description of the test case | JUnit test case |
 |-------|-------|-------|-------|
-| Name does not contain invalid characters | Valid | setName("Caffe") | it.polito.latazza.data.BeverageTest.testSetPrice |
-| Name  contain invalid characters | Invalid | setName("Caff3") -> BeverageException() | it.polito.latazza.data.BeverageTest.testSetPrice |
+| Name does not contain invalid characters | Valid | setName("Caffe") | it.polito.latazza.data.BeverageTest.testSetName |
+| Name  contain invalid characters | Invalid | setName("Caff3") -> BeverageException() | it.polito.latazza.data.BeverageTest.testSetName |
 
 ### **Class *Beverage* - method *setPrice()***
 
@@ -193,6 +193,182 @@ Version:
 | Number is positive | Valid | testSetAvailableQuantity(10) | it.polito.latazza.data.BeverageTest.ttestSetQuantityPerBox |
 | Number is negative | Invalid | testSetAvailableQuantity(-10) -> BeverageException() | it.polito.latazza.data.BeverageTest.testSetQuantityPerBox |
 
+## **Class *Employee***
+
+### **Class *Employee* - constructor *Employee()***
+
+**Criteria for constructor *Employee()*:**
+	
+ - ValidityOfName (on input)
+ - ValidityOfSurname (on input)
+
+**Predicates for constructor *Employee*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| ValidityOfName            | Name does not contain invalid characters |
+|                           | Name contains invalid characters |
+| ValidityOfSurname            | Surname does not contain invalid characters |
+|                           | Surname contains invalid characters |
+
+**Combination of predicates**:
+
+| ValidityOfName | ValidityOfSurname | Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|-------|
+| Name does not contain invalid characters | Surname does not contain invalid character | Valid | Employee("Paolo","Vinovi",) | it.polito.latazza.data.EmployeeTest.testEmployee |
+| Name does not contain invalid characters | Surname does contain invalid character | Invalid | Employee("Nicola", "Molin329o",) | it.polito.latazza.data.EmployeeTest.testEmployee |
+| Name does contain invalid characters | Surname does not contain invalid character | Invalid | Employee("Nico3277la", "Molino",) | it.polito.latazza.data.EmployeeTest.testEmployee |
+
+### **Class *Employee* - method *setSurname()***
+
+**Criteria for  *setSurname()*:**
+	
+ - ValidityOfSurname (on input)
+
+**Predicates for method *setSurname()*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| ValidityOfSurname            | Surname does not contain invalid characters |
+|                           | Surname contains invalid characters |
+
+**Combination of predicates**:
+
+| ValidityOfSurname | Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|
+| Surname does not contain invalid characters | Valid | setSurname("Valencia") | it.polito.latazza.data.EmployeeTest.testSetSurname |
+| Surname  contain invalid characters | Invalid | setSurname("Val219ncia") -> EmployeeException() | it.polito.latazza.data.EmployeeTest.testSetSurname |
+
+**Criteria for  *setName()*:**
+	
+ - ValidityOfName (on input)
+
+**Predicates for method *setName()*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| ValidityOfName            | Name does not contain invalid characters |
+|                           | Name contains invalid characters |
+
+**Combination of predicates**:
+
+| ValidityOfName | Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|
+| Name does not contain invalid characters | Valid | setName("Vincenzo") | it.polito.latazza.data.EmployeeTest.testSetName |
+| Name  contain invalid characters | Invalid | setName("Vinc879nzo") -> EmployeeException() | it.polito.latazza.data.EmployeeTest.testSetName |
+
+## **Class *PersonalAccount***
+
+### **Class *PersonalAccount* - constructor *PersonalAccount()***
+
+
+**Criteria for constructor *PersonalAccount()*:**
+	
+ - SignOfBalance (on input)
+
+**Predicates for constructor *PersonalAccount*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| SignOfBalance               | Sign of number is positive |
+|                           | Sign of number is negative |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| SignOfBalance              |         >= 0         |
+|                          |   <  2,147,483,647   |
+
+**Combination of predicates**:
+
+| SignOfBalance | Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|
+| Sign of number is positive | Valid | PersonalAccount(1) | it.polito.latazza.data.PersonalAccountTest.testPersonalAccount |
+| Sign of number is negative | Invalid | PersonalAccount(-1) | it.polito.latazza.data.PersonalAccountTest.testPersonalAccount |
+
+### **Class *PersonalAccount* - method *setBalance()***
+
+**Criteria for method *setBalance()*:**
+	
+ - SignOfBalance (on input)
+
+**Predicates for method *setBalance()*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| SignOfBalance | Namber is positive |
+|             | Namber is negative |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| SignOfBalance              |         >= 0         |
+|                          |   <  2,147,483,647   |
+
+**Combination of predicates**:
+
+| SignOfPrice | Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|
+| Number is positive | Valid | setBalance(2500) | it.polito.latazza.data.PersonalAccountTest.testSetBalance |
+| Number is negative | Invalid | setBalance(-1000) -> NotEnoughBalance() | it.polito.latazza.data.PersonalAccountTest.testSetBalance |
+
+## **Class *LaTazzaAccount***
+
+### **Class *LaTazzaAccount* - constructor *LaTazzaAccount()***
+
+**Criteria for constructor *LaTazzaAccount()*:**
+	
+ - SignOfTotal (on input)
+
+**Predicates for constructor *LaTazzaAccount*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| SignOfTotal               | Sign of number is positive |
+|                           | Sign of number is negative |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| SignOfTotal              |         >= 0         |
+|                          |   <  2,147,483,647   |
+
+**Combination of predicates**:
+
+| SignOfBalance | Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|
+| Sign of number is positive | Valid | LaTazzaAccount(1) | it.polito.latazza.data.LaTazzaAccountTest.testLaTazzaAccount |
+| Sign of number is negative | Invalid | LaTazzaAccount(-1) | it.polito.latazza.data.LaTazzaAccountTest.testLaTazzaAccount |
+
+### **Class *LaTazzaAccount* - method *setTotal()***
+
+**Criteria for method *setTotal()*:**
+	
+ - SignOfTotal (on input)
+
+**Predicates for method *setBalance()*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| SignOfTotal | Namber is positive |
+|             | Namber is negative |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| SignOfTotal              |         >= 0         |
+|                          |   <  2,147,483,647   |
+
+**Combination of predicates**:
+
+| SignOfPrice | Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|
+| Number is positive | Valid | setTotal(2500) | it.polito.latazza.data.LaTazzaAccountTest.testSetTotal |
+| Number is negative | Invalid | setTotal(-1000) -> NotEnoughBalance() | it.polito.latazza.data.LaTazzaAccountTest.testSetTotal |
 
 # White Box Unit Tests
 

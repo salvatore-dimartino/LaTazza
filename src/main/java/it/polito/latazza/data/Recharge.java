@@ -1,5 +1,6 @@
 package it.polito.latazza.data;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -49,7 +50,6 @@ public class Recharge extends Transaction {
 	}
 	
 
-	@Override
 	public List<String> getAttributes() {
 		
 		List<String> att = new ArrayList<String>();
@@ -65,37 +65,36 @@ public class Recharge extends Transaction {
 	public void toJsonTransaction() {
 		
 		JSONParser parser = new JSONParser();
-		JSONObject j_file = new JSONObject();
+		JSONArray j_file = new JSONArray();
 		
 		File myfile = new File("Transactions.json");
 		try {
 			myfile.createNewFile();
 		} catch (IOException e2) {
-			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
 		
 		try {
-			j_file = (JSONObject) parser.parse(new FileReader("./Transactions.json"));
+			j_file = (JSONArray) parser.parse(new FileReader("./Transactions.json"));
 						
 		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			System.out.println("file not found\n");
 			e1.printStackTrace();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			System.out.println("IO Error\n");
 			e1.printStackTrace();
 		} catch (ParseException e1) {
 		}	
 		
-		j_file.put(this.getID().toString(), this.getAttributes());
+		JSONObject rechargeObject = new JSONObject();
+		rechargeObject.put("ID", this.getID().toString());
+		rechargeObject.put("List_Attributes", this.getAttributes());
+		rechargeObject.put("Type", "RECHARGE");
+		j_file.add(rechargeObject);
 						
 		// write the json object to the file
 		try (FileWriter file = new FileWriter("./Transactions.json")) {
 			file.write(j_file.toJSONString());
 			file.flush();
-					 
+			file.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 	    }

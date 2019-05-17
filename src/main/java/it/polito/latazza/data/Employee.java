@@ -7,7 +7,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -107,18 +110,17 @@ public class Employee {
 	public void toJsonEmployee() {
 		// read the json file
 		JSONParser parser = new JSONParser();
-		JSONObject j_file = new JSONObject();
+		JSONArray j_file = new JSONArray();
 		
 		File myfile = new File("Employees.json");
 		try {
 			myfile.createNewFile();
 		} catch (IOException e2) {
-			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
 		
 		try {
-			j_file = (JSONObject) parser.parse(new FileReader("./Employees.json"));
+			j_file = (JSONArray) parser.parse(new FileReader("./Employees.json"));
 						
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
@@ -127,14 +129,19 @@ public class Employee {
 		} catch (ParseException e) {
 		}		
 		
-		j_file.put(this.getID().toString(), this.getAttributes());
+		JSONObject employeeObject = new JSONObject();
+		employeeObject.put("ID", this.getID().toString());
+		employeeObject.put("List_Attributes", this.getAttributes());
+		j_file.add(employeeObject);
 						
 		// write the json object to the file
 		try (FileWriter file = new FileWriter("./Employees.json")) {
 			file.write(j_file.toJSONString());
 			file.flush();
+			file.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}	
 	}
+
 }

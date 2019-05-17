@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -46,7 +47,6 @@ public class BoxPurchase extends Transaction {
 		return  this.getDate().toString() + " " + "BUY " + beverage.getName() + " " + quantity.toString();
 	}
 	
-	@Override
 	public List<String> getAttributes() {
 		
 		List<String> att = new ArrayList<String>();
@@ -58,12 +58,11 @@ public class BoxPurchase extends Transaction {
 		return att;
 	}
 	
-	@Override
 	@SuppressWarnings("unchecked")
 	public void toJsonTransaction() {
 		
 		JSONParser parser = new JSONParser();
-		JSONObject j_file = new JSONObject();
+		JSONArray j_file = new JSONArray();
 		
 		File myfile = new File("Transactions.json");
 		try {
@@ -74,7 +73,7 @@ public class BoxPurchase extends Transaction {
 		}
 		
 		try {
-			j_file = (JSONObject) parser.parse(new FileReader("./Transactions.json"));
+			j_file = (JSONArray) parser.parse(new FileReader("./Transactions.json"));
 						
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
@@ -83,13 +82,17 @@ public class BoxPurchase extends Transaction {
 		} catch (ParseException e) {
 		}	
 		
-		j_file.put(this.getID().toString(), this.getAttributes());
+		JSONObject boxpurchaseObject = new JSONObject();
+		boxpurchaseObject.put("ID", this.getID().toString());
+		boxpurchaseObject.put("List_Attributes", this.getAttributes());
+		boxpurchaseObject.put("Type", "BOXPURCHASE");
+		j_file.add(boxpurchaseObject);
 						
 		// write the json object to the file
 		try (FileWriter file = new FileWriter("./Transactions.json")) {
 			file.write(j_file.toJSONString());
 			file.flush();
-					 
+			file.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 	    }

@@ -1,15 +1,8 @@
 package it.polito.latazza.data;
 
 import static org.junit.jupiter.api.Assertions.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import org.junit.jupiter.api.Test;
-import it.polito.latazza.data.*;
-import it.polito.latazza.exceptions.BeverageException;
-import it.polito.latazza.exceptions.DateException;
-import it.polito.latazza.exceptions.EmployeeException;
 import it.polito.latazza.exceptions.NotEnoughBalance;
-import it.polito.latazza.exceptions.NotEnoughCapsules;
 
 public class LaTazzaAccountTest extends junit.framework.TestCase {
 
@@ -26,6 +19,7 @@ public class LaTazzaAccountTest extends junit.framework.TestCase {
 			 
 	}
 	
+	@SuppressWarnings("unused")
 	@Test
 	public void LaTazzaAccount() throws NotEnoughBalance {
 		

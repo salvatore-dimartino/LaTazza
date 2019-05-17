@@ -20,6 +20,7 @@ public class BeverageTest extends junit.framework.TestCase {
 			 
 	}
 	
+	@SuppressWarnings("unused")
 	@Test
 	public void testBeverage() throws BeverageException {
 		

@@ -148,7 +148,7 @@ public class TestDataImpl {
 	    i=1;
 	    DataTest.reset();
 		try {
-			DataTest.createEmployee("Antonio","LaRuspa");
+			DataTest.createEmployee("Antonio","Laruspa");
 		} catch (Exception e) {
 			System.out.println("Exception occurs");
 			fail();
@@ -192,12 +192,12 @@ public class TestDataImpl {
 	        Emp=DataTest.getEmployees();
 	        assertEquals(0,Id.size());
 	        assertEquals(0,Emp.size());
-	        assertEquals(0,DataTest.createEmployee("Antonio","LaRuspa").intValue());
+	        assertEquals(0,DataTest.createEmployee("Antonio","Laruspa").intValue());
 	        Id=DataTest.getEmployeesId();
 	        Emp=DataTest.getEmployees();
 	        assertEquals(1,Id.size());
 	        assertEquals(1,Emp.size());
-	        Name=Collections.singletonList("Antonio LaRuspa");
+	        Name=Collections.singletonList("Antonio Laruspa");
 	        Id.forEach(elem->{
 	        	Emp=DataTest.getEmployees();
 	            assertEquals(i,elem.intValue());
@@ -207,31 +207,31 @@ public class TestDataImpl {
 	        i=0;
 	        assertEquals(1,DataTest.createEmployee("Eugenio","Vitale").intValue());
 	        assertEquals("Antonio",DataTest.getEmployeeName(0));
-	        assertEquals("LaRuspa",DataTest.getEmployeeSurname(0));
+	        assertEquals("Laruspa",DataTest.getEmployeeSurname(0));
 	        assertEquals("Eugenio",DataTest.getEmployeeName(1));
 	        assertEquals("Vitale",DataTest.getEmployeeSurname(1));
 	        Id=DataTest.getEmployeesId();
 	        Emp=DataTest.getEmployees();
 	        assertEquals(2,Id.size());
 	        assertEquals(2,Emp.size());
-	        Name=Arrays.asList("Antonio LaRuspa", "Eugenio Vitale");
+	        Name=Arrays.asList("Antonio Laruspa", "Eugenio Vitale");
 	        Id.forEach(elem->{
 	            assertEquals(i,elem.intValue());
 	            assertEquals(Emp.get(i),Name.get(i));
 	            i++;
 	        });
 	        i=0;
-	        DataTest.updateEmployee(0,"Vincenzo","LaRuspa");
+	        DataTest.updateEmployee(0,"Vincenzo","Laruspa");
 	        DataTest.updateEmployee(1,"Eugenio","Coriandolo");
 	        assertEquals("Vincenzo",DataTest.getEmployeeName(0));
-	        assertEquals("LaRuspa",DataTest.getEmployeeSurname(0));
+	        assertEquals("Laruspa",DataTest.getEmployeeSurname(0));
 	        assertEquals("Eugenio",DataTest.getEmployeeName(1));
 	        assertEquals("Coriandolo",DataTest.getEmployeeSurname(1));
 	        Id=DataTest.getEmployeesId();
 	        Emp=DataTest.getEmployees();
 	        assertEquals(2,Id.size());
 	        assertEquals(2,Emp.size());
-	        Name=Arrays.asList("Vincenzo LaRuspa", "Eugenio Coriandolo");
+	        Name=Arrays.asList("Vincenzo Laruspa", "Eugenio Coriandolo");
 	        Id.forEach(elem->{
 	            assertEquals(i,elem.intValue());
 	            assertEquals(Emp.get(i),Name.get(i));
@@ -309,7 +309,7 @@ public class TestDataImpl {
 	    i=0;
 	    DataTest.reset();
 		try {
-	        DataTest.createEmployee("Antonio","LaRuspa");
+	        DataTest.createEmployee("Antonio","Laruspa");
 	        DataTest.createEmployee("Eugenio","Vitale");
 	        assertEquals(5000,DataTest.rechargeAccount(0,5000).intValue());
 	        assertEquals(5000,DataTest.getEmployeeBalance(0).intValue());
@@ -335,7 +335,7 @@ public class TestDataImpl {
 	    i=0;
 	    DataTest.reset();
 		try {
-			DataTest.createEmployee("Antonio","LaRuspa");
+			DataTest.createEmployee("Antonio","Laruspa");
 			DataTest.createBeverage("Caffe",5,500);
 			DataTest.rechargeAccount(0,7500);
 			assertEquals(7500,DataTest.getBalance().intValue());
@@ -389,23 +389,38 @@ public class TestDataImpl {
         }
 	}
 
+	@Test
 	public void ReadJson(){
 		DataImpl DataTest = new DataImpl();
-		assertEquals(1,DataTest.getBeverages.size().toString());
-		assertEquals(1,DataTest.getEmployees.size().toString());
-		assertEquals(997500,DataTest.getBalance().toString());
-		assertEquals("Caffe",DataTest.getBeverageName(0));
-	    assertEquals(5,DataTest.getBeverageCapsulesPerBox(0).intValue());
-		assertEquals(500,DataTest.getBeverageBoxPrice(0).intValue());
-		assertEquals("Antonio",DataTest.getEmployeeName(0));
-	    assertEquals("LaRuspa",DataTest.getEmployeeSurname(0));
+	    i=0;
+	    DataTest.reset();
+		try {
+			DataTest.createEmployee("Antonio","LaRuspa");
+        	DataTest.createBeverage("Caffe",5,500);
+        	DataTest.rechargeAccount(0,1000000);
+        	DataTest.buyBoxes(0,25);
+        	DataTest.sellCapsules(0,0,5,false);
+        	DataTest.sellCapsules(0,0,5,true);
+			DataTest = new DataImpl();
+			assertEquals(1,DataTest.getBeverages().size());
+			assertEquals(1,DataTest.getEmployees().size());
+			assertEquals(997500,DataTest.getBalance());
+			assertEquals("Caffe",DataTest.getBeverageName(0));
+			assertEquals(5,DataTest.getBeverageCapsulesPerBox(0).intValue());
+			assertEquals(500,DataTest.getBeverageBoxPrice(0).intValue());
+			assertEquals("Antonio",DataTest.getEmployeeName(0));
+			assertEquals("Laruspa",DataTest.getEmployeeSurname(0));
+		} catch (BeverageException e) {
+			System.out.println("Exception occurs");
+			fail();
+		}
 	}
 	
 	public void ResetTest(){
 	    DataImpl DataTest = new DataImpl();
 		DataTest.reset();
-		assertEquals(0,DataTest.getBeverages.size().toString());
-		assertEquals(0,DataTest.getEmployees.size().toString());
+		assertEquals(0,DataTest.getBeverages().size());
+		assertEquals(0,DataTest.getEmployees().size());
 		assertEquals(0,DataTest.getBalance().toString());
 	}
 }
