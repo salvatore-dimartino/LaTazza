@@ -68,11 +68,11 @@ public class Consumption extends Transaction {
 	public String getString() {
 		
 		if(type.equals("CASH"))
-			return this.getDate().toString() + " " + type + " " + employee.getName() + " " + beverage.getName() + " " +  beverage.getQuantityPerBox().toString(); 
+			return this.getDate().toString() + " " + type + " " + employee.getName() + " " + beverage.getName() + " " +  quantity.toString(); 
 		if(type.equals("BALANCE"))
-			return this.getDate().toString() + " " + type + " " + employee.getName() + " " + beverage.getName() + " " + beverage.getQuantityPerBox().toString(); 
+			return this.getDate().toString() + " " + type + " " + employee.getName() + " " + beverage.getName() + " " + quantity.toString(); 
 		if(type.equals("VISITOR"))
-			return this.getDate().toString() + " " + type + " " + beverage.getName() + " " + beverage.getQuantityPerBox().toString();
+			return this.getDate().toString() + " " + type + " " + beverage.getName() + " " + quantity.toString();
 		
 		return ""; 
 	

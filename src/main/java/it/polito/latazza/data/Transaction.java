@@ -2,13 +2,6 @@ package it.polito.latazza.data;
 
 
 import java.util.Date;
-import java.util.List;
-
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
-import java.lang.NumberFormatException;
 
 public class Transaction {
 	
@@ -36,7 +29,7 @@ public class Transaction {
 
 	public String getString() {
 		// TODO Auto-generated method stub
-		return null;
+		return (date.getYear()+1900)+"-"+date.getMonth()+"-"+date.getDate()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
 	}
 	
 }
