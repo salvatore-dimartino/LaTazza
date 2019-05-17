@@ -10,12 +10,12 @@ Version:
 
 - [Black Box Unit Tests](#black-box-unit-tests)
     - [Class Beverage](#class-beverage)
-    - [Class Employee](#Class-Employee)
-    - [Class PersonalAccount](#Class-PersonalAccount)
-    - [Class LaTazzaAccount](#Class-LaTazzaAccount)
-    - [Class Consumption](#Class-Consumption)
-    - [Class Recharge](#Class-Recharge)
-    - [Class BoxPurchase](#Class-BoxPurchase)
+    - [Class Employee](#class-employee)
+    - [Class PersonalAccount](#class-personalAccount)
+    - [Class LaTazzaAccount](#class-laTazzaAccount)
+    - [Class Consumption](#class-consumption)
+    - [Class Recharge](#class-recharge)
+    - [Class BoxPurchase](#class-boxPurchase)
 
 - [White Box Unit Tests](#white-box-unit-tests)
 
@@ -460,7 +460,7 @@ Version:
 | > 0| Valid | Recharge(,,100,) | it.polito.latazza.data.RechargeTest.testRecharge |
 | <= 0 | Invalid | Recharge(,,-100,) -> Exception() | it.polito.latazza.data.RechargeTest.testRecharge |
 
-### **Class *Recharge* - method *setQuantity()***
+### **Class *Recharge* - method *setAmount()***
 
 **Criteria for method *setAmount()*:**
 	
