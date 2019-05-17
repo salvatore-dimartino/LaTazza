@@ -57,7 +57,7 @@ public class Recharge extends Transaction {
 	
 	// The string format for a recharge is "[datetime] RECHARGE [employee] [amount]".
 	public String getString() {
-		return super() + " RECHARGE " + this.getEmployee().getName() + " " +
+		return super().getString() + " RECHARGE " + this.getEmployee().getName() + " " +
 			   this.getEmployee().getSurname() + " " + this.amount.toString();
 	}
 	
