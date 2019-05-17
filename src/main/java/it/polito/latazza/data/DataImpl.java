@@ -96,17 +96,29 @@ public class DataImpl implements DataInterface {
 		
 		// update the transactions
 		Integer TID = Transactions.size()+1;
-		Consumption consumption = new Consumption(TID, new Date(), numberOfCapsules, Beverages.get(beverageId), Employees.get(employeeId), payMode);
-		Transactions.put(TID, consumption);
-		
-		consumption.toJsonTransaction();
-		
-		// update personal account
+		Consumption consumption;
 		PersonalAccount P_account = employee.getPersonalaccount();
-		if(fromAccount == true) {
-			P_account.addTransaction(consumption);
-			P_account.setBalance(P_account.getBalance()-numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
+		
+		try {
+			consumption = new Consumption(TID, new Date(), numberOfCapsules, Beverages.get(beverageId), Employees.get(employeeId), payMode);
+			Transactions.put(TID, consumption);
+			
+			consumption.toJsonTransaction();
+			
+			// update personal account
+			if(fromAccount == true) {
+				P_account.addTransaction(consumption);
+				P_account.setBalance(P_account.getBalance()-numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
+			}
+			
+			Transactions.put(TID, consumption);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
+		
 		return P_account.getBalance();
 	}
 
@@ -133,38 +145,62 @@ public class DataImpl implements DataInterface {
 		
 		// update the transactions
 		Integer TID = Transactions.size();
-		Consumption consumption = new Consumption(TID, new Date(), numberOfCapsules, Beverages.get(beverageId), null, "VISITOR");
-		Transactions.put(TID, consumption);
+		Consumption consumption;
 		
-		consumption.toJsonTransaction();
+		try {
+			consumption = new Consumption(TID, new Date(), numberOfCapsules, Beverages.get(beverageId), null, "VISITOR");
+			Transactions.put(TID, consumption);
+			
+			consumption.toJsonTransaction();
+			
+			consumption.toJsonTransaction();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
 	@Override
 	public Integer rechargeAccount(Integer id, Integer amountInCents) throws EmployeeException {
 		
-		// check employee existence
-		Employee employee = Employees.get(id);
-		if(employee == null) throw new EmployeeException();
-		
-		// update the transactions
-		Integer TID = Transactions.size()+1;
-		Recharge recharge = new Recharge(TID, new Date(), amountInCents, employee);
-		Transactions.put(TID, recharge);
-		
-		recharge.toJsonTransaction();
-		
-		// update personal account
-		PersonalAccount P_account = employee.getPersonalaccount();
-		P_account.addTransaction(recharge);
-		P_account.setBalance(P_account.getBalance()+amountInCents);
 		try {
-			account.setTotal(account.getTotal()+amountInCents);
-		} catch (NotEnoughBalance e) {
-			e.printStackTrace();
+			// check employee existence
+			Employee employee = Employees.get(id);
+			if(employee == null) throw new EmployeeException();
+			
+			// update the transactions
+			Integer TID = Transactions.size()+1;
+			Recharge recharge;
+			
+			recharge = new Recharge(TID, new Date(), amountInCents, employee);
+			Transactions.put(TID, recharge);
+			
+			recharge.toJsonTransaction();
+			
+			// update personal account
+			PersonalAccount P_account = employee.getPersonalaccount();
+			P_account.addTransaction(recharge);
+			P_account.setBalance(P_account.getBalance()+amountInCents);
+			
+			try {
+				account.setTotal(account.getTotal()+amountInCents);
+			} catch (NotEnoughBalance e) {
+				e.printStackTrace();
+			}
+			account.toJsonLaTazzaAccount();
+			
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
-		account.toJsonLaTazzaAccount();
+		
+		Employee employee = Employees.get(id);
+		PersonalAccount P_account = employee.getPersonalaccount();
 		return P_account.getBalance();
+		
+		
 	}
 
 	@Override
@@ -184,10 +220,17 @@ public class DataImpl implements DataInterface {
 		
 		// update the transactions
 		Integer TID = Transactions.size()+1;
-		BoxPurchase boxpurchase= new BoxPurchase(TID, new Date(), boxQuantity, beverage);
-		Transactions.put(TID, boxpurchase);
+		BoxPurchase boxpurchase;
 		
-		boxpurchase.toJsonTransaction();
+		try {
+			boxpurchase = new BoxPurchase(TID, new Date(), boxQuantity, beverage);
+			Transactions.put(TID, boxpurchase);
+			
+			boxpurchase.toJsonTransaction();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		// update the availability
 		beverage.setAvailableQuantity(beverage.getAvailableQuantity()+boxQuantity*beverage.getQuantityPerBox());
@@ -222,6 +265,7 @@ public class DataImpl implements DataInterface {
 				l.add(v.getString());
 			});
 		
+		// TODO Auto-generated method stub
 		return l;
 	}
 
@@ -267,7 +311,7 @@ public class DataImpl implements DataInterface {
 		if (Beverages.get(id) == null) {
 			throw new BeverageException();
 		}
-		
+		// TODO Auto-generated method stub
 		return Beverages.get(id).getName();
 	}
 
@@ -278,6 +322,7 @@ public class DataImpl implements DataInterface {
 			throw new BeverageException();
 		}
 		
+		// TODO Auto-generated method stub
 		return Beverages.get(id).getQuantityPerBox();
 	}
 
@@ -315,7 +360,7 @@ public class DataImpl implements DataInterface {
 		if (Beverages.get(id) == null) {
 			throw new BeverageException();
 		}
-
+		// TODO Auto-generated method stub
 		return Beverages.get(id).getAvailableQuantity();
 	}
 
@@ -409,6 +454,7 @@ public class DataImpl implements DataInterface {
 			new FileWriter("./Transactions.json").close();
 			new FileWriter("./LaTazzaAccount.json").close();
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 				
@@ -600,6 +646,7 @@ public class DataImpl implements DataInterface {
 						Transactions.put(transactions.size(), rec);
 					}
 					
+				//} catch (java.text.ParseException e) {
 				}   catch (Exception e) {
 					e.printStackTrace();
 				}	
@@ -640,4 +687,3 @@ public class DataImpl implements DataInterface {
 		return new LaTazzaAccount(balance);
 	}
 	
-}
