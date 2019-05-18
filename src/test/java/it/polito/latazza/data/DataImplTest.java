@@ -52,6 +52,9 @@ public class DataImplTest extends junit.framework.TestCase {
 		assertTrue(data1.sellCapsules(0, 0, 30, true) == (20000 - 3000*3));
 		data1.reset();
 		this.setUp();
+		assertTrue(data1.sellCapsules(0, 0, 0, true) == (20000));
+		data1.reset();
+		this.setUp();
 		assertThrows(NotEnoughCapsules.class, () -> data1.sellCapsules(0, 0, 40, true));
 		data1.reset();
 		this.setUp();
