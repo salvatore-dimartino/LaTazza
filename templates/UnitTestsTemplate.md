@@ -10,13 +10,42 @@ Version:
 
 - [Black Box Unit Tests](#black-box-unit-tests)
     - [Class Beverage](#class-beverage)
+        - [Consutructor Beverage()](#class-beverage---constructor-beverage())
+        - [Method setName()](#class-beverage---method-setname())
+        - [Method setPrice()](#class-beverage---method-setprice())
+        - [Method setQuantityPerBox()](#class-beverage---method-setquantityperbox())
+        - [Method setAvailableQuantity()](#class-beverage---method-setavailablequantity())
     - [Class Employee](#class-employee)
+        - [Consutructor Employee()](#class-employee---constructor-employee())
+        - [Method setName()](#class-employee---method-setname())
+        - [Method setSurame()](#class-employee---method-setsurname())
     - [Class PersonalAccount](#class-personalaccount)
+        - [Consutructor PersonalAccount()](#class-personalaccount---constructor-personalaccount())
+        - [Method setBalance()](#class-personalaccount---method-setbalance())
     - [Class LaTazzaAccount](#class-latazzaaccount)
+        - [Consutructor LaTazzaAccount()](#class-latazzaaccount---constructor-latazzaaccount())
+        - [Method setTotal()](#class-latazzaaccount---method-settotal())
     - [Class Consumption](#class-consumption)
+        - [Consutructor Consumption()](#class-consumption---constructor-consumption())
+        - [Method setQuantity()](#class-consumption---method-setquantity())
     - [Class Recharge](#class-recharge)
+        - [Consutructor Recharge()](#class-recharge---constructor-recharge())
+        - [Method setAmount()](#class-recharge---method-setamount())
     - [Class BoxPurchase](#class-boxpurchase)
+        - [Consutructor BoxPurchase()](#class-boxpurchase---constructor-boxpurchase())
+        - [Method setQuantity()](#class-boxpurchase---method-setquantity())
     - [Class DataImpl](#class-dataimpl)
+        - [Method sellCapsules()](#class-dataimpl---method-sellcapsules())
+        - [Method sellCapsulesToVisitor()](#class-boxpurchase---method-sellCapsulestovisitor())
+        - [Method rechargeAccount()](#class-boxpurchase---method-rechargeaccounty())
+        - [Method buyBoxes()](#class-dataimpl---method-buyboxes())
+        - [Method setQuantity()](#class-dataimpl---method-setquantity())
+        - [Method getEmployeeReport(()](#class-dataimpl---method-getemployeereport())
+        - [Method getReport()](#class-dataimpl---method-getreport())
+        - [Method createBeverage()](#class-dataimpl---method-createbeveraget())
+        - [Method updateBeverage()](#class-dataimpl---method-updatebeverage())
+        - [Method createEmployee()](#class-dataimpl---method-createemployee())
+        - [Method updateEmployee()](#class-dataimpl---method-updateemployee())
 
 - [White Box Unit Tests](#white-box-unit-tests)
 
@@ -144,13 +173,13 @@ Version:
 | Number is positive | Valid | setPrice(3000) | it.polito.latazza.data.BeverageTest.testSetPrice |
 | Number is negative | Invalid | setPrice(-3000) -> BeverageException() | it.polito.latazza.data.BeverageTest.testSetPrice |
 
-### **Class *Beverage* - method *testSetQuantityPerBox()***
+### **Class *Beverage* - method *setQuantityPerBox()***
 
-**Criteria for  method *testSetQuantityPerBox()*:**
+**Criteria for  method *setQuantityPerBox()*:**
 	
  - SignOfQuantityPerBox (on input)
 
-**Predicates for method *testSetQuantityPerBox()*:**
+**Predicates for method *setQuantityPerBox()*:**
 
 | Criteria | Predicate |
 | ------------- | --------- |
@@ -171,13 +200,13 @@ Version:
 | Number is positive | Valid | testSetQuantityPerBox(10) | it.polito.latazza.data.BeverageTest.ttestSetQuantityPerBox |
 | Number is negative | Invalid | testSetQuantityPerBox(-10) -> BeverageException() | it.polito.latazza.data.BeverageTest.testSetQuantityPerBox |
 
-### **Class *Beverage* - method *testSetAvailableQuantity()***
+### **Class *Beverage* - method *setAvailableQuantity()***
 
-**Criteria for  method *testSetAvailableQuantity()*:**
+**Criteria for  method *setAvailableQuantity()*:**
 	
  - SignOfAvailableQuantity (on input)
 
-**Predicates for method *testSetAvailableQuantity()*:**
+**Predicates for method *setAvailableQuantity()*:**
 
 | Criteria | Predicate |
 | ------------- | --------- |
@@ -243,6 +272,8 @@ Version:
 |-------|-------|-------|-------|
 | Surname does not contain invalid characters | Valid | setSurname("Valencia") | it.polito.latazza.data.EmployeeTest.testSetSurname |
 | Surname  contain invalid characters | Invalid | setSurname("Val219ncia") -> EmployeeException() | it.polito.latazza.data.EmployeeTest.testSetSurname |
+
+### **Class *Employee* - method *setName()***
 
 **Criteria for  *setName()*:**
 	
@@ -551,10 +582,11 @@ Version:
 
 
 **Criteria for method *sellCapsules()*:**
-	
+ - ExistanceOfEmployee (on imput)
+ - ExistanceOfBeverage (on imput)
  - NumberOfCapsules (on input)
 
-**Predicates for constructor *DataImpl*:**
+**Predicates for method *sellCapsules*:**
 
 | Criteria | Predicate |
 | ------------- | --------- |
@@ -586,6 +618,352 @@ Version:
 | The employee is not cointained in the Map or null | The beverage is not cointained in the Map or null | 0 to NumberOfAvailableCapsules |  Invalid | sellCapsules() -> EmployeeException() | it.polito.latazza.DataImplTest.testSellCapsules |
 | The employee is not cointained in the Map or null | The beverage is not cointained in the Map or null| more than NumberOfAvailableCapsules |  Invalid | sellCapsules() -> EmployeeException() | it.polito.latazza.DataImplTest.testSellCapsules |
 
+### **Class *DataImpl* - method *sellCapsulesToVisitor()***
+
+**Criteria for method *sellCapsulesToVisitor()*:**
+
+ - ExistanceOfBeverage (on imput)
+ - NumberOfCapsules (on input)
+
+**Predicates for method *sellCapsulesToVisitor*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| ExistanceOfBeverage | The beverage is cointained in the Map |
+|                     | The beverage is not contained in the Map or null |
+|  NumberOfCapsules   |  0 to NumberOfAvailableCapsules |
+|                     | more than NumberOfAvailableCapsules |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| NumberOfCapsules   |           0          |
+|                    |   <  2,147,483,647   |
+|                    |   > -2,147,483,647   |
+
+**Combination of predicates**:
+
+| ExistanceOfBeverage | Number Of Capsules |  Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|---------|
+| The beverage is cointained in the Map | 0 to NumberOfAvailableCapsules |  Valid   | sellCapsulesToVisitor() -> account.balance | it.polito.latazza.DataImplTest.testSellCapsules |
+| The beverage is cointained in the Map | more than NumberOfAvailabaleCapsules  |  Invalid  | sellCapsulesToVisitor() -> NotEnoughCapsules() | it.polito.latazza.DataImplTest.testSellCapsules |
+| The beverage is not cointained in the Map or null | 0 to NumberOfAvailablecapsules | Invalid | sellCapsulesToVisitor() -> BeverageException() | it.polito.latazza.DataImplTest.testSellCapsules |
+| The beverage is not cointained in the Map or null | more than NumberOfAvailableCapsules |  Invalid | sellCapsulesToVisitor() -> BeverageException() | it.polito.latazza.DataImplTest.testSellCapsules |
+
+
+**Criteria for method *sellCapsulesToVisitor()*:**
+
+ - ExistanceOfBeverage (on imput)
+ - NumberOfCapsules (on input)
+
+**Predicates for method *sellCapsulesToVisitor*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| ExistanceOfBeverage | The beverage is cointained in the Map |
+|                     | The beverage is not contained in the Map or null |
+|  NumberOfCapsules   |  0 to NumberOfAvailableCapsules |
+|                     | more than NumberOfAvailableCapsules |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| NumberOfCapsules   |           0          |
+|                    |   <  2,147,483,647   |
+|                    |   > -2,147,483,647   |
+
+**Combination of predicates**:
+
+| ExistanceOfBeverage | Number Of Capsules |  Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|---------|---------|
+| The beverage is cointained in the Map | 0 to NumberOfAvailableCapsules |  Valid   | sellCapsulesToVisitor() | it.polito.latazza.DataImplTest.testSellCapsulesToVisitor |
+| The beverage is cointained in the Map | more than NumberOfAvailabaleCapsules  |  Invalid  | sellCapsulesToVisitor() -> NotEnoughCapsules() | it.polito.latazza.DataImplTest.testSellCapsulesToVisitor |
+| The beverage is not cointained in the Map or null | 0 to NumberOfAvailablecapsules | Invalid | sellCapsulesToVisitor() -> BeverageException() | it.polito.latazza.DataImplTest.testSellCapsulesToVisitor |
+| The beverage is not cointained in the Map or null | more than NumberOfAvailableCapsules |  Invalid | sellCapsulesToVisitor() -> BeverageException() | it.polito.latazza.DataImplTest.testSellCapsulesToVisitor |
+
+### **Class *DataImpl* - method *rechargeAccount()***
+
+
+**Criteria for method *rechargeAccount()*:**
+
+ - ExistanceOfBeverage (on imput)
+ - NumberOfCapsules (on input)
+
+**Predicates for method *rechargeAccount*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| ExistanceOfEmployee | The employee is cointained in the Map |
+|                     | The employee is not contained in the Map or null |
+| Amount              |  <= 0 |
+|                     | 0 to 2,147,483,647 |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| Amount   |           0          |
+|                    |   <  2,147,483,647   |
+|                    |   > -2,147,483,647   |
+
+**Combination of predicates**:
+
+| ExistanceOfEmployee | Amount |  Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|---------|
+| The employee is cointained in the Map | <= 0 |  Invalid   | rechargeAccount() -> account.balance | it.polito.latazza.DataImplTest.testRechargeAccount |
+| The employee is cointained in the Map | 0 to 2,147,483,647  |  Valid  | rechargeAccount() -> account.balance | it.polito.latazza.DataImplTest.testRechargeAccount |
+| The employee is not cointained in the Map or null | <= 0 | Invalid | rechargeAccount() -> EmployeeException() | it.polito.latazza.DataImplTest.testRechargeAccount |
+| The beverage is not cointained in the Map or null | 0 to 2,147,483,647 |  Invalid | rechargeAccount() -> EmployeeException() | it.polito.latazza.DataImplTest.testRechargeAccount |
+
+### **Class *DataImpl* - method *buyBoxes()***
+
+
+**Criteria for method *buyBoxes()*:**
+
+ - ExistanceOfBeverage (on imput)
+ - NumberOfCapsules (on input)
+
+**Predicates for method *buyBoxes*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| ExistanceOfBeverage | The beverage is cointained in the Map |
+|                     | The beverage is not contained in the Map or null |
+| Amount              |  <= 0 |
+|                     | 0 to 2,147,483,647 |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| Amount   |           0          |
+|                    |   <  2,147,483,647   |
+|                    |   > -2,147,483,647   |
+
+**Combination of predicates**:
+
+| ExistanceOfBeverage | Amount |  Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|---------|
+| The beverage is cointained in the Map | <= 0 |  Invalid   | buyBoxes() -> account.balance | it.polito.latazza.DataImplTest.testBuyBoxes |
+| The beverage is cointained in the Map | 0 to 2,147,483,647  |  Valid  | buyBoxes() -> account.balance | it.polito.latazza.DataImplTest.testBuyBoxes |
+| The beverage is not cointained in the Map or null | <= 0 | Invalid | buyBoxes() -> BeverageException() | it.polito.latazza.DataImplTest.testBuyBoxes |
+| The beverage is not cointained in the Map or null | 0 to 2,147,483,647 |  Invalid | buyBoxes() -> BeverageException() | it.polito.latazza.DataImplTest.testBuyBoxes |
+
+### **Class *DataImpl* - method *getEmployeeReport()***
+
+
+**Criteria for method *getEmployeeReport()*:**
+
+ - ExistanceOfBeverage (on imput)
+ - DateConsistency (on input)
+
+**Predicates for method *getEmployeeReport*:**
+
+| Criteria | Predicate |
+| ------------------- | --------------------------------- |
+| ExistanceOfEmployee | The employee is cointained in the Map |
+|                     | The employee is not contained in the Map or null |
+| DateConsistency        | Start date is before end date |
+|                        | Start date is after end date  |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| Amount   |           0          |
+|          |   <  2,147,483,647   |
+|          |   > -2,147,483,647   |
+
+**Combination of predicates**:
+
+| ExistanceOfEmployee | DateCoerency |  Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|---------|
+| The employee is cointained in the Map | Start date is before end date |  Valid   | getEmployeeReport() -> List<*String*> | it.polito.latazza.DataImplTest.testGetEmployeeReport |
+| The employee is cointained in the Map | Start date is after end date   |  Invalid  | getEmployeeReport() -> DateException() | it.polito.latazza.DataImplTest.testGetEmployeeReport |
+| The employee is not cointained in the Map or null | Start date is before end date | Invalid | getEmployeeReport() -> EmployeeException() | it.polito.latazza.DataImplTest.testGetEmployeeReport |
+| The employee is not cointained in the Map or null | Start date is after end date |  Invalid | getEmployeeReport() -> EmployeeException() | it.polito.latazza.DataImplTest.testGetEmployeeReport |
+
+### **Class *DataImpl* - method *getReport()***
+
+
+**Criteria for method *getReport()*:**
+
+ - ExistanceOfBeverage (on imput)
+ - DateConsistency (on input)
+
+**Predicates for method *getReport*:**
+
+| Criteria | Predicate |
+| ------------------- | --------------------------------- |
+| DateConsistency        | Start date is before end date |
+|                        | Start date is after end date  |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| Amount   |           0          |
+|          |   <  2,147,483,647   |
+|          |   > -2,147,483,647   |
+
+**Combination of predicates**:
+
+| DateCoerency |  Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|---------|---------|
+| Start date is before end date |  Valid   | getReport() | it.polito.latazza.DataImplTest.testGetReport |
+| Start date is after end date   |  Invalid  | getReport() -> DateException() | it.polito.latazza.DataImplTest.testGetReport |
+
+### **Class *DataImpl* - method *createBeverage()***
+
+**Criteria for method *createBeverage()*:**
+
+ - NameCorrectness (on input)
+ - CapsulesPerBox (on input)
+ - Price  (on input)
+
+
+**Predicates for method *createBeverage*:**
+
+| Criteria | Predicate |
+| -------------------- | --------------------------------- |
+|  NameCorrectness       | Name cointains invalid symbols |
+|                        | Name does not cointain invalid symbols |
+|  CapsulePerBox         | Less equal than 0 |
+|                        | More than 0 |
+|  PriceOfBox            | Less equal than 0 |
+|                        | More than 0 |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| Amount   |           0          |
+|          |   <  2,147,483,647   |
+|          |   > -2,147,483,647   |
+
+**Combination of predicates**:
+
+| NameCorrectness | CapsulesPerBox | PriceOfBox | Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|---------|---------|------------|---------|
+| Name cointains invalid symbols | Less equal than 0 | Less equal than 0 |  Invalid   | createBeverage() -> BeverageException() | it.polito.latazza.DataImplTest.testCreateBeverage |
+| Name cointains invalid symbols | Less equal than 0 | More than 0 |  Invalid  | createBeverage() -> BeverageException() | it.polito.latazza.DataImplTest.testCreateBeverage |
+| Name cointains invalid symbols | More than 0  | Less equal than 0 |  Invalid  | createBeverage() -> BeverageException() | it.polito.latazza.DataImplTest.testCreateBeverage |
+| Name cointains invalid symbols | More than 0 | More than 0 |  Invalid  | createBeverage() -> BeverageException() | it.polito.latazza.DataImplTest.testCreateBeverage |
+| Name does not cointain invalid symbols | Less equal than 0 | Less equal than 0 |  Invalid   | createBeverage() -> BeverageException()| it.polito.latazza.DataImplTest.testCreateBeverage |
+| Name does not cointain invalid symbols | Less equal than 0 | More than 0 |  Invalid  | createBeverage() -> BeverageException() | it.polito.latazza.DataImplTest.testCreateBeverage |
+| Name does not cointain invalid symbols | More than 0  | Less equal than 0 |  Invalid  | createBeverage() -> BeverageException() | it.polito.latazza.DataImplTest.testCreateBeverage |
+| Name does not cointain invalid symbols | More than 0 | More than 0 |  Valid  | createBeverage() -> 1 | it.polito.latazza.DataImplTest.testCreateBeverage |
+
+
+### **Class *DataImpl* - method *updateBeverage()***
+
+
+**Criteria for method *updateBeverage()*:**
+
+ - NameCorrectness (on input)
+ - CapsulesPerBox (on input)
+ - Price  (on input)
+
+**Predicates for method *updateBeverage*:**
+
+| Criteria | Predicate |
+| -------------------- | --------------------------------- |
+| ExistanceOfBeverage  | The beverage is cointained in the Map |
+|                      | The beverage is not contained in the Map or null |
+|  NameCorrectness     | Name cointains invalid symbols |
+|                      | Name does not cointain invalid symbols |
+|  CapsulePerBox       | Less equal than 0 |
+|                      | More than 0 |
+|  PriceOfBox          | Less equal than 0 |
+|                      | More than 0 |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| Amount   |           0          |
+|          |   <  2,147,483,647   |
+|          |   > -2,147,483,647   |
+
+**Combination of predicates**:
+
+| ExistanceOfBeverage | NameCorrectness | CapsulesPerBox | PriceOfBox | Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|---------|---------|------------|---------|-----------------|
+| The beverage is cointained in the Map| Name cointains invalid symbols | Less equal than 0 | Less equal than 0 |  Invalid   | updateBeverage() -> BeverageException() | it.polito.latazza.DataImplTest.testUpdateBeverage |
+| The beverage is cointained in the Map| Name cointains invalid symbols | Less equal than 0 | More than 0 |  Invalid  | updateBeverage() -> BeverageException() | it.polito.latazza.DataImplTest.testUpdateBeverage |
+| The beverage is cointained in the Map| Name cointains invalid symbols | More than 0  | Less equal than 0 |  Invalid  | updateBeverage() -> BeverageException() | it.polito.latazza.DataImplTest.testUpdateBeverage |
+| The beverage is cointained in the Map| Name cointains invalid symbols | More than 0 | More than 0 |  Invalid  | updateBeverage() -> BeverageException() | it.polito.latazza.DataImplTest.testUpdateBeverage |
+| The beverage is cointained in the Map| Name does not cointain invalid symbols | Less equal than 0 | Less equal than 0 |  Invalid   | updateBeverage() -> BeverageException()| it.polito.latazza.DataImplTest.testUpdateBeverage |
+| The beverage is cointained in the Map| Name does not cointain invalid symbols | Less equal than 0 | More than 0 |  Invalid  | updateBeverage() -> BeverageException() | it.polito.latazza.DataImplTest.testUpdateBeverage |
+| The beverage is cointained in the Map| Name does not cointain invalid symbols | More than 0  | Less equal than 0 |  Invalid  | updateBeverage() -> BeverageException() | it.polito.latazza.DataImplTest.testUpdateBeverage |
+| The beverage is cointained in the Map| Name does not cointain invalid symbols | More than 0 | More than 0 |  Valid  | updateBeverage() | it.polito.latazza.DataImplTest.testUpdateBeverage |
+| The beverage is not contained in the Map or null | Name cointains invalid symbols | Less equal than 0 | Less equal than 0 |  Invalid   | updateBeverage() -> BeverageException() | it.polito.latazza.DataImplTest.testUpdateBeverage |
+| The beverage is not contained in the Map or null | Name cointains invalid symbols | Less equal than 0 | More than 0 |  Invalid  | updateBeverage() -> BeverageException() | it.polito.latazza.DataImplTest.testUpdateBeverage |
+| The beverage is not contained in the Map or null | Name cointains invalid symbols | More than 0  | Less equal than 0 |  Invalid  | updateBeverage() -> BeverageException() | it.polito.latazza.DataImplTest.testUpdateBeverage |
+| The beverage is not contained in the Map or null | Name cointains invalid symbols | More than 0 | More than 0 |  Invalid  | updateBeverage() -> BeverageException() | it.polito.latazza.DataImplTest.testUpdateBeverage |
+| The beverage is not contained in the Map or null | Name does not cointain invalid symbols | Less equal than 0 | Less equal than 0 |  Invalid   | updateBeverage() -> BeverageException()| it.polito.latazza.DataImplTest.testUpdateBeverage |
+| The beverage is not contained in the Map or null | Name does not cointain invalid symbols | Less equal than 0 | More than 0 |  Invalid  | updateBeverage() -> BeverageException() | it.polito.latazza.DataImplTest.testUpdateBeverage |
+| The beverage is not contained in the Map or null | Name does not cointain invalid symbols | More than 0  | Less equal than 0 |  Invalid  | updateBeverage() -> BeverageException() | it.polito.latazza.DataImplTest.testUpdateBeverage |
+| The beverage is not contained in the Map or null | Name does not cointain invalid symbols | More than 0 | More than 0 |  Invalid  | updateBeverage() -> BeverageException() | it.polito.latazza.DataImplTest.testUpdateBeverage |
+
+### **Class *DataImpl* - method *createEmployee()***
+
+**Criteria for method *createEmployee()*:**
+
+ - NameCorrectness (on input)
+ - SurnameCorrectness (on input)
+
+**Predicates for method *createEmployee*:**
+
+| Criteria | Predicate |
+| -------------------- | --------------------------------- |
+|  NameCorrectness       | Name cointains invalid symbols |
+|                        | Name does not cointain invalid symbols |
+|  SurameCorrectness     | Surname cointains invalid symbols |
+|                        | Surname does not cointain invalid symbols |
+
+
+**Combination of predicates**:
+
+| NameCorrectness | SurenameCorrectness | Valid / Invalid | Description of the test case | JUnit test case |
+|-----------------|----------|---------|---------|---------|
+| Name cointains invalid symbols  | Surname cointains invalid symbols |  Invalid   | createEmployee() -> EmployeeException() | it.polito.latazza.DataImplTest.testCreateEmployee |
+| Name cointains invalid symbols | Surname does not cointain invalid symbols |  Invalid  | createEmployee() -> EmployeeException() | it.polito.latazza.DataImplTest.testCreateEmployee |
+| Name does not cointain invalid symbols |  Surname cointains invalid symbols |  Invalid  | createEmployee() -> EmployeeException() | it.polito.latazza.DataImplTest.testCreateEmployee |
+| Name does not cointain invalid symbols |  Surname does not cointain invalid symbols |  Valid  | createEmployee() | it.polito.latazza.DataImplTest.testCreateEmployee |
+
+### **Class *DataImpl* - method *updateEmployee()***
+
+**Criteria for method *updateEmployee()*:**
+
+ - NameCorrectness (on input)
+ - SurnameCorrectness (on input)
+
+**Predicates for method *updateEmployee*:**
+
+| Criteria | Predicate |
+| -------------------- | --------------------------------- |
+| ExistanceOfEmployee  | The employee is cointained in the Map |
+|                      | The employee is not contained in the Map or null |
+|  NameCorrectness       | Name cointains invalid symbols |
+|                        | Name does not cointain invalid symbols |
+|  SurameCorrectness     | Surname cointains invalid symbols |
+|                        | Surname does not cointain invalid symbols |
+
+**Combination of predicates**:
+
+| ExistanceOfEmployee | NameCorrectness | SurenameCorrectness | Valid / Invalid | Description of the test case | JUnit test case |
+|-------------|-----------------|----------|---------|---------|---------|
+| The employee is cointained in the Map | Name cointains invalid symbols  | Surname cointains invalid symbols |  Invalid   | updateEmployee() -> EmployeeException() | it.polito.latazza.DataImplTest.testUpdateeEmployee |
+| The employee is cointained in the Map | Name cointains invalid symbols | Surname does not cointain invalid symbols |  Invalid  | updateEmployee() -> EmployeeException() | it.polito.latazza.DataImplTest.testUpdateEmployee |
+| The employee is cointained in the Map | Name does not cointain invalid symbols |  Surname cointains invalid symbols |  Invalid  | updateEmployee() -> EmployeeException() | it.polito.latazza.DataImplTest.testUpdateEmployee |
+| The employee is cointained in the Map | Name does not cointain invalid symbols |  Surname does not cointain invalid symbols |  Valid  | updateEmployee() | it.polito.latazza.DataImplTest.testUpdateEmployee |
+| The employee is not contained in the Map or null  | Name cointains invalid symbols  | Surname cointains invalid symbols |  Invalid   | updateEmployee() -> EmployeeException() | it.polito.latazza.DataImplTest.testUpdateeEmployee |
+| The employee is not contained in the Map or null  | Name cointains invalid symbols | Surname does not cointain invalid symbols |  Invalid  | updateEmployee() -> EmployeeException() | it.polito.latazza.DataImplTest.testUpdateEmployee |
+| The employee is not contained in the Map or null  | Name does not cointain invalid symbols |  Surname cointains invalid symbols |  Invalid  | updateEmployee() -> EmployeeException() | it.polito.latazza.DataImplTest.testUpdateEmployee |
+| The employee is not contained in the Map or null  | Name does not cointain invalid symbols |  Surname does not cointain invalid symbols |  Invalid  | updateEmployee() -> EmployeeException() | it.polito.latazza.DataImplTest.testUpdateEmployee |
 # White Box Unit Tests
 
 ### Test cases definition
