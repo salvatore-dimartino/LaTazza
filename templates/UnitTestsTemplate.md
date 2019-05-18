@@ -10,7 +10,7 @@ Version:
 
 - [Black Box Unit Tests](#black-box-unit-tests)
     - [Class Beverage](#class-beverage)
-        - [Consutructor Beverage()](#class-beverage-constructor-beverage())
+        - [Consutructor Beverage()](#class-beverage---constructor-beverage())
         - [Method setName()](#class-beverage---method-setname())
         - [Method setPrice()](#class-beverage---method-setprice())
         - [Method setQuantityPerBox()](#class-beverage---method-setquantityperbox())
