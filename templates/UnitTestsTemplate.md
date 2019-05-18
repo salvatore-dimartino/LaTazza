@@ -590,14 +590,30 @@ Version:
 
 ### Test cases definition
 
-    <Report here all the created JUnit test cases, and the units/classes they test >
-
-
 | Unit name | JUnit test case |
 |--|--|
-|||
-|||
-||||
+|it.polito.latazza.DataImpl.sellCapsules|it.polito.latazza.DataImplWhite.testSellCapsules|
+|it.polito.latazza.DataImpl.sellCapsulesToVisitor|it.polito.latazza.DataImplWhite.testSellCapsulesToVisitor|
+|it.polito.latazza.DataImpl.rechargeAccount|it.polito.latazza.DataImplWhite.testRechargeAccount|
+|it.polito.latazza.DataImpl.buyBoxes|it.polito.latazza.DataImplWhite.testBuyBoxes|
+|it.polito.latazza.DataImpl.getEmployeeReport|it.polito.latazza.DataImplWhite.testGetEmployeeReport|
+|it.polito.latazza.DataImpl.getReport|it.polito.latazza.DataImplWhite.testGetReport|
+|it.polito.latazza.DataImpl.createBeverage|it.polito.latazza.DataImplWhite.testCreateBeverage|
+|it.polito.latazza.DataImpl.updateBeverage|it.polito.latazza.DataImplWhite.testUpdateBeverage|
+|it.polito.latazza.DataImpl.getBeverageName|it.polito.latazza.DataImplWhite.testGetBeverageName|
+|it.polito.latazza.DataImpl.getBeverageCapsulesPerBox|it.polito.latazza.DataImplWhite.testGetBeverageCapsulesPerBox|
+|it.polito.latazza.DataImpl.getBeverageBoxPrice|it.polito.latazza.DataImplWhite.testGetBeverageBoxPrice|
+|it.polito.latazza.DataImpl.getBeveragesId|it.polito.latazza.DataImplWhite.testGetBeveragesId|
+|it.polito.latazza.DataImpl.getBeverages|it.polito.latazza.DataImplWhite.testGetBeverages|
+|it.polito.latazza.DataImpl.getBeverageCapsules|it.polito.latazza.DataImplWhite.testGetBeverageCapsules|
+|it.polito.latazza.DataImpl.createEmployee|it.polito.latazza.DataImplWhite.testCreateEmployee|
+|it.polito.latazza.DataImpl.updateEmployee|it.polito.latazza.DataImplWhite.testUpdateEmployee|
+|it.polito.latazza.DataImpl.getEmployeeName|it.polito.latazza.DataImplWhite.testGetEmployeeName|
+|it.polito.latazza.DataImpl.getEmployeeSurname|it.polito.latazza.DataImplWhite.testGetEmployeeSurname|
+|it.polito.latazza.DataImpl.getEmployeeBalance|it.polito.latazza.DataImplWhite.testGetEmployeeBalance|
+|it.polito.latazza.DataImpl.getEmployeesId|it.polito.latazza.DataImplWhite.testGetEmployeesId|
+|it.polito.latazza.DataImpl.getEmployees|it.polito.latazza.DataImplWhite.testGetEmployees|
+|it.polito.latazza.DataImpl.getBalance|it.polito.latazza.DataImplWhite.testGetBalance|
 
 ### Code coverage report
 
@@ -607,15 +623,23 @@ Version:
 
 ### Loop coverage analysis
 
-    <Identify significant loops in the units and reports the test cases
-    developed to cover zero, one or multiple iterations >
-
 |Unit name | Loop rows | Number of iterations | JUnit test case |
 |---|---|---|---|
-|||||
-|||||
-||||||
-
-
-
-
+|it.polito.latazza.DataImpl.getEmployeeReport|Transactions.forEach((k, v) -> {if(v.getDate().after(startDate) && v.getDate().before(endDate)) l.add(v.getString());});|0|it.polito.latazza.DataImplWhite.testGetEmployeeReport|
+|it.polito.latazza.DataImpl.getEmployeeReport|Transactions.forEach((k, v) -> {if(v.getDate().after(startDate) && v.getDate().before(endDate)) l.add(v.getString());});|1|it.polito.latazza.DataImplWhite.testGetEmployeeReport|
+|it.polito.latazza.DataImpl.getEmployeeReport|Transactions.forEach((k, v) -> {if(v.getDate().after(startDate) && v.getDate().before(endDate)) l.add(v.getString());});|2|it.polito.latazza.DataImplWhite.testGetEmployeeReport|
+|it.polito.latazza.DataImpl.getReport|Transactions.forEach((k, v) -> {if(v.getDate().after(startDate) && v.getDate().before(endDate)) l.add(v.getString());});|0|it.polito.latazza.DataImplWhite.testGetReport|
+|it.polito.latazza.DataImpl.getReport|Transactions.forEach((k, v) -> {if(v.getDate().after(startDate) && v.getDate().before(endDate)) l.add(v.getString());});|1|it.polito.latazza.DataImplWhite.testGetReport|
+|it.polito.latazza.DataImpl.getReport|Transactions.forEach((k, v) -> {if(v.getDate().after(startDate) && v.getDate().before(endDate)) l.add(v.getString());});|2|it.polito.latazza.DataImplWhite.testGetReport|
+|it.polito.latazza.DataImpl.getBeveragesId|Beverages.forEach((k, v) -> {id.add(k);});|0|it.polito.latazza.DataImplWhite.testGetBeveragesId|
+|it.polito.latazza.DataImpl.getBeveragesId|Beverages.forEach((k, v) -> {id.add(k);});|1|it.polito.latazza.DataImplWhite.testGetBeveragesId|
+|it.polito.latazza.DataImpl.getBeveragesId|Beverages.forEach((k, v) -> {id.add(k);});|2|it.polito.latazza.DataImplWhite.testGetBeveragesId|
+|it.polito.latazza.DataImpl.getBeverages|Beverages.forEach((k, v) -> {b.put(k, v.getName());});|0|it.polito.latazza.DataImplWhite.testGetBeverages|
+|it.polito.latazza.DataImpl.getBeverages|Beverages.forEach((k, v) -> {b.put(k, v.getName());});|1|it.polito.latazza.DataImplWhite.testGetBeverages|
+|it.polito.latazza.DataImpl.getBeverages|Beverages.forEach((k, v) -> {b.put(k, v.getName());});|2|it.polito.latazza.DataImplWhite.testGetBeverages|
+|it.polito.latazza.DataImpl.getEmployeesId|Employees.forEach((k,v)->{Emp.add(k);});|0|it.polito.latazza.DataImplWhite.testGetEmployeesId|
+|it.polito.latazza.DataImpl.getEmployeesId|Employees.forEach((k,v)->{Emp.add(k);});|1|it.polito.latazza.DataImplWhite.testGetEmployeesId|
+|it.polito.latazza.DataImpl.getEmployeesId|Employees.forEach((k,v)->{Emp.add(k);});|2|it.polito.latazza.DataImplWhite.testGetEmployeesId|
+|it.polito.latazza.DataImpl.getEmployees|Employees.forEach((k,v)->{Emp.put(k,v.getName()+" "+v.getSurname());});|0|it.polito.latazza.DataImplWhite.testGetEmployees|
+|it.polito.latazza.DataImpl.getEmployees|Employees.forEach((k,v)->{Emp.put(k,v.getName()+" "+v.getSurname());});|1|it.polito.latazza.DataImplWhite.testGetEmployees|
+|it.polito.latazza.DataImpl.getEmployees|Employees.forEach((k,v)->{Emp.put(k,v.getName()+" "+v.getSurname());});|2|it.polito.latazza.DataImplWhite.testGetEmployees|
