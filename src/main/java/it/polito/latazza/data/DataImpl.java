@@ -79,6 +79,8 @@ public class DataImpl implements DataInterface {
 		Integer avail_qty = beverage.getAvailableQuantity();
 		if(avail_qty < numberOfCapsules) throw new NotEnoughCapsules();
 		
+		PersonalAccount P_account = employee.getPersonalaccount();
+		
 		if(numberOfCapsules<=0) return P_account.getBalance();
 		
 		if(!fromAccount){
@@ -102,7 +104,6 @@ public class DataImpl implements DataInterface {
 		// update the transactions
 		Integer TID = Transactions.size();
 		Consumption consumption;
-		PersonalAccount P_account = employee.getPersonalaccount();
 		
 		try {
 			consumption = new Consumption(TID, new Date(), numberOfCapsules, Beverages.get(beverageId), Employees.get(employeeId), payMode);
