@@ -711,7 +711,7 @@ Version:
 **Combination of predicates**:
 
 | ExistanceOfEmployee | Amount |  Valid / Invalid | Description of the test case | JUnit test case |
-|-------|-------|-------|-------|---------|---------|
+|-------|-------|-------|-------|---------|
 | The employee is cointained in the Map | <= 0 |  Invalid   | rechargeAccount() -> account.balance | it.polito.latazza.DataImplTest.testRechargeAccount |
 | The employee is cointained in the Map | 0 to 2,147,483,647  |  Valid  | rechargeAccount() -> account.balance | it.polito.latazza.DataImplTest.testRechargeAccount |
 | The employee is not cointained in the Map or null | <= 0 | Invalid | rechargeAccount() -> EmployeeException() | it.polito.latazza.DataImplTest.testRechargeAccount |
@@ -745,7 +745,7 @@ Version:
 **Combination of predicates**:
 
 | ExistanceOfBeverage | Amount |  Valid / Invalid | Description of the test case | JUnit test case |
-|-------|-------|-------|-------|---------|---------|
+|-------|-------|-------|-------|---------|
 | The beverage is cointained in the Map | <= 0 |  Invalid   | buyBoxes() -> account.balance | it.polito.latazza.DataImplTest.testBuyBoxes |
 | The beverage is cointained in the Map | 0 to 2,147,483,647  |  Valid  | buyBoxes() -> account.balance | it.polito.latazza.DataImplTest.testBuyBoxes |
 | The beverage is not cointained in the Map or null | <= 0 | Invalid | buyBoxes() -> BeverageException() | it.polito.latazza.DataImplTest.testBuyBoxes |
