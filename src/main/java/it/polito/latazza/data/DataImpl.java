@@ -79,6 +79,8 @@ public class DataImpl implements DataInterface {
 		Integer avail_qty = beverage.getAvailableQuantity();
 		if(avail_qty < numberOfCapsules) throw new NotEnoughCapsules();
 		
+		if(numberOfCapsules<=0) return P_account.getBalance();
+		
 		// update the availability
 		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
 		
@@ -87,12 +89,14 @@ public class DataImpl implements DataInterface {
 		if(fromAccount) payMode="BALANCE";
 		else payMode="CASH";
 		
-		if(!fromAccount)
+		if(!fromAccount){
 			try {
 				account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
-			} catch (NotEnoughBalance e) {
-				e.printStackTrace();
+				account.toJsonLaTazzaAccount();
+			} catch (Exception e) {
+				return P_account.getBalance();
 			}
+		}
 		
 		// update the transactions
 		Integer TID = Transactions.size()+1;
@@ -133,15 +137,19 @@ public class DataImpl implements DataInterface {
 		// check availability
 		Integer avail_qty = beverage.getAvailableQuantity();
 		if(avail_qty < numberOfCapsules) throw new NotEnoughCapsules();
-				
+		
+		if(numberOfCapsules<=0) return P_account.getBalance();
+			
+		try {
+			account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
+			account.toJsonLaTazzaAccount();
+		} catch (Exception e) {
+			return;
+		}
+		
 		// update the availability
 		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
 		
-		try {
-			account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
-		} catch (NotEnoughBalance e) {
-			e.printStackTrace();
-		}
 		
 		// update the transactions
 		Integer TID = Transactions.size();
@@ -153,7 +161,6 @@ public class DataImpl implements DataInterface {
 			
 			consumption.toJsonTransaction();
 			
-			consumption.toJsonTransaction();
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
