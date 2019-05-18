@@ -11,7 +11,7 @@ import it.polito.latazza.exceptions.EmployeeException;
 import it.polito.latazza.exceptions.NotEnoughBalance;
 import it.polito.latazza.exceptions.NotEnoughCapsules;
 
-public class DataImplTest extends junit.framework.TestCase {
+public class DataImplWhite extends junit.framework.TestCase {
 
     DataImpl data1 = new DataImp();
 	Employee e1, e2, e3;
