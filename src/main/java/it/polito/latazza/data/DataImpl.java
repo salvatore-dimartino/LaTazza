@@ -172,41 +172,51 @@ public class DataImpl implements DataInterface {
 	@Override
 	public Integer rechargeAccount(Integer id, Integer amountInCents) throws EmployeeException {
 		
-		try {
-			// check employee existence
-			Employee employee = Employees.get(id);
-			if(employee == null) throw new EmployeeException();
+		Employee employee;
+		if((employee = Employees.get(id)) != null) {
 			
-			// update the transactions
-			Integer TID = Transactions.size()+1;
-			Recharge recharge;
-			
-			recharge = new Recharge(TID, new Date(), amountInCents, employee);
-			Transactions.put(TID, recharge);
-			
-			recharge.toJsonTransaction();
-			
-			// update personal account
-			PersonalAccount P_account = employee.getPersonalaccount();
-			P_account.addTransaction(recharge);
-			P_account.setBalance(P_account.getBalance()+amountInCents);
+			PersonalAccount P_account;
+			if((P_account = employee.getPersonalaccount()) != null ) {
+				
+			if(amountInCents <= 0)
+				return P_account.getBalance();  
 			
 			try {
-				account.setTotal(account.getTotal()+amountInCents);
-			} catch (NotEnoughBalance e) {
-				e.printStackTrace();
+		
+				// update the transactions
+				Integer TID = Transactions.size();
+				Recharge recharge;
+				
+				recharge = new Recharge(TID, new Date(), amountInCents, employee);
+				Transactions.put(TID, recharge);
+				
+				recharge.toJsonTransaction();
+				
+				// update personal account
+				
+				P_account.addTransaction(recharge);
+				P_account.setBalance(P_account.getBalance()+amountInCents);
+				
+				try {
+					account.setTotal(account.getTotal()+amountInCents);
+				} catch (NotEnoughBalance e) {
+					e.printStackTrace();
+				}
+				account.toJsonLaTazzaAccount();
+				
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
-			account.toJsonLaTazzaAccount();
 			
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+				return P_account.getBalance();
+				
+			}
+					
+		}else
+			throw new EmployeeException();
 		
-		Employee employee = Employees.get(id);
-		PersonalAccount P_account = employee.getPersonalaccount();
-		return P_account.getBalance();
-		
+		return 0;
 		
 	}
 
