@@ -100,7 +100,7 @@ public class DataImpl implements DataInterface {
 		
 		
 		// update the transactions
-		Integer TID = Transactions.size()+1;
+		Integer TID = Transactions.size();
 		Consumption consumption;
 		PersonalAccount P_account = employee.getPersonalaccount();
 		
@@ -236,7 +236,7 @@ public class DataImpl implements DataInterface {
 		account.toJsonLaTazzaAccount();
 		
 		// update the transactions
-		Integer TID = Transactions.size()+1;
+		Integer TID = Transactions.size();
 		BoxPurchase boxpurchase;
 		
 		try {
