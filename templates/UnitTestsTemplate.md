@@ -16,6 +16,7 @@ Version:
     - [Class Consumption](#class-consumption)
     - [Class Recharge](#class-recharge)
     - [Class BoxPurchase](#class-boxpurchase)
+    - [Class DataImpl](#class-dataimpl)
 
 - [White Box Unit Tests](#white-box-unit-tests)
 
@@ -543,6 +544,47 @@ Version:
 |-------|-------|-------|-------|
 | > 0 | Valid | setQuantity(10) | it.polito.latazza.data.BoxPurchaseTest.testSetQuantity |
 | <= 0 | Invalid | setQuantity(-10) -> Exception() | it.polito.latazza.data.BoxPurchaseTest.testSetQuantity |
+
+## **Class *DataImpl***
+
+### **Class *DataImpl* - method *sellCapsules()***
+
+
+**Criteria for method *sellCapsules()*:**
+	
+ - NumberOfCapsules (on input)
+
+**Predicates for constructor *DataImpl*:**
+
+| Criteria | Predicate |
+| ------------- | --------- |
+| ExistanceOfEmployee | The employee is cointained in the Map |
+|                     | The employee is not contained in the Map or null |
+| ExistanceOfBeverage | The beverage is cointained in the Map |
+|                     | The beverage is not contained in the Map or null |
+|  NumberOfCapsules   |  0 to NumberOfAvailableCapsules |
+|                     | more than NumberOfAvailableCapsules |
+
+**Boundaries**:
+
+| Criteria | Boundary values |
+| -------- | --------------- |
+| NumberOfCapsules   |           0          |
+|                    |   <  2,147,483,647   |
+|                    |   > -2,147,483,647   |
+
+**Combination of predicates**:
+
+| ExistanceOfEmployee | ExistanceOfBeverage | Number Of Capsules |  Valid / Invalid | Description of the test case | JUnit test case |
+|-------|-------|-------|-------|---------|---------|
+| The employee is cointained in the Map | The beverage is cointained in the Map | 0 to NumberOfAvailableCapsules |  Valid   | sellCapsules() -> account.balance | it.polito.latazza.DataImplTest.testSellCapsules |
+| The employee is cointained in the Map | The beverage is cointained in the Map | more than NumberOfAvailabaleCapsules  |  Invalid   | sellCapsules() -> NotEnoughCapsules() | it.polito.latazza.DataImplTest.testSellCapsules |
+| The employee is not cointained in the Map or null | The beverage is cointained in the Map | 0 to NumberOfAvailableCapsules |  Invalid | sellCapsules() -> EmployeeException() | it.polito.latazza.DataImplTest.testSellCapsules |
+| The employee is not cointained in the Map or null | The beverage is cointained in the Map | more than NumberOfAvailableCapsules |  Invalid | sellCapsules() -> EmployeeException() | it.polito.latazza.DataImplTest.testSellCapsules |
+| The employee is cointained in the Map | The beverage is not cointained in the Map or null | 0 to NumberOfAvailablecapsules | Invalid | sellCapsules() -> BeverageException() | it.polito.latazza.DataImplTest.testSellCapsules |
+| The employee is cointained in the Map | The beverage is not cointained in the Map or null | more than NumberOfAvailableCapsules |  Invalid | sellCapsules() -> BeverageException() | it.polito.latazza.DataImplTest.testSellCapsules |
+| The employee is not cointained in the Map or null | The beverage is not cointained in the Map or null | 0 to NumberOfAvailableCapsules |  Invalid | sellCapsules() -> EmployeeException() | it.polito.latazza.DataImplTest.testSellCapsules |
+| The employee is not cointained in the Map or null | The beverage is not cointained in the Map or null| more than NumberOfAvailableCapsules |  Invalid | sellCapsules() -> EmployeeException() | it.polito.latazza.DataImplTest.testSellCapsules |
 
 # White Box Unit Tests
 
