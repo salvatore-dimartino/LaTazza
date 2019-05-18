@@ -1003,9 +1003,9 @@ Version:
 
 |Unit name | Loop rows | Number of iterations | JUnit test case |
 |---|---|---|---|
-|it.polito.latazza.DataImpl.getEmployeeReport|```Transactions.forEach((k, v) -> {if(v.getDate().after(startDate) && v.getDate().before(endDate)) l.add(v.getString());});```|0|it.polito.latazza.DataImplWhite.testGetEmployeeReport|
-|it.polito.latazza.DataImpl.getEmployeeReport|```Transactions.forEach((k, v) -> {if(v.getDate().after(startDate) && v.getDate().before(endDate)) l.add(v.getString());});```|1|it.polito.latazza.DataImplWhite.testGetEmployeeReport|
-|it.polito.latazza.DataImpl.getEmployeeReport|```Transactions.forEach((k, v) -> {if(v.getDate().after(startDate) && v.getDate().before(endDate)) l.add(v.getString());});```|2|it.polito.latazza.DataImplWhite.testGetEmployeeReport|
+|it.polito.latazza.DataImpl.getEmployeeReport|Transactions.forEach((k, v) -> {if(v.getDate().after(startDate) && v.getDate().before(endDate)) l.add(v.getString());});|0|it.polito.latazza.DataImplWhite.testGetEmployeeReport|
+|it.polito.latazza.DataImpl.getEmployeeReport|Transactions.forEach((k, v) -> {if(v.getDate().after(startDate) && v.getDate().before(endDate)) l.add(v.getString());});|1|it.polito.latazza.DataImplWhite.testGetEmployeeReport|
+|it.polito.latazza.DataImpl.getEmployeeReport|Transactions.forEach((k, v) -> {if(v.getDate().after(startDate) && v.getDate().before(endDate)) l.add(v.getString());});|2|it.polito.latazza.DataImplWhite.testGetEmployeeReport|
 |it.polito.latazza.DataImpl.getReport|Transactions.forEach((k, v) -> {if(v.getDate().after(startDate) && v.getDate().before(endDate)) l.add(v.getString());});|0|it.polito.latazza.DataImplWhite.testGetReport|
 |it.polito.latazza.DataImpl.getReport|Transactions.forEach((k, v) -> {if(v.getDate().after(startDate) && v.getDate().before(endDate)) l.add(v.getString());});|1|it.polito.latazza.DataImplWhite.testGetReport|
 |it.polito.latazza.DataImpl.getReport|Transactions.forEach((k, v) -> {if(v.getDate().after(startDate) && v.getDate().before(endDate)) l.add(v.getString());});|2|it.polito.latazza.DataImplWhite.testGetReport|
