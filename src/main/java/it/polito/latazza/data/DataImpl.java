@@ -95,7 +95,7 @@ public class DataImpl implements DataInterface {
 			}
 		
 		// update the transactions
-		Integer TID = Transactions.size()+1;
+		Integer TID = Transactions.size();
 		Consumption consumption;
 		PersonalAccount P_account = employee.getPersonalaccount();
 		
