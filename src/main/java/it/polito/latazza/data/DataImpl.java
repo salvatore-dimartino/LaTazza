@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Locale;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -79,19 +80,6 @@ public class DataImpl implements DataInterface {
 		Integer avail_qty = beverage.getAvailableQuantity();
 		if(avail_qty < numberOfCapsules) throw new NotEnoughCapsules();
 		
-		PersonalAccount P_account = employee.getPersonalaccount();
-		
-		if(numberOfCapsules<=0) return P_account.getBalance();
-		
-		if(!fromAccount){
-			try {
-				account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
-				account.toJsonLaTazzaAccount();
-			} catch (Exception e) {
-				return P_account.getBalance();
-			}
-		}
-		
 		// update the availability
 		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
 		
@@ -99,7 +87,13 @@ public class DataImpl implements DataInterface {
 		String payMode = new String();
 		if(fromAccount) payMode="BALANCE";
 		else payMode="CASH";
-		
+		 
+		if(!fromAccount)
+			try {
+				account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
+			} catch (NotEnoughBalance e) {
+				e.printStackTrace();
+			}
 		
 		// update the transactions
 		Integer TID = Transactions.size();
@@ -139,18 +133,15 @@ public class DataImpl implements DataInterface {
 		// check availability
 		Integer avail_qty = beverage.getAvailableQuantity();
 		if(avail_qty < numberOfCapsules) throw new NotEnoughCapsules();
-		
-		if(numberOfCapsules<=0) return P_account.getBalance();
+				
+		// update the availability
+		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
 		
 		try {
 			account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
-			account.toJsonLaTazzaAccount();
-		} catch (Exception e) {
-			return;
+		} catch (NotEnoughBalance e) {
+			e.printStackTrace();
 		}
-		
-		// update the availability
-		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
 		
 		// update the transactions
 		Integer TID = Transactions.size();
@@ -162,6 +153,7 @@ public class DataImpl implements DataInterface {
 			
 			consumption.toJsonTransaction();
 			
+			consumption.toJsonTransaction();
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -177,7 +169,7 @@ public class DataImpl implements DataInterface {
 		if((employee = Employees.get(id)) != null) {
 			
 			PersonalAccount P_account;
-			if((P_account = employee.getPersonalaccount()) != null ) {
+			P_account = employee.getPersonalaccount();
 				
 			if(amountInCents <= 0)
 				return P_account.getBalance();  
@@ -211,14 +203,9 @@ public class DataImpl implements DataInterface {
 			}
 			
 				return P_account.getBalance();
-				
-			}
 					
 		}else
 			throw new EmployeeException();
-		
-		return 0;
-		
 	}
 
 	@Override
@@ -226,7 +213,7 @@ public class DataImpl implements DataInterface {
 		
 		// check beverage existence
 		Beverage beverage = Beverages.get(beverageId);
-		if(beverage == null) throw new BeverageException();
+		if(beverage == null || boxQuantity <= 0) throw new BeverageException();
 		
 		// get total amount to pay
 		Integer price = beverage.getPrice()*boxQuantity;
@@ -259,7 +246,7 @@ public class DataImpl implements DataInterface {
 			throws EmployeeException, DateException {
 		if(!Employees.keySet().contains(employeeId))
 			throw new EmployeeException();
-		if(startDate==null||endDate==null)
+		if(startDate==null||endDate==null||startDate.after(endDate))
 			throw new DateException();
 		Map <Integer,Transaction> Transactions=Employees.get(employeeId).getPersonalaccount().getTransactions();
 		List<String> Report= new ArrayList<String>();
@@ -273,7 +260,7 @@ public class DataImpl implements DataInterface {
 	@Override
 	public List<String> getReport(Date startDate, Date endDate) throws DateException {
 		
-		if(startDate == null || endDate == null) {
+		if(startDate == null || endDate == null || startDate.after(endDate)) {
 			throw new DateException();
 		}
 		
@@ -292,7 +279,7 @@ public class DataImpl implements DataInterface {
 		
 		Beverage b;
 		
-		if(name == null || capsulesPerBox == 0 || boxPrice == 0) {
+		if(name == null || capsulesPerBox <= 0 || boxPrice <= 0) {
 			throw new BeverageException();
 		} else {
 			b = new Beverage(Beverages.size(), name, boxPrice, capsulesPerBox, 0);
@@ -620,9 +607,11 @@ public class DataImpl implements DataInterface {
 				String transactionType = (String) transaction.get("Type");
 				
 				//Get the transaction date
-				DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss");
+				
+				DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzzz yyyy", Locale.ENGLISH);
 				
 				try {
+					
 					Date date = dateFormat.parse(attributes.get(0));
 					
 					if(transactionType.compareTo("BOXPURCHASE") == 0) {
@@ -676,6 +665,8 @@ public class DataImpl implements DataInterface {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		} catch (ParseException e) {
+			
+			
 		}
 		
 		return transactions;
@@ -705,3 +696,4 @@ public class DataImpl implements DataInterface {
 		return new LaTazzaAccount(balance);
 	}
 }	
+

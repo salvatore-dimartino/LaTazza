@@ -124,7 +124,7 @@ public class Beverage {
 
 	public void setAvailableQuantity(Integer availableQuantity) throws BeverageException {
 		
-		if(availableQuantity > 0)
+		if(availableQuantity >= 0)
 			this.availableQuantity = availableQuantity;
 		else
 			throw new BeverageException();

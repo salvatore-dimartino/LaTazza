@@ -3,9 +3,12 @@ package it.polito.latazza.data;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import it.polito.latazza.exceptions.BeverageException;
+import it.polito.latazza.exceptions.DateException;
+
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.beans.Transient;
+import java.sql.Date;
 
 import it.polito.latazza.exceptions.EmployeeException;
 import it.polito.latazza.exceptions.NotEnoughBalance;
@@ -13,7 +16,7 @@ import it.polito.latazza.exceptions.NotEnoughCapsules;
 
 public class DataImplWhite extends junit.framework.TestCase {
 
-    DataImpl data1 = new DataImp();
+    DataImpl data1 = new DataImpl();
 	Employee e1, e2, e3;
 	Beverage b1, b2, b3;
 
@@ -32,6 +35,7 @@ public class DataImplWhite extends junit.framework.TestCase {
             assertThrows(BeverageException.class, () -> data1.sellCapsules(0,0,10,false));
             data1.createBeverage("Caffe",10,100);
             assertThrows(NotEnoughCapsules.class, () -> data1.sellCapsules(0,0,10,false));
+            data1.createEmployee("Massimo","Priano");
             data1.rechargeAccount(0,1000);
             data1.buyBoxes(0,2);
             assertTrue(data1.sellCapsules(0,0,0,false)==1000);
@@ -49,6 +53,7 @@ public class DataImplWhite extends junit.framework.TestCase {
             assertThrows(BeverageException.class, () -> data1.sellCapsulesToVisitor(0,10));
             data1.createBeverage("Caffe",10,100);
             assertThrows(NotEnoughCapsules.class, () -> data1.sellCapsulesToVisitor(0,10));
+            data1.createEmployee("Massimo","Priano");
             data1.rechargeAccount(0,1000);
             data1.buyBoxes(0,2);
             data1.sellCapsulesToVisitor(0,0);
@@ -78,8 +83,9 @@ public class DataImplWhite extends junit.framework.TestCase {
             assertThrows(BeverageException.class, () -> data1.buyBoxes(0,2));
             data1.createBeverage("Caffe",10,100);
             assertThrows(NotEnoughBalance.class, () -> data1.buyBoxes(0,2));
+            data1.createEmployee("Nino", "Geppetto");
             data1.rechargeAccount(0,1000);
-            assertTrue(data1.buyBoxes(0,2)==800);
+            data1.buyBoxes(0,2);
         } catch(Exception e){
             fail();
         }
@@ -88,8 +94,8 @@ public class DataImplWhite extends junit.framework.TestCase {
     @Test
     public void testGetEmployeeReport() throws EmployeeException, DateException{
         data1.reset();
-        Data start = new Date();
-        Data end = new Date();
+        Date start =  new Date(110, 1, 1);
+        Date end = new Date(130, 1, 1);
         try{
             assertThrows(EmployeeException.class, () -> data1.getEmployeeReport(0,start,end));
             data1.createEmployee("Massimo","Priano");
@@ -98,7 +104,7 @@ public class DataImplWhite extends junit.framework.TestCase {
             assertThrows(DateException.class, () -> data1.getEmployeeReport(0,end,start));
             assertTrue(data1.getEmployeeReport(0,start,end).size()==0);
             data1.rechargeAccount(0,1000);
-            assertTrue(data1.getEmployeeReport(0,start,end).size()==1);
+            assertEquals(data1.getEmployeeReport(0,start,end).size(), 1);
             data1.rechargeAccount(0,1000);
             assertTrue(data1.getEmployeeReport(0,start,end).size()==2);
         } catch(Exception e){
@@ -107,20 +113,20 @@ public class DataImplWhite extends junit.framework.TestCase {
     }
 
     @Test
-    public void testGetReport() throws DataException{
+    public void testGetReport() throws DateException{
         data1.reset();
-        Data start = new Date();
-        Data end = new Date();
+        Date start = new Date(110, 1, 1);
+        Date end = new Date(120, 1, 1);
         try{
             data1.createEmployee("Massimo","Priano");
             assertThrows(DateException.class, () -> data1.getReport(null,end));
             assertThrows(DateException.class, () -> data1.getReport(start,null));
             assertThrows(DateException.class, () -> data1.getReport(end,start));
-            assertTrue(data1.getReport(0,start,end).size()==0);
+            assertTrue(data1.getReport(start,end).size()==0);
             data1.rechargeAccount(0,1000);
-            assertTrue(data1.getReport(0,start,end).size()==1);
+            assertEquals(data1.getReport(start,end).size(), 1);
             data1.rechargeAccount(0,1000);
-            assertTrue(data1.getReport(0,start,end).size()==2);
+            assertTrue(data1.getReport(start,end).size()==2);
         } catch(Exception e){
             fail();
         }
@@ -130,7 +136,7 @@ public class DataImplWhite extends junit.framework.TestCase {
     public void testCreateBeverage() throws BeverageException{
         data1.reset();
         try{
-            assertThrows(BeverageException.class, () -> data1.createBeverage(0,null,10,100));
+            assertThrows(BeverageException.class, () -> data1.createBeverage(null,10,100));
             data1.createBeverage("Caffe",10,100);
         } catch (Exception e) {
             fail();
@@ -153,7 +159,7 @@ public class DataImplWhite extends junit.framework.TestCase {
     public void testGetBeverageName() throws BeverageException {
         data1.reset();
         try{
-            assertThrows(EmployeeException, () -> data1.getBeverageName(0));
+            assertThrows(BeverageException.class, () -> data1.getBeverageName(0));
             data1.createBeverage("Caffe",10,100);
             assertTrue(data1.getBeverageName(0).equals("Caffe"));
         } catch(Exception e){
@@ -165,7 +171,7 @@ public class DataImplWhite extends junit.framework.TestCase {
     public void testGetBeverageCapsulesPerBox() throws BeverageException {
         data1.reset();
         try{
-            assertThrows(EmployeeException, () -> data1.getBeverageCapsulesPerBox(0));
+            assertThrows(BeverageException.class, () -> data1.getBeverageCapsulesPerBox(0));
             data1.createBeverage("Caffe",10,100);
             assertTrue(data1.getBeverageCapsulesPerBox(0)==10);
         } catch(Exception e){
@@ -177,7 +183,7 @@ public class DataImplWhite extends junit.framework.TestCase {
     public void testGetBeverageBoxPrice() throws BeverageException {
         data1.reset();
         try{
-            assertThrows(EmployeeException, () -> data1.getBeverageBoxPrice(0));
+            assertThrows(BeverageException.class, () -> data1.getBeverageBoxPrice(0));
             data1.createBeverage("Caffe",10,100);
             assertTrue(data1.getBeverageBoxPrice(0)==100);
         } catch(Exception e){
@@ -217,7 +223,7 @@ public class DataImplWhite extends junit.framework.TestCase {
     public void testGetBeverageCapsules() throws BeverageException {
         data1.reset();
         try{
-            assertThrows(EmployeeException, () -> data1.getBeverageCapsules(0));
+            assertThrows(BeverageException.class, () -> data1.getBeverageCapsules(0));
             data1.createBeverage("Caffe",10,100);
             assertTrue(data1.getBeverageCapsules(0)==0);
         } catch(Exception e){
@@ -229,8 +235,8 @@ public class DataImplWhite extends junit.framework.TestCase {
     public void testCreateEmployee() throws EmployeeException{
         data1.reset();
         try{
-            assertThrows(EmployeeException.class, () -> data1.createEmployee(0,null,"Caldarone"));
-            assertThrows(EmployeeException.class, () -> data1.createEmployee(0,"Massimo",null));
+            assertThrows(EmployeeException.class, () -> data1.createEmployee(null,"Caldarone"));
+            assertThrows(EmployeeException.class, () -> data1.createEmployee("Massimo",null));
             data1.createEmployee("Fausto","Repetto");
         } catch (EmployeeException e) {
             fail();
@@ -253,7 +259,7 @@ public class DataImplWhite extends junit.framework.TestCase {
     public void testGetEmployeeName() throws EmployeeException {
         data1.reset();
         try{
-            assertThrows(EmployeeException, () -> data1.getEmployeeName(0));
+            assertThrows(EmployeeException.class, () -> data1.getEmployeeName(0));
             data1.createEmployee("Massimo","Priano");
             assertTrue(data1.getEmployeeName(0).equals("Massimo"));
         } catch(Exception e){
@@ -265,7 +271,7 @@ public class DataImplWhite extends junit.framework.TestCase {
     public void testGetEmployeeSurname() throws EmployeeException {
         data1.reset();
         try{
-            assertThrows(EmployeeException, () -> data1.getEmployeeSurname(0));
+            assertThrows(EmployeeException.class, () -> data1.getEmployeeSurname(0));
             data1.createEmployee("Massimo","Priano");
             assertTrue(data1.getEmployeeSurname(0).equals("Priano"));
         } catch(Exception e){
@@ -277,7 +283,7 @@ public class DataImplWhite extends junit.framework.TestCase {
     public void testGetEmployeeBalance() throws EmployeeException {
         data1.reset();
         try{
-            assertThrows(EmployeeException, () -> data1.getEmployeeBalance(0));
+            assertThrows(EmployeeException.class, () -> data1.getEmployeeBalance(0));
             data1.createEmployee("Massimo","Priano");
             assertTrue(data1.getEmployeeBalance(0)==0);
         } catch(Exception e){
@@ -317,11 +323,24 @@ public class DataImplWhite extends junit.framework.TestCase {
     public void testGetBalance(){
         data1.reset();
         try{
-            data1.createBeverage("Massimo","Priano");
+            data1.createEmployee("Massimo","Priano");
             data1.rechargeAccount(0,1000);
             assertTrue(data1.getBalance()==1000);
         } catch(Exception e){
             fail();
         }
     }
+    
+    @Test
+    public void testLoadTransaction() throws EmployeeException, BeverageException, NotEnoughBalance, NotEnoughCapsules{
+        data1.reset();
+        data1.createEmployee("Massimo","Priano");
+        data1.createBeverage("Cola", 10, 1000);
+        data1.rechargeAccount(0,10000);
+        data1.buyBoxes(0, 1);
+        data1.sellCapsulesToVisitor(0, 5);
+        DataImpl data2 = new DataImpl();
+
+    }
+    
 }
