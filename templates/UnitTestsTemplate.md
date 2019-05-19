@@ -969,7 +969,9 @@ Version:
     <Add here the screenshot report of the code and branch coverage obtained using
     the Jacoco tool. >
     
-    ![Jacoco Test](jacocotest.png "")
+    <img src="jacocotest.png"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
 
 ### Loop coverage analysis
 
