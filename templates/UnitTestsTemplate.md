@@ -1,10 +1,10 @@
 # Unit Testing Documentation template
 
-Authors: Salvatore Di Martino S267553
+Authors: Francesco Dibitonto s265421 Federico Silvio Gorrino s262948 Salvatore Di Martino s267553
 
-Date:
+Date: 19/05/2019
 
-Version:
+Version: 1.0
 
 # Contents
 
