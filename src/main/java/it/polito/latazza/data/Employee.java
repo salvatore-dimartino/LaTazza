@@ -16,6 +16,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import it.polito.latazza.exceptions.EmployeeException;
+import it.polito.latazza.exceptions.NotEnoughBalance;
 
 public class Employee {
 	private String name;
@@ -23,7 +24,7 @@ public class Employee {
 	private Integer ID;
 	private PersonalAccount account;
 	
-	public Employee(String name, String surname, Integer ID) throws EmployeeException{
+	public Employee(String name, String surname, Integer ID) throws EmployeeException {
         if(ID >= 0)
 			this.ID = ID;
 		else
@@ -48,7 +49,12 @@ public class Employee {
 			throw new EmployeeException();
         }
         
-		this.account= new PersonalAccount(0);
+		try {
+			this.account= new PersonalAccount(0);
+		} catch (NotEnoughBalance e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public List<String> getAttributes() {

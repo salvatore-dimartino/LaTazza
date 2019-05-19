@@ -82,6 +82,7 @@ public class DataImpl implements DataInterface {
 		
 		// update the availability
 		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
+		beverage.toJsonBeverage();
 		
 		// get the payment mode
 		String payMode = new String();
@@ -137,6 +138,7 @@ public class DataImpl implements DataInterface {
 				
 		// update the availability
 		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
+		beverage.toJsonBeverage();
 		
 		try {
 			account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
@@ -153,6 +155,7 @@ public class DataImpl implements DataInterface {
 			Transactions.put(TID, consumption);
 			
 			consumption.toJsonTransaction();
+			
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -376,6 +379,7 @@ public class DataImpl implements DataInterface {
 		if(name == null || surname == null) {
 			throw new EmployeeException();
 		} else {
+			
 			e = new Employee(name, surname, Employees.size());
 			Employees.put(Employees.size(), e);
 			e.toJsonEmployee();
@@ -496,11 +500,12 @@ public class DataImpl implements DataInterface {
 		        //Get personal account balance
 		        String balance = (String) attributes.get(2);
 		        
-		        //Create the employee object to insert in the list, together with its own account
-		        PersonalAccount account = new PersonalAccount(Integer.parseInt(balance));
+		     
 		        
 		        Employee e;
 				try {
+					  //Create the employee object to insert in the list, together with its own account
+			        PersonalAccount account = new PersonalAccount(Integer.parseInt(balance));
 					e = new Employee(name, surname, Integer.parseInt(ID));
 					e.setPersonalaccount(account);
 				    employees.put(employees.size(), e);
@@ -508,6 +513,8 @@ public class DataImpl implements DataInterface {
 					e1.printStackTrace();
 				} catch (EmployeeException e1) {
 					e1.printStackTrace();
+				} catch (NotEnoughBalance ne) {
+					
 				}
 		        
 			});

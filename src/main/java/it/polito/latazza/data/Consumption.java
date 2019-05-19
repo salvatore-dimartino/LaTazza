@@ -31,6 +31,7 @@ public class Consumption extends Transaction {
 		
 		this.beverage = beverage;
 		this.employee = employee;
+		this.type = type;
 		
 	}
 	
