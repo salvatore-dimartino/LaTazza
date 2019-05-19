@@ -1,6 +1,6 @@
 # Unit Testing Documentation template
 
-Authors:
+Authors: Salvatore Di Martino S267553
 
 Date:
 
@@ -10,42 +10,13 @@ Version:
 
 - [Black Box Unit Tests](#black-box-unit-tests)
     - [Class Beverage](#class-beverage)
-        - [Consutructor Beverage()](#class-beverage---constructor-beverage())
-        - [Method setName()](#class-beverage---method-setname())
-        - [Method setPrice()](#class-beverage---method-setprice())
-        - [Method setQuantityPerBox()](#class-beverage---method-setquantityperbox())
-        - [Method setAvailableQuantity()](#class-beverage---method-setavailablequantity())
     - [Class Employee](#class-employee)
-        - [Consutructor Employee()](#class-employee---constructor-employee())
-        - [Method setName()](#class-employee---method-setname())
-        - [Method setSurame()](#class-employee---method-setsurname())
     - [Class PersonalAccount](#class-personalaccount)
-        - [Consutructor PersonalAccount()](#class-personalaccount---constructor-personalaccount())
-        - [Method setBalance()](#class-personalaccount---method-setbalance())
     - [Class LaTazzaAccount](#class-latazzaaccount)
-        - [Consutructor LaTazzaAccount()](#class-latazzaaccount---constructor-latazzaaccount())
-        - [Method setTotal()](#class-latazzaaccount---method-settotal())
     - [Class Consumption](#class-consumption)
-        - [Consutructor Consumption()](#class-consumption---constructor-consumption())
-        - [Method setQuantity()](#class-consumption---method-setquantity())
     - [Class Recharge](#class-recharge)
-        - [Consutructor Recharge()](#class-recharge---constructor-recharge())
-        - [Method setAmount()](#class-recharge---method-setamount())
     - [Class BoxPurchase](#class-boxpurchase)
-        - [Consutructor BoxPurchase()](#class-boxpurchase---constructor-boxpurchase())
-        - [Method setQuantity()](#class-boxpurchase---method-setquantity())
     - [Class DataImpl](#class-dataimpl)
-        - [Method sellCapsules()](#class-dataimpl---method-sellcapsules())
-        - [Method sellCapsulesToVisitor()](#class-boxpurchase---method-sellCapsulestovisitor())
-        - [Method rechargeAccount()](#class-boxpurchase---method-rechargeaccounty())
-        - [Method buyBoxes()](#class-dataimpl---method-buyboxes())
-        - [Method setQuantity()](#class-dataimpl---method-setquantity())
-        - [Method getEmployeeReport(()](#class-dataimpl---method-getemployeereport())
-        - [Method getReport()](#class-dataimpl---method-getreport())
-        - [Method createBeverage()](#class-dataimpl---method-createbeveraget())
-        - [Method updateBeverage()](#class-dataimpl---method-updatebeverage())
-        - [Method createEmployee()](#class-dataimpl---method-createemployee())
-        - [Method updateEmployee()](#class-dataimpl---method-updateemployee())
 
 - [White Box Unit Tests](#white-box-unit-tests)
 
