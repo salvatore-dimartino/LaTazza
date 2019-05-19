@@ -154,8 +154,6 @@ public class DataImpl implements DataInterface {
 			
 			consumption.toJsonTransaction();
 			
-			consumption.toJsonTransaction();
-			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
