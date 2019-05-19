@@ -174,6 +174,7 @@ class Employee {
     +getID() : Integer
     +getAttributes() : List<String>
     +toJsonEmployee() : void
+    +updateJsonEmployee() : void
 }
 
 class Beverage {
@@ -194,6 +195,7 @@ class Beverage {
     +getID() : Integer
     +getAttributes() : List<String>
     +toJsonBeverage() : void
+    +updateJsonBeverage() : void
 }
 
 class BoxPurchase {
