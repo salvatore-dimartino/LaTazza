@@ -969,7 +969,7 @@ Version:
     <Add here the screenshot report of the code and branch coverage obtained using
     the Jacoco tool. >
     
-    ![JacocoTest](JacocoTest.png)
+    ![Jacoco Test](jacocotest.png "")
 
 ### Loop coverage analysis
 
