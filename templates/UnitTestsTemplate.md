@@ -677,7 +677,7 @@ Version:
 **Combination of predicates**:
 
 | ExistanceOfBeverage | Number Of Capsules |  Valid / Invalid | Description of the test case | JUnit test case |
-|-------|-------|-------|-------|---------|---------|
+|-------|-------|-------|-------|---------|
 | The beverage is cointained in the Map | 0 to NumberOfAvailableCapsules |  Valid   | sellCapsulesToVisitor() | it.polito.latazza.DataImplTest.testSellCapsulesToVisitor |
 | The beverage is cointained in the Map | more than NumberOfAvailabaleCapsules  |  Invalid  | sellCapsulesToVisitor() -> NotEnoughCapsules() | it.polito.latazza.DataImplTest.testSellCapsulesToVisitor |
 | The beverage is not cointained in the Map or null | 0 to NumberOfAvailablecapsules | Invalid | sellCapsulesToVisitor() -> BeverageException() | it.polito.latazza.DataImplTest.testSellCapsulesToVisitor |

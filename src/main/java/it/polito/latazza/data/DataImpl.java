@@ -98,7 +98,6 @@ public class DataImpl implements DataInterface {
 		// update the transactions
 		Integer TID = Transactions.size();
 		Consumption consumption;
-		PersonalAccount P_account = employee.getPersonalaccount();
 		
 		try {
 			consumption = new Consumption(TID, new Date(), numberOfCapsules, Beverages.get(beverageId), Employees.get(employeeId), payMode);
