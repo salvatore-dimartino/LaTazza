@@ -969,7 +969,7 @@ Version:
     <Add here the screenshot report of the code and branch coverage obtained using
     the Jacoco tool. >
     
-   ![Jacoco](https://git-softeng.polito.it/se-2019/group-60/LaTazza/blob/Dinamo_coding/templates/jacocotest.png "") 
+   ![Jacoco](https://git-softeng.polito.it/se-2019/group-60/LaTazza/blob/Dinamo_coding/templates/jacocotest.png?raw=true "") 
     
 
 ### Loop coverage analysis
