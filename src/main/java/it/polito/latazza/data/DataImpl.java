@@ -622,7 +622,7 @@ public class DataImpl implements DataInterface {
 				        Beverage bev = Beverages.get(Integer.parseInt(attributes.get(2)));
 				        
 				        BoxPurchase bp = new BoxPurchase(Integer.parseInt(ID), date, qty, bev);
-				        Transactions.put(transactions.size(), bp);
+				        transactions.put(transactions.size(), bp);
 					}
 					else if(transactionType.compareTo("CONSUMPTION") == 0) {
 						//Get quantity
@@ -641,7 +641,7 @@ public class DataImpl implements DataInterface {
 						String type = attributes.get(4);
 						
 						Consumption cons = new Consumption(Integer.parseInt(ID), date, qty, bev, emp, type);
-						Transactions.put(transactions.size(), cons);
+						transactions.put(transactions.size(), cons);
 					}
 					else if(transactionType.compareTo("RECHARGE") == 0) {
 						//Get Amount
@@ -651,7 +651,7 @@ public class DataImpl implements DataInterface {
 						Employee emp = Employees.get(Integer.parseInt(attributes.get(2)));
 						
 						Recharge rec = new Recharge(Integer.parseInt(ID), date, amount, emp);
-						Transactions.put(transactions.size(), rec);
+						transactions.put(transactions.size(), rec);
 					}
 					
 				//} catch (java.text.ParseException e) {
