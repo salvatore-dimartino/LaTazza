@@ -969,9 +969,8 @@ Version:
     <Add here the screenshot report of the code and branch coverage obtained using
     the Jacoco tool. >
     
-    <img src="jacocotest.png"
-     alt="Markdown Monster icon"
-     style="float: left; margin-right: 10px;" />
+   ![Jacoco](https://git-softeng.polito.it/se-2019/group-60/LaTazza/blob/Dinamo_coding/templates/jacocotest.png "") 
+    
 
 ### Loop coverage analysis
 
