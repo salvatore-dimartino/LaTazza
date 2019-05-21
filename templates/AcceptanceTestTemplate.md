@@ -138,8 +138,6 @@ In the API Tests column, report the name of the method of the API Test JUnit cla
 | 5           | FR2                             |             |             |
 | 6           | FR3                             |             |             |
 | 7           | FR4                             |             |             |
-
-
 | X           | FR7                             |             |             |
 | X           | FR8                             |             |             |
 
