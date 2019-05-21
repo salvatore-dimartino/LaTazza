@@ -44,7 +44,36 @@ Version:
 | 4                | Deduce price of T from account of C                    |
 | 5                | Account of C is negative, issue warning                |
 
-| Scenario ID: SC3 | Corresponds to UC3 |
+| Scenario ID: SC3 | Corresponds to UC3                                 |
+| ---------------- | -------------------------------------------------- |
+| Description      | Visitor uses one capsule of type T, pays with cash |
+| Precondition     | Visitor has enough cash to pay with                |
+| Postcondition    | Administrator account updated, Count of T updated  |
+| Step#            | Step description                                   |
+| 1                | Administrator selects capsule type T               |
+| 2                | Administrator selects the Visitor option           |
+| 3                | Deduce one for quantity of capsule T               |
+| 4                | Administrator account updated                      |
+
+| Scenario ID: SC4 | Corresponds to UC4 |
+| ---------------- | ------------------ |
+| Description      | Colleague uses one capsule of type T, pays with cash |
+| Precondition     | Colleague has enough cash to pay with                |
+| Postcondition    | Administrator account updated, Count of T updated    |
+| Step#            | Step description                                     |
+| 1                | ...                |
+|                  |                    |
+
+| Scenario ID: SC5 | Corresponds to UC5 |
+| ---------------- | ------------------ |
+| Description      | ...                |
+| Precondition     | ...                |
+| Postcondition    | ...                |
+| Step#            | ...                |
+| 1                | ...                |
+|                  |                    |
+
+| Scenario ID: SC6 | Corresponds to UC6 |
 | ---------------- | ------------------ |
 | Description      | ...                |
 | Precondition     | ...                |
