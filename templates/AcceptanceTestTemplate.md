@@ -44,43 +44,79 @@ Version:
 | 4                | Deduce price of T from account of C                    |
 | 5                | Account of C is negative, issue warning                |
 
-| Scenario ID: SC3 | Corresponds to UC3                                 |
+| Scenario ID: SC3 | Corresponds to UC3                                   |
+| ---------------- | ---------------------------------------------------- |
+| Description      | Colleague uses n capsules of type T                  |
+| Precondition     | account of C has enough money to buy n capsules T    |
+| Postcondition    | account of C updated, count of T updated             |
+| Step#            | Step description                                     |
+| 1                | Administrator selects capsule type T                 |
+| 2                | Administrator selects colleague C                    |
+| 3                | Deduce n for quantity of capsule T                   |
+| 4                | Deduce price of n times T from account of C          |
+
+| Scenario ID: SC4 | Corresponds to UC4                                   |
+| ---------------- | ---------------------------------------------------- |
+| Description      | Colleague uses n capsules of type T, pays with cash  |
+| Precondition     | Colleague has enough cash to pay with                |
+| Postcondition    | Administrator account updated, Count of T updated    |
+| Step#            | Step description                                     |
+| 1                | Administrator selects capsule type T                 |
+| 2                | Administrator selects colleague C                    |
+| 3                | Deduce n for quantity of capsule T                   |
+
+| Scenario ID: SC5 | Corresponds to UC5                                 |
 | ---------------- | -------------------------------------------------- |
-| Description      | Visitor uses one capsule of type T, pays with cash |
+| Description      | Visitor uses n capsules of type T, pays with cash  |
 | Precondition     | Visitor has enough cash to pay with                |
 | Postcondition    | Administrator account updated, Count of T updated  |
 | Step#            | Step description                                   |
 | 1                | Administrator selects capsule type T               |
 | 2                | Administrator selects the Visitor option           |
-| 3                | Deduce one for quantity of capsule T               |
-| 4                | Administrator account updated                      |
+| 3                | Deduce n for quantity of capsule T                 |
 
-| Scenario ID: SC4 | Corresponds to UC4 |
-| ---------------- | ------------------ |
-| Description      | Colleague uses one capsule of type T, pays with cash |
-| Precondition     | Colleague has enough cash to pay with                |
-| Postcondition    | Administrator account updated, Count of T updated    |
-| Step#            | Step description                                     |
-| 1                | ...                |
-|                  |                    |
+| Scenario ID: SC6 | Corresponds to UC6                                      |
+| ---------------- | ------------------------------------------------------- |
+| Description      | Colleague recharges his account                         |
+| Precondition     | Colleague's account already exists                      |
+| Postcondition    | account of C updated                                    |
+| Step#            | Step description                                        |
+| 1                | Administrator selects colleague C                       |
+| 2                | Increase balance of account of C of the recharged amount|
 
-| Scenario ID: SC5 | Corresponds to UC5 |
-| ---------------- | ------------------ |
-| Description      | ...                |
-| Precondition     | ...                |
-| Postcondition    | ...                |
-| Step#            | ...                |
-| 1                | ...                |
-|                  |                    |
+| Scenario ID: SC7 | Corresponds to UC7                                                                     |
+| ---------------- | -------------------------------------------------------------------------------------- |
+| Description      | Buy n capsules of type C                                                               |
+| Precondition     | Capsule type T exists                                                                  |
+| Postcondition    | count of T updated                                                                     |
+| Step#            | Step description                                                                       |
+| 1                | Administrator selects capsule of type T                                                |
+| 2                | Administrator selects the minimum amount of boxes to get at least n capsules of type T |
+| 3                | Administrator submits the selected informations and proceeds with the order            |
+| 4                | Administrator receives the order                                                       |
 
-| Scenario ID: SC6 | Corresponds to UC6 |
-| ---------------- | ------------------ |
-| Description      | ...                |
-| Precondition     | ...                |
-| Postcondition    | ...                |
-| Step#            | ...                |
-| 1                | ...                |
-|                  |                    |
+
+
+
+
+| Scenario ID: SCX | Corresponds to UCX                                             |
+| ---------------- | -------------------------------------------------------------- |
+| Description      | Administrator creates a new type of capsule T and price        |
+| Precondition     | T doesn't exist                                                |
+| Postcondition    | T created                                                      |
+| Step#            | Step description                                               |
+| 1                | Administrator inserts name, number of capsules and price for T |
+| 2                | Administrator submits the form for T                           |
+
+
+| Scenario ID: SCX | Corresponds to UCX                                         |
+| ---------------- | ---------------------------------------------------------- |
+| Description      | Administrator creates a new account for a collegue         |
+| Precondition     | Colleague's account doesn't exist                          |
+| Postcondition    | Colleague's account created                                |
+| Step#            | Step description                                           |
+| 1                | Administrator inserts name and surname in the form for C   |
+| 2                | Administrator submits the form for C                       |
 
 
 
@@ -97,10 +133,15 @@ In the API Tests column, report the name of the method of the API Test JUnit cla
 | ----------- | ------------------------------- | ----------- | ----------- |
 | 1           | FR1                             |             |             |
 | 2           | FR1                             |             |             |
-| ...         |                                 |             |             |
-| ...         |                                 |             |             |
-| ...         |                                 |             |             |
-| ...         |                                 |             |             |
+| 3           | FR1                             |             |             |
+| 4           | FR1                             |             |             |
+| 5           | FR2                             |             |             |
+| 6           | FR3                             |             |             |
+| 7           | FR4                             |             |             |
+
+
+| X           | FR7                             |             |             |
+| X           | FR8                             |             |             |
 
 
 
