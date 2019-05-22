@@ -112,7 +112,7 @@ Version:
 | 4                | Collect all the transactions of C in the selected time range   |
 | 5                | Show C's report                                                |
 
-| Scenario ID: SC9 | Corresponds to UCX                                             |
+| Scenario ID: SC9 | Corresponds to UC6                                             |
 | ---------------- | -------------------------------------------------------------- |
 | Description      | Produce report about consumptions and recharges                |
 | Precondition     | -                                                              |
