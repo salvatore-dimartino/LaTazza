@@ -200,5 +200,5 @@ In the API Tests column, report the name of the method of the API Test JUnit cla
 
 | Non Functional Requirement | Test name |
 | -------------------------- | --------- |
-|                            |           |
+| NFR2                       |           |
 
