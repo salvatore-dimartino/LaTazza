@@ -97,7 +97,7 @@ Version: 1.0
 | 3                | Administrator submits the selected informations and proceeds with the order            |
 | 4                | Administrator receives the order                                                       |
 | 5                | Increase count of T by the number of received capsules                                 |
-| 6                | Increase Cash account balance by the payed amount                                      |
+| 6                | Decrease Cash account balance by the payed amount                                      |
 
 | Scenario ID: SC8 | Corresponds to UC5                                             |
 | ---------------- | -------------------------------------------------------------- |
