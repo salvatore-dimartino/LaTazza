@@ -1,3 +1,7 @@
+/*
+* You have to execute this alternative main for each time you want to run a different script test.
+*/
+
 package it.polito.latazza;
 
 import it.polito.latazza.data.DataImpl;
