@@ -30,7 +30,7 @@ public class Employee {
 		else
             throw new EmployeeException();
 
-        Pattern p = Pattern.compile("[A-Z][a-zéèòùì]*([ ][A-Z][a-zéèòùì]*)*");
+        Pattern p = Pattern.compile("[A-Za-zéèòùì][A-Za-zéèòùì\']*([ ][A-Za-zéèòùì\'][A-Za-zéèòùì]*)*");
 		Matcher m = p.matcher(name);
         boolean t = m.matches();
         
@@ -73,7 +73,7 @@ public class Employee {
 	}
 	
 	public void setName(String name) throws EmployeeException{
-		Pattern p = Pattern.compile("[A-Z][a-zéèòùì]*([ ][A-Z][a-zéèòùì]*)*");
+		Pattern p = Pattern.compile("[A-Za-zéèòùì][A-Za-zéèòùì\']*([ ][A-Za-zéèòùì\'][A-Za-zéèòùì]*)*");
 		Matcher m = p.matcher(name);
         boolean t = m.matches();
         
