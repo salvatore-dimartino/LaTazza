@@ -44,7 +44,7 @@ Version:
 | 4                | Deduce price of T from account of C                    |
 | 5                | Account of C is negative, issue warning                |
 
-| Scenario ID: SC3 | Corresponds to UC3                                   |
+| Scenario ID: SC3 | Corresponds to UCX                                   |
 | ---------------- | ---------------------------------------------------- |
 | Description      | Colleague uses n capsules of type T                  |
 | Precondition     | account of C has enough money to buy n capsules T    |
@@ -55,7 +55,7 @@ Version:
 | 3                | Deduce n for quantity of capsule T                   |
 | 4                | Deduce price of n times T from account of C          |
 
-| Scenario ID: SC4 | Corresponds to UC4                                             |
+| Scenario ID: SC4 | Corresponds to UCX                                             |
 | ---------------- | -------------------------------------------------------------- |
 | Description      | Colleague uses n capsules of type T, pays with cash            |
 | Precondition     | Colleague has enough cash to pay with                          |
@@ -66,7 +66,7 @@ Version:
 | 3                | Deduce n for quantity of capsule T                             |
 | 4                | Increase Cash account balance by the payed amount              |
 
-| Scenario ID: SC5 | Corresponds to UC5                                             |
+| Scenario ID: SC5 | Corresponds to UCX                                             |
 | ---------------- | -------------------------------------------------------------- |
 | Description      | Visitor uses n capsules of type T, pays with cash              |
 | Precondition     | Visitor has enough cash to pay with                            |
@@ -77,7 +77,7 @@ Version:
 | 3                | Deduce n for quantity of capsule T                             |
 | 4                | Increase Cash account balance by the payed amount              |
 
-| Scenario ID: SC6 | Corresponds to UC6                                                 |
+| Scenario ID: SC6 | Corresponds to UCX                                                 |
 | ---------------- | ------------------------------------------------------------------ |
 | Description      | Colleague recharges his account                                    |
 | Precondition     | Colleague's account already exists                                 |
@@ -87,7 +87,7 @@ Version:
 | 2                | Increase balance of account of C of the recharged amount           |
 | 3                | Increase Cash account balance by the recharged amount              |
 
-| Scenario ID: SC7 | Corresponds to UC7                                                                     |
+| Scenario ID: SC7 | Corresponds to UCX                                                                     |
 | ---------------- | -------------------------------------------------------------------------------------- |
 | Description      | Buy n capsules of type C                                                               |
 | Precondition     | Capsule type T exists                                                                  |
@@ -100,7 +100,7 @@ Version:
 | 5                | Increase count of T by the number of received capsules                                 |
 | 6                | Increase Cash account balance by the payed amount                                      |
 
-| Scenario ID: SC8 | Corresponds to UC8                                             |
+| Scenario ID: SC8 | Corresponds to UCX                                             |
 | ---------------- | -------------------------------------------------------------- |
 | Description      | Produce report of Colleague C                                  |
 | Precondition     | Colleague's account already exists                             |
@@ -112,39 +112,45 @@ Version:
 | 4                | Collect all the transactions of C in the selected time range   |
 | 5                | Show C's report                                                |
 
-| Scenario ID: SC9 | Corresponds to UC9                                             |
+| Scenario ID: SC9 | Corresponds to UCX                                             |
 | ---------------- | -------------------------------------------------------------- |
-| Description      | Produce consumption report                                     |
+| Description      | Produce report about consumptions and recharges                |
 | Precondition     | -                                                              |
-| Postcondition    | Consumption report is shown                                    |
+| Postcondition    | Report about consumptions and recharges is shown               |
 | Step#            | Step description                                               |
 | 1                | Administrator selects startdate and enddate                    |
 | 2                | Administrator submits the selected time range                  |
 | 3                | Collect all the transactions in the selected time range        |
-| 4                | Show consumption report                                        |
+| 4                | Show report about consumptions and recharges                   |
 
 
+| Scenario ID: SC10 | Corresponds to UCX                                             |
+| ----------------- | -------------------------------------------------------------- |
+| Description       | Administrator creates a new type of capsule T and price        |
+| Precondition      | T doesn't exist                                                |
+| Postcondition     | T created                                                      |
+| Step#             | Step description                                               |
+| 1                 | Administrator inserts name, number of capsules and price for T |
+| 2                 | Administrator submits the form for T                           |
+
+| Scenario ID: SC11 | Corresponds to UCX                                                |
+| ----------------- | ----------------------------------------------------------------- |
+| Description       | Administrator updates data for type of capsule T                  |
+| Precondition      | T already exists                                                  |
+| Postcondition     | T updated                                                         |
+| Step#             | Step description                                                  |
+| 1                 | Administrator inserts new name, number of capsules and price for T|
+| 2                 | Administrator submits the form for T                              |
 
 
-
-| Scenario ID: SCX | Corresponds to UCX                                             |
-| ---------------- | -------------------------------------------------------------- |
-| Description      | Administrator creates a new type of capsule T and price        |
-| Precondition     | T doesn't exist                                                |
-| Postcondition    | T created                                                      |
-| Step#            | Step description                                               |
-| 1                | Administrator inserts name, number of capsules and price for T |
-| 2                | Administrator submits the form for T                           |
-
-
-| Scenario ID: SCX | Corresponds to UCX                                         |
-| ---------------- | ---------------------------------------------------------- |
-| Description      | Administrator creates a new account for a collegue         |
-| Precondition     | Colleague's account doesn't exist                          |
-| Postcondition    | Colleague's account created                                |
-| Step#            | Step description                                           |
-| 1                | Administrator inserts name and surname in the form for C   |
-| 2                | Administrator submits the form for C                       |
+| Scenario ID: SC12 | Corresponds to UCX                                         |
+| ----------------- | ---------------------------------------------------------- |
+| Description       | Administrator creates a new account for a collegue         |
+| Precondition      | Colleague's account doesn't exist                          |
+| Postcondition     | Colleague's account created                                |
+| Step#             | Step description                                           |
+| 1                 | Administrator inserts name and surname in the form for C   |
+| 2                 | Administrator submits the form for C                       |
 
 
 
@@ -167,8 +173,10 @@ In the API Tests column, report the name of the method of the API Test JUnit cla
 | 6           | FR3                             |             |             |
 | 7           | FR4                             |             |             |
 | 8           | FR5                             |             |             |
-| X           | FR7                             |             |             |
-| X           | FR8                             |             |             |
+| 9           | FR6                             |             |             |
+| 10          | FR7                             |             |             |
+| 11          | FR7                             |             |             |
+| 12          | FR8                             |             |             |
 
 
 
