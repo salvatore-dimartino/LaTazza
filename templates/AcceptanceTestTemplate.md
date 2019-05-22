@@ -16,23 +16,9 @@ Version: 1.0
 
 # Scenarios
 
-### Use case 7, FR1  Record usage of n capsules by colleague
-
-| Actors Involved        | Administrator |
-| ------------- |:-------------:| 
-|  Precondition     | Capsule T exists, colleague C exists |  
-|  Post condition     | T.quantity_post < T.quantity_pre |
-| | LaTazzaAccount.amount_post > LaTazzaAccount.amount_pre |
-|  Nominal Scenario     | Administrator selects n capsules of type T, selects colleague C, Deduce quantity for capsule T, deduce price of T by account of colleague C|
-|  Variants     | Colleague pays with cash instead of using account balance |
-
-### Use case 8, FR5  Create new capsule tyoe
-
-| Actors Involved        | Administrator |
-| ------------- |:-------------:| 
-|  Precondition     | Capsule T doesn't exist |  
-|  Post condition     | T created |
-|  Nominal Scenario     | Administrator inserts name, number of capsules and price for T |
+```
+<Define here additional scenarios for the application. The two original scenarios in the Requirements Document are reported here.>
+```
 
 | Scenario ID: SC1 | Corresponds to UC1                             |
 | ---------------- | ---------------------------------------------- |
@@ -57,7 +43,7 @@ Version: 1.0
 | 4                | Deduce price of T from account of C                    |
 | 5                | Account of C is negative, issue warning                |
 
-| Scenario ID: SC3 | Corresponds to UC7                                   |
+| Scenario ID: SC3 |                                    |
 | ---------------- | ---------------------------------------------------- |
 | Description      | Colleague uses n capsules of type T                  |
 | Precondition     | account of C has enough money to buy n capsules T    |
@@ -68,7 +54,7 @@ Version: 1.0
 | 3                | Deduce n for quantity of capsule T                   |
 | 4                | Deduce price of n times T from account of C          |
 
-| Scenario ID: SC4 | Corresponds to UC7                                             |
+| Scenario ID: SC4 |                                              |
 | ---------------- | -------------------------------------------------------------- |
 | Description      | Colleague uses n capsules of type T, pays with cash            |
 | Precondition     | Colleague has enough cash to pay with                          |
@@ -137,7 +123,7 @@ Version: 1.0
 | 4                | Show report about consumptions and recharges                   |
 
 
-| Scenario ID: SC10 | Corresponds to UC8                                             |
+| Scenario ID: SC10 |                                              |
 | ----------------- | -------------------------------------------------------------- |
 | Description       | Administrator creates a new type of capsule T                  |
 | Precondition      | T doesn't exist                                                |
@@ -146,7 +132,7 @@ Version: 1.0
 | 1                 | Administrator inserts name, number of capsules and price for T |
 | 2                 | Administrator submits the form for T                           |
 
-| Scenario ID: SC11 | Corresponds to UCX                                                |
+| Scenario ID: SC11 |                                                 |
 | ----------------- | ----------------------------------------------------------------- |
 | Description       | Administrator updates data for type of capsule T                  |
 | Precondition      | T already exists                                                  |
@@ -156,7 +142,7 @@ Version: 1.0
 | 2                 | Administrator submits the form for T                              |
 
 
-| Scenario ID: SC12 | Corresponds to UCX                                         |
+| Scenario ID: SC12 |                                         |
 | ----------------- | ---------------------------------------------------------- |
 | Description       | Administrator creates a new account for a collegue         |
 | Precondition      | Colleague's account doesn't exist                          |
@@ -165,7 +151,7 @@ Version: 1.0
 | 1                 | Administrator inserts name and surname in the form for C   |
 | 2                 | Administrator submits the form for C                       |
 
-| Scenario ID: SC13 | Corresponds to UCX                                             |
+| Scenario ID: SC13 |                                              |
 | ----------------- | -------------------------------------------------------------- |
 | Description       | Administrator updates data for Colleague C                     |
 | Precondition      | C already exists                                               |
