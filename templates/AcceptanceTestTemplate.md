@@ -18,6 +18,23 @@ Version: 1.0
 
 ```
 <Define here additional scenarios for the application. The two original scenarios in the Requirements Document are reported here.>
+### Use case 7, FR1  Record usage of n capsules by colleague
+
+| Actors Involved        | Administrator |
+| ------------- |:-------------:| 
+|  Precondition     | Capsule T exists, colleague C exists |  
+|  Post condition     | T.quantity_post < T.quantity_pre |
+| | LaTazzaAccount.amount_post > LaTazzaAccount.amount_pre |
+|  Nominal Scenario     | Administrator selects n capsules of type T, selects colleague C, Deduce quantity for capsule T, deduce price of T by account of colleague C|
+|  Variants     | Colleague pays with cash instead of using account balance |
+
+### Use case 8, FR5  Create new capsule tyoe
+
+| Actors Involved        | Administrator |
+| ------------- |:-------------:| 
+|  Precondition     | Capsule T doesn't exist |  
+|  Post condition     | T created |
+|  Nominal Scenario     | Administrator inserts name, number of capsules and price for T |
 ```
 
 | Scenario ID: SC1 | Corresponds to UC1                             |
@@ -31,7 +48,7 @@ Version: 1.0
 | 3                | Deduce one for quantity of capsule T           |
 | 4                | Deduce price of T from account of C            |
 
-| Scenario ID: SC2 | Corresponds to UC2                                     |
+| Scenario ID: SC2 | Corresponds to UC1                                     |
 | ---------------- | ------------------------------------------------------ |
 | Description      | Colleague uses one capsule of type T, account negative |
 | Precondition     | account of C has not enough money to buy capsule T     |
@@ -43,7 +60,7 @@ Version: 1.0
 | 4                | Deduce price of T from account of C                    |
 | 5                | Account of C is negative, issue warning                |
 
-| Scenario ID: SC3 | Corresponds to UCX                                   |
+| Scenario ID: SC3 | Corresponds to UC7                                   |
 | ---------------- | ---------------------------------------------------- |
 | Description      | Colleague uses n capsules of type T                  |
 | Precondition     | account of C has enough money to buy n capsules T    |
@@ -54,7 +71,7 @@ Version: 1.0
 | 3                | Deduce n for quantity of capsule T                   |
 | 4                | Deduce price of n times T from account of C          |
 
-| Scenario ID: SC4 | Corresponds to UCX                                             |
+| Scenario ID: SC4 | Corresponds to UC7                                             |
 | ---------------- | -------------------------------------------------------------- |
 | Description      | Colleague uses n capsules of type T, pays with cash            |
 | Precondition     | Colleague has enough cash to pay with                          |
@@ -65,7 +82,7 @@ Version: 1.0
 | 3                | Deduce n for quantity of capsule T                             |
 | 4                | Increase Cash account balance by the payed amount              |
 
-| Scenario ID: SC5 | Corresponds to UCX                                             |
+| Scenario ID: SC5 | Corresponds to UC2                                             |
 | ---------------- | -------------------------------------------------------------- |
 | Description      | Visitor uses n capsules of type T, pays with cash              |
 | Precondition     | Visitor has enough cash to pay with                            |
@@ -123,9 +140,9 @@ Version: 1.0
 | 4                | Show report about consumptions and recharges                   |
 
 
-| Scenario ID: SC10 | Corresponds to UCX                                             |
+| Scenario ID: SC10 | Corresponds to UC8                                             |
 | ----------------- | -------------------------------------------------------------- |
-| Description       | Administrator creates a new type of capsule T and price        |
+| Description       | Administrator creates a new type of capsule T                  |
 | Precondition      | T doesn't exist                                                |
 | Postcondition     | T created                                                      |
 | Step#             | Step description                                               |
