@@ -9,7 +9,6 @@ Version:
 # Contents
 
 - [Scenarios](#scenarios)
-
 - [Coverage of scenarios](#scenario-coverage)
 - [Coverage of non-functional requirements](#nfr-coverage)
 
