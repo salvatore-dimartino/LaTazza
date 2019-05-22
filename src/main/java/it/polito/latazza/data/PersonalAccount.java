@@ -12,8 +12,6 @@ public class PersonalAccount {
 	public PersonalAccount(Integer balance) throws NotEnoughBalance {
 		if(balance >= 0)
 			this.balance=balance;
-		else
-		throw new NotEnoughBalance();
 	}
 	
 	public Integer getBalance() {
