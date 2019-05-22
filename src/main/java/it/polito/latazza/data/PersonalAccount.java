@@ -10,8 +10,7 @@ public class PersonalAccount {
 	private Map<Integer,Transaction> Transactions=new HashMap<Integer,Transaction>();
 	
 	public PersonalAccount(Integer balance) throws NotEnoughBalance {
-		if(balance >= 0)
-			this.balance=balance;
+		this.balance=balance;
 	}
 	
 	public Integer getBalance() {
