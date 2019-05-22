@@ -16,8 +16,6 @@ Version: 1.0
 
 # Scenarios
 
-```
-<Define here additional scenarios for the application. The two original scenarios in the Requirements Document are reported here.>
 ### Use case 7, FR1  Record usage of n capsules by colleague
 
 | Actors Involved        | Administrator |
@@ -35,7 +33,6 @@ Version: 1.0
 |  Precondition     | Capsule T doesn't exist |  
 |  Post condition     | T created |
 |  Nominal Scenario     | Administrator inserts name, number of capsules and price for T |
-```
 
 | Scenario ID: SC1 | Corresponds to UC1                             |
 | ---------------- | ---------------------------------------------- |
