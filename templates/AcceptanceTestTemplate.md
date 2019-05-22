@@ -77,9 +77,9 @@ Version:
 | 3                | Deduce n for quantity of capsule T                             |
 | 4                | Increase Cash account balance by the payed amount              |
 
-| Scenario ID: SC6 | Corresponds to UCX                                                 |
+| Scenario ID: SC6 | Corresponds to UC3                                                 |
 | ---------------- | ------------------------------------------------------------------ |
-| Description      | Colleague recharges his account                                    |
+| Description      | Record recharge of account of colleague                            |
 | Precondition     | Colleague's account already exists                                 |
 | Postcondition    | Cash account updated, account of C updated                         |
 | Step#            | Step description                                                   |
@@ -87,9 +87,9 @@ Version:
 | 2                | Increase balance of account of C of the recharged amount           |
 | 3                | Increase Cash account balance by the recharged amount              |
 
-| Scenario ID: SC7 | Corresponds to UCX                                                                     |
+| Scenario ID: SC7 | Corresponds to UC4                                                                     |
 | ---------------- | -------------------------------------------------------------------------------------- |
-| Description      | Buy n capsules of type C                                                               |
+| Description      | Record purchase of n capsules of type T                                                |   
 | Precondition     | Capsule type T exists                                                                  |
 | Postcondition    | Cash account updated, count of T updated                                               |
 | Step#            | Step description                                                                       |
@@ -100,11 +100,11 @@ Version:
 | 5                | Increase count of T by the number of received capsules                                 |
 | 6                | Increase Cash account balance by the payed amount                                      |
 
-| Scenario ID: SC8 | Corresponds to UCX                                             |
+| Scenario ID: SC8 | Corresponds to UC5                                             |
 | ---------------- | -------------------------------------------------------------- |
 | Description      | Produce report of Colleague C                                  |
 | Precondition     | Colleague's account already exists                             |
-| Postcondition    | C's report is shown                                            |
+| Postcondition    | -                                                              |
 | Step#            | Step description                                               |
 | 1                | Administrator selects Colleague C                              |
 | 2                | Administrator selects startdate and enddate                    |
@@ -116,7 +116,7 @@ Version:
 | ---------------- | -------------------------------------------------------------- |
 | Description      | Produce report about consumptions and recharges                |
 | Precondition     | -                                                              |
-| Postcondition    | Report about consumptions and recharges is shown               |
+| Postcondition    | -                                                              |
 | Step#            | Step description                                               |
 | 1                | Administrator selects startdate and enddate                    |
 | 2                | Administrator submits the selected time range                  |
@@ -152,6 +152,15 @@ Version:
 | 1                 | Administrator inserts name and surname in the form for C   |
 | 2                 | Administrator submits the form for C                       |
 
+| Scenario ID: SC13 | Corresponds to UCX                                             |
+| ----------------- | -------------------------------------------------------------- |
+| Description       | Administrator updates data for Colleague C                     |
+| Precondition      | C already exists                                               |
+| Postcondition     | C updated                                                      |
+| Step#             | Step description                                               |
+| 1                 | Administrator inserts new name and surname in the form for C   |
+| 2                 | Administrator submits the form for C                           |
+
 
 
 # Coverage of Scenarios
@@ -177,6 +186,7 @@ In the API Tests column, report the name of the method of the API Test JUnit cla
 | 10          | FR7                             |             |             |
 | 11          | FR7                             |             |             |
 | 12          | FR8                             |             |             |
+| 13          | FR8                             |             |             |
 
 
 
