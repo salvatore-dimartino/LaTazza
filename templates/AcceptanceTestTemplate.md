@@ -9,7 +9,7 @@ Version:
 # Contents
 
 - [Scenarios](#scenarios)
-- [Coverage of scenarios](#scenario-coverage)
+- [Coverage of Scenarios](#coverage-of-scenarios)
 - [Coverage of non-functional requirements](#nfr-coverage)
 
 
@@ -162,7 +162,7 @@ Version:
 
 
 
-# Coverage of scenarios
+# Coverage of Scenarios
 
 ```
 <Report in the following table the coverage of the scenarios listed above. Report at least an API test (defined on the functions of DataImpl only) and a GUI test (created with EyeAutomate) for each of the scenarios. For each scenario, report the functional requirements it covers.
