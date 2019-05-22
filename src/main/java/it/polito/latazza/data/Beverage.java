@@ -32,7 +32,7 @@ public class Beverage {
 		else
 			throw new BeverageException();
 		
-		Pattern p = Pattern.compile("[A-Z][a-zéèòùì]*([ ][A-Z][a-zéèòùì]*)*");
+		Pattern p = Pattern.compile("[A-Za-zéèòùì][A-Za-zéèòùì\']*([ ][A-Za-zéèòùì\'][A-Za-zéèòùì]*)*");
 		Matcher m = p.matcher(name);
 		boolean t = m.matches();
 		if(t) {
@@ -91,7 +91,7 @@ public class Beverage {
 
 	public void setName(String name) throws BeverageException {
 		
-		Pattern p = Pattern.compile("[A-Z][a-zéèòùì]*([ ][A-Z][a-zéèòùì]*)*");
+		Pattern p = Pattern.compile("[A-Za-zéèòùì][A-Za-zéèòùì\']*([ ][A-Za-zéèòùì\'][A-Za-zéèòùì]*)*");
 		Matcher m = p.matcher(name);
 		boolean t = m.matches();
 		if(t) {
