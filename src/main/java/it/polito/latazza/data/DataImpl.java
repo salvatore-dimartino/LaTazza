@@ -653,6 +653,7 @@ public class DataImpl implements DataInterface {
 						
 						Consumption cons = new Consumption(Integer.parseInt(ID), date, qty, bev, emp, type);
 						transactions.put(transactions.size(), cons);
+						emp.getPersonalaccount().addTransaction(cons);
 					}
 					else if(transactionType.compareTo("RECHARGE") == 0) {
 						//Get Amount
@@ -663,6 +664,7 @@ public class DataImpl implements DataInterface {
 						
 						Recharge rec = new Recharge(Integer.parseInt(ID), date, amount, emp);
 						transactions.put(transactions.size(), rec);
+						emp.getPersonalaccount().addTransaction(rec);
 					}
 					
 				//} catch (java.text.ParseException e) {
