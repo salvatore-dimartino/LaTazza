@@ -332,7 +332,7 @@ public class DataImplWhite extends junit.framework.TestCase {
     }
     
     @Test
-    public void testLoadTransaction() throws EmployeeException, BeverageException, NotEnoughBalance, NotEnoughCapsules{
+    public void testLoad() throws EmployeeException, BeverageException, NotEnoughBalance, NotEnoughCapsules{
         data1.reset();
         data1.createEmployee("Massimo","Priano");
         data1.createBeverage("Cola", 10, 1000);

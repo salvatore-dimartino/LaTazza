@@ -32,7 +32,7 @@ public class Beverage {
 		else
 			throw new BeverageException();
 		
-		Pattern p = Pattern.compile("[A-Z][a-zéèòùì]*([ ][A-Z][a-zéèòùì]*)*");
+		Pattern p = Pattern.compile("[A-Za-zéèòùì][A-Za-zéèòùì\']*([ ][A-Za-zéèòùì\'][A-Za-zéèòùì]*)*");
 		Matcher m = p.matcher(name);
 		boolean t = m.matches();
 		if(t) {
@@ -91,7 +91,7 @@ public class Beverage {
 
 	public void setName(String name) throws BeverageException {
 		
-		Pattern p = Pattern.compile("[A-Z][a-zéèòùì]*([ ][A-Z][a-zéèòùì]*)*");
+		Pattern p = Pattern.compile("[A-Za-zéèòùì][A-Za-zéèòùì\']*([ ][A-Za-zéèòùì\'][A-Za-zéèòùì]*)*");
 		Matcher m = p.matcher(name);
 		boolean t = m.matches();
 		if(t) {
@@ -168,5 +168,46 @@ public class Beverage {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}	
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void updateJsonBeverage() {
+		// read the json file
+		JSONParser parser = new JSONParser();
+		JSONArray j_file = new JSONArray();
+				
+		File myfile = new File("Beverages.json");
+		try {
+			myfile.createNewFile();
+		} catch (IOException e2) {
+			e2.printStackTrace();
+		}
+				
+		try {
+			j_file = (JSONArray) parser.parse(new FileReader("./Beverages.json"));
+								
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		} catch (ParseException e) {
+		}	
+		
+		JSONObject beverageObject = new JSONObject();
+		beverageObject.put("ID", this.getID().toString());
+		beverageObject.put("List_Attributes", this.getAttributes());
+		
+		//update beverage
+		j_file.set(this.ID, beverageObject);
+		
+		// write the json object to the file
+				try (FileWriter file = new FileWriter("./Beverages.json")) {
+					file.write(j_file.toJSONString());
+					file.flush();
+					file.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		
 	}
 }

@@ -82,7 +82,7 @@ public class DataImpl implements DataInterface {
 		
 		// update the availability
 		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
-		beverage.toJsonBeverage();
+		beverage.updateJsonBeverage();
 		
 		// get the payment mode
 		String payMode = new String();
@@ -138,7 +138,7 @@ public class DataImpl implements DataInterface {
 				
 		// update the availability
 		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
-		beverage.toJsonBeverage();
+		beverage.updateJsonBeverage();
 		
 		try {
 			account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
@@ -241,6 +241,7 @@ public class DataImpl implements DataInterface {
 		
 		// update the availability
 		beverage.setAvailableQuantity(beverage.getAvailableQuantity()+boxQuantity*beverage.getQuantityPerBox());
+		beverage.updateJsonBeverage();
 	}
 
 	@Override
@@ -306,7 +307,7 @@ public class DataImpl implements DataInterface {
 			beverage.setPrice(boxPrice);
 			beverage.setQuantityPerBox(capsulesPerBox);
 			
-			beverage.toJsonBeverage();		
+			beverage.updateJsonBeverage();		
 		}
 		
 		return;
@@ -395,7 +396,8 @@ public class DataImpl implements DataInterface {
 		} else {
 			Employees.get(id).setName(name);
 			Employees.get(id).setSurname(surname);
-			Employees.get(id).toJsonEmployee();
+			Employees.get(id).updateJsonEmployee();
+			
 		}
 	
 		return;
@@ -542,7 +544,7 @@ public class DataImpl implements DataInterface {
 			
 			JSONArray beverageList = (JSONArray) j_obj;
 			
-			//Iterate over employee array
+			//Iterate over beverage array
 			beverageList.forEach( bev -> {
 				JSONObject beverage = (JSONObject) bev;
 				
@@ -702,4 +704,5 @@ public class DataImpl implements DataInterface {
 		return new LaTazzaAccount(balance);
 	}
 }	
+
 

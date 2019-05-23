@@ -30,7 +30,7 @@ public class Employee {
 		else
             throw new EmployeeException();
 
-        Pattern p = Pattern.compile("[A-Z][a-zéèòùì]*([ ][A-Z][a-zéèòùì]*)*");
+        Pattern p = Pattern.compile("[A-Za-zéèòùì][A-Za-zéèòùì\']*([ ][A-Za-zéèòùì\'][A-Za-zéèòùì]*)*");
 		Matcher m = p.matcher(name);
         boolean t = m.matches();
         
@@ -73,7 +73,7 @@ public class Employee {
 	}
 	
 	public void setName(String name) throws EmployeeException{
-		Pattern p = Pattern.compile("[A-Z][a-zéèòùì]*([ ][A-Z][a-zéèòùì]*)*");
+		Pattern p = Pattern.compile("[A-Za-zéèòùì][A-Za-zéèòùì\']*([ ][A-Za-zéèòùì\'][A-Za-zéèòùì]*)*");
 		Matcher m = p.matcher(name);
         boolean t = m.matches();
         
@@ -139,6 +139,46 @@ public class Employee {
 		employeeObject.put("ID", this.getID().toString());
 		employeeObject.put("List_Attributes", this.getAttributes());
 		j_file.add(employeeObject);
+						
+		// write the json object to the file
+		try (FileWriter file = new FileWriter("./Employees.json")) {
+			file.write(j_file.toJSONString());
+			file.flush();
+			file.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void updateJsonEmployee() {
+		// read the json file
+		JSONParser parser = new JSONParser();
+		JSONArray j_file = new JSONArray();
+		
+		File myfile = new File("Employees.json");
+		try {
+			myfile.createNewFile();
+		} catch (IOException e2) {
+			e2.printStackTrace();
+		}
+		
+		try {
+			j_file = (JSONArray) parser.parse(new FileReader("./Employees.json"));
+						
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		} catch (ParseException e) {
+		}		
+		
+		JSONObject employeeObject = new JSONObject();
+		employeeObject.put("ID", this.getID().toString());
+		employeeObject.put("List_Attributes", this.getAttributes());
+		
+		//update employee
+		j_file.set(this.ID, employeeObject);
 						
 		// write the json object to the file
 		try (FileWriter file = new FileWriter("./Employees.json")) {

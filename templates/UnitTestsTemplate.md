@@ -1,10 +1,10 @@
 # Unit Testing Documentation template
 
-Authors: Salvatore Di Martino S267553
+Authors: Francesco Dibitonto s265421 Federico Silvio Gorrino s262948 Salvatore Di Martino s267553
 
-Date:
+Date: 19/05/2019
 
-Version:
+Version: 1.0
 
 # Contents
 
@@ -23,9 +23,6 @@ Version:
 
 # Black Box Unit Tests
 
-    <Define here criteria, predicates and the combination of predicates for each function of each class.
-    Define test cases to cover all equivalence classes and boundary conditions.
-    In the table, report the description of the black box test case and the correspondence with the JUnit black box test case name/number>
 
 ## **Class *Beverage***
 
@@ -648,7 +645,7 @@ Version:
 **Combination of predicates**:
 
 | ExistanceOfBeverage | Number Of Capsules |  Valid / Invalid | Description of the test case | JUnit test case |
-|-------|-------|-------|-------|---------|---------|
+|-------|-------|-------|-------|---------|
 | The beverage is cointained in the Map | 0 to NumberOfAvailableCapsules |  Valid   | sellCapsulesToVisitor() | it.polito.latazza.DataImplTest.testSellCapsulesToVisitor |
 | The beverage is cointained in the Map | more than NumberOfAvailabaleCapsules  |  Invalid  | sellCapsulesToVisitor() -> NotEnoughCapsules() | it.polito.latazza.DataImplTest.testSellCapsulesToVisitor |
 | The beverage is not cointained in the Map or null | 0 to NumberOfAvailablecapsules | Invalid | sellCapsulesToVisitor() -> BeverageException() | it.polito.latazza.DataImplTest.testSellCapsulesToVisitor |
@@ -963,12 +960,16 @@ Version:
 |it.polito.latazza.DataImpl.getEmployeesId|it.polito.latazza.DataImplWhite.testGetEmployeesId|
 |it.polito.latazza.DataImpl.getEmployees|it.polito.latazza.DataImplWhite.testGetEmployees|
 |it.polito.latazza.DataImpl.getBalance|it.polito.latazza.DataImplWhite.testGetBalance|
+|it.polito.latazza.DataImpl.loadLaTazzaAccount|it.polito.latazza.DataImplWhite.testLoad|
+|it.polito.latazza.DataImpl.loadTransactions|it.polito.latazza.DataImplWhite.testLoad|
+|it.polito.latazza.DataImpl.loadBeverages|it.polito.latazza.DataImplWhite.testLoad|
+|it.polito.latazza.DataImpl.loadEmployees|it.polito.latazza.DataImplWhite.testLoad|
 
 ### Code coverage report
 
-    <Add here the screenshot report of the code and branch coverage obtained using
-    the Jacoco tool. >
-
+   
+   ![Jacoco](templates/jacocotest.png "") 
+    
 
 ### Loop coverage analysis
 
