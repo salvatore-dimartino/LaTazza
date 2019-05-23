@@ -111,6 +111,7 @@ public class DataImpl implements DataInterface {
 			if(fromAccount == true) {
 				P_account.addTransaction(consumption);
 				P_account.setBalance(P_account.getBalance()-numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
+				employee.updateJsonEmployee();
 			}
 			
 			Transactions.put(TID, consumption);
@@ -198,6 +199,7 @@ public class DataImpl implements DataInterface {
 					e.printStackTrace();
 				}
 				account.toJsonLaTazzaAccount();
+				employee.updateJsonEmployee();
 				
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
