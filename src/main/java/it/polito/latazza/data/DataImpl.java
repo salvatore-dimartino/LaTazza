@@ -192,9 +192,6 @@ public class DataImpl implements DataInterface {
 				P_account.addTransaction(recharge);
 				P_account.setBalance(P_account.getBalance()+amountInCents);
 				
-				//update employee json object
-				Employees.get(id).updateJsonEmployee();
-				
 				try {
 					account.setTotal(account.getTotal()+amountInCents);
 				} catch (NotEnoughBalance e) {
