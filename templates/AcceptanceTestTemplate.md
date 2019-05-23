@@ -173,19 +173,19 @@ In the API Tests column, report the name of the method of the API Test JUnit cla
 
 | Scenario ID | Functional Requirements covered | API Test(s) | GUI Test(s) |
 | ----------- | ------------------------------- | ----------- | ----------- |
-| 1           | FR1                             |             |             |
-| 2           | FR1                             |             |             |
-| 3           | FR1                             |             |             |
-| 4           | FR1                             |             |             |
-| 5           | FR2                             |             |             |
-| 6           | FR3                             |             |             |
-| 7           | FR4                             |             |             |
-| 8           | FR5                             |             |             |
-| 9           | FR6                             |             |             |
-| 10          | FR7                             |             |             |
-| 11          | FR7                             |             |             |
-| 12          | FR8                             |             |             |
-| 13          | FR8                             |             |             |
+| 1           | FR1                             |             |    test1    |
+| 2           | FR1                             |             |    test2    |
+| 3           | FR1                             |             |    test3    |
+| 4           | FR1                             |             |    test4    |
+| 5           | FR2                             |             |    test5    |
+| 6           | FR3                             |             |    test6    |
+| 7           | FR4                             |             |    test7    |
+| 8           | FR5                             |             |    test8    |
+| 9           | FR6                             |             |    test9    |
+| 10          | FR7                             |             |    test10   |
+| 11          | FR7                             |             |    test11   |
+| 12          | FR8                             |             |    test12   |
+| 13          | FR8                             |             |    test13   |
 
 
 
