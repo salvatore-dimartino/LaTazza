@@ -81,7 +81,9 @@ public class DataImplWhite extends junit.framework.TestCase {
         data1.reset();
         try{
             assertThrows(BeverageException.class, () -> data1.buyBoxes(0,2));
+            assertThrows(BeverageException.class, () -> data1.buyBoxes(0,-2));
             data1.createBeverage("Caffe",10,100);
+            assertThrows(BeverageException.class, () -> data1.buyBoxes(0,-2));
             assertThrows(NotEnoughBalance.class, () -> data1.buyBoxes(0,2));
             data1.createEmployee("Nino", "Geppetto");
             data1.rechargeAccount(0,1000);
@@ -106,6 +108,8 @@ public class DataImplWhite extends junit.framework.TestCase {
             data1.rechargeAccount(0,1000);
             assertEquals(data1.getEmployeeReport(0,start,end).size(), 1);
             data1.rechargeAccount(0,1000);
+            assertTrue(data1.getEmployeeReport(0,start,start).size()==0);
+            assertTrue(data1.getEmployeeReport(0,end,end).size()==0);
             assertTrue(data1.getEmployeeReport(0,start,end).size()==2);
         } catch(Exception e){
             fail();
@@ -126,6 +130,8 @@ public class DataImplWhite extends junit.framework.TestCase {
             data1.rechargeAccount(0,1000);
             assertEquals(data1.getReport(start,end).size(), 1);
             data1.rechargeAccount(0,1000);
+            assertTrue(data1.getReport(start,start).size()==0);
+            assertTrue(data1.getReport(end,end).size()==0);
             assertTrue(data1.getReport(start,end).size()==2);
         } catch(Exception e){
             fail();
@@ -137,6 +143,13 @@ public class DataImplWhite extends junit.framework.TestCase {
         data1.reset();
         try{
             assertThrows(BeverageException.class, () -> data1.createBeverage(null,10,100));
+            assertThrows(BeverageException.class, () -> data1.createBeverage(null,-10,100));
+            assertThrows(BeverageException.class, () -> data1.createBeverage(null,10,-100));
+            assertThrows(BeverageException.class, () -> data1.createBeverage(null,-10,-100));
+            assertThrows(BeverageException.class, () -> data1.createBeverage("Caffe",-10,100));
+            assertThrows(BeverageException.class, () -> data1.createBeverage("Caffe",10,-100));
+            assertThrows(BeverageException.class, () -> data1.createBeverage("Caffe",-10,-100));
+            assertThrows(BeverageException.class, () -> data1.createBeverage("Caff3",10,100));
             data1.createBeverage("Caffe",10,100);
         } catch (Exception e) {
             fail();
@@ -149,6 +162,7 @@ public class DataImplWhite extends junit.framework.TestCase {
         try{
             assertThrows(BeverageException.class, () -> data1.updateBeverage(0,"Caffe",10,100));
             data1.createBeverage("Caffe",10,100);
+            assertThrows(BeverageException.class, () -> data1.updateBeverage(0,"Caff3",10,100));
             data1.updateBeverage(0,"The",5,50);
         } catch (Exception e) {
             fail();
@@ -238,6 +252,9 @@ public class DataImplWhite extends junit.framework.TestCase {
             assertThrows(EmployeeException.class, () -> data1.createEmployee(null,"Caldarone"));
             assertThrows(EmployeeException.class, () -> data1.createEmployee("Massimo",null));
             data1.createEmployee("Fausto","Repetto");
+            assertThrows(EmployeeException.class, () -> data1.createEmployee("Massim0","Caldarone"));
+            assertThrows(EmployeeException.class, () -> data1.createEmployee("Massimo","Caldaron3"));
+            assertThrows(EmployeeException.class, () -> data1.createEmployee("Massim0","Caldaron3"));
         } catch (EmployeeException e) {
             fail();
         }
@@ -250,6 +267,9 @@ public class DataImplWhite extends junit.framework.TestCase {
             assertThrows(EmployeeException.class, () -> data1.updateEmployee(0,"Massimo","Caldarone"));
             data1.createEmployee("Fausto","Repetto");
             data1.updateEmployee(0,"Massimo","Priano");
+            assertThrows(EmployeeException.class, () -> data1.updateEmployee(0,"Massim0","Caldarone"));
+            assertThrows(EmployeeException.class, () -> data1.updateEmployee(0,"Massimo","Caldaron3"));
+            assertThrows(EmployeeException.class, () -> data1.updateEmployee(0,"Massim0","Caldaron3"));
         } catch (EmployeeException e) {
             fail();
         }
