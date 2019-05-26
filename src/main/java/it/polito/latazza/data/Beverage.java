@@ -142,16 +142,13 @@ public class Beverage {
 		try {
 			myfile.createNewFile();
 		} catch (IOException e2) {
-			e2.printStackTrace();
 		}
 		
 		try {
 			j_file = (JSONArray) parser.parse(new FileReader("./Beverages.json"));
 						
 		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
 		} catch (IOException e1) {
-			e1.printStackTrace();
 		} catch (ParseException e) {
 		}		
 		
@@ -179,7 +176,6 @@ public class Beverage {
 		try {
 			myfile.createNewFile();
 		} catch (IOException e2) {
-			e2.printStackTrace();
 		}
 				
 		try {
