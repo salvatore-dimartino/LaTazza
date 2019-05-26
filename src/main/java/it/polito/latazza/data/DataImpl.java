@@ -54,13 +54,11 @@ public class DataImpl implements DataInterface {
 			try {
 				account = loadLaTazzaAccount();
 			} catch (NotEnoughBalance e) {
-				e.printStackTrace();
 			}
 		} else
 			try {
 				account = new LaTazzaAccount(0);
 			} catch (NotEnoughBalance e) {
-				e.printStackTrace();
 			}
 	}
 
@@ -93,7 +91,6 @@ public class DataImpl implements DataInterface {
 			try {
 				account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
 			} catch (NotEnoughBalance e) {
-				e.printStackTrace();
 			}
 		
 		// update the transactions
@@ -117,8 +114,6 @@ public class DataImpl implements DataInterface {
 			Transactions.put(TID, consumption);
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		
 		
@@ -144,7 +139,6 @@ public class DataImpl implements DataInterface {
 		try {
 			account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
 		} catch (NotEnoughBalance e) {
-			e.printStackTrace();
 		}
 		
 		// update the transactions
@@ -159,8 +153,6 @@ public class DataImpl implements DataInterface {
 			
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		
 	}
@@ -195,7 +187,6 @@ public class DataImpl implements DataInterface {
 				try {
 					account.setTotal(account.getTotal()+amountInCents);
 				} catch (NotEnoughBalance e) {
-					e.printStackTrace();
 				}
 				account.toJsonLaTazzaAccount();
 				employee.updateJsonEmployee();
@@ -236,8 +227,6 @@ public class DataImpl implements DataInterface {
 			
 			boxpurchase.toJsonTransaction();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		
 		// update the availability
@@ -465,8 +454,6 @@ public class DataImpl implements DataInterface {
 			new FileWriter("./Transactions.json").close();
 			new FileWriter("./LaTazzaAccount.json").close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 				
 	}
@@ -572,9 +559,7 @@ public class DataImpl implements DataInterface {
 					b = new Beverage(Integer.parseInt(ID), name, Integer.parseInt(price), Integer.parseInt(qtyBox), Integer.parseInt(availQty));
 					beverages.put(beverages.size(), b);
 				} catch (NumberFormatException e) {
-					e.printStackTrace();
 				} catch (BeverageException e) {
-					e.printStackTrace();
 				}
 		        
 			});
@@ -666,7 +651,6 @@ public class DataImpl implements DataInterface {
 					
 				//} catch (java.text.ParseException e) {
 				}   catch (Exception e) {
-					e.printStackTrace();
 				}	
 				
 			});
