@@ -166,7 +166,6 @@ public class Beverage {
 			file.flush();
 			file.close();
 		} catch (IOException e) {
-			e.printStackTrace();
 		}	
 	}
 	
@@ -187,9 +186,7 @@ public class Beverage {
 			j_file = (JSONArray) parser.parse(new FileReader("./Beverages.json"));
 								
 		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
 		} catch (IOException e1) {
-			e1.printStackTrace();
 		} catch (ParseException e) {
 		}	
 		
@@ -206,7 +203,6 @@ public class Beverage {
 					file.flush();
 					file.close();
 				} catch (IOException e) {
-					e.printStackTrace();
 				}
 		
 	}
