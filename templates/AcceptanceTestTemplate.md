@@ -16,10 +16,6 @@ Version: 1.0
 
 # Scenarios
 
-```
-<Define here additional scenarios for the application. The two original scenarios in the Requirements Document are reported here.>
-```
-
 | Scenario ID: SC1 | Corresponds to UC1                             |
 | ---------------- | ---------------------------------------------- |
 | Description      | Colleague uses one capsule of type 1           |
@@ -164,11 +160,6 @@ Version: 1.0
 
 # Coverage of Scenarios
 
-```
-<Report in the following table the coverage of the scenarios listed above. Report at least an API test (defined on the functions of DataImpl only) and a GUI test (created with EyeAutomate) for each of the scenarios. For each scenario, report the functional requirements it covers.
-In the API Tests column, report the name of the method of the API Test JUnit class you created. In the GUI Test column, report the name of the .txt file with the test case you created.>
-```
-
 ### 
 
 | Scenario ID | Functional Requirements covered | API Test(s) | GUI Test(s) |
@@ -191,24 +182,30 @@ In the API Tests column, report the name of the method of the API Test JUnit cla
 
 # Coverage of Non Functional Requirements
 
-```
-<Report in the following table the coverage of the Non Functional Requirements of the application - only those that can be tested with automated testing frameworks.>
-```
-
 ### 
 
 | Non Functional Requirement | Test name |
 | -------------------------- | --------- |
-| NFR2 Scenario1 |it.polito.latazza.NFR2.Scenario1|
-| NFR2 Scenario2 |it.polito.latazza.NFR2.Scenario2|
-| NFR2 Scenario3 |it.polito.latazza.NFR2.Scenario3|
-| NFR2 Scenario4 |it.polito.latazza.NFR2.Scenario4|
-| NFR2 Scenario5 |it.polito.latazza.NFR2.Scenario5|
-| NFR2 Scenario6 |it.polito.latazza.NFR2.Scenario6|
-| NFR2 Scenario7 |it.polito.latazza.NFR2.Scenario7|
-| NFR2 Scenario8 |it.polito.latazza.NFR2.Scenario8|
-| NFR2 Scenario9 |it.polito.latazza.NFR2.Scenario9|
-| NFR2 Scenario10 |it.polito.latazza.NFR2.Scenario10|
-| NFR2 Scenario11 |it.polito.latazza.NFR2.Scenario11|
-| NFR2 Scenario12 |it.polito.latazza.NFR2.Scenario12|
-| NFR2 Scenario13 |it.polito.latazza.NFR2.Scenario13|
+| NFR2 |it.polito.latazza.NFR2.TimeBuyBoxes|
+| NFR2 |it.polito.latazza.NFR2.TimeCreateBeverage|
+| NFR2 |it.polito.latazza.NFR2.TimeCreateEmployee|
+| NFR2 |it.polito.latazza.NFR2.TimeGetBalance|
+| NFR2 |it.polito.latazza.NFR2.TimeGetBeverageBoxPrice|
+| NFR2 |it.polito.latazza.NFR2.TimeGetBeverageCapsules|
+| NFR2 |it.polito.latazza.NFR2.TimeGetBeverageCapsulesPerBox|
+| NFR2 |it.polito.latazza.NFR2.TimeGetBeverageName|
+| NFR2 |it.polito.latazza.NFR2.TimeGetBeverages|
+| NFR2 |it.polito.latazza.NFR2.TimeGetBeveragesId|
+| NFR2 |it.polito.latazza.NFR2.TimeGetEmployeeBalance|
+| NFR2 |it.polito.latazza.NFR2.TimeGetEmployeeName|
+| NFR2 |it.polito.latazza.NFR2.TimeGetEmployeeReport|
+| NFR2 |it.polito.latazza.NFR2.TimeGetEmployees|
+| NFR2 |it.polito.latazza.NFR2.TimeGetEmployeesId|
+| NFR2 |it.polito.latazza.NFR2.TimeGetEmployeeSurname|
+| NFR2 |it.polito.latazza.NFR2.TimeGetReport|
+| NFR2 |it.polito.latazza.NFR2.TimeLoad|
+| NFR2 |it.polito.latazza.NFR2.TimeRechargeAccount|
+| NFR2 |it.polito.latazza.NFR2.TimeSellCapsules|
+| NFR2 |it.polito.latazza.NFR2.TimeSellCapsulesToVisitor|
+| NFR2 |it.polito.latazza.NFR2.TimeUpdateBeverage|
+| NFR2 |it.polito.latazza.NFR2.TimeUpdateEmployee|
