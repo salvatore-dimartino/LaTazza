@@ -1,15 +1,7 @@
 package it.polito.latazza.data;
 
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import it.polito.latazza.exceptions.BeverageException;
-import it.polito.latazza.exceptions.DateException;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import java.sql.Date;
-import java.util.List;
-
 import it.polito.latazza.exceptions.EmployeeException;
 import it.polito.latazza.exceptions.NotEnoughBalance;
 import it.polito.latazza.exceptions.NotEnoughCapsules;
@@ -22,9 +14,8 @@ public class NFR2Test extends junit.framework.TestCase{
 	long totalTime;
 	
 	@Test
-	public void TimeTest() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+	public void Scenario1() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
 		api=new APITest();
-		//1
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
 			api.Scenario1();
@@ -33,7 +24,11 @@ public class NFR2Test extends junit.framework.TestCase{
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
 		System.out.println("1-Ok:"+totalTime);
-		//2
+	}
+		
+	@Test
+	public void Scenario2() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		api=new APITest();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
 			api.Scenario2();
@@ -42,7 +37,11 @@ public class NFR2Test extends junit.framework.TestCase{
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
 		System.out.println("2-Ok:"+totalTime);
-		//3
+	}
+	
+	@Test
+	public void Scenario3() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		api=new APITest();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
 			api.Scenario3();
@@ -51,7 +50,11 @@ public class NFR2Test extends junit.framework.TestCase{
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
 		System.out.println("3-Ok:"+totalTime);
-		//4
+	}
+	
+	@Test
+	public void Scenario4() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		api=new APITest();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
 			api.Scenario4();
@@ -60,7 +63,11 @@ public class NFR2Test extends junit.framework.TestCase{
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
 		System.out.println("4-Ok:"+totalTime);
-		//5
+	}
+	
+	@Test
+	public void Scenario5() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		api=new APITest();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
 			api.Scenario5();
@@ -69,7 +76,11 @@ public class NFR2Test extends junit.framework.TestCase{
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
 		System.out.println("5-Ok:"+totalTime);
-		//6
+	}
+	
+	@Test
+	public void Scenario6() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		api=new APITest();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
 			api.Scenario6();
@@ -78,7 +89,11 @@ public class NFR2Test extends junit.framework.TestCase{
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
 		System.out.println("6-Ok:"+totalTime);
-		//7
+	}
+	
+	@Test
+	public void Scenario7() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		api=new APITest();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
 			api.Scenario7();
@@ -87,7 +102,11 @@ public class NFR2Test extends junit.framework.TestCase{
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
 		System.out.println("7-Ok:"+totalTime);
-		//8
+	}
+	
+	@Test
+	public void Scenario8() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		api=new APITest();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
 			api.Scenario8();
@@ -96,7 +115,11 @@ public class NFR2Test extends junit.framework.TestCase{
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
 		System.out.println("8-Ok:"+totalTime);
-		//9
+	}
+	
+	@Test
+	public void Scenario9() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		api=new APITest();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
 			api.Scenario9();
@@ -105,7 +128,11 @@ public class NFR2Test extends junit.framework.TestCase{
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
 		System.out.println("9-Ok:"+totalTime);
-		//10
+	}
+	
+	@Test
+	public void Scenario10() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		api=new APITest();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
 			api.Scenario10();
@@ -114,7 +141,11 @@ public class NFR2Test extends junit.framework.TestCase{
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
 		System.out.println("10-Ok:"+totalTime);
-		//11
+	}
+	
+	@Test
+	public void Scenario11() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		api=new APITest();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
 			api.Scenario11();
@@ -123,7 +154,11 @@ public class NFR2Test extends junit.framework.TestCase{
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
 		System.out.println("11-Ok:"+totalTime);
-		//12
+	}
+	
+	@Test
+	public void Scenario12() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		api=new APITest();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
 			api.Scenario12();
@@ -132,7 +167,11 @@ public class NFR2Test extends junit.framework.TestCase{
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
 		System.out.println("12-Ok:"+totalTime);
-		//13
+	}
+	
+	@Test
+	public void Scenario13() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		api=new APITest();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
 			api.Scenario13();
