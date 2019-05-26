@@ -192,8 +192,6 @@ public class DataImpl implements DataInterface {
 				employee.updateJsonEmployee();
 				
 			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
 			}
 			
 				return P_account.getBalance();
@@ -445,7 +443,6 @@ public class DataImpl implements DataInterface {
 		try {
 			account.setTotal(0);
 		} catch (NotEnoughBalance e1) {
-			e1.printStackTrace();
 		}
 		
 		try {
@@ -500,9 +497,7 @@ public class DataImpl implements DataInterface {
 					e.setPersonalaccount(account);
 				    employees.put(employees.size(), e);
 				} catch (NumberFormatException e1) {
-					e1.printStackTrace();
 				} catch (EmployeeException e1) {
-					e1.printStackTrace();
 				} catch (NotEnoughBalance ne) {
 					
 				}
@@ -510,9 +505,7 @@ public class DataImpl implements DataInterface {
 			});
 						
 		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
 		} catch (IOException e1) {
-			e1.printStackTrace();
 		} catch (ParseException e) {
 		}
 		
@@ -565,9 +558,7 @@ public class DataImpl implements DataInterface {
 			});
 						
 		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
 		} catch (IOException e1) {
-			e1.printStackTrace();
 		} catch (ParseException e) {
 		}
 		
@@ -656,9 +647,7 @@ public class DataImpl implements DataInterface {
 			});
 						
 		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
 		} catch (IOException e1) {
-			e1.printStackTrace();
 		} catch (ParseException e) {
 			
 			
@@ -682,9 +671,7 @@ public class DataImpl implements DataInterface {
 			balance = Integer.parseInt((String) j_account.get("Balance"));
 						
 		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
 		} catch (IOException e1) {
-			e1.printStackTrace();
 		} catch (ParseException e) {
 		}
 		
