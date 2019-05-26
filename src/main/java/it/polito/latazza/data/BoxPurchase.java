@@ -81,9 +81,7 @@ public class BoxPurchase extends Transaction {
 			j_file = (JSONArray) parser.parse(new FileReader("./Transactions.json"));
 						
 		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
 		} catch (IOException e1) {
-			e1.printStackTrace();
 		} catch (ParseException e) {
 		}	
 		
@@ -99,7 +97,6 @@ public class BoxPurchase extends Transaction {
 			file.flush();
 			file.close();
 		} catch (IOException e) {
-			e.printStackTrace();
 	    }
 
 	}
