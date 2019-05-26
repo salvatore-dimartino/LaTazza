@@ -173,19 +173,19 @@ In the API Tests column, report the name of the method of the API Test JUnit cla
 
 | Scenario ID | Functional Requirements covered | API Test(s) | GUI Test(s) |
 | ----------- | ------------------------------- | ----------- | ----------- |
-| 1           | FR1                             |             |    test1    |
-| 2           | FR1                             |             |    test2    |
-| 3           | FR1                             |             |    test3    |
-| 4           | FR1                             |             |    test4    |
-| 5           | FR2                             |             |    test5    |
-| 6           | FR3                             |             |    test6    |
-| 7           | FR4                             |             |    test7    |
-| 8           | FR5                             |             |    test8    |
-| 9           | FR6                             |             |    test9    |
-| 10          | FR7                             |             |    test10   |
-| 11          | FR7                             |             |    test11   |
-| 12          | FR8                             |             |    test12   |
-| 13          | FR8                             |             |    test13   |
+| 1           | FR1                             |it.polito.latazza.APITest.Scenario1|    test1    |
+| 2           | FR1                             |it.polito.latazza.APITest.Scenario2|    test2    |
+| 3           | FR1                             |it.polito.latazza.APITest.Scenario3|    test3    |
+| 4           | FR1                             |it.polito.latazza.APITest.Scenario4|    test4    |
+| 5           | FR2                             |it.polito.latazza.APITest.Scenario5|    test5    |
+| 6           | FR3                             |it.polito.latazza.APITest.Scenario6|    test6    |
+| 7           | FR4                             |it.polito.latazza.APITest.Scenario7|    test7    |
+| 8           | FR5                             |it.polito.latazza.APITest.Scenario8|    test8    |
+| 9           | FR6                             |it.polito.latazza.APITest.Scenario9|    test9    |
+| 10          | FR7                             |it.polito.latazza.APITest.Scenario10|    test10   |
+| 11          | FR7                             |it.polito.latazza.APITest.Scenario11|    test11   |
+| 12          | FR8                             |it.polito.latazza.APITest.Scenario12|    test12   |
+| 13          | FR8                             |it.polito.latazza.APITest.Scenario13|    test13   |
 
 
 
@@ -199,5 +199,16 @@ In the API Tests column, report the name of the method of the API Test JUnit cla
 
 | Non Functional Requirement | Test name |
 | -------------------------- | --------- |
-| NFR2                       |           |
-
+| NFR2 Scenario1 |it.polito.latazza.NFR2.Scenario1|
+| NFR2 Scenario2 |it.polito.latazza.NFR2.Scenario2|
+| NFR2 Scenario3 |it.polito.latazza.NFR2.Scenario3|
+| NFR2 Scenario4 |it.polito.latazza.NFR2.Scenario4|
+| NFR2 Scenario5 |it.polito.latazza.NFR2.Scenario5|
+| NFR2 Scenario6 |it.polito.latazza.NFR2.Scenario6|
+| NFR2 Scenario7 |it.polito.latazza.NFR2.Scenario7|
+| NFR2 Scenario8 |it.polito.latazza.NFR2.Scenario8|
+| NFR2 Scenario9 |it.polito.latazza.NFR2.Scenario9|
+| NFR2 Scenario10 |it.polito.latazza.NFR2.Scenario10|
+| NFR2 Scenario11 |it.polito.latazza.NFR2.Scenario11|
+| NFR2 Scenario12 |it.polito.latazza.NFR2.Scenario12|
+| NFR2 Scenario13 |it.polito.latazza.NFR2.Scenario13|
