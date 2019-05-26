@@ -18,10 +18,7 @@ public class PersonalAccount {
 	}
 	
 	public void setBalance(Integer balance) throws NotEnoughBalance {
-		if(balance >= 0)
-			this.balance=balance;
-		else
-		throw new NotEnoughBalance();
+		this.balance=balance;
 	}
 	
 	public Map<Integer,Transaction> getTransactions(){
