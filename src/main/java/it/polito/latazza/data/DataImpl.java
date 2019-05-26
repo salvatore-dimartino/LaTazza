@@ -101,12 +101,11 @@ public class DataImpl implements DataInterface {
 		try {
 			consumption = new Consumption(TID, new Date(), numberOfCapsules, Beverages.get(beverageId), Employees.get(employeeId), payMode);
 			Transactions.put(TID, consumption);
-			
+			P_account.addTransaction(consumption);
 			consumption.toJsonTransaction();
 			
 			// update personal account
 			if(fromAccount == true) {
-				P_account.addTransaction(consumption);
 				P_account.setBalance(P_account.getBalance()-numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
 				employee.updateJsonEmployee();
 			}
@@ -677,6 +676,4 @@ public class DataImpl implements DataInterface {
 		
 		return new LaTazzaAccount(balance);
 	}
-}	
-
-
+}
