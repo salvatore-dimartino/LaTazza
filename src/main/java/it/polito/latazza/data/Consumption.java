@@ -117,9 +117,7 @@ public class Consumption extends Transaction {
 			j_file = (JSONArray) parser.parse(new FileReader("./Transactions.json"));
 						
 		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
 		} catch (IOException e1) {
-			e1.printStackTrace();
 		} catch (ParseException e) {
 		}	
 		
@@ -135,7 +133,6 @@ public class Consumption extends Transaction {
 			file.flush();
 			file.close(); 
 		} catch (IOException e) {
-			e.printStackTrace();
 	    }
 
 	}
