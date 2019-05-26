@@ -7,7 +7,6 @@ import it.polito.latazza.exceptions.DateException;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.beans.Transient;
 import java.sql.Date;
 
 import it.polito.latazza.exceptions.EmployeeException;
@@ -107,10 +106,13 @@ public class DataImplWhite extends junit.framework.TestCase {
             assertTrue(data1.getEmployeeReport(0,start,end).size()==0);
             data1.rechargeAccount(0,1000);
             assertEquals(data1.getEmployeeReport(0,start,end).size(), 1);
-            data1.rechargeAccount(0,1000);
+            data1.createBeverage("Caffe",10,100);
+            data1.buyBoxes(0,10);
+            data1.sellCapsules(0, 0, 10, true);
+            data1.sellCapsules(0, 0, 10, false);
             assertTrue(data1.getEmployeeReport(0,start,start).size()==0);
             assertTrue(data1.getEmployeeReport(0,end,end).size()==0);
-            assertTrue(data1.getEmployeeReport(0,start,end).size()==2);
+            assertTrue(data1.getEmployeeReport(0,start,end).size()==3);
         } catch(Exception e){
             fail();
         }
@@ -129,10 +131,14 @@ public class DataImplWhite extends junit.framework.TestCase {
             assertTrue(data1.getReport(start,end).size()==0);
             data1.rechargeAccount(0,1000);
             assertEquals(data1.getReport(start,end).size(), 1);
-            data1.rechargeAccount(0,1000);
+            data1.createBeverage("Caffe",10,100);
+            data1.buyBoxes(0,10);
+            data1.sellCapsules(0, 0, 10, true);
+            data1.sellCapsules(0, 0, 10, false);
+            data1.sellCapsulesToVisitor(0, 10);
             assertTrue(data1.getReport(start,start).size()==0);
             assertTrue(data1.getReport(end,end).size()==0);
-            assertTrue(data1.getReport(start,end).size()==2);
+            assertTrue(data1.getReport(start,end).size()==5);
         } catch(Exception e){
             fail();
         }
