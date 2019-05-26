@@ -2,183 +2,291 @@ package it.polito.latazza.data;
 
 import org.junit.jupiter.api.Test;
 import it.polito.latazza.exceptions.BeverageException;
+import it.polito.latazza.exceptions.DateException;
 import it.polito.latazza.exceptions.EmployeeException;
 import it.polito.latazza.exceptions.NotEnoughBalance;
 import it.polito.latazza.exceptions.NotEnoughCapsules;
 
 public class NFR2Test extends junit.framework.TestCase{
 	
-	APITest api;
+	DataImplWhite data;
 	long begin;
 	long end;
 	long totalTime;
 	
 	@Test
-	public void Scenario1() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
-		api=new APITest();
+	public void TimeBuyBoxes() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		data=new DataImplWhite();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
-			api.Scenario1();
+			data.testBuyBoxes();
 		}
 		end=System.currentTimeMillis();
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
-		System.out.println("1-Ok:"+totalTime);
-	}
-		
-	@Test
-	public void Scenario2() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
-		api=new APITest();
-		begin=System.currentTimeMillis();
-		for(int i=0; i<100; i++) {
-			api.Scenario2();
-		}
-		end=System.currentTimeMillis();
-		totalTime=(end-begin)/100;
-		assertTrue(totalTime<500);
-		System.out.println("2-Ok:"+totalTime);
 	}
 	
 	@Test
-	public void Scenario3() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
-		api=new APITest();
+	public void TimeCreateBeverage() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		data=new DataImplWhite();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
-			api.Scenario3();
+			data.testCreateBeverage();
 		}
 		end=System.currentTimeMillis();
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
-		System.out.println("3-Ok:"+totalTime);
 	}
 	
 	@Test
-	public void Scenario4() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
-		api=new APITest();
+	public void TimeCreateEmployee() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		data=new DataImplWhite();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
-			api.Scenario4();
+			data.testCreateEmployee();
 		}
 		end=System.currentTimeMillis();
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
-		System.out.println("4-Ok:"+totalTime);
 	}
 	
 	@Test
-	public void Scenario5() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
-		api=new APITest();
+	public void TimeGetBalance() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		data=new DataImplWhite();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
-			api.Scenario5();
+			data.testGetBalance();
 		}
 		end=System.currentTimeMillis();
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
-		System.out.println("5-Ok:"+totalTime);
 	}
 	
 	@Test
-	public void Scenario6() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
-		api=new APITest();
+	public void TimeGetBeverageBoxPrice() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		data=new DataImplWhite();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
-			api.Scenario6();
+			data.testGetBeverageBoxPrice();
 		}
 		end=System.currentTimeMillis();
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
-		System.out.println("6-Ok:"+totalTime);
 	}
 	
 	@Test
-	public void Scenario7() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
-		api=new APITest();
+	public void TimeGetBeverageCapsules() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		data=new DataImplWhite();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
-			api.Scenario7();
+			data.testGetBeverageCapsules();
 		}
 		end=System.currentTimeMillis();
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
-		System.out.println("7-Ok:"+totalTime);
 	}
 	
 	@Test
-	public void Scenario8() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
-		api=new APITest();
+	public void TimeGetBeverageCapsulesPerBox() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		data=new DataImplWhite();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
-			api.Scenario8();
+			data.testGetBeverageCapsulesPerBox();
 		}
 		end=System.currentTimeMillis();
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
-		System.out.println("8-Ok:"+totalTime);
 	}
 	
 	@Test
-	public void Scenario9() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
-		api=new APITest();
+	public void TimeGetBeverageName() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		data=new DataImplWhite();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
-			api.Scenario9();
+			data.testGetBeverageName();
 		}
 		end=System.currentTimeMillis();
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
-		System.out.println("9-Ok:"+totalTime);
 	}
 	
 	@Test
-	public void Scenario10() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
-		api=new APITest();
+	public void TimeGetBeverages() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		data=new DataImplWhite();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
-			api.Scenario10();
+			data.testGetBeverages();
 		}
 		end=System.currentTimeMillis();
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
-		System.out.println("10-Ok:"+totalTime);
 	}
 	
 	@Test
-	public void Scenario11() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
-		api=new APITest();
+	public void TimeGetBeveragesId() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		data=new DataImplWhite();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
-			api.Scenario11();
+			data.testGetBeveragesId();
 		}
 		end=System.currentTimeMillis();
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
-		System.out.println("11-Ok:"+totalTime);
 	}
 	
 	@Test
-	public void Scenario12() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
-		api=new APITest();
+	public void TimeGetEmployeeBalance() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		data=new DataImplWhite();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
-			api.Scenario12();
+			data.testGetEmployeeBalance();
 		}
 		end=System.currentTimeMillis();
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
-		System.out.println("12-Ok:"+totalTime);
 	}
 	
 	@Test
-	public void Scenario13() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
-		api=new APITest();
+	public void TimeGetEmployeeName() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		data=new DataImplWhite();
 		begin=System.currentTimeMillis();
 		for(int i=0; i<100; i++) {
-			api.Scenario13();
+			data.testGetEmployeeName();
 		}
 		end=System.currentTimeMillis();
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
-		System.out.println("13-Ok:"+totalTime);
+	}
+	
+	@Test
+	public void TimeGetEmployeeReport() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules, DateException {
+		data=new DataImplWhite();
+		begin=System.currentTimeMillis();
+		for(int i=0; i<100; i++) {
+			data.testGetEmployeeReport();
+		}
+		end=System.currentTimeMillis();
+		totalTime=(end-begin)/100;
+		assertTrue(totalTime<500);
+	}
+	
+	@Test
+	public void TimeGetEmployees() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		data=new DataImplWhite();
+		begin=System.currentTimeMillis();
+		for(int i=0; i<100; i++) {
+			data.testGetEmployees();
+		}
+		end=System.currentTimeMillis();
+		totalTime=(end-begin)/100;
+		assertTrue(totalTime<500);
+	}
+	
+	@Test
+	public void TimeGetEmployeesId() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		data=new DataImplWhite();
+		begin=System.currentTimeMillis();
+		for(int i=0; i<100; i++) {
+			data.testGetEmployeesId();
+		}
+		end=System.currentTimeMillis();
+		totalTime=(end-begin)/100;
+		assertTrue(totalTime<500);
+	}
+	
+	@Test
+	public void TimeGetEmployeeSurname() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		data=new DataImplWhite();
+		begin=System.currentTimeMillis();
+		for(int i=0; i<100; i++) {
+			data.testGetEmployeeSurname();
+		}
+		end=System.currentTimeMillis();
+		totalTime=(end-begin)/100;
+		assertTrue(totalTime<500);
+	}
+	
+	@Test
+	public void TimeGetReport() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules, DateException {
+		data=new DataImplWhite();
+		begin=System.currentTimeMillis();
+		for(int i=0; i<100; i++) {
+			data.testGetReport();
+		}
+		end=System.currentTimeMillis();
+		totalTime=(end-begin)/100;
+		assertTrue(totalTime<500);
+	}
+	
+	@Test
+	public void TimeLoad() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		data=new DataImplWhite();
+		begin=System.currentTimeMillis();
+		for(int i=0; i<100; i++) {
+			data.testLoad();
+		}
+		end=System.currentTimeMillis();
+		totalTime=(end-begin)/100;
+		assertTrue(totalTime<500);
+	}
+	
+	@Test
+	public void TimeRechargeAccount() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		data=new DataImplWhite();
+		begin=System.currentTimeMillis();
+		for(int i=0; i<100; i++) {
+			data.testRechargeAccount();
+		}
+		end=System.currentTimeMillis();
+		totalTime=(end-begin)/100;
+		assertTrue(totalTime<500);
+	}
+	
+	@Test
+	public void TimeSellCapsules() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		data=new DataImplWhite();
+		begin=System.currentTimeMillis();
+		for(int i=0; i<100; i++) {
+			data.testSellCapsules();
+		}
+		end=System.currentTimeMillis();
+		totalTime=(end-begin)/100;
+		assertTrue(totalTime<500);
+	}
+	
+	@Test
+	public void TimeSellCapsulesToVisitor() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules, DateException {
+		data=new DataImplWhite();
+		begin=System.currentTimeMillis();
+		for(int i=0; i<100; i++) {
+			data.testSellCapsulesToVisitor();
+		}
+		end=System.currentTimeMillis();
+		totalTime=(end-begin)/100;
+		assertTrue(totalTime<500);
+	}
+	
+	@Test
+	public void TimeUpdateBeverage() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		data=new DataImplWhite();
+		begin=System.currentTimeMillis();
+		for(int i=0; i<100; i++) {
+			data.testUpdateBeverage();
+		}
+		end=System.currentTimeMillis();
+		totalTime=(end-begin)/100;
+		assertTrue(totalTime<500);
+	}
+	
+	@Test
+	public void TimeUpdateEmployee() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
+		data=new DataImplWhite();
+		begin=System.currentTimeMillis();
+		for(int i=0; i<100; i++) {
+			data.testUpdateEmployee();
+		}
+		end=System.currentTimeMillis();
+		totalTime=(end-begin)/100;
+		assertTrue(totalTime<500);
 	}
 }
