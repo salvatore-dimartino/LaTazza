@@ -8,10 +8,10 @@ Version:
 
 # Contents
 
-- [Data from your LaTazza project](#scenarios)
+- [[Data from your LaTazza project]
 
-- [Estimate by product decomposition](#scenario-coverage)
-- [Estimate by activity decomposition ](#nfr-coverage)
+- [Estimate by product decomposition]
+- [Estimate by activity decomposition ]
 
 
 
@@ -51,5 +51,6 @@ Version:
 | | |
 
 
-###  <Insert here Gantt chart with above activities>
+###
+Insert here Gantt chart with above activities
 
