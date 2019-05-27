@@ -32,7 +32,7 @@ public class Beverage {
 		else
 			throw new BeverageException();
 		
-		Pattern p = Pattern.compile("[A-Z][a-zéèòùì]*([ ][A-Z][a-zéèòùì]*)*");
+		Pattern p = Pattern.compile("[A-Za-zéèòùì][A-Za-zéèòùì\']*([ ][A-Za-zéèòùì\'][A-Za-zéèòùì]*)*");
 		Matcher m = p.matcher(name);
 		boolean t = m.matches();
 		if(t) {
@@ -91,7 +91,7 @@ public class Beverage {
 
 	public void setName(String name) throws BeverageException {
 		
-		Pattern p = Pattern.compile("[A-Z][a-zéèòùì]*([ ][A-Z][a-zéèòùì]*)*");
+		Pattern p = Pattern.compile("[A-Za-zéèòùì][A-Za-zéèòùì\']*([ ][A-Za-zéèòùì\'][A-Za-zéèòùì]*)*");
 		Matcher m = p.matcher(name);
 		boolean t = m.matches();
 		if(t) {
@@ -142,16 +142,13 @@ public class Beverage {
 		try {
 			myfile.createNewFile();
 		} catch (IOException e2) {
-			e2.printStackTrace();
 		}
 		
 		try {
 			j_file = (JSONArray) parser.parse(new FileReader("./Beverages.json"));
 						
 		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
 		} catch (IOException e1) {
-			e1.printStackTrace();
 		} catch (ParseException e) {
 		}		
 		
@@ -166,7 +163,6 @@ public class Beverage {
 			file.flush();
 			file.close();
 		} catch (IOException e) {
-			e.printStackTrace();
 		}	
 	}
 	
@@ -180,16 +176,13 @@ public class Beverage {
 		try {
 			myfile.createNewFile();
 		} catch (IOException e2) {
-			e2.printStackTrace();
 		}
 				
 		try {
 			j_file = (JSONArray) parser.parse(new FileReader("./Beverages.json"));
 								
 		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
 		} catch (IOException e1) {
-			e1.printStackTrace();
 		} catch (ParseException e) {
 		}	
 		
@@ -206,7 +199,6 @@ public class Beverage {
 					file.flush();
 					file.close();
 				} catch (IOException e) {
-					e.printStackTrace();
 				}
 		
 	}

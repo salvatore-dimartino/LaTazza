@@ -73,17 +73,13 @@ public class BoxPurchase extends Transaction {
 		try {
 			myfile.createNewFile();
 		} catch (IOException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
 		}
 		
 		try {
 			j_file = (JSONArray) parser.parse(new FileReader("./Transactions.json"));
 						
 		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
 		} catch (IOException e1) {
-			e1.printStackTrace();
 		} catch (ParseException e) {
 		}	
 		
@@ -99,7 +95,6 @@ public class BoxPurchase extends Transaction {
 			file.flush();
 			file.close();
 		} catch (IOException e) {
-			e.printStackTrace();
 	    }
 
 	}

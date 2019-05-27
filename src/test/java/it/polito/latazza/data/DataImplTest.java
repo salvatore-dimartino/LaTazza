@@ -316,17 +316,18 @@ public class DataImplTest extends junit.framework.TestCase {
 		return;
 	}
 
+    // changed from void to int to overcome reference issues
 	@Test
-	public void testGetBeverageBoxPrice() {
+	public int testGetBeverageBoxPrice() {
 		// TODO Auto-generated method stub
-		return;
-	}
+		return 0;
+	} 
 
 	@Test
-	public void testGetBeveragesId() {
+	public int testGetBeveragesId() {
 		// TODO Auto-generated method stub
-		return;
-	}
+		return 0;
+	} 
 
 	@Test
 	public void testGetBeverages() {
