@@ -2,9 +2,9 @@
 
 Authors: Maurizio Morisio, Luca Ardito, Riccardo Coppola
 
-Date: 19/04/2019
+Date: 27/05/2019
 
-Version: 2
+Version: 3
 
 Change history
 
@@ -13,6 +13,7 @@ Change history
 | 2 | Fixed defect in [scenario 2](#scenario-2): precondition was wrong  |
 | | Fixed defect in scenario [format](#relevant-scenarios): added post conditions |
 | | Fixed defect in [use case 2](#use-cases): variants text canceled |
+| 3 | Fixed defect in [use case 3]: recharge only positive|
 
 # Contents
 - [Abstract](#abstract)
@@ -141,9 +142,9 @@ a -- (FR6 Produce report on all consumptions)
 
 | Actors Involved        | Administrator |
 | ------------- |:-------------:| 
-|  Precondition     | Account A exists |  
+|  Precondition     | Account A exists , quantity >0 |  
 |  Post condition     | A.amount_post > A.amount_pre |
-|  Nominal Scenario     | Administrator selects account A of colleague C, Increase account of a certain quantity|
+|  Nominal Scenario     | Administrator selects account A of colleague C, Increase account of  quantity|
 |  Variants     |  |
 
 ### Use case 4, UC4 - FR4 Record purchase of capsules
