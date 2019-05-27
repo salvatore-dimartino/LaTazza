@@ -8,15 +8,23 @@ Version:
 
 # Contents
 
-- [Scenarios](#scenarios)
+- [Data from your LaTazza project](#scenarios)
 
-- [Coverage of scenarios](#scenario-coverage)
-- [Coverage of non-functional requirements](#nfr-coverage)
+- [Estimate by product decomposition](#scenario-coverage)
+- [Estimate by activity decomposition ](#nfr-coverage)
 
 
 
 # Data from your LaTazza project
 
+###
+
+|         Total person days worked by your  team, considering period March 5 to April 26 (1 person day == 8 person hours)     |   |             
+| ----------- | ------------------------------- | 
+|Total Java LoC delivered on April 26 (only code, no Junit code) | |
+| Total number of Java classes delivered on April 26 (only code, no Junit code)| |
+| Productivity P =| |
+|Average size of Java class A = | |
 
 # Estimate by product decomposition
 
@@ -24,12 +32,12 @@ Version:
 
 ### 
 
-|             | Estimate                        |             | 
-| ----------- | ------------------------------- | ----------- | 
-| Estimated n classes   |                             |             | 
-| Estimated LOC per class        |                            |  Here use Average A computed above    |             
-| Estimated effort  (person days) |                                 |  Here use productivity P            |      
-| Estimated calendar time (calendar weeks) |                    |     Assume team of 4 people, 8 hours per day, 5 days per week        |             
+|             | Estimate                        |             
+| ----------- | ------------------------------- |  
+| Estimated n classes   |                             |             
+| Estimated LOC per class  (Here use Average A computed above )      |                            |                
+| Estimated effort  (person days) (Here use productivity P)  |                                      |      
+| Estimated calendar time (calendar weeks) (Assume team of 4 people, 8 hours per day, 5 days per week ) |                    |               
 
 
 # Estimate by activity decomposition
@@ -43,5 +51,5 @@ Version:
 | | |
 
 
-<Insert here Gantt chart with above activities>
+###  <Insert here Gantt chart with above activities>
 
