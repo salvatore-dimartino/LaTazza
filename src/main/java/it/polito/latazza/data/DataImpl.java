@@ -210,7 +210,7 @@ public class DataImpl implements DataInterface {
 		
 		// check beverage existence
 		Beverage beverage = Beverages.get(beverageId);
-		if(beverage == null || boxQuantity <= 0) throw new BeverageException();
+		if(beverage == null || boxQuantity < 0) throw new BeverageException();
 		
 		// get total amount to pay
 		Integer price = beverage.getPrice()*boxQuantity;
