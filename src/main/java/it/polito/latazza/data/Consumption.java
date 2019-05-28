@@ -75,9 +75,9 @@ public class Consumption extends Transaction {
 	public String getString() {
 		
 		if(type.equals("CASH"))
-			return super.getString() + " " + type + " " + employee.getName() + " " + beverage.getName() + " " +  quantity.toString(); 
+			return super.getString() + " " + type + " " + employee.getName()+" "+employee.getSurname() + " " + beverage.getName() + " " +  quantity.toString(); 
 		if(type.equals("BALANCE"))
-			return super.getString() + " " + type + " " + employee.getName() + " " + beverage.getName() + " " + quantity.toString(); 
+			return super.getString() + " " + type + " " + employee.getName() + " "+employee.getSurname()+" "+ beverage.getName() + " " + quantity.toString(); 
 		if(type.equals("VISITOR"))
 			return super.getString() + " " + type + " " + beverage.getName() + " " + quantity.toString();
 		
