@@ -385,7 +385,7 @@ public class DataImpl implements DataInterface {
 
 	@Override
 	public void updateEmployee(Integer id, String name, String surname) throws EmployeeException {
-		if(id==null || name==null || surname==null || Employees.get(id) == null) {
+		if(id==null || name==null || surname==null || Employees.get(id) == null || name.isEmpty() || surname.isEmpty()) {
 			throw new EmployeeException();
 		} else {
 			Employees.get(id).setName(name);
