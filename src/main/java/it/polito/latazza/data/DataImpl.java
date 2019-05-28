@@ -275,7 +275,7 @@ public class DataImpl implements DataInterface {
 		
 		Beverage b;
 		
-		if(name == null || capsulesPerBox <= 0 || boxPrice <= 0) {
+		if(name == null || capsulesPerBox == null || boxPrice == null || capsulesPerBox <= 0 || boxPrice <= 0 || name.isEmpty()) {
 			throw new BeverageException();
 		} else {
 			b = new Beverage(Beverages.size(), name, boxPrice, capsulesPerBox, 0);
