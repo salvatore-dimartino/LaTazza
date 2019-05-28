@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Locale;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -53,13 +54,11 @@ public class DataImpl implements DataInterface {
 			try {
 				account = loadLaTazzaAccount();
 			} catch (NotEnoughBalance e) {
-				e.printStackTrace();
 			}
 		} else
 			try {
 				account = new LaTazzaAccount(0);
 			} catch (NotEnoughBalance e) {
-				e.printStackTrace();
 			}
 	}
 
@@ -81,17 +80,17 @@ public class DataImpl implements DataInterface {
 		
 		// update the availability
 		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
+		beverage.updateJsonBeverage();
 		
 		// get the payment mode
 		String payMode = new String();
 		if(fromAccount) payMode="BALANCE";
 		else payMode="CASH";
-		
+		 
 		if(!fromAccount)
 			try {
 				account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
 			} catch (NotEnoughBalance e) {
-				e.printStackTrace();
 			}
 		
 		// update the transactions
@@ -102,20 +101,18 @@ public class DataImpl implements DataInterface {
 		try {
 			consumption = new Consumption(TID, new Date(), numberOfCapsules, Beverages.get(beverageId), Employees.get(employeeId), payMode);
 			Transactions.put(TID, consumption);
-			
+			P_account.addTransaction(consumption);
 			consumption.toJsonTransaction();
 			
 			// update personal account
 			if(fromAccount == true) {
-				P_account.addTransaction(consumption);
 				P_account.setBalance(P_account.getBalance()-numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
+				employee.updateJsonEmployee();
 			}
 			
 			Transactions.put(TID, consumption);
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		
 		
@@ -136,11 +133,11 @@ public class DataImpl implements DataInterface {
 				
 		// update the availability
 		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
+		beverage.updateJsonBeverage();
 		
 		try {
 			account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
 		} catch (NotEnoughBalance e) {
-			e.printStackTrace();
 		}
 		
 		// update the transactions
@@ -153,11 +150,8 @@ public class DataImpl implements DataInterface {
 			
 			consumption.toJsonTransaction();
 			
-			consumption.toJsonTransaction();
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		
 	}
@@ -165,42 +159,44 @@ public class DataImpl implements DataInterface {
 	@Override
 	public Integer rechargeAccount(Integer id, Integer amountInCents) throws EmployeeException {
 		
-		try {
-			// check employee existence
-			Employee employee = Employees.get(id);
-			if(employee == null) throw new EmployeeException();
+		Employee employee;
+		if((employee = Employees.get(id)) != null) {
 			
-			// update the transactions
-			Integer TID = Transactions.size()+1;
-			Recharge recharge;
-			
-			recharge = new Recharge(TID, new Date(), amountInCents, employee);
-			Transactions.put(TID, recharge);
-			
-			recharge.toJsonTransaction();
-			
-			// update personal account
-			PersonalAccount P_account = employee.getPersonalaccount();
-			P_account.addTransaction(recharge);
-			P_account.setBalance(P_account.getBalance()+amountInCents);
+			PersonalAccount P_account;
+			P_account = employee.getPersonalaccount();
+				
+			if(amountInCents <= 0)
+				return P_account.getBalance();  
 			
 			try {
-				account.setTotal(account.getTotal()+amountInCents);
-			} catch (NotEnoughBalance e) {
-				e.printStackTrace();
+		
+				// update the transactions
+				Integer TID = Transactions.size();
+				Recharge recharge;
+				
+				recharge = new Recharge(TID, new Date(), amountInCents, employee);
+				Transactions.put(TID, recharge);
+				
+				recharge.toJsonTransaction();
+				
+				// update personal account
+				P_account.addTransaction(recharge);
+				P_account.setBalance(P_account.getBalance()+amountInCents);
+				
+				try {
+					account.setTotal(account.getTotal()+amountInCents);
+				} catch (NotEnoughBalance e) {
+				}
+				account.toJsonLaTazzaAccount();
+				employee.updateJsonEmployee();
+				
+			} catch (Exception e1) {
 			}
-			account.toJsonLaTazzaAccount();
 			
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		Employee employee = Employees.get(id);
-		PersonalAccount P_account = employee.getPersonalaccount();
-		return P_account.getBalance();
-		
-		
+				return P_account.getBalance();
+					
+		}else
+			throw new EmployeeException();
 	}
 
 	@Override
@@ -208,7 +204,7 @@ public class DataImpl implements DataInterface {
 		
 		// check beverage existence
 		Beverage beverage = Beverages.get(beverageId);
-		if(beverage == null) throw new BeverageException();
+		if(beverage == null || boxQuantity <= 0) throw new BeverageException();
 		
 		// get total amount to pay
 		Integer price = beverage.getPrice()*boxQuantity;
@@ -219,7 +215,7 @@ public class DataImpl implements DataInterface {
 		account.toJsonLaTazzaAccount();
 		
 		// update the transactions
-		Integer TID = Transactions.size()+1;
+		Integer TID = Transactions.size();
 		BoxPurchase boxpurchase;
 		
 		try {
@@ -228,12 +224,11 @@ public class DataImpl implements DataInterface {
 			
 			boxpurchase.toJsonTransaction();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		
 		// update the availability
 		beverage.setAvailableQuantity(beverage.getAvailableQuantity()+boxQuantity*beverage.getQuantityPerBox());
+		beverage.updateJsonBeverage();
 	}
 
 	@Override
@@ -241,7 +236,7 @@ public class DataImpl implements DataInterface {
 			throws EmployeeException, DateException {
 		if(!Employees.keySet().contains(employeeId))
 			throw new EmployeeException();
-		if(startDate==null||endDate==null)
+		if(startDate==null||endDate==null||startDate.after(endDate))
 			throw new DateException();
 		Map <Integer,Transaction> Transactions=Employees.get(employeeId).getPersonalaccount().getTransactions();
 		List<String> Report= new ArrayList<String>();
@@ -255,7 +250,7 @@ public class DataImpl implements DataInterface {
 	@Override
 	public List<String> getReport(Date startDate, Date endDate) throws DateException {
 		
-		if(startDate == null || endDate == null) {
+		if(startDate == null || endDate == null || startDate.after(endDate)) {
 			throw new DateException();
 		}
 		
@@ -274,7 +269,7 @@ public class DataImpl implements DataInterface {
 		
 		Beverage b;
 		
-		if(name == null || capsulesPerBox == 0 || boxPrice == 0) {
+		if(name == null || capsulesPerBox <= 0 || boxPrice <= 0) {
 			throw new BeverageException();
 		} else {
 			b = new Beverage(Beverages.size(), name, boxPrice, capsulesPerBox, 0);
@@ -299,7 +294,7 @@ public class DataImpl implements DataInterface {
 			beverage.setPrice(boxPrice);
 			beverage.setQuantityPerBox(capsulesPerBox);
 			
-			beverage.toJsonBeverage();		
+			beverage.updateJsonBeverage();		
 		}
 		
 		return;
@@ -372,6 +367,7 @@ public class DataImpl implements DataInterface {
 		if(name == null || surname == null) {
 			throw new EmployeeException();
 		} else {
+			
 			e = new Employee(name, surname, Employees.size());
 			Employees.put(Employees.size(), e);
 			e.toJsonEmployee();
@@ -387,7 +383,8 @@ public class DataImpl implements DataInterface {
 		} else {
 			Employees.get(id).setName(name);
 			Employees.get(id).setSurname(surname);
-			Employees.get(id).toJsonEmployee();
+			Employees.get(id).updateJsonEmployee();
+			
 		}
 	
 		return;
@@ -445,7 +442,6 @@ public class DataImpl implements DataInterface {
 		try {
 			account.setTotal(0);
 		} catch (NotEnoughBalance e1) {
-			e1.printStackTrace();
 		}
 		
 		try {
@@ -454,8 +450,6 @@ public class DataImpl implements DataInterface {
 			new FileWriter("./Transactions.json").close();
 			new FileWriter("./LaTazzaAccount.json").close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 				
 	}
@@ -492,26 +486,25 @@ public class DataImpl implements DataInterface {
 		        //Get personal account balance
 		        String balance = (String) attributes.get(2);
 		        
-		        //Create the employee object to insert in the list, together with its own account
-		        PersonalAccount account = new PersonalAccount(Integer.parseInt(balance));
+		     
 		        
 		        Employee e;
 				try {
+					  //Create the employee object to insert in the list, together with its own account
+			        PersonalAccount account = new PersonalAccount(Integer.parseInt(balance));
 					e = new Employee(name, surname, Integer.parseInt(ID));
 					e.setPersonalaccount(account);
 				    employees.put(employees.size(), e);
 				} catch (NumberFormatException e1) {
-					e1.printStackTrace();
 				} catch (EmployeeException e1) {
-					e1.printStackTrace();
+				} catch (NotEnoughBalance ne) {
+					
 				}
 		        
 			});
 						
 		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
 		} catch (IOException e1) {
-			e1.printStackTrace();
 		} catch (ParseException e) {
 		}
 		
@@ -531,7 +524,7 @@ public class DataImpl implements DataInterface {
 			
 			JSONArray beverageList = (JSONArray) j_obj;
 			
-			//Iterate over employee array
+			//Iterate over beverage array
 			beverageList.forEach( bev -> {
 				JSONObject beverage = (JSONObject) bev;
 				
@@ -558,17 +551,13 @@ public class DataImpl implements DataInterface {
 					b = new Beverage(Integer.parseInt(ID), name, Integer.parseInt(price), Integer.parseInt(qtyBox), Integer.parseInt(availQty));
 					beverages.put(beverages.size(), b);
 				} catch (NumberFormatException e) {
-					e.printStackTrace();
 				} catch (BeverageException e) {
-					e.printStackTrace();
 				}
 		        
 			});
 						
 		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
 		} catch (IOException e1) {
-			e1.printStackTrace();
 		} catch (ParseException e) {
 		}
 		
@@ -602,9 +591,11 @@ public class DataImpl implements DataInterface {
 				String transactionType = (String) transaction.get("Type");
 				
 				//Get the transaction date
-				DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss");
+				
+				DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzzz yyyy", Locale.ENGLISH);
 				
 				try {
+					
 					Date date = dateFormat.parse(attributes.get(0));
 					
 					if(transactionType.compareTo("BOXPURCHASE") == 0) {
@@ -614,7 +605,7 @@ public class DataImpl implements DataInterface {
 				        Beverage bev = Beverages.get(Integer.parseInt(attributes.get(2)));
 				        
 				        BoxPurchase bp = new BoxPurchase(Integer.parseInt(ID), date, qty, bev);
-				        Transactions.put(transactions.size(), bp);
+				        transactions.put(transactions.size(), bp);
 					}
 					else if(transactionType.compareTo("CONSUMPTION") == 0) {
 						//Get quantity
@@ -633,7 +624,8 @@ public class DataImpl implements DataInterface {
 						String type = attributes.get(4);
 						
 						Consumption cons = new Consumption(Integer.parseInt(ID), date, qty, bev, emp, type);
-						Transactions.put(transactions.size(), cons);
+						transactions.put(transactions.size(), cons);
+						emp.getPersonalaccount().addTransaction(cons);
 					}
 					else if(transactionType.compareTo("RECHARGE") == 0) {
 						//Get Amount
@@ -643,21 +635,21 @@ public class DataImpl implements DataInterface {
 						Employee emp = Employees.get(Integer.parseInt(attributes.get(2)));
 						
 						Recharge rec = new Recharge(Integer.parseInt(ID), date, amount, emp);
-						Transactions.put(transactions.size(), rec);
+						transactions.put(transactions.size(), rec);
+						emp.getPersonalaccount().addTransaction(rec);
 					}
 					
 				//} catch (java.text.ParseException e) {
 				}   catch (Exception e) {
-					e.printStackTrace();
 				}	
 				
 			});
 						
 		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
 		} catch (IOException e1) {
-			e1.printStackTrace();
 		} catch (ParseException e) {
+			
+			
 		}
 		
 		return transactions;
@@ -678,12 +670,10 @@ public class DataImpl implements DataInterface {
 			balance = Integer.parseInt((String) j_account.get("Balance"));
 						
 		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
 		} catch (IOException e1) {
-			e1.printStackTrace();
 		} catch (ParseException e) {
 		}
 		
 		return new LaTazzaAccount(balance);
 	}
-	
+}

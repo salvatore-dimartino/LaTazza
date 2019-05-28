@@ -3,11 +3,13 @@ package it.polito.latazza.data;
 import java.util.HashMap;
 import java.util.Map;
 
+import it.polito.latazza.exceptions.NotEnoughBalance;
+
 public class PersonalAccount {
 	private Integer balance;
 	private Map<Integer,Transaction> Transactions=new HashMap<Integer,Transaction>();
 	
-	public PersonalAccount(Integer balance) {
+	public PersonalAccount(Integer balance) throws NotEnoughBalance {
 		this.balance=balance;
 	}
 	
@@ -15,7 +17,7 @@ public class PersonalAccount {
 		return this.balance;
 	}
 	
-	public void setBalance(Integer balance) {
+	public void setBalance(Integer balance) throws NotEnoughBalance {
 		this.balance=balance;
 	}
 	

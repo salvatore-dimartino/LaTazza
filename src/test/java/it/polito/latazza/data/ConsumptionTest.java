@@ -6,8 +6,6 @@ import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 
-import it.polito.latazza.exceptions.BeverageException;
-
 public class ConsumptionTest extends junit.framework.TestCase {
 	
 	Consumption c1, c2;
@@ -28,6 +26,7 @@ public class ConsumptionTest extends junit.framework.TestCase {
 			
 		}
 		
+		@SuppressWarnings("unused")
 		@Test
 		public void testConsumption() throws Exception {
 			

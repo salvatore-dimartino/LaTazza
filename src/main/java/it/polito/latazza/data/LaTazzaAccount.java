@@ -45,16 +45,13 @@ public class LaTazzaAccount {
 		try {
 			myfile.createNewFile();
 		} catch (IOException e2) {
-			e2.printStackTrace();
 		}
 		
 		try {
 			j_file = (JSONObject) parser.parse(new FileReader("./LaTazzaAccount.json"));
 						
 		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
 		} catch (IOException e1) {
-			e1.printStackTrace();
 		} catch (ParseException e) {
 		}		
 		
@@ -66,7 +63,6 @@ public class LaTazzaAccount {
 			file.flush();
 			file.close();
 		} catch (IOException e) {
-			e.printStackTrace();
 		}	
 	}
 	

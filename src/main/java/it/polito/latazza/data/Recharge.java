@@ -5,7 +5,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import it.polito.latazza.exceptions.BeverageException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -83,16 +82,13 @@ public class Recharge extends Transaction {
 		try {
 			myfile.createNewFile();
 		} catch (IOException e2) {
-			e2.printStackTrace();
 		}
 		
 		try {
 			j_file = (JSONArray) parser.parse(new FileReader("./Transactions.json"));
 						
 		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
 		} catch (IOException e1) {
-			e1.printStackTrace();
 		} catch (ParseException e1) {
 		}	
 		
@@ -108,7 +104,6 @@ public class Recharge extends Transaction {
 			file.flush();
 			file.close();
 		} catch (IOException e) {
-			e.printStackTrace();
 	    }
 
 	}

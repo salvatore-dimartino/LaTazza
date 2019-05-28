@@ -6,8 +6,6 @@ import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 
-import it.polito.latazza.exceptions.BeverageException;
-
 public class RechargeTest extends junit.framework.TestCase {
 	
 	Recharge r1, r2;
@@ -29,6 +27,7 @@ public class RechargeTest extends junit.framework.TestCase {
 			 
 	}
 	
+	@SuppressWarnings("unused")
 	@Test 
 	public void testRecharge() {
 		Recharge r3;
