@@ -93,6 +93,7 @@ public class DataImpl implements DataInterface {
 		if(!fromAccount)
 			try {
 				account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
+				account.toJsonLaTazzaAccount();
 			} catch (NotEnoughBalance e) {
 			}
 		
