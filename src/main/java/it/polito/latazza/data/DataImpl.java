@@ -291,6 +291,9 @@ public class DataImpl implements DataInterface {
 	@Override
 	public void updateBeverage(Integer id, String name, Integer capsulesPerBox, Integer boxPrice)
 			throws BeverageException {
+			    
+	    if(id==null || name==null || capsulesPerBox==null || boxPrice==null || name.isEmpty())
+			throw new BeverageException();
 		
 		Beverage beverage = Beverages.get(id);
 		
