@@ -75,7 +75,7 @@ public class DataImpl implements DataInterface {
 		if(beverage == null) throw new BeverageException();
 		
 		// check positive quantity
-		if(numberOfCapsules<=0 || numberOfCapsules==null) throw new NotEnoughCapsules();
+		if(numberOfCapsules==null || numberOfCapsules<=0) throw new NotEnoughCapsules();
 		
 		// check availability
 		Integer avail_qty = beverage.getAvailableQuantity();
@@ -131,7 +131,7 @@ public class DataImpl implements DataInterface {
 		if(beverage == null) throw new BeverageException();
 		
 		// check positive quantity
-		if(numberOfCapsules<=0 || numberOfCapsules==null) throw new NotEnoughCapsules();
+		if(numberOfCapsules==null || numberOfCapsules<=0) throw new NotEnoughCapsules();
 		
 		// check availability
 		Integer avail_qty = beverage.getAvailableQuantity();
