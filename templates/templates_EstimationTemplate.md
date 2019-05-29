@@ -23,7 +23,7 @@ Version:
 | ----------- | ------------------------------- | 
 |Total Java LoC delivered on April 26 (only code, no Junit code) | 869 |
 | Total number of Java classes delivered on April 26 (only code, no Junit code)| 9 |
-| Productivity P = LOC/Total person hours | 869/74=11.7 |
+| Productivity P = LOC/Total person days | 869/(9 person days)=96.5 |
 |Average size of Java class A = | 96.5 |
 
 # Estimate by product decomposition
