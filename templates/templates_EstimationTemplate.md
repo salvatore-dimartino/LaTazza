@@ -21,10 +21,10 @@ Version:
 
 |         Total person days worked by your  team, considering period March 5 to April 26 (1 person day == 8 person hours)     |   |             
 | ----------- | ------------------------------- | 
-|Total Java LoC delivered on April 26 (only code, no Junit code) | 924 (including DataImpl, but not DataInterface) |
-| Total number of Java classes delivered on April 26 (only code, no Junit code)| 9 (including DataImpl, but not DataInterface) |
-| Productivity P = LOC/Total person hours | 924/68=13 |
-|Average size of Java class A = | 102 |
+|Total Java LoC delivered on April 26 (only code, no Junit code) | 1000 |
+| Total number of Java classes delivered on April 26 (only code, no Junit code)| 10 |
+| Productivity P = LOC/Total person hours | 1000/70=14 |
+|Average size of Java class A = | 100 |
 
 # Estimate by product decomposition
 
