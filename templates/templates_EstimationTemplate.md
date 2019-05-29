@@ -9,7 +9,7 @@ Version: 1.0
 # Contents
 
 - [Data from your LaTazza project](#data-from-your-latazza-project)
-- [Estimate by product decomposition](#estimete-by-product-decomposition)
+- [Estimate by product decomposition](#estimate-by-product-decomposition)
 - [Estimate by activity decomposition ](#estimate-by-activity-decomposition)
 
 
