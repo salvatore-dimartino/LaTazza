@@ -48,12 +48,12 @@ Version: 1.0
 
 |         Activity name    | Estimated effort    |             
 | ----------- | ------------------------------- | 
-| Requirements|  |
-| Design ||
-| Coding ||
-| Testing ||
-| System Testing ||
-| Project management ||
+| Requirements | 5 person days |
+| Design | 4 person days |
+| Coding | 12 person days |
+| Testing | 10 person days |
+| System Testing | 4 person days |
+| Project management | 4 person days |
 
 ###
 Insert here Gantt chart with above activities
