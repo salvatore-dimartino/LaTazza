@@ -18,9 +18,9 @@ Version:
 # Data from your LaTazza project
 
 ###
-
-|         Total person hours  worked by your  team, considering period March 5 to May 26, considering ALL activities (req, des, code, test,..)    |   |             
+|||
 | ----------- | ------------------------------- | 
+|         Total person hours  worked by your  team, considering period March 5 to May 26, considering ALL activities (req, des, code, test,..)    |   |             
 |Total Java LoC delivered on May 26 (only code, without Exceptions, no Junit code) | |
 | Total number of Java classes delivered on May 26 (only code, no Junit code, no Exception classes)| |
 | Productivity P =| |
