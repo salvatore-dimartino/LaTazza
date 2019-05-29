@@ -23,7 +23,7 @@ Version:
 | ----------- | ------------------------------- | 
 |Total Java LoC delivered on April 26 (only code, no Junit code) | 838 (including DataImpl, but not DataInterface) |
 | Total number of Java classes delivered on April 26 (only code, no Junit code)| 9 (including DataImpl, but not DataInterface) |
-| Productivity P =| |
+| Productivity P = LOC/Total person hours | 838/X=|
 |Average size of Java class A = | |
 
 # Estimate by product decomposition
