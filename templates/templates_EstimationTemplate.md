@@ -48,9 +48,27 @@ Version: 1.0
 
 |         Activity name    | Estimated effort    |             
 | ----------- | ------------------------------- | 
-| | |
-
+| Requirements|  |
+| Design ||
+| Coding ||
+| Testing ||
+| System Testing ||
+| Project management ||
 
 ###
 Insert here Gantt chart with above activities
+
+```plantuml
+@startgantt
+project starts the 2019/03/5
+sunday are closed
+saturday are closed
+[Requirements] lasts 2 days and is colored in Lavender/LightBlue
+[Design] lasts 1 days and starts 1 days after [Requirements]'s end and is colored in Lavender/LightBlue
+[Coding] lasts 3 days and starts 1 days after [Design]'s end and is colored in Lavender/LightBlue
+[Testing] lasts 3 days and starts 1 days after [Coding]'s end and is colored in Lavender/LightBlue
+[System Testing] lasts 1 days and starts 1 days after [Testing]'s end and is colored in Lavender/LightBlue
+[Project Management] lasts 1 days and starts 1 days after [System Testing]'s end and is colored in Lavender/LightBlue
+@endgantt
+```
 
