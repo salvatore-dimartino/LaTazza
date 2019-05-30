@@ -17,13 +17,13 @@ Version: 1.0
 # Data from your LaTazza project
 
 ###
-
-|         Total person days worked by your  team, considering period March 5 to April 26 (1 person day == 8 person hours)     |   |             
+|||
 | ----------- | ------------------------------- | 
-|Total Java LoC delivered on April 26 (only code, no Junit code) | 869 |
-| Total number of Java classes delivered on April 26 (only code, no Junit code)| 9 |
-| Productivity P = LOC/Total person days | 869/(74 hours=9 person days)=96.5 |
-|Average size of Java class A = | 96.5 |
+|         Total person hours  worked by your  team, considering period March 5 to May 26, considering ALL activities (req, des, code, test,..)    |   |             
+|Total Java LoC delivered on May 26 (only code, without Exceptions, no Junit code) | |
+| Total number of Java classes delivered on May 26 (only code, no Junit code, no Exception classes)| |
+| Productivity P =| |
+|Average size of Java class A = | |
 
 # Estimate by product decomposition
 
@@ -33,10 +33,11 @@ Version: 1.0
 
 |             | Estimate                        |             
 | ----------- | ------------------------------- |  
-| Estimated n classes   |       10                      |             
-| Estimated LOC per class  (Here use Average A computed above )      |        110                    |                
-| Estimated effort  (person days) (Here use productivity P)  | 1100/96.5=11.4                                     |      
-| Estimated calendar time (calendar weeks) (Assume team of 4 people, 8 hours per day, 5 days per week ) | 5 march - 11 march (one week)                   |               
+| Estimated n classes NC (no Exception classes)  |                             |             
+| Estimated LOC per class  (Here use Average A computed above )      |                            | 
+| Estimated LOC (= NC * A) | |
+| Estimated effort  (person days) (Here use productivity P)  |                                      |      
+| Estimated calendar time (calendar weeks) (Assume team of 4 people, 8 hours per day, 5 days per week ) |                    |               
 
 
 # Estimate by activity decomposition
