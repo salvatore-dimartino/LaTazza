@@ -161,6 +161,7 @@ Version: 1.0
 # Coverage of Scenarios
 
 ### 
+Before excecuting each test with EyeAutomate you have to run each time the GUITest alternative main.
 
 | Scenario ID | Functional Requirements covered | API Test(s) | GUI Test(s) |
 | ----------- | ------------------------------- | ----------- | ----------- |
