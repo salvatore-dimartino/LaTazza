@@ -19,7 +19,7 @@ Version: 1.1
 ###
 |||
 | ----------- | ------------------------------- | 
-|         Total person hours  worked by your  team, considering period March 5 to May 26, considering ALL activities (req, des, code, test,..)    |   |             
+|         Total person hours  worked by your  team, considering period March 5 to May 26, considering ALL activities (req, des, code, test,..)    | 225  |             
 |Total Java LoC delivered on May 26 (only code, without Exceptions, no Junit code) | 869 |
 | Total number of Java classes delivered on May 26 (only code, no Junit code, no Exception classes)| 9 |
 | Productivity P =| 869/28 person days(225 hours) =  31 |
