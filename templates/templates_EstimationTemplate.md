@@ -36,7 +36,7 @@ Version: 1.0
 | Estimated n classes   |       10                      |             
 | Estimated LOC per class  (Here use Average A computed above )      |        110                    |                
 | Estimated effort  (person days) (Here use productivity P)  | 1100/96.5=11.4                                     |      
-| Estimated calendar time (calendar weeks) (Assume team of 4 people, 8 hours per day, 5 days per week ) | 5 march - 7 march (half a week)                   |               
+| Estimated calendar time (calendar weeks) (Assume team of 4 people, 8 hours per day, 5 days per week ) | 5 march - 11 march (one week)                   |               
 
 
 # Estimate by activity decomposition
