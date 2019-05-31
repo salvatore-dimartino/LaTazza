@@ -173,7 +173,7 @@ public class DataImpl implements DataInterface {
 			P_account = employee.getPersonalaccount();
 				
 			if(amountInCents <= 0)
-				return P_account.getBalance();  
+				throw new EmployeeException(); 
 			
 			try {
 		
