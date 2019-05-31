@@ -113,7 +113,7 @@ public class DataImplTest extends junit.framework.TestCase {
 		
 		data1.reset();
 		this.setUp(); //Personal is € 200 because you have not sold to the employee yet
-		assertEquals(data1.rechargeAccount(0, -10000).intValue(), 20000);
+		assertThrows(EmployeeException.class, ()->data1.rechargeAccount(0, -10000));
 		data1.reset();
 		this.setUp();
 		assertTrue(data1.rechargeAccount(0, 10000) == 30000);
