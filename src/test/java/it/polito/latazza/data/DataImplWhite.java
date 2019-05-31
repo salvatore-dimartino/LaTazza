@@ -68,7 +68,7 @@ public class DataImplWhite extends junit.framework.TestCase {
         try{
             assertThrows(EmployeeException.class, () -> data1.rechargeAccount(0,1000));
             data1.createEmployee("Massimo","Priano");
-            assertTrue(data1.rechargeAccount(0,0)==0);
+            assertThrows(EmployeeException.class, () -> data1.rechargeAccount(0,0));
             assertTrue(data1.rechargeAccount(0,1000)==1000);
         } catch(Exception e){
             fail();
