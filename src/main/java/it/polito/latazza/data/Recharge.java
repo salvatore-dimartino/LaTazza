@@ -56,8 +56,9 @@ public class Recharge extends Transaction {
 	
 	// The string format for a recharge is "[datetime] RECHARGE [employee] [amount]".
 	public String getString() {
+		String price=String.format("%.2f \u20ac",((float) (this.amount.intValue()/100))).replace(",",".");
 		return super.getString() + " RECHARGE " + this.getEmployee().getName() + " " +
-			   this.getEmployee().getSurname() + " " + String.format("%.2f \u20ac",(float) (this.amount.intValue()/100));
+			   this.getEmployee().getSurname() + " " + price;
 	}
 	
 
