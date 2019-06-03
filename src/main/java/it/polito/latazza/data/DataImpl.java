@@ -74,6 +74,9 @@ public class DataImpl implements DataInterface {
 		Beverage beverage = Beverages.get(beverageId);
 		if(beverage == null) throw new BeverageException();
 		
+		// check positive quantity
+		if(numberOfCapsules==null || numberOfCapsules<0) throw new NotEnoughCapsules();
+		
 		// check availability
 		Integer avail_qty = beverage.getAvailableQuantity();
 		if(avail_qty < numberOfCapsules) throw new NotEnoughCapsules();
@@ -90,6 +93,7 @@ public class DataImpl implements DataInterface {
 		if(!fromAccount)
 			try {
 				account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
+				account.toJsonLaTazzaAccount();
 			} catch (NotEnoughBalance e) {
 			}
 		
@@ -126,6 +130,9 @@ public class DataImpl implements DataInterface {
 		// check beverage existence
 		Beverage beverage = Beverages.get(beverageId);
 		if(beverage == null) throw new BeverageException();
+		
+		// check positive quantity
+		if(numberOfCapsules==null || numberOfCapsules<0) throw new NotEnoughCapsules();
 		
 		// check availability
 		Integer avail_qty = beverage.getAvailableQuantity();
@@ -166,7 +173,7 @@ public class DataImpl implements DataInterface {
 			P_account = employee.getPersonalaccount();
 				
 			if(amountInCents <= 0)
-				return P_account.getBalance();  
+				throw new EmployeeException(); 
 			
 			try {
 		
@@ -204,7 +211,7 @@ public class DataImpl implements DataInterface {
 		
 		// check beverage existence
 		Beverage beverage = Beverages.get(beverageId);
-		if(beverage == null || boxQuantity <= 0) throw new BeverageException();
+		if(beverage == null || boxQuantity < 0) throw new BeverageException();
 		
 		// get total amount to pay
 		Integer price = beverage.getPrice()*boxQuantity;
@@ -269,7 +276,7 @@ public class DataImpl implements DataInterface {
 		
 		Beverage b;
 		
-		if(name == null || capsulesPerBox <= 0 || boxPrice <= 0) {
+		if(name == null || capsulesPerBox == null || boxPrice == null || capsulesPerBox <= 0 || boxPrice <= 0 || name.isEmpty()) {
 			throw new BeverageException();
 		} else {
 			b = new Beverage(Beverages.size(), name, boxPrice, capsulesPerBox, 0);
@@ -284,6 +291,9 @@ public class DataImpl implements DataInterface {
 	@Override
 	public void updateBeverage(Integer id, String name, Integer capsulesPerBox, Integer boxPrice)
 			throws BeverageException {
+			    
+	    if(id==null || name==null || capsulesPerBox==null || boxPrice==null || name.isEmpty())
+			throw new BeverageException();
 		
 		Beverage beverage = Beverages.get(id);
 		
@@ -378,7 +388,7 @@ public class DataImpl implements DataInterface {
 
 	@Override
 	public void updateEmployee(Integer id, String name, String surname) throws EmployeeException {
-		if(Employees.get(id) == null) {
+		if(id==null || name==null || surname==null || Employees.get(id) == null || name.isEmpty() || surname.isEmpty()) {
 			throw new EmployeeException();
 		} else {
 			Employees.get(id).setName(name);
