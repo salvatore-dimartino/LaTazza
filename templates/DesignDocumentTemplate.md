@@ -179,10 +179,14 @@ class Employee {
 
 class Beverage {
     -ID : Integer
-    -Name : String
+    -name : String
     -price : Integer
-    -quantityperbox : Integer
-    -availablequantity : Integer
+    -quantityPerBox : Integer
+    -availableQuantity : Integer
+    -oldPrice: Integer
+    -oldQuantityPerBox : Integer
+    -oldAvailableQuantity : Integer
+    
     
     +getQuantityperBox() : Integer
     +getAvailableQuantity() : Integer
