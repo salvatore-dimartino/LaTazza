@@ -24,6 +24,9 @@ public class Beverage {
 	private Integer price;
 	private Integer quantityPerBox;
 	private Integer availableQuantity;
+	private Integer oldPrice;
+	private Integer oldQuantityPerBox;
+	private Integer oldAvailableQuantity;
 	
 	public Beverage(Integer ID, String name, Integer price, Integer quantityPerBox, Integer availableQuantity)  throws BeverageException {
 		
@@ -55,9 +58,13 @@ public class Beverage {
 			this.availableQuantity = availableQuantity;
 		else
 			throw new BeverageException();
+		
+		this.oldPrice=-1;
+		this.oldQuantityPerBox=-1;
+		this.oldAvailableQuantity=-1;
 	
 	}
-	
+
 	public List<String> getAttributes(){
 		List<String> attributes = new ArrayList<String>();
 		
@@ -65,8 +72,36 @@ public class Beverage {
 		attributes.add(price.toString());
 		attributes.add(quantityPerBox.toString());
 		attributes.add(availableQuantity.toString());
+		attributes.add(oldPrice.toString());
+		attributes.add(oldQuantityPerBox.toString());
+		attributes.add(oldAvailableQuantity.toString());
 		
 		return attributes;
+	}
+	
+
+	public Integer getOldPrice() {
+		return oldPrice;
+	}
+
+	public void setOldPrice(Integer oldPrice) {
+		this.oldPrice = oldPrice;
+	}
+	
+	public Integer getOldQuantityPerBox() {
+		return oldQuantityPerBox;
+	}
+
+	public void setOldQuantityPerBox(Integer oldQuantityPerBox) {
+		this.oldQuantityPerBox = oldQuantityPerBox;
+	}
+
+	public Integer getOldAvailableQuantity() {
+		return oldAvailableQuantity;
+	}
+
+	public void setOldAvailableQuantity(Integer oldAvailableQuantity) {
+		this.oldAvailableQuantity = oldAvailableQuantity;
 	}
 
 	public Integer getID() {
