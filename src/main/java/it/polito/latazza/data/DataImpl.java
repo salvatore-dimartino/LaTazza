@@ -157,22 +157,51 @@ public class DataImpl implements DataInterface {
 			throws BeverageException, NotEnoughCapsules {
 		
 		// check beverage existence
-		Beverage beverage = Beverages.get(beverageId);
-		if(beverage == null) throw new BeverageException();
-		
-		// check positive quantity
-		if(numberOfCapsules==null || numberOfCapsules<0) throw new NotEnoughCapsules();
-		
-		// check availability
-		Integer avail_qty = beverage.getAvailableQuantity();
-		if(avail_qty < numberOfCapsules) throw new NotEnoughCapsules();
+				Beverage beverage = Beverages.get(beverageId);
+				if(beverage == null) throw new BeverageException();
 				
-		// update the availability
-		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
-		beverage.updateJsonBeverage();
-		
+				// check positive quantity
+				if(numberOfCapsules==null || numberOfCapsules<0) throw new NotEnoughCapsules();
+				
+				Integer spentMoney;
+				
+				// case 1: beverage never updated or old stocks terminated
+				if(beverage.getOldPrice()<=0) {
+					// check availability
+					Integer avail_qty = beverage.getAvailableQuantity();
+					if(avail_qty < numberOfCapsules) throw new NotEnoughCapsules();
+					
+					// update the availability
+					beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
+					beverage.updateJsonBeverage();
+					
+					spentMoney = numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox();
+				} else 
+					// case 2: old capsules are enough to fulfill the request
+					if(beverage.getOldAvailableQuantity()>=numberOfCapsules) {
+						// update the availability
+						beverage.setOldAvailableQuantity(beverage.getOldAvailableQuantity()-numberOfCapsules);
+						beverage.updateJsonBeverage();
+						
+						spentMoney = numberOfCapsules*beverage.getOldPrice()/beverage.getOldQuantityPerBox();
+				} else {
+					// case 3: i've to sell all old capsules plus some new capsules to fulfill the request
+					Integer avail_qty = beverage.getAvailableQuantity();
+					Integer old_avail_qty = beverage.getOldAvailableQuantity();
+					Integer numNewCapsules = numberOfCapsules - old_avail_qty;
+					// check availability
+					if((avail_qty+old_avail_qty) < numberOfCapsules) throw new NotEnoughCapsules();
+					// update the availability
+					beverage.setAvailableQuantity(avail_qty-numNewCapsules);
+					beverage.setOldAvailableQuantity(0);
+					beverage.updateJsonBeverage();
+					
+					spentMoney = numNewCapsules*beverage.getPrice()/beverage.getQuantityPerBox()+
+							     old_avail_qty*beverage.getOldPrice()/beverage.getOldQuantityPerBox();
+				}
+
 		try {
-			account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
+			account.setTotal(account.getTotal()+spentMoney);
 		} catch (NotEnoughBalance e) {
 		}
 		
