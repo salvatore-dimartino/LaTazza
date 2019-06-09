@@ -202,6 +202,7 @@ public class DataImpl implements DataInterface {
 
 		try {
 			account.setTotal(account.getTotal()+spentMoney);
+			account.toJsonLaTazzaAccount();
 		} catch (NotEnoughBalance e) {
 		}
 		
