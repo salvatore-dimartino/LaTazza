@@ -77,13 +77,42 @@ public class DataImpl implements DataInterface {
 		// check positive quantity
 		if(numberOfCapsules==null || numberOfCapsules<0) throw new NotEnoughCapsules();
 		
-		// check availability
-		Integer avail_qty = beverage.getAvailableQuantity();
-		if(avail_qty < numberOfCapsules) throw new NotEnoughCapsules();
+		Integer spentMoney;
 		
-		// update the availability
-		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
-		beverage.updateJsonBeverage();
+		// case 1: beverage never updated or old stocks terminated
+		if(beverage.getOldPrice()<=0) {
+			// check availability
+			Integer avail_qty = beverage.getAvailableQuantity();
+			if(avail_qty < numberOfCapsules) throw new NotEnoughCapsules();
+			
+			// update the availability
+			beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
+			beverage.updateJsonBeverage();
+			
+			spentMoney = numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox();
+		} else 
+			// case 2: old capsules are enough to fulfill the request
+			if(beverage.getOldAvailableQuantity()>=numberOfCapsules) {
+				// update the availability
+				beverage.setOldAvailableQuantity(beverage.getOldAvailableQuantity()-numberOfCapsules);
+				beverage.updateJsonBeverage();
+				
+				spentMoney = numberOfCapsules*beverage.getOldPrice()/beverage.getOldQuantityPerBox();
+		} else {
+			// case 3: i've to sell all old capsules plus some new capsules to fulfill the request
+			Integer avail_qty = beverage.getAvailableQuantity();
+			Integer old_avail_qty = beverage.getOldAvailableQuantity();
+			Integer numNewCapsules = numberOfCapsules - old_avail_qty;
+			// check availability
+			if((avail_qty+old_avail_qty) < numberOfCapsules) throw new NotEnoughCapsules();
+			// update the availability
+			beverage.setAvailableQuantity(avail_qty-numNewCapsules);
+			beverage.setOldAvailableQuantity(0);
+			beverage.updateJsonBeverage();
+			
+			spentMoney = numNewCapsules*beverage.getPrice()/beverage.getQuantityPerBox()+
+					     old_avail_qty*beverage.getOldPrice()/beverage.getOldQuantityPerBox();
+		}
 		
 		// get the payment mode
 		String payMode = new String();
@@ -92,7 +121,7 @@ public class DataImpl implements DataInterface {
 		 
 		if(!fromAccount)
 			try {
-				account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
+				account.setTotal(account.getTotal()+spentMoney);
 				account.toJsonLaTazzaAccount();
 			} catch (NotEnoughBalance e) {
 			}
@@ -110,7 +139,7 @@ public class DataImpl implements DataInterface {
 			
 			// update personal account
 			if(fromAccount == true) {
-				P_account.setBalance(P_account.getBalance()-numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
+				P_account.setBalance(P_account.getBalance()-spentMoney);
 				employee.updateJsonEmployee();
 			}
 			
@@ -128,22 +157,52 @@ public class DataImpl implements DataInterface {
 			throws BeverageException, NotEnoughCapsules {
 		
 		// check beverage existence
-		Beverage beverage = Beverages.get(beverageId);
-		if(beverage == null) throw new BeverageException();
-		
-		// check positive quantity
-		if(numberOfCapsules==null || numberOfCapsules<0) throw new NotEnoughCapsules();
-		
-		// check availability
-		Integer avail_qty = beverage.getAvailableQuantity();
-		if(avail_qty < numberOfCapsules) throw new NotEnoughCapsules();
+				Beverage beverage = Beverages.get(beverageId);
+				if(beverage == null) throw new BeverageException();
 				
-		// update the availability
-		beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
-		beverage.updateJsonBeverage();
-		
+				// check positive quantity
+				if(numberOfCapsules==null || numberOfCapsules<0) throw new NotEnoughCapsules();
+				
+				Integer spentMoney;
+				
+				// case 1: beverage never updated or old stocks terminated
+				if(beverage.getOldPrice()<=0) {
+					// check availability
+					Integer avail_qty = beverage.getAvailableQuantity();
+					if(avail_qty < numberOfCapsules) throw new NotEnoughCapsules();
+					
+					// update the availability
+					beverage.setAvailableQuantity(avail_qty-numberOfCapsules);
+					beverage.updateJsonBeverage();
+					
+					spentMoney = numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox();
+				} else 
+					// case 2: old capsules are enough to fulfill the request
+					if(beverage.getOldAvailableQuantity()>=numberOfCapsules) {
+						// update the availability
+						beverage.setOldAvailableQuantity(beverage.getOldAvailableQuantity()-numberOfCapsules);
+						beverage.updateJsonBeverage();
+						
+						spentMoney = numberOfCapsules*beverage.getOldPrice()/beverage.getOldQuantityPerBox();
+				} else {
+					// case 3: i've to sell all old capsules plus some new capsules to fulfill the request
+					Integer avail_qty = beverage.getAvailableQuantity();
+					Integer old_avail_qty = beverage.getOldAvailableQuantity();
+					Integer numNewCapsules = numberOfCapsules - old_avail_qty;
+					// check availability
+					if((avail_qty+old_avail_qty) < numberOfCapsules) throw new NotEnoughCapsules();
+					// update the availability
+					beverage.setAvailableQuantity(avail_qty-numNewCapsules);
+					beverage.setOldAvailableQuantity(0);
+					beverage.updateJsonBeverage();
+					
+					spentMoney = numNewCapsules*beverage.getPrice()/beverage.getQuantityPerBox()+
+							     old_avail_qty*beverage.getOldPrice()/beverage.getOldQuantityPerBox();
+				}
+
 		try {
-			account.setTotal(account.getTotal()+numberOfCapsules*beverage.getPrice()/beverage.getQuantityPerBox());
+			account.setTotal(account.getTotal()+spentMoney);
+			account.toJsonLaTazzaAccount();
 		} catch (NotEnoughBalance e) {
 		}
 		
@@ -297,12 +356,17 @@ public class DataImpl implements DataInterface {
 		
 		Beverage beverage = Beverages.get(id);
 		
-		if (beverage == null) {
+		if (beverage == null || beverage.getOldPrice()!=-1) {
 			throw new BeverageException();
 		}else{
 			beverage.setName(name);
+			beverage.setOldPrice(beverage.getPrice());
 			beverage.setPrice(boxPrice);
+			beverage.setOldQuantityPerBox(beverage.getQuantityPerBox());
 			beverage.setQuantityPerBox(capsulesPerBox);
+			
+			beverage.setOldAvailableQuantity(beverage.getAvailableQuantity());
+			beverage.setAvailableQuantity(0);
 			
 			beverage.updateJsonBeverage();		
 		}
@@ -365,8 +429,11 @@ public class DataImpl implements DataInterface {
 		if (Beverages.get(id) == null) {
 			throw new BeverageException();
 		}
-		// TODO Auto-generated method stub
-		return Beverages.get(id).getAvailableQuantity();
+
+		Beverage b = Beverages.get(id);
+		Integer old_qty = 0;
+		if(b.getOldAvailableQuantity()>0) old_qty+=b.getOldAvailableQuantity();
+		return b.getAvailableQuantity()+old_qty;
 	}
 
 	@Override
@@ -550,15 +617,27 @@ public class DataImpl implements DataInterface {
 		        //Get beverage price
 		        String price = (String) attributes.get(1);
 		        
-		        //Get beverage quantity per box
+		        //Get current beverage quantity per box
 		        String qtyBox = (String) attributes.get(2);
 		        
-		        //Get beverage available quantity
+		        //Get current beverage available quantity
 		        String availQty = (String) attributes.get(3);
+		        
+		        //Get previous beverage price
+		        String oldPrice = (String) attributes.get(4);
+		        
+		        //Get previous beverage quantity per box
+		        String oldQtyBox = (String) attributes.get(5);
+		        
+		        //Get previous beverage available quantity
+		        String oldAvailQty = (String) attributes.get(6);
 		        
 		        Beverage b;
 				try {
 					b = new Beverage(Integer.parseInt(ID), name, Integer.parseInt(price), Integer.parseInt(qtyBox), Integer.parseInt(availQty));
+					b.setOldPrice(Integer.parseInt(oldPrice));
+					b.setOldQuantityPerBox(Integer.parseInt(oldQtyBox));
+					b.setOldAvailableQuantity(Integer.parseInt(oldAvailQty));
 					beverages.put(beverages.size(), b);
 				} catch (NumberFormatException e) {
 				} catch (BeverageException e) {

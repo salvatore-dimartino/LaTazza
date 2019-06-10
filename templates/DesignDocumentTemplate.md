@@ -179,12 +179,16 @@ class Employee {
 
 class Beverage {
     -ID : Integer
-    -Name : String
+    -name : String
     -price : Integer
-    -quantityperbox : Integer
-    -availablequantity : Integer
+    -quantityPerBox : Integer
+    -availableQuantity : Integer
+    -oldPrice: Integer
+    -oldQuantityPerBox : Integer
+    -oldAvailableQuantity : Integer
     
-    +getQuantityperBox() : Integer
+    
+    +getQuantityPerBox() : Integer
     +getAvailableQuantity() : Integer
     +getPrice() : Integer
     +getName() : String
@@ -192,6 +196,12 @@ class Beverage {
     +setPrice(Integer) : void
     +setQuantityperBox(Integer) : void
     +setAvailableQuantity(Integer) : void
+    +getOldQuantityPerBox() : Integer
+    +getOldAvailableQuantity() : Integer
+    +getOldPrice() : Integer
+    +setOldPrice(Integer) : void
+    +setOldQuantityperBox(Integer) : void
+    +setOldAvailableQuantity(Integer) : void
     +getID() : Integer
     +getAttributes() : List<String>
     +toJsonBeverage() : void
