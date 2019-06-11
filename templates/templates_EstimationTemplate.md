@@ -64,13 +64,13 @@ Insert here Gantt chart with above activities
 project starts the 2019/03/5
 sunday are closed
 saturday are closed
-[Requirements] lasts 2 days and is colored in Lavender/LightBlue
-[Design] lasts 1 days and starts 1 days after [Requirements]'s end and is colored in Lavender/LightBlue
-[Coding] lasts 6 days and starts 1 days after [Design]'s end and is colored in Lavender/LightBlue
-[Testing] lasts 3 days and starts 3 days after [Coding]'s start and is colored in Pink
-[System Testing] lasts 1 days and starts 1 days after [Coding]'s end and is colored in Lavender/LightBlue
-[Project Management] lasts 1 days and starts 1 days after [System Testing]'s end and is colored in Lavender/LightBlue
-[System Testing] starts 1 days after [Testing]'s end and is colored in Lavender/LightBlue
+[Requirements] lasts 2 days and is colored in Pink
+[Design] lasts 1 days and starts 1 days after [Requirements]'s end and is colored in Pink
+[Coding] lasts 6 days and starts 1 days after [Design]'s end and is colored in Pink
+[Testing] lasts 3 days and starts 3 days after [Coding]'s start and is colored in Lavender/LightBlue
+[System Testing] lasts 1 days and starts 1 days after [Coding]'s end and is colored in Pink
+[Project Management] lasts 1 days and starts 1 days after [System Testing]'s end and is colored in Pink
+[System Testing] starts 1 days after [Testing]'s end and is colored in Pink
 @endgantt
 ```
 
