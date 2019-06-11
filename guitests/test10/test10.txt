@@ -1,4 +1,4 @@
-Click "{ImageFolder}/1558564778984.png" 6 5
+Click "{ImageFolder}/1558564778984.png" 78 44
 Click "{ImageFolder}/1558564825483.png"
 Click "{ImageFolder}/1558564851173.png" 69 33
 Type "Cioccolata"
