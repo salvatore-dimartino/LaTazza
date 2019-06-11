@@ -68,7 +68,7 @@ saturday are closed
 [Design] lasts 1 days and starts 1 days after [Requirements]'s end and is colored in Lavender/LightBlue
 [Coding] lasts 6 days and starts 1 days after [Design]'s end and is colored in Lavender/LightBlue
 [Testing] lasts 3 days and starts 3 days after [Design]'s end and is colored in Red
-[System Testing] lasts 1 days and starts 1 days after [Coding]'s end and is colored in Lavender/LightBlue
+[System Testing] lasts 1 days and starts 1 days after [Coding]'s end and starts 1 days after [Testing]'s end and is colored in Lavender/LightBlue
 [Project Management] lasts 1 days and starts 1 days after [System Testing]'s end and is colored in Lavender/LightBlue
 @endgantt
 ```
