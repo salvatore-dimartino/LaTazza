@@ -1,4 +1,4 @@
-Click "{ImageFolder}/1558565562221.png" 6 6
+Click "{ImageFolder}/1558565562221.png" 67 52
 Click "{ImageFolder}/1558565596537.png" 55 79
 Click "{ImageFolder}/1558565611133.png" 55 68
 Type "Calogero"
