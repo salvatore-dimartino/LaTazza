@@ -122,7 +122,7 @@ public class DataImplWhite extends junit.framework.TestCase {
     public void testGetReport() throws DateException{
         data1.reset();
         Date start = new Date(110, 1, 1);
-        Date end = new Date(120, 1, 1);
+        Date end = new Date(130, 1, 1);
         try{
             data1.createEmployee("Massimo","Priano");
             assertThrows(DateException.class, () -> data1.getReport(null,end));
