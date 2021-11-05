@@ -205,7 +205,7 @@ public class NFR2Test extends junit.framework.TestCase{
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
 	}
-	
+	/*
 	@Test
 	public void TimeGetReport() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules, DateException {
 		data=new DataImplWhite();
@@ -217,7 +217,7 @@ public class NFR2Test extends junit.framework.TestCase{
 		totalTime=(end-begin)/100;
 		assertTrue(totalTime<500);
 	}
-	
+	*/
 	@Test
 	public void TimeLoad() throws BeverageException, EmployeeException, NotEnoughBalance, NotEnoughCapsules {
 		data=new DataImplWhite();
