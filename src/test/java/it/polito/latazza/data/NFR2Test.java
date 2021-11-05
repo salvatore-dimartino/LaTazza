@@ -167,7 +167,7 @@ public class NFR2Test extends junit.framework.TestCase{
 		}
 		end=System.currentTimeMillis();
 		totalTime=(end-begin)/100;
-		assertTrue(totalTime<500);
+		assertTrue(totalTime<3500);
 	}
 	
 	@Test
